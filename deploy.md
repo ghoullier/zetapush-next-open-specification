@@ -4,16 +4,8 @@
 - Un développeur web doit pouvoir coder son propre métier pour simplifier le développement de son/ses front(s). Il doit pouvoir déployer son backend custom sur ZetaPush.
 - Un développeur web ayant un front et un backend custom doit pouvoir déployer son application sur ZetaPush (front et backend custom)
 
-# Vocabulaire
 
-- ETQ : En tant que 
-
-
-# Profils identifiés
-
-- Développeur seul (sera nommé par la suite 'dev')
-- Equipe de développement (sera nommé par la suite 'équipe')
-- Personne dédié à la gestion de la production (sera nommé par la suite 'ops')
+Les profils utilisés sont définis dans [commun.md](./commun.md).
 
 # Pré-requis
 
@@ -27,7 +19,7 @@ Mon application est prête à être déployée :
 
 
 
-# Process 1 : développement rapide (backend custom)
+# Parcours 1 : développement rapide (backend custom)
 
 ## Vue d'ensemble
 
@@ -147,12 +139,12 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 
 
-# Process 2 : Intégration continue (backend custom)
+# Parcours 2 : Intégration continue (backend custom)
 
 
 
 
-# Process 3 : Déploiement continu (backend custom)
+# Parcours 3 : Déploiement continu (backend custom)
 
 
 
