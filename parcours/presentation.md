@@ -7,6 +7,13 @@ Ce document a pour but de présenter l'ensemble des parcours utilisateurs envisa
 
 
 * **ETQ dev front je découvre ZP**
+
+
+
+
+![Parcours dev front découverte ZP](https://github.com/zetapush/zetapush-next-open-specification/raw/master/schemas/parcours-dev-front-decouverte-zp.png)
+
+
 * **ETQ dev front je créé ma première application pour tester**
 * **ETQ dev front je créé ma réelle première application**
 * **ETQ dev front habitué à ZP je créé une nouvelle application**
