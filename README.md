@@ -24,6 +24,28 @@ Cette section a pour but de présenter l'ensemble des parcours utilisateurs envi
 
 ## Developer experience
 
+### Parcours 1 : Je développe une application front avec ZetaPush sans service custom
+
+
+
+### Parcours 2 : Je développe une application avec ZetaPush et des services custom
+
+
+
+### Parcours 3 : Mon équipe développe une application front avec ZetaPush sans services custom
+
+
+### Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
+
+
+
+
+
+# Profils identifiés
+
+## Profils principaux
+
+
 ### Développeur Front-End
 
 
@@ -44,9 +66,8 @@ Cette section a pour but de présenter l'ensemble des parcours utilisateurs envi
 * **ETQ dev fullstack je veux reprendre un ancien application ZP**
 
 
-## Autres parcours identifiés
+## Autres profils identifiés
 
-Les parcours suivants seront traités plus tard.
 
 ### Développeur Back-End
 
