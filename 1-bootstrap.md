@@ -11,8 +11,7 @@ J'utilise mon éditeur de texte ou IDE préféré.
 Je créé une nouvelle application front avec mon framework préféré (Angular, React, Vue, ...).
 
 
-
-# Parcours 1 : Je développe une application front avec ZetaPush sans service custom
+# [Parcours 1 : Je développe une application front avec ZetaPush sans service custom](#parcours-1)
 
 
 ## User stories
