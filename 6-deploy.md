@@ -15,7 +15,71 @@ J'ai un compte sur ZetaPush :
 
 Mon application est prête à être déployée :
 - utilisation des outils standard pour builder mon front et générer un dossier www
-- utilisation des outils standard pour builder mon backend custom (contenant le métier dédié à mon/mes front(s))
+- utilisation des outils standard pour builder mes services custom (contenant le métier dédié à mon/mes front(s))
+
+
+# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
+
+## Vue d'ensemble
+
+
+## User stories
+
+### ETQ dev je déploie mon backend en production
+
+*GIVEN*
+  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - J'ai l'identifiant de mon application (my-first-app)
+  - J'ai un seul environnement fourni par ZetaPush
+  - Mon backend fourni un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - J'ai buildé mon backend via npm et le résultat est disponible dans le dossier dist/server
+  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
+
+*WHEN*
+  - J'exécute la commande : ```zeta push --server-only```
+
+*THEN*
+  - Le code présent dans dist/server est envoyé sur ZetaPush
+  - Je vois l'état d'avancement du déploiement global
+  - Je sais lorsque mon application est prête à être utilisée
+  - Je peux utiliser mon frontend pour interagir avec mon backend de production
+  - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
+    - ```player1 = {"name": "Georgesdelajungle"}```
+    - ```player2 = {"name": "Aladdin"}```
+  - ZetaPush gère le load-balancing entre les 3 noeuds
+  - Je peux visualiser les logs applicatifs de mon backend custom
+  - Je peux consulter la santé des noeuds déployés par ZetaPush
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -25,11 +89,12 @@ Mon application est prête à être déployée :
 
 J'ai développé sur ma machine avec mon propre NodeJS qui interagit avec ZetaPush.
 
-![Développement local](https://github.com/zetapush/zetapush-next-open-specification/raw/master/schemas/phase-developpement.png)
+![Développement local](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/dev-front-processus-developpement.html)
+
 
 Mon application est prête à partir en production. Je la déploie depuis mon poste.
 
-![Déploiement en production](https://github.com/zetapush/zetapush-next-open-specification/raw/master/schemas/deploiement-prod-simple.png)
+![Déploiement en production](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/dev-front-processus-developpement.html)
 
 
 ## User stories
