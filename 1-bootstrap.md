@@ -104,6 +104,7 @@ Je créé une nouvelle application front avec mon framework préféré (Angular,
 *GIVEN*
   - J'ai un gestionnaire de package installé (npm ou yarn par exemple)
   - J'ai installé la CLI ZetaPush (via npm ou yarn)
+
 *WHEN*
   - Lorsque que j'init un nouveau projet, exemple:
   ```$> zeta new --front --custom ```
