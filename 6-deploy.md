@@ -94,7 +94,7 @@ J'ai développé sur ma machine avec mon propre NodeJS qui interagit avec ZetaPu
 
 Mon application est prête à partir en production. Je la déploie depuis mon poste.
 
-![Déploiement en production](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/dev-front-processus-developpement.html)
+![Déploiement en production](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/dev-full-stack-deploiement-prod-server-only.html)
 
 
 ## User stories
