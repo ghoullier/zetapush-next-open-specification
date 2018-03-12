@@ -20,33 +20,20 @@ Je créé une nouvelle application front avec mon framework préféré (Angular,
 
 
 *GIVEN*
-  - J'ai un gestionnaire de package installé (npm ou yarn par exemple)
-  - J'ai un début d'application front (au moins le package.json)
+- J'ai un gestionnaire de package installé (npm ou yarn par exemple)
+- J'ai un début d'application front (au moins le package.json)
   
 *WHEN*
-  - Lorsque j'ajoute la dépdendance au SDK JavaScript ZetaPush, exemple:
+- Lorsque j'ajoute la dépdendance au SDK JavaScript ZetaPush, exemple:
   ```npm i --save zetapush-js```
 
 *THEN*
-  - Je peux dès à présent faire des appels sur ZetaPush
-  - Un compte a été automatiquement créé pour moi avec un espace pour mon application
-  - Je connais l'identifiant de mon application et les credentials ZetaPush
-  - Mon application est configurée avec cet identifiant
-  - Je suis alerté que l'application automatiquement créée sur ZetaPush est valable X jours
-  - Je peux me connecter avec les credentials auto-générés par ZetaPush pour transformer mon application temporaire en application permanente et choisir mes vrais identifiants
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Je peux dès à présent faire des appels sur ZetaPush
+- Un compte a été automatiquement créé pour moi avec un espace pour mon application
+- Je connais l'identifiant de mon application et les credentials ZetaPush
+- Mon application est configurée avec cet identifiant
+- Je suis alerté que l'application automatiquement créée sur ZetaPush est valable X jours
+- Je peux me connecter avec les credentials auto-générés par ZetaPush pour transformer mon application temporaire en application permanente et choisir mes vrais identifiants
 
 
 
