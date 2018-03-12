@@ -9,7 +9,8 @@
 # Pré-requis
 
 J'utilise mon éditeur de texte ou IDE préféré.
-J'ai une application front existante créée avec mon framework préféré et initialisé avec ZetaPush.
+J'ai une application front existante créée avec mon framework préféré et initialisé avec ZetaPush. J'ai potientiellement déjà écrit une partie ou l'intégralité de mon code serveur.
+
 
 # <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
 
