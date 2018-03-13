@@ -14,16 +14,18 @@ Pour suivre ce tutoriel, tu as simplement besoin d'un éditeur de texte de type 
 
 ## Tutoriel
 
+* REMARQUE MMM - L'installation de NodeJs est hors scope
+
 ### Installation de nodejs / npm
 
 Dans un premier temps, il est nécessaire d'avoir nodejs et npm d'installés sur sa machine. Voici la démarche que tu dois suivre suivant ton système d'exploitation :
 
 #### Linux
-
+```bash
     curl-sL https://deb.nodesource.com/setup_8.x |sudo-Ebash- 
     sudo apt install -y npm
     sudo apt install -y nodejs
-
+```
 #### Windows / Mac
 
 Pour Windows ou Mac, télécharge l'exécutable sur la [page d'accueil de nodejs](https://nodejs.org).
@@ -32,23 +34,23 @@ Pour Windows ou Mac, télécharge l'exécutable sur la [page d'accueil de nodejs
 ### Initialisation du projet
 
 Maintenant que tu as les outils nécessaires, créé ton application en suivant ces étapes :
-
+```bash
     $ mkdir tutorialV3
     $ cd tutorialV3
     $ npm init
-
+```
 Suite à ça tu auras un fichier `package.json` qui te facilitera la gestion des dépendances.
 
 Ensuite il te faut ajouter la dépendance à ZetaPush :
-
+```bash
     $ npm install --save zetapush
-
+```
 À présent créé les différentes fichiers pour avoir le front de ton application :
-
+```bash
     $ mkdir front
     $ cd front
     $ touch index.html style.css script.js
-
+```
 Voici l'arborescence que tu dois avoir suite à ces commandes :
 
 ![arborescence-init-app](./images/arborescence_init_app.png)
@@ -77,7 +79,7 @@ Voir fichier
 Une fois le design de notre application fait, nous allons utiliser les services ZetaPush pour créer le fonctionnel de notre application de chat. 
 
 Dans un premier temps nous devons faire en sorte d'appeler un service ZetaPush lorsqu'on envoi un message. Pour ceci saisi ce code dans `script.js` :
-
+```javascript
     import ZetaPushClient from 'zetapush@core';
 
     const zpClient = new ZetaPushClient();
@@ -92,9 +94,9 @@ Dans un premier temps nous devons faire en sorte d'appeler un service ZetaPush l
     btnAddMsg.addEventListener("click", () => {
         zpClient.callService.sendMessage(inputMsg.value);
     });
-
+```
 Ensuite il faut écouter les messages entrants pour les afficher à l'écran. Pour ceci saisi ce code dans `script.js` :
-
+```javascript
     // Some code
 
     const conversation = document.getElementById('conversationArea');
@@ -106,9 +108,9 @@ Ensuite il faut écouter les messages entrants pour les afficher à l'écran. Po
             conversation.value += `\n ${message.author} (${message.timestamp}) >>> ${message.value}`;
         });
     });
-
+```
 Faisons aussi en sorte d'afficher lorsqu'un correspondant est en train d'écrire :
-
+```javascript
     const displayUserTyping = document.getElementById('textUserTyping');
 
     let intervalTyping;
@@ -125,9 +127,9 @@ Faisons aussi en sorte d'afficher lorsqu'un correspondant est en train d'écrire
             }, 3000);
         });
     });
-
+```
 Voici le code complet pour le chat avec ZetaPush :
-
+```javascript
     import ZetaPushClient from 'zetapush@core';
 
     const zpClient = new ZetaPushClient();
@@ -159,7 +161,7 @@ Voici le code complet pour le chat avec ZetaPush :
     btnAddMsg.addEventListener("click", () => {
         zpClient.callService.sendMessage(inputMsg.value);
     });
-
+```
 
 L'application est maintenant prête, il ne te reste plus qu'à déployer !
 
@@ -193,12 +195,12 @@ Pour ceci voici les modifications front à apporter pour permettre à l'utilisat
 L'extension de fonctionnalités passe par la création d'un service custom. C'est exactement la même chose qu'un service ZetaPush à la différence que c'est toi qui l'a créé.
 
 Tu vas créer un nouveau fichier pour avoir une arborescence claire et différencier ton code front et ton code back.
-
+```bash
     $ cd tutorialV3
     $ mkdir server
     $ cd server
     $ touch set-username.ts
-
+```
 Voici à quoi doit ressembler l'arborescence de fichier :
 
 ![arborescence-service-custom](./images/arborescence-service-custom.png)
