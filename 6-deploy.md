@@ -12,10 +12,10 @@ Les profils utilisés sont définis dans [commun.md](./commun.md).
 J'ai un compte sur ZetaPush :
 - je fourni mon login/password ou API key/token dans un fichier d'environnement
 - j'indique l'identifiant de l'application que je vais déployer
+- l'identifiant de mon application est unique
 
 Mon application est prête à être déployée :
-- utilisation des outils standard pour builder mon front et générer un dossier www
-- utilisation des outils standard pour builder mes services custom (contenant le métier dédié à mon/mes front(s))
+- utilisation des outils standard pour builder mon front et générer un dossier wwww
 
 
 # <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
@@ -25,61 +25,22 @@ Mon application est prête à être déployée :
 
 ## User stories
 
-### ETQ dev je déploie mon backend en production
+### ETQ dev je déploie mon frontend en production
 
 *GIVEN*
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
   - J'ai l'identifiant de mon application (my-first-app)
   - J'ai un seul environnement fourni par ZetaPush
-  - Mon backend fourni un service custom avec les fonctions suivantes :
-    - ```createGame(player1, player2)```
-    - ```gameAction(player, name, args)```
-    - ```isFinished()```
-    - ```getWinner()```
-    - ```endGame()```
-  - J'ai buildé mon backend via npm et le résultat est disponible dans le dossier dist/server
-  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
+  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --server-only```
+  - J'exécute la commande : ```zeta push --front-only```
 
 *THEN*
-  - Le code présent dans dist/server est envoyé sur ZetaPush
+  - Le code présent dans dist/front est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
   - Je sais lorsque mon application est prête à être utilisée
-  - Je peux utiliser mon frontend pour interagir avec mon backend de production
-  - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
-    - ```player1 = {"name": "Georgesdelajungle"}```
-    - ```player2 = {"name": "Aladdin"}```
-  - ZetaPush gère le load-balancing entre les 3 noeuds
-  - Je peux visualiser les logs applicatifs de mon backend custom
-  - Je peux consulter la santé des noeuds déployés par ZetaPush
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  - Mon front est disponible sur le site my-first-app.zetapushapps.com
 
 
 
@@ -102,64 +63,115 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 ### ETQ dev je déploie mon backend en production
 
 *GIVEN*
-- J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
-- J'ai l'identifiant de mon application (my-first-app)
-- J'ai un seul environnement fourni par ZetaPush
-- Mon backend fourni un service custom avec les fonctions suivantes :
-  - ```createGame(player1, player2)```
-  - ```gameAction(player, name, args)```
-  - ```isFinished()```
-  - ```getWinner()```
-  - ```endGame()```
-- J'ai buildé mon backend via npm et le résultat est disponible dans le dossier dist/server
-- ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
+  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - J'ai l'identifiant de mon application (my-first-app)
+  - J'ai un seul environnement fourni par ZetaPush
+  - Mon backend fourni un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
 
 *WHEN*
 - J'exécute la commande : ```zeta push --server-only```
 
 *THEN*
-- Le code présent dans dist/server est envoyé sur ZetaPush
-- Je vois l'état d'avancement du déploiement global
-- Je sais lorsque mon application est prête à être utilisée
-- Je peux utiliser mon frontend pour interagir avec mon backend de production
-- Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
-  - ```player1 = {"name": "Georgesdelajungle"}```
-  - ```player2 = {"name": "Aladdin"}```
-- ZetaPush gère le load-balancing entre les 3 noeuds
-- Je peux visualiser les logs applicatifs de mon backend custom
-- Je peux consulter la santé des noeuds déployés par ZetaPush
+  - Mon code custom est envoyé sur ZetaPush
+  - Je vois l'état d'avancement du déploiement global
+  - Je sais lorsque mon application est prête à être utilisée
+  - Je peux utiliser mon frontend pour interagir avec mon backend de production
+  - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
+    - ```player1 = {"name": "Georgesdelajungle"}```
+    - ```player2 = {"name": "Aladdin"}```
+  - ZetaPush gère le load-balancing entre les 3 noeuds
+  - Je peux visualiser les logs applicatifs de mon backend custom
+  - Je peux consulter la santé des noeuds déployés par ZetaPush
+
+
+### ETQ dev je déploie mon application (front et backend) en production
+
+*GIVEN*
+  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - J'ai l'identifiant de mon application (my-first-app)
+  - J'ai un seul environnement fourni par ZetaPush
+  - Mon backend fourni un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
+  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+
+*WHEN*
+  - J'exécute la commande : ```zeta push```
+
+*THEN*
+  - Mon code custom est envoyé sur ZetaPush
+  - Je vois l'état d'avancement du déploiement global
+  - Je sais lorsque mon application est prête à être utilisée
+  - Mon fronend est envoyé sur ZetaPush
+  - Mon front est disponible sur le site my-first-app.zetapushapps.com
+  - Je peux utiliser mon frontend pour interagir avec mon backend de production
+  - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
+    - ```player1 = {"name": "Georgesdelajungle"}```
+    - ```player2 = {"name": "Aladdin"}```
+  - ZetaPush gère le load-balancing entre les 3 noeuds
+  - Je peux visualiser les logs applicatifs de mon backend custom
+  - Je peux consulter la santé des noeuds déployés par ZetaPush
 
 
 ### ETQ dev je déploie mon backend en production avec une configuration dédié à cet environnement avec les credentials externalisés
 
 
 *GIVEN*
-- J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
-- J'ai l'identifiant de mon application (my-first-app)
-- J'ai deux environnements fournis par ZetaPush : 
-  - `dev` pour le développement et les tests
-  - `prod` pour déployer mon application
-- J'ai les tokens pour chaque environnement (fournis par ZetaPush) :
-  - `dev` : 1234
-  - `prod` : 456789
-- Mon backend fourni un service custom avec les fonctions suivantes :
-  - ```createGame(player1, player2)```
-  - ```gameAction(player, name, args)```
-  - ```isFinished()```
-  - ```getWinner()```
-  - ```endGame()```
-- J'ai buildé mon backend via npm et le résultat est disponible dans le dossier dist/server
-- ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
-- J'ai plusieurs fichiers de configuration pour mes différents environnements :
-  - ```~/.zpcredentials/my-first-app/dev.yml``` :
-    ```yml
-      zp-token: '1234'
-    ```
-  - ```~/.zpcredentials/my-first-app/prod.yml``` :
-    ```yml
-      zp-token: '456789'
-    ```
-  - ```src/server/environment.yml``` (valeurs par défaut pour le développement) avec le contenu suivant :
+  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - J'ai l'identifiant de mon application (my-first-app)
+  - J'ai deux environnements fournis par ZetaPush : 
+    - `dev` pour le développement et les tests
+    - `prod` pour déployer mon application
+  - J'ai les tokens pour chaque environnement (fournis par ZetaPush) :
+    - `dev` : 1234
+    - `prod` : 456789
+  - Mon backend fourni un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
+  - J'ai plusieurs fichiers de configuration pour mes différents environnements :
+    - ```~/.zpcredentials/my-first-app/dev.yml``` :
+      ```yml
+        zp-token: '1234'
+      ```
+    - ```~/.zpcredentials/my-first-app/prod.yml``` :
+      ```yml
+        zp-token: '456789'
+      ```
+    - ```src/server/environment.yml``` (valeurs par défaut pour le développement) avec le contenu suivant :
+      ```yml
+      stripe:
+          url: 'https://api.stripe.com'
+          token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
+      ```
+    - ```src/server/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
+      ```yml
+      stripe:
+          token: 'sk_prod_dNuiVQyTlDMH5RdFYSD4nIV0'
+      ```
+  - Je ne précise aucun configuration concernant l'emplacement de mes fichiers (utilisation de la convention ZetaPush)
+
+*WHEN*
+  - J'exécute la commande : ```zeta push --server-only --prod```
+
+*THEN*
+  - Le code présent dans dist/server est envoyé sur ZetaPush en utilisant les credentials de production (`zp-token=456789`)
+  - Je vois l'état d'avancement du déploiement global
+  - Je sais lorsque mon application est prête à être utilisée
+  - Mon application est correctement configurée pour utiliser l'environnement de prod :
     ```yml
     stripe:
         url: 'https://api.stripe.com'
@@ -194,13 +206,81 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 - Je peux consulter la santé des noeuds déployés par ZetaPush mis en production
 
 
+### ETQ dev je supprime mon application (front et backend) en production
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identifiant de mon application 'my-first-apop'
 
-### ETQ dev je déploie mon front en production
+*WHEN*
+  - J'exécute la commande : ```zeta delete ```
+
+*THEN
+  - J'ai une demande de confirmation : ```Your application 'my-first-app' will be deleted. Are you sur Y/n ?```
+  - Si je répond oui alors l'application y compris le frontend est supprimée
 
 
-### ETQ dev je déploie mon application (front et backend) en production
+
+### ETQ dev je supprime mon front en production
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identifiant de mon application 'my-first-apop'
+
+*WHEN*
+  - J'exécute la commande : ```zeta delete --front-only```
+
+*THEN
+  - J'ai une demande de confirmation : ```Your frontend 'my-first-app' will be deleted. Are you sur Y/n ?```
+  - Si je répond oui alors le frontend est supprimé
 
 
+### ETQ dev je supprime mon backend en production
+
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identifiant de mon application 'my-first-apop'
+
+*WHEN*
+  - J'exécute la commande : ```zeta delete --server-only```
+
+*THEN
+  - J'ai une demande de confirmation : ```Your backend 'my-first-app' will be deleted. Are you sur Y/n ?```
+  - Si je répond oui alors le backend est supprimé
+
+### ETQ dev je test l'état des mon application en production
+
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identification de mon application 'my-first-app'
+
+*WHEN*
+  - J'exécute la commande : ```zeta status```
+
+*THEN*
+  - Je visualise le nombre de noeuds actifs de mon application
+  - Je visualise l'état de chaque noeud (Pending, Running, Succeeded, Failed, Unknown)
+
+| node1  | node2  | node3  | node4  | node5  |
+|---|---|---|---|---|
+| Running  | Running  | Pending  | Pending  | Pending |
+
+
+### ETQ dev je scale (up ou down) mon application en production
+
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identification de mon application 'my-first-app'
+
+*WHEN*
+  - J'exécute la commande : ```zeta scale 3```
+
+*THEN*
+  - Je modifie le nombre de noeud actifs de mon application
+
+### ETQ dev je spécifie un nom de domaine pour mon front
+
+### ETQ dev je spécie des clefs ssh à utiliser pour le front
+
+### ETQ dev 
 
 
 
