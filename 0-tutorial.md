@@ -16,81 +16,119 @@ Pour suivre ce tutoriel, tu as simplement besoin d'un éditeur de texte de type 
 
 ### Installation de nodejs / npm
 
-- Installation des outils
-- Lien pour chaque installation en fonction des plateformes (Linux / Windows / Mac)
+Dans un premier temps, il est nécessaire d'avoir nodejs et npm d'installés sur sa machine. Voici la démarche que tu dois suivre suivant ton système d'exploitation :
+
+#### Linux
+
+    curl-sL https://deb.nodesource.com/setup_8.x |sudo-Ebash- 
+    sudo apt install -y npm
+    sudo apt install -y nodejs
+
+#### Windows / Mac
+
+Pour Windows ou Mac, télécharge l'exécutable sur la [page d'accueil de nodejs](https://nodejs.org).
 
 
 ### Initialisation du projet
 
-- `npm init` pour créer l'architecture du projet
-- `npm install --save zetapush` pour ajouter la dépendence à ZetaPush
-- Création d'un dossier front (Ajouter une image de l'arborescence, même si elle est simple)
-- Création de `index.html` , `style.css` et de `script.js` (plus import de ce dernier dans la page HTLM)
-- Création et connexion d'un client ZetaPush :
+Maintenant que tu as les outils nécessaires, créé ton application en suivant ces étapes :
 
-    ```
-    import ZetaPushClient from 'zetapush';
+    $ mkdir tutorialV3
+    $ cd tutorialV3
+    $ npm init
 
-    const zpClient = new ZetaPushClient();
+Suite à ça tu auras un fichier `package.json` qui te facilitera la gestion des dépendances.
 
-    zpClient.connect().then(() => {
-        console.log('ZetaPush::ConnectionSuccessful');
-    });
-    ```
+Ensuite il te faut ajouter la dépendance à ZetaPush :
 
-### Développement du front
+    $ npm install --save zetapush
 
-- Création de la page HTML
-- Ajout de CSS si nécessaire
+À présent créé les différentes fichiers pour avoir le front de ton application :
+
+    $ mkdir front
+    $ cd front
+    $ touch index.html style.css script.js
+
+Voici l'arborescence que tu dois avoir suite à ces commandes :
+
+![arborescence-init-app](./images/arborescence_init_app.png)
+
+Et maintenant remplis les différents fichiers :
+
+#### index.html
+
+Voir fichier
+
+
+#### style.css
+
+Voir fichier
+
+
+#### script.js
+
+Dans le fichier de script tu as simplement besoin pour l'instant d'initialiser la communication avec ZetaPush :
+
+Voir fichier
+
 
 ### Utilisateur du service ZetaPush
 
-- Écoute du service ZetaPush pour afficher les messages reçus :
+Une fois le design de notre application fait, nous allons utiliser les services ZetaPush pour créer le fonctionnel de notre application de chat. 
 
-    ```
-    import ZetaPushClient from 'zetapush';
+Dans un premier temps nous devons faire en sorte d'appeler un service ZetaPush lorsqu'on envoi un message. Pour ceci saisi ce code dans `script.js` :
 
-    const zpClient = new ZetaPushClient();
-
-    const conversation = document.getElementById('conversationArea');
-
-    zpClient.connect().then(() => {
-        console.log('ZetaPush::ConnectionSuccessful');
-
-        zpClient.listenService('chat', 'onMessage', (message) => {
-            conversation.value += `\n (${message.author}) >>> ${message.value}`;
-        });
-    });
-    ```
-
-- Appel du service ZetaPush pour envoyer un message :
-
-    ```
-    import ZetaPushClient from 'zetapush';
+    import ZetaPushClient from 'zetapush@core';
 
     const zpClient = new ZetaPushClient();
 
-    const conversation = document.getElementById('conversationArea');
     const btnAddMsg = document.getElementById('btnAddMsg');
     const inputMsg = document.getElementById('inputMsg');
 
     zpClient.connect().then(() => {
         console.log('ZetaPush::ConnectionSuccessful');
-
-        zpClient.listenService('onMessage', (message) => {
-            conversation.value += `\n (${message.author}) >>> ${message.value}`;
-        });
     });
 
     btnAddMsg.addEventListener("click", () => {
         zpClient.callService.sendMessage(inputMsg.value);
     });
-    ```
 
-- Affichage d'un message lorsqu'un destinataire écrit
+Ensuite il faut écouter les messages entrants pour les afficher à l'écran. Pour ceci saisi ce code dans `script.js` :
 
-    ```
-    import ZetaPushClient from 'zetapush';
+    // Some code
+
+    const conversation = document.getElementById('conversationArea');
+
+    zpClient.connect().then(() => {
+        console.log('ZetaPush::ConnectionSuccessful');
+
+        zpClient.listenService('onMessage', (message) => {
+            conversation.value += `\n ${message.author} (${message.timestamp}) >>> ${message.value}`;
+        });
+    });
+
+Faisons aussi en sorte d'afficher lorsqu'un correspondant est en train d'écrire :
+
+    const displayUserTyping = document.getElementById('textUserTyping');
+
+    let intervalTyping;
+
+    zpClient.connect().then(() => {
+        console.log('ZetaPush::ConnectionSuccessful');
+
+        zpClient.listenService('onUserTyping', (author) => {
+            clearInterval(intervalTyping);
+            displayUserTyping.value = `${author} is typing...`;
+
+            intervalTyping = setTimeout(() => {
+                displayUserTyping.value = '';
+            }, 3000);
+        });
+    });
+
+Voici le code complet pour le chat avec ZetaPush :
+
+    import ZetaPushClient from 'zetapush@core';
 
     const zpClient = new ZetaPushClient();
 
@@ -105,7 +143,7 @@ Pour suivre ce tutoriel, tu as simplement besoin d'un éditeur de texte de type 
         console.log('ZetaPush::ConnectionSuccessful');
 
         zpClient.listenService('onMessage', (message) => {
-            conversation.value += `\n (${message.author}) >>> ${message.value}`;
+            conversation.value += `\n ${message.author} (${message.timestamp}) >>> ${message.value}`;
         });
 
         zpClient.listenService('onUserTyping', (author) => {
@@ -121,81 +159,84 @@ Pour suivre ce tutoriel, tu as simplement besoin d'un éditeur de texte de type 
     btnAddMsg.addEventListener("click", () => {
         zpClient.callService.sendMessage(inputMsg.value);
     });
-    ```
+
+
+L'application est maintenant prête, il ne te reste plus qu'à déployer !
 
 ### Déploiement du code sur ZetaPush
 
-- Utilisation de `zeta push` pour déployer sur ZetaPush
-- Une barre de progression est affichée
-- Un lien avec une URL pour le front est renvoyée.
+Pour déployer il suffit de se placer à la racine de notre application et d'exécuter :
 
-### Personnalisation des participants (front)
+    $ zeta push
 
-- Modification de la partie front pour pouvoir saisir un nom dans le chat
+Suite à ça tu peux suivre la progression du déploiement et une fois fini une URL t'es renvoyée et te donne accès à ton application déployée et fonctionnelle.
+
+## Ajout de fonctionnalités
+
+En dehors des services existants sur ZetaPush (voir la catégorie `Services existantes`), tu as aussi la possibilité d'étendre ton application avec tes propres fonctionnalités. Pour illustrer ceci, nous allons donner la possibilité aux utilisateurs de notre application de se nommer au sein du chat.
+
+Pour ceci voici les modifications front à apporter pour permettre à l'utilisateur de saisir un nom :
+
+### Partie front
+
+#### index.html
+
+// TODO
+
+#### style.css
+
+// TODO
+
 
 ### Création d'un service custom
 
-- Création d'un fichier pour saisir son service custom
-- Écriture du service custom :
+L'extension de fonctionnalités passe par la création d'un service custom. C'est exactement la même chose qu'un service ZetaPush à la différence que c'est toi qui l'a créé.
 
-    ```
-    function renameUser(name: string) {
-        ...
-        ...
+Tu vas créer un nouveau fichier pour avoir une arborescence claire et différencier ton code front et ton code back.
+
+    $ cd tutorialV3
+    $ mkdir server
+    $ cd server
+    $ touch set-username.ts
+
+Voici à quoi doit ressembler l'arborescence de fichier :
+
+![arborescence-service-custom](./images/arborescence-service-custom.png)
+
+
+Maintenant créons notre service. Pour ceci saisi dans `set-username.ts` :
+
+#### set-username.ts
+
+    import ChatService from 'zetapush@server';
+
+    function setUsername(name: string) extends ChatService {
+        ChatService.displayedName = name;
     }
-    ```
 
 
-- Appel du service custom pour personnaliser son nom
+### Appel de notre service custom
 
-    ```
-    import ZetaPushClient from 'zetapush';
+À présent voici le code complet avec l'appel à notre service précédement créé pour se nommer sur le chat :
 
-    const zpClient = new ZetaPushClient();
+    // TODO
 
-    const conversation = document.getElementById('conversationArea');
-    const btnAddMsg = document.getElementById('btnAddMsg');
-    const inputMsg = document.getElementById('inputMsg');
-    const displayUserTyping = document.getElementById('textUserTyping');
-    const inputName = document.getElementById('inputName');
-    const btnValidName = document.getElementById('btnValidName');
-
-    let intervalTyping;
-
-    zpClient.connect().then(() => {
-        console.log('ZetaPush::ConnectionSuccessful');
-
-        zpClient.listenService('onMessage', (message) => {
-            conversation.value += `\n (${message.author}) >>> ${message.value}`;
-        });
-
-        zpClient.listenService('onUserTyping', (author) => {
-            clearInterval(intervalTyping);
-            displayUserTyping.value = `${author} is typing...`;
-
-            intervalTyping = setTimeout(() => {
-                displayUserTyping.value = '';
-            }, 3000);
-        });
-    });
-
-    btnAddMsg.addEventListener("click", () => {
-        zpClient.callService.sendMessage(inputMsg.value);
-    });
-    
-    btnValidName.addEventListener("click", () => {
-        zpClient.callService.renameUser(inputName.value);
-    });
-    ```
 
 ### Déploiement du code sur ZetaPush
 
-- Utilisation de `zeta push` pour déployer sur ZetaPush
-- Une barre de progression est affichée
-- Un lien avec une URL pour le front est renvoyée.
+Pour rendre ce rajout de fonctionnalités opérationel, nous devons à nouveau déployer notre code. Pour ceci nous refaisons : 
+
+    $ zeta push
+
+Cette commande déploie à la fois le code front et back.
+Suite à ça, tu auras de nouveau une barre de progression pour suivre l'avancement du déploiement et une URL en retour pour accèder à ton application déployée.
 
 
-# Aller plus loin
+# Conclusion
 
-- Présentation des services existantes (lien)
-- Présentation de comment étendre un service existant (lien)
+TODO : Conclusion tuto
+
+TODO : Lien vers les services existants
+
+TODO : Explication création service from scratch
+
