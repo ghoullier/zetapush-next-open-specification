@@ -7,6 +7,7 @@
 - [ ] Pouvoir avoir toutes les dépendances nécessaires pour Angular avec @zetapush/core et @zetapush/angular 
 - [ ] Appel service en mode `client.service.test()` avec une promesse en retour qui peut retourner `NOT_FOUND` si la macro n'existe pas
 - [ ] Permettre de l'auto complete sur les noms de service, et mis à jours avec les services custom que le développeur déploie
+- [ ] Ne pas parler d'userKey mais d'ID !!
 
 ## Côté back
 

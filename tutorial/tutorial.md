@@ -159,12 +159,24 @@ Remplissons à présent notre fichier pour étendre notre service de chat :
 ##### chatExtension.ts
 
 ```javascript
-    import { ZetaPushService } from '@zetapush/core';
+    import { ZetaPushService, ZetaPushClient } from '@zetapush/core';
 
     class ChatServiceExtended extends ZetaPushService.ChatService {
 
-        function setUsername({username: string}): void {
-            ZetaPushService.ChatService.username = username;
+        function sendMessageWithUsername({value: string, author: string}): void {
+            // First we get the username of the user
+            this.zpService.getKeyValue({key: this.zpClient.getId()}).then((name) => {
+                this.zpService.sendMessage({value, author: name });
+            }).catch((err) => {
+                console.error("Failed to get username, maybe doesn't exists");
+                this.zpService.sendMessage({value, author});
+            })
+
+        }
+
+        function setUsername({ username: string }): void {
+            const idUser = this.zpClient.getId();
+            this.zpService.storeKeyValue({key: idUser, value: username});
         }
     } 
 ```
