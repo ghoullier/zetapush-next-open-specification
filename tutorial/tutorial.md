@@ -192,11 +192,7 @@ Maintenant nous pouvons appeler notre service custom au même titre qu'un servic
 
 ##### app.component.ts
 
-```javascript
-    function setName(username: string): void {
-        this.zpService.setUsername({ username });
-    }
-```
+TODO : Remplacer le code actuel par le nouveau avec service custom
 
 Nous pouvons à nouveau redéployer notre code avec :
 
