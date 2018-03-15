@@ -28,12 +28,12 @@ Je créé une nouvelle application front avec mon framework préféré (Angular,
   ```npm i --save zetapush-js```
 
 *THEN*
-  - Je peux dès à présent faire des appels sur ZetaPush
+  - Je peux dès à présent (en ajoutant le code associé à mon application) faire des appels sur ZetaPush
   - Un compte a été automatiquement créé pour moi avec un espace pour mon application
   - Je connais l'identifiant de mon application et les credentials ZetaPush
   - Mon application est configurée avec cet identifiant
   - Je suis alerté que l'application automatiquement créée sur ZetaPush est valable X jours
-  - Je peux me connecter avec les credentials auto-générés par ZetaPush pour transformer mon application temporaire en application permanente et choisir mes vrais identifiants
+  - Je peux me connecter sur la console ZetaPush avec les credentials auto-générés par ZetaPush pour transformer mon application temporaire en application permanente et choisir mes vrais identifiants
 
 ### ETQ dev front je créé ma première application via la CLI
 
