@@ -58,7 +58,7 @@ Je ne souhaite pas m'occuper de la gestion de mon application en production. Une
 
 ### Parcours 3 : Mon équipe développe une application front avec ZetaPush sans services custom
 
-Je travaille dans un entreprise et nous devons développer une application.
+Je travaille dans une entreprise et nous devons développer une application.
 L'application peut être développée from scratch mais le coût serait trop élevé.
 Nous souhaitons développer rapidement et nous concentrer sur l'IHM et ne pas perdre de temps sur la partie backend.
 Les services proposés par ZetaPush correspondent parfaitement aux besoins de cette application (ex: gestion des utilisateurs, stockage de données, chat, ...).
@@ -85,7 +85,7 @@ Pour déterminer l'origine de certains bugs, cette nouvelle équipe a besoin d'a
 
 ### Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
 
-Je travaille dans un entreprise et nous devons développer une application.
+Je travaille dans une entreprise et nous devons développer une application.
 L'application peut être développée from scratch mais le coût serait trop élevé.
 Nous souhaitons développer rapidement et nous concentrer sur l'IHM et ne pas perdre de temps sur la partie backend. Certains services proposés par ZetaPush correspondent parfaitement aux besoins de notre applications (ex: gestion des utilisateurs, stockage de données, chat, ...).
 Cependant, notre application nécessite une certaine logique métier. Nous souhaitons donc pouvoir développer rapidement notre code métier. Ce code métier ne peut pas être codé directement dans l'IHM carnous souhaitons réaliser une application Web, iOS et Android. Il faut donc que ce code métier soit mutualisé. Nous souhaitons que notre code métier soit simple à réaliser et puisse s'appuyer sur les services proposés par ZetaPush (stockage par exemple).
