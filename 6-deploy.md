@@ -25,26 +25,41 @@ Mon application est prête à être déployée :
 
 ## User stories
 
-### ETQ dev je déploie mon frontend en production
+### ETQ dev je déploie mon application en production
 
 *GIVEN*
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
   - J'ai l'identifiant de mon application (my-first-app)
-  - J'ai un seul environnement fourni par ZetaPush
+  - J'ai un seul environnement fourni par ZetaPush (production)
   - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --front-only```
+  - J'exécute la commande : ```zeta push```
 
 *THEN*
   - Le code présent dans dist/front est envoyé sur ZetaPush
-  - Je vois l'état d'avancement du déploiement global
-  - Je sais lorsque mon application est prête à être utilisée
-  - Mon front est disponible sur le site my-first-app.zetapushapps.com
+  - Je vois l'état d'avancement du déploiement global :
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      | Publishing web application            ██████░░░░░░
+    ```
+  - Je sais lorsque mon application est prête à être utilisée :
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      ✓ Web application published
+    Your web application is ready and available at https://my-first-app.jeni.zetapushapps.com
+    ```
+  - Mon front est disponible sur le site my-first-app.jeni.zetapushapps.com
 
 
+TODO: le namespace est basé sur quoi ? Le login, une info saisie lors de l'inscription ?
 
-# Parcours 1 : développement rapide (backend custom)
+
+# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des services custom
 
 ## Vue d'ensemble
 
@@ -80,15 +95,35 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 *THEN*
   - Mon code custom est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      | Publishing custom services on node 1   ██████░░░░░░
+      - Publishing custom services on node 2   ████████░░░░
+      / Publishing custom services on node 3   ██░░░░░░░░░░
+    ```
   - Je sais lorsque mon application est prête à être utilisée
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      ✓ Custom services published on node 1
+      ✓ Custom services published on node 2
+      ✓ Custom services published on node 3
+    Your custom services are ready and accessible through ZetaPush
+    ```
   - Je peux utiliser mon frontend pour interagir avec mon backend de production
   - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
     - ```player1 = {"name": "Georgesdelajungle"}```
     - ```player2 = {"name": "Aladdin"}```
-  - ZetaPush gère le load-balancing entre les 3 noeuds
-  - Je peux visualiser les logs applicatifs de mon backend custom
-  - Je peux consulter la santé des noeuds déployés par ZetaPush
+  - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon backend custom (voir autres US)
+  - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
 
+
+TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
+TODO: Numéroter et référencer les autes US
 
 ### ETQ dev je déploie mon application (front et backend) en production
 
@@ -111,19 +146,64 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 *THEN*
   - Mon code custom est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      | Publishing web application             ██████░░░░░░
+      / Publishing custom services on node 1   ██████░░░░░░
+      - Publishing custom services on node 2   ████████░░░░
+      \ Publishing custom services on node 3   ██░░░░░░░░░░
+    ```
   - Je sais lorsque mon application est prête à être utilisée
-  - Mon fronend est envoyé sur ZetaPush
-  - Mon front est disponible sur le site my-first-app.zetapushapps.com
-  - Je peux utiliser mon frontend pour interagir avec mon backend de production
-  - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
-    - ```player1 = {"name": "Georgesdelajungle"}```
-    - ```player2 = {"name": "Aladdin"}```
-  - ZetaPush gère le load-balancing entre les 3 noeuds
-  - Je peux visualiser les logs applicatifs de mon backend custom
-  - Je peux consulter la santé des noeuds déployés par ZetaPush
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      ✓ Web application published
+      ✓ Custom services published on node 1
+      ✓ Custom services published on node 2
+      ✓ Custom services published on node 3
+    Your application is ready:
+    - The web application is available at https://my-first-app.jeni.zetapushapps.com
+    - Your custom services are ready and accessible through ZetaPush
+    ```
+  - Mon frontend est envoyé sur ZetaPush
+  - Mon front est disponible sur le site my-first-app.jeni.zetapushapps.com
+  - Mon frontend de production déployé utilise les services custom déployés
+  - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon backend custom (voir autres US)
+  - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
 
 
-### ETQ dev je déploie mon backend en production avec une configuration dédié à cet environnement avec les credentials externalisés
+TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      
+                          ┌──────────────┐
+                          │ Upload code  │
+               ┌──────────│              │─────────┐
+               │          │ ✓ Done in 2s │         │
+               │          └──────────────┘         │
+               │                                   │
+      ┌────────────────┐                 ┌───────────────────┐
+      │ Publishing web │                 │ Publishing custom │
+      │  application   │                 │      services     │
+      │                │                 └───────────────────┘
+      │ 3s             │                  /        │        \
+      │ ██████░░░░░░   │           ┌────────┐ ┌────────┐ ┌────────┐
+      └────────────────┘           │ node 1 │ │ node 2 │ │ node 3 │
+                                   │        │ │        │ │        │
+                                   │ 5s     │ │ 20s    │ │ 10s    │
+                                   │████░░░░│ │██████░░│ │██░░░░░░│
+                                   └────────┘ └────────┘ └────────┘
+    ```
+
+
+TODO: US pour une erreur sur une/plusieurs step
+
+### ETQ dev je déploie mon backend en production avec une configuration dédiée à cet environnement avec les credentials externalisés
 
 
 *GIVEN*
@@ -186,6 +266,60 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - Je peux consulter la santé des noeuds déployés par ZetaPush mis en production
 
 
+### ETQ dev je vérifie l'état des mon application en production
+
+TODO: ne pas se calquer sur une implémentation particulière !
+TODO: donner un état global de la santé plutôt (il n'y a pas que les nodeJS, il faudrait peut-être afficher des statistiques/analytics, afficher les logs ou autre information utile)
+
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identification de mon application 'my-first-app'
+
+*WHEN*
+  - J'exécute la commande : ```zeta status```
+
+*THEN*
+  - Je visualise le nombre de noeuds actifs de mon application
+  - Je visualise l'état de chaque noeud
+
+| node1  | node2  | node3  | node4  | node5  |
+|---|---|---|---|---|
+| Running  | Running  | Pending  | Pending  | Pending |
+
+### ETQ dev je mets à jour mon application en production
+
+TODO: snapshot automatique faite par ZP avant l'upgrade pour backup des données en cas de code foireux ?
+TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
+
+### ETQ dev je spécifie un nom de domaine pour mon front
+
+TODO: je spécifie un domaine existant ou je choisi un nom de domaine ?
+
+### ETQ dev je spécie des clefs ssh à utiliser pour le front
+
+/!\ CE N'EST PAS UN BESOIN ! C'est un moyen technique pour faire quelque chose, mais QUOI ???
+
+
+
+
+
+# <a name="parcours-3"></a> Parcours 3 : Mon équipe développe une application front avec ZetaPush sans services custom
+
+
+
+
+# <a name="parcours-4"></a> Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
+
+
+
+
+
+
+
+TODO: plus tard la suppression + pas assez précis
+
+
+
 ### ETQ dev je supprime mon application (front et backend) en production
 *GIVEN*
   - J'ai une application en production
@@ -226,25 +360,13 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - J'ai une demande de confirmation : ```Your backend 'my-first-app' will be deleted. Are you sur Y/n ?```
   - Si je répond oui alors le backend est supprimé
 
-### ETQ dev je test l'état des mon application en production
-
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identification de mon application 'my-first-app'
-
-*WHEN*
-  - J'exécute la commande : ```zeta status```
-
-*THEN*
-  - Je visualise le nombre de noeuds actifs de mon application
-  - Je visualise l'état de chaque noeud (Pending, Running, Succeeded, Failed, Unknown)
-
-| node1  | node2  | node3  | node4  | node5  |
-|---|---|---|---|---|
-| Running  | Running  | Pending  | Pending  | Pending |
 
 
 ### ETQ dev je scale (up ou down) mon application en production
+
+/!\ Il faut vérifier si c'est vraiment un besoin ! Le besoin n'est-il pas que ça scale tout seul si besoin (jusqu'aux limites liées à l'abonnement) ? N'est-il pas préférable de prévenir que la charge est trop élevée et qu'il faudrait passer par la partie abonnement pour pouvoir monter la limite de noeuds ?
+/!\ Le développeur NE DOIT PAS pouvoir lui-même gérer la scalabilité. Quel intérêt à part faire des erreurs ???
+
 
 *GIVEN*
   - J'ai une application en production
@@ -256,25 +378,8 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 *THEN*
   - Je modifie le nombre de noeud actifs de mon application
 
-### ETQ dev je spécifie un nom de domaine pour mon front
-
-### ETQ dev je spécie des clefs ssh à utiliser pour le front
-
-### ETQ dev 
-
-
-
-# Parcours 2 : Intégration continue (backend custom)
-
-
-
-
-# Parcours 3 : Déploiement continu (backend custom)
-
-
-
 
 
 --
-getsion des versions
-mise à jour
+TODO: gestion des versions
+TODO: mise à jour
