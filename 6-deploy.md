@@ -7,14 +7,11 @@
 
 # Pré-requis
 
-
-
-
 # <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
 
 ## Vue d'ensemble
 
-TODO: schéma de principe
+![Déploiement en production front seulement](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/dev-front-deploiement-prod-front-only.html)
 
 ## User stories
 
