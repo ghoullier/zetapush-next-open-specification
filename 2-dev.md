@@ -22,11 +22,12 @@ Les profils utilisés sont définis dans [commun.md](./commun.md).
 
 
 *GIVEN*
-  - 
+  - J'ai un compte ZetaPush
+  - J'ai une application connectée à un SDK ZetaPush
   
 *WHEN*
   - J'ajoute un service à mon App via la console zetapush
-  - Je récupére le SDK géneré et l'ajoute en dépendance de mon application front
+  - Je récupére le code d'API du service géneré et l'ajoute en dépendance de mon application front
 
 *THEN*
   - Je peux appeller les verbes d'API du service que je vient de déclarer
@@ -39,15 +40,6 @@ Les profils utilisés sont définis dans [commun.md](./commun.md).
 ## ETQ dev front je souhaite utiliser les services custom ZetaPush
   
 
-*GIVEN*
-  - 
-  
-*WHEN*
-  - J'ajoute un service à mon App via la console zetapush
-  - Je récupére le SDK géneré et l'ajoute en dépendance de mon application front
-
-*THEN*
-  - Je peux appeller les verbes d'API du service que je vient de déclarer
 
 
 ***
