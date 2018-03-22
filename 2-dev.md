@@ -267,19 +267,28 @@ Les profils utilisés sont définis dans [commun.md](./commun.md).
 
 # <a name="parcours-3"></a> Parcours 3 : Mon équipe développe une application front avec ZetaPush sans services custom
 
+## Schéma
+
+TODO
+
 ## User Stories
 
+TODO
+
 ### ETQ équipe de dev front, nous souhaitons utiliser les services ZetaPush
-
-
-  
 
 
 ***
 
 # <a name="parcours-4"></a> Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
 
+## Schéma
+
+TODO
+
 ## User Stories
+
+TODO
 
 ### ETQ équipe de dev front, nous souhaitons utiliser les services custom ZetaPush
 
