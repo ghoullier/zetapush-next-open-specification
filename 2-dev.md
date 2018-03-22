@@ -31,6 +31,10 @@ Les profils utilisés sont définis dans [commun.md](./commun.md).
 
 # <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
 
+## Schéma
+
+![Développement avec seulement les services ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/archi-dev-front-zp-service-only.html)
+
 ## User Stories
 
 ***
@@ -119,6 +123,11 @@ Les profils utilisés sont définis dans [commun.md](./commun.md).
 ***
 
 # <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des services custom
+
+## Schéma
+
+![Développement avec seulement les services ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/archi-dev-front-with-custom-service.html)
+
 
 ## User Stories
 
