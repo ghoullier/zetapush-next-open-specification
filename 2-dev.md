@@ -17,6 +17,16 @@ Les profils utilisés sont définis dans [commun.md](./commun.md).
 - J'ai un compte sur ZetaPush
 - J'ai une application front qui est configurée pour utiliser ZetaPush
 
+
+## Schéma
+
+![Développement](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/dev-front-interaction-services-zetapush.html)
+
+### Explications
+  
+  - Depuis son environnement local, le développeur modifie son application en agissant sur la partie front et les appels aux services (ZetaPush ou custom)
+  - Le développeur peut créer son code métier, soit à travers `console.zetapush.com`, soit par du développement local. Il le déploie ensuite au sein de son application
+
 ***
 
 # <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
