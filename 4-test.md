@@ -1,9 +1,15 @@
 # Objectifs
 
-- Un développeur front doit pouvoir mocker entièrement les appels serveurs lors de ses tests.
+- Un développeur front doit pouvoir mocker les appels serveurs lors de ses tests.
 - Un développeur full-stack doit pouvoir tester unitairement son code serveur.
-- Un développeur full-stack doit pouvoir tester fonctionnellement son code serveur en mode stateful ou stateless.
-- Un développeur doit pouvoir spécifier dans son test, l'état dans lequel se trouve son application.
+- Un développeur front doit pouvoir tester (test d'intégration ou test fonctionnel) son code avec un contexte d'exécution propre entre chaque test.
+- Un développeur full-stack doit pouvoir tester (test d'intégration ou test fonctionnel) son code serveur avec un contexte d'exécution propre entre chaque test.
+- Un développeur doit pouvoir spécifier dans son test, l'état dans lequel se trouve son application avant l'exécution du test.
+
+# Objectifs à plus long terme
+
+- Un développeur front doit pouvoir exécuter ses tests en parallèle
+- Un développeur full-stack doit pouvoir exécuter ses tests en parallèle
 
 # Pré-requis
 
@@ -91,3 +97,7 @@ J'ai une application front existante créée avec mon framework préféré et in
 - L'état de mon application de fin de test est le même qu'en début de test
 
 
+TODO:
+@From(sratch=true)
+@From(snapshotFile=path/to/local/snap)
+@From(snapshotName=name-of-remote-snapshot)
