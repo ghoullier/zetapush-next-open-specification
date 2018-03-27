@@ -2,10 +2,9 @@
 
 ## Objectif
 
-L'objectif principal de ce tutoriel est de te montrer la rapidité et la simplicité de développement avec ZetaPush. En quelques lignes de code, tu auras créé un chat temps réel qui sera déployé et utilisable immédiatement !
+L'objectif de ce tutoriel est de construire une application de chat en utilisant ZetaPush depuis le démarrage du projet jusqu'à son déploiement. 
 
-Pour ceci tu vas découvrir les services de ZetaPush qui te permettent de rapidement créer la partie back de ton application. Ensuite, tu vas voir comment étendre toi même ces services pour développer les fonctionnalités précises que tu souhaites.
-
+Pour ceci tu vas découvrir comment utuliser les services ZetaPush existants (chat, gestion des utilisateurs). Ensuite, tu vas voir comment étendre toi même ces services pour développer les fonctionnalités précises que tu souhaites.
 
 
 ## Pré-requis
@@ -18,31 +17,19 @@ Pour suivre ce tutoriel, tu as simplement besoin d'un éditeur de texte de type 
 
 ### Installation de nodejs / npm
 
-Dans un premier temps, il est nécessaire d'avoir nodejs et npm d'installés sur sa machine. Voici la démarche que tu dois suivre suivant ton système d'exploitation :
-
-#### Linux
-```bash
-    curl-sL https://deb.nodesource.com/setup_8.x |sudo-Ebash- 
-    sudo apt install -y npm
-    sudo apt install -y nodejs
-```
-#### Windows / Mac
-
-Pour Windows ou Mac, télécharge l'exécutable sur la [page d'accueil de nodejs](https://nodejs.org).
+Dans un premier temps, il est nécessaire d'avoir nodejs et npm d'installés sur sa machine. Suis ce lien pour procéder à l'installation : https://nodejs.org
 
 
 ### Initialisation du projet
 
 Maintenant que tu as les outils nécessaires, créé ton application en suivant ces étapes :
 ```bash
-    $ mkdir tutorialV3
-    $ cd tutorialV3
-    $ npm init
+    $ zeta new avengers-chat
 ```
-Suite à ça tu auras un fichier `package.json` qui te facilitera la gestion des dépendances.
 
 Ensuite il te faut ajouter la dépendance à ZetaPush :
 ```bash
+    $ cd avengers-chat
     $ npm install --save zetapush
 ```
 À présent créé les différentes fichiers pour avoir le front de ton application :
@@ -59,19 +46,19 @@ Et maintenant remplis les différents fichiers :
 
 #### index.html
 
-Voir fichier
+TODO
 
 
 #### style.css
 
-Voir fichier
+TODO
 
 
 #### script.js
 
 Dans le fichier de script tu as simplement besoin pour l'instant d'initialiser la communication avec ZetaPush :
 
-Voir fichier
+TODO    
 
 
 ### Utilisateur du service ZetaPush
@@ -163,7 +150,7 @@ Voici le code complet pour le chat avec ZetaPush :
     });
 ```
 
-L'application est maintenant prête, il ne te reste plus qu'à déployer !
+Il ne te reste plus qu'à déployer pour discuter avec les Avengers !
 
 ### Déploiement du code sur ZetaPush
 
@@ -175,7 +162,7 @@ Suite à ça tu peux suivre la progression du déploiement et une fois fini une 
 
 ## Ajout de fonctionnalités
 
-En dehors des services existants sur ZetaPush (voir la catégorie `Services existantes`), tu as aussi la possibilité d'étendre ton application avec tes propres fonctionnalités. Pour illustrer ceci, nous allons donner la possibilité aux utilisateurs de notre application de se nommer au sein du chat.
+En dehors des services existants sur ZetaPush (voir la catégorie `Services existantes`), tu as aussi la possibilité d'étendre ton application avec tes propres fonctionnalités. Pour illustrer ceci, nous allons donner la possibilité aux utilisateurs de notre application de choisir son pseudo au sein du chat Avengers.
 
 Pour ceci voici les modifications front à apporter pour permettre à l'utilisateur de saisir un nom :
 
