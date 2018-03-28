@@ -15,19 +15,21 @@
 
 ## User stories
 
-### ETQ dev je déploie mon application en production
+### ETQ dev front je déploie mon application en production
 
 *GIVEN*
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - Je n'appartient pas à une organisation (je développe seul)
   - J'ai l'identifiant de mon application (my-first-app)
   - J'ai un seul environnement fourni par ZetaPush (production)
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire `dist`
+  - Mon front s'appelle `avengers-chat-web`
 
 *WHEN*
   - J'exécute la commande : ```zeta push```
 
 *THEN*
-  - Le code présent dans dist/front est envoyé sur ZetaPush
+  - Le code présent dans `dist` est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global :
     ```
     $ zeta push
@@ -41,27 +43,28 @@
     Deploying your application on production environment:
       ✓ Code uploaded
       ✓ Web application published
-    Your web application is ready and available at https://my-first-app.jeni.zetapushapps.com
+
+    Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
     ```
-  - Mon front est disponible sur le site my-first-app.jeni.zetapushapps.com
+  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
 
 
-TODO: le namespace est basé sur quoi ? Le login, une info saisie lors de l'inscription ?
 
 
-### ETQ dev je déploie mon application sans identifiants de connexion
+### ETQ dev front je déploie mon application sans identifiants de connexion
 
 *GIVEN*
-  - Je n'ai pas de compte chez ZetaPush
-  - Je n'ai pas d'identifiant d'application
+  - Je n'ai pas explicitement créé de compte chez ZetaPush
+  - Je n'ai pas explicitement choisi l'identifiant de mon application
   - Je n'ai pas connaissance d'un éventuel environnement de développement
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire `dist`
+  - Mon front s'appelle `avengers-chat-web`
 
 *WHEN*
   - J'éxécute la commande : ```zeta push```
 
 *THEN*
-  - Le code présent dans dist/front est envoyé sur ZetaPush
+  - Le code présent dans `dist` est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global :
     ```
     $ zeta push
@@ -75,13 +78,18 @@ TODO: le namespace est basé sur quoi ? Le login, une info saisie lors de l'insc
     Deploying your application on production environment:
       ✓ Code uploaded
       ✓ Web application published
-    Your web application is ready and available at https://my-first-app.jeni.zetapushapps.com
-    You can manage your application using login : "753159" and password "zp-password" on "http://console.zetapush.com". This application will expired in X days.
+
+    Your web application is ready and available at https://avangers-chat.prod.my-first-app.fgfhjoh48971zfgq.zetapush-apps.com
+    You can manage your application on "http://console.zetapush.com" using the following account:
+      - login : "fgfhjoh48971zfgq" 
+      - password "fzoqfhue9454nhd"
     The ID of your application is : "my-first-app"
+    This application will expired in X days.
     ```
-  - Mon front est disponible sur le site my-first-app.jeni.zetapushapps.com
+  - Mon front est disponible sur le site `avangers-chat.prod.my-first-app.fgfhjoh48971zfgq.zetapush-apps.com`
   - Un compte temporaire m'a été créé chez ZetaPush
   - Je sais comment gérer mon application, sachant qu'elle va expirer dans X jours
+
 
 # <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des services custom
 
@@ -99,10 +107,11 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ## User stories
 
-### ETQ dev je déploie mes services custom en production
+### ETQ dev full-stack je déploie mes services custom en production
 
 *GIVEN*
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - Je n'appartient pas à une organisation (je développe seul)
   - J'ai l'identifiant de mon application (my-first-app)
   - J'ai un seul environnement fourni par ZetaPush
   - J'ai développé un service custom avec les fonctions suivantes :
@@ -135,26 +144,26 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
       ✓ Custom services published on node 1
       ✓ Custom services published on node 2
       ✓ Custom services published on node 3
+
     Your custom services are ready and accessible through ZetaPush
     ```
-  - Je peux utiliser mon frontend pour interagir avec mon backend de production
+  - Je peux utiliser mon frontend pour interagir avec mon service custom déployé en production
   - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
     - ```player1 = {"name": "Georgesdelajungle"}```
     - ```player2 = {"name": "Aladdin"}```
   - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
-  - Je peux visualiser les logs applicatifs de mon backend custom (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
   - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
 
 
 TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
-TODO: Numéroter et référencer les autres US
 
-### ETQ dev je déploie mes services custom sans identifiants de connexion
+### ETQ dev full-stack je déploie mes services custom sans identifiants de connexion
 
 *GIVEN*
-  - Je n'ai pas de compte chez ZetaPush
-  - Je n'ai pas d'identifiant d'application
+  - Je n'ai pas explicitement créé de compte chez ZetaPush
+  - Je n'ai pas explicitement choisi l'identifiant de mon application
   - Je n'ai pas connaissance d'un éventuel environnement de développement
   - J'ai développé un service custom avec les fonctions suivantes :
     - ```createGame(player1, player2)```
@@ -163,6 +172,7 @@ TODO: Numéroter et référencer les autres US
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
+  - Mon front s'appelle `avengers-chat-web`
 
 *WHEN*
   - J'exécute la commande : ```zeta push --server-only```
@@ -186,24 +196,27 @@ TODO: Numéroter et référencer les autres US
       ✓ Custom services published on node 1
       ✓ Custom services published on node 2
       ✓ Custom services published on node 3
-    Your custom services are ready and accessible through ZetaPush
 
-    You can manage your application using login : "753159" and password "zp-password" on "http://console.zetapush.com". This application will expired in X days.
+    Your custom services are ready and accessible through ZetaPush
+    You can manage your application on "http://console.zetapush.com" using the following account:
+      - login : "fgfhjoh48971zfgq" 
+      - password "fzoqfhue9454nhd"
     The ID of your application is : "my-first-app"
+    This application will expired in X days.
     ```
-  - Je peux utiliser mon frontend pour interagir avec mon backend de production
+  - Je peux utiliser mon frontend pour interagir avec mon service custom déployé en production
   - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
     - ```player1 = {"name": "Georgesdelajungle"}```
     - ```player2 = {"name": "Aladdin"}```
   - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
-  - Je peux visualiser les logs applicatifs de mon backend custom (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
   - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
   - Un compte temporaire m'a été créé chez ZetaPush
   - Je sais comment gérer mon application, sachant qu'elle va expirer dans X jours
   - J'ai un identifiant d'application qui m'a été donné pour l'utiliser sur la partie front
 
 
-### ETQ dev je déploie mon application (front et backend) en production
+### ETQ dev full-stack je déploie mon application (front et service custom) en production
 
 *GIVEN*
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
@@ -242,15 +255,16 @@ TODO: Numéroter et référencer les autres US
       ✓ Custom services published on node 1
       ✓ Custom services published on node 2
       ✓ Custom services published on node 3
+
     Your application is ready:
-    - The web application is available at https://my-first-app.jeni.zetapushapps.com
+    - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
     - Your custom services are ready and accessible through ZetaPush
     ```
   - Mon frontend est envoyé sur ZetaPush
-  - Mon front est disponible sur le site my-first-app.jeni.zetapushapps.com
+  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
   - Mon frontend de production déployé utilise les services custom déployés
   - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
-  - Je peux visualiser les logs applicatifs de mon backend custom (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
   - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
 
 
@@ -278,7 +292,7 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
                                    └────────┘ └────────┘ └────────┘
     ```
 
-### ETQ dev je déploie mon application (front et backend) sans identifiants de connexion
+### ETQ dev je déploie mon application (front et service custom) sans identifiants de connexion
 
 *GIVEN*
   - Je n'ai pas de compte chez ZetaPush
@@ -291,7 +305,7 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire `dist`
 
 *WHEN*
   - J'exécute la commande : ```zeta push```
@@ -317,24 +331,28 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
       ✓ Custom services published on node 1
       ✓ Custom services published on node 2
       ✓ Custom services published on node 3
-    Your application is ready:
-    - The web application is available at https://my-first-app.jeni.zetapushapps.com
-    - Your custom services are ready and accessible through ZetaPush
 
-    You can manage your application using login : "753159" and password "zp-password" on "http://console.zetapush.com". This application will expired in X days.
+    Your application is ready:
+    - Your web application is ready and available at https://avangers-chat.prod.my-first-app.fgfhjoh48971zfgq.zetapush-apps.com
+    - Your custom services are ready and accessible through ZetaPush
+    
+    You can manage your application on "http://console.zetapush.com" using the following account:
+      - login : "fgfhjoh48971zfgq" 
+      - password "fzoqfhue9454nhd"
     The ID of your application is : "my-first-app"
+    This application will expired in X days.
     ```
   - Mon frontend est envoyé sur ZetaPush
-  - Mon front est disponible sur le site my-first-app.jeni.zetapushapps.com
+  - Mon front est disponible sur le site `https://avengers-chat-web.prod.my-first-app.fgfhjoh48971zfgq.zetapush-apps.com`
   - Mon frontend de production déployé utilise les services custom déployés
   - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
-  - Je peux visualiser les logs applicatifs de mon backend custom (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
   - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
-  - Mon front est disponible sur le site my-first-app.jeni.zetapushapps.com
+  - Mon front est disponible sur le site `https://avengers-chat-web.prod.my-first-app.fgfhjoh48971zfgq.zetapush-apps.com`
   - Un compte temporaire m'a été créé chez ZetaPush
   - Je sais comment gérer mon application, sachant qu'elle va expirer dans X jours
 
-### ETQ dev je suis aidé lorsque mon application (front et backend) n'a pas pu être déployé en production
+### ETQ dev je suis aidé lorsque mon application (front et service custom) n'a pas pu être déployé en production
 
 
 *GIVEN*
@@ -348,7 +366,7 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire `dist`
   - J'ai exécuté la commande : ```zeta push```
   - Mon code a bien été envoyé sur ZetaPush
 
@@ -366,6 +384,7 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
       x Custom services published on node 1
       ✓ Custom services published on node 2
       x Custom services published on node 3
+
     Your application couldn't be deployed. A rollback has been done to previous version.
     Here are the deployment logs:
       ...
@@ -373,11 +392,11 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
       ...
     ```
   - Un rollback a été effectué pour me garantir une cohérence de déploiement
-  - Mon front (ancienne version) est toujours disponible sur le site my-first-app.jeni.zetapushapps.com
+  - Mon front (ancienne version) est toujours disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
   - Mon frontend de production déployé utilise les services custom déployés pour la version précédente
 
 
-### ETQ dev je déploie mon backend en production avec une configuration dédiée à cet environnement avec les credentials externalisés
+### ETQ dev je déploie mon service custom en production avec une configuration dédiée à cet environnement avec les credentials externalisés
 
 
 *GIVEN*
@@ -386,9 +405,6 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
   - J'ai deux environnements fournis par ZetaPush : 
     - `dev` pour le développement et les tests
     - `prod` pour déployer mon application
-  - J'ai les tokens pour chaque environnement (fournis par ZetaPush) :
-    - `dev` : 1234
-    - `prod` : 456789
   - J'ai développé un service custom avec les fonctions suivantes :
     - ```createGame(player1, player2)```
     - ```gameAction(player, name, args)```
@@ -397,14 +413,6 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
     - ```endGame()```
   - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
   - J'ai plusieurs fichiers de configuration pour mes différents environnements :
-    - ```~/.zpcredentials/my-first-app/dev.yml``` :
-      ```yml
-        zp-token: '1234'
-      ```
-    - ```~/.zpcredentials/my-first-app/prod.yml``` :
-      ```yml
-        zp-token: '456789'
-      ```
     - ```src/server/environment.yml``` (valeurs par défaut pour le développement) avec le contenu suivant :
       ```yml
       stripe:
@@ -422,7 +430,7 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
   - J'exécute la commande : ```zeta push --server-only --prod```
 
 *THEN*
-  - Le code présent dans dist/server est envoyé sur ZetaPush en utilisant les credentials de production (`zp-token=456789`)
+  - Le code présent dans dist/server est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
   - Je sais lorsque mon application est prête à être utilisée
   - Mon application est correctement configurée pour utiliser l'environnement de prod :
@@ -431,12 +439,12 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
         url: 'https://api.stripe.com'
         token: 'sk_prod_dNuiVQyTlDMH5RdFYSD4nIV0'
     ```
-  - Je peux utiliser mon frontend pour interagir avec mon backend de production
+  - Je peux utiliser mon frontend pour interagir avec mon service custom déployé en production
   - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
     - ```player1 = {"name": "Georgesdelajungle"}```
     - ```player2 = {"name": "Aladdin"}```
   - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
-  - Je peux visualiser les logs applicatifs de mon backend custom mis en production (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom mis en production (voir autres US)
   - Je peux consulter la santé des noeuds déployés par ZetaPush mis en production (voir autres US)
 
 
@@ -460,6 +468,7 @@ TODO: donner un état global de la santé plutôt (il n'y a pas que les nodeJS, 
 | node1  | node2  | node3  | node4  | node5  |
 |---|---|---|---|---|
 | Running  | Running  | Pending  | Pending  | Pending |
+
 
 ### ETQ dev je mets à jour mon application en production
 
@@ -485,28 +494,24 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
-  - Mon entreprise a créé une application dont l'identifiant est `dragons-chat`
+  - Mon entreprise a créé une application dont l'identifiant est `avengers-chat`
   - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, integration, recette, production) :
     - `dev` pour le développement et les tests
     - `integration` pour l'intégration continue
     - `recette` pour la qualification
     - `prod` pour déployer mon application
-  - Je connais les tokens pour chaque environnement dont je suis en charge :
-    - `recette` : 48940684
-    - `prod` : 3589445
   - L'environnement de recette est configuré pour 4 noeuds pour cette application
   - L'application utilise les services standard ZetaPush
-  - L'intégration continue a généré un livrable contenant l'application web (`dragons-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
-  - J'ai téléchargé le livrable `dragons-chat-front-2.0.1.zip` sur mon poste (dans `~/dragons-chat`)
+  - L'intégration continue a généré un livrable contenant l'application web (`avengers-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
+  - J'ai téléchargé le livrable `avengers-chat-front-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
 
 *WHEN*
   - J'exécute la commande : 
       ```console
       $ curl -X POST -H "Content-Type: multipart/form-data" \
                     -u "dragons@yopmail.com:zp-password" \
-                    -F "zp-token=48940684" \
-                    -F "file=@dragons-chat/dragons-chat-front-2.0.1.zip" \
-                    https://console.zetapush.com/apps/dragons-chat
+                    -F "file=@avengers-chat/avengers-chat-front-2.0.1.zip" \
+                    https://console.zetapush.com/apps/avengers-chat/env/recette
       ```
 
 *THEN*
@@ -526,29 +531,25 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
-  - Mon entreprise a créé une application dont l'identifiant est `dragons-chat`
+  - Mon entreprise a créé une application dont l'identifiant est `avengers-chat`
   - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, integration, recette, production) :
     - `dev` pour le développement et les tests
     - `integration` pour l'intégration continue
     - `recette` pour la qualification
     - `prod` pour déployer mon application
-  - Je connais les tokens pour chaque environnement dont je suis en charge :
-    - `recette` : 48940684
-    - `prod` : 3589445
   - L'environnement de production est configuré pour 5 noeuds pour cette application
   - L'application utilise les services standard ZetaPush
-  - L'intégration continue a généré un livrable contenant l'application web (`dragons-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
+  - L'intégration continue a généré un livrable contenant l'application web (`avengers-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
   - La qualification de la version 2.0.1 est terminée et le livrable 2.0.1 est accepté pour être utilisé en production
-  - J'ai téléchargé le livrable `dragons-chat-front-2.0.1.zip` sur mon poste (dans `~/dragons-chat`)
+  - J'ai téléchargé le livrable `avengers-chat-front-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
 
 *WHEN*
   - J'exécute la commande : 
       ```console
       $ curl -X POST -H "Content-Type: multipart/form-data" \
                     -u "dragons@yopmail.com:zp-password" \
-                    -F "zp-token=3589445" \
-                    -F "file=@dragons-chat/dragons-chat-front-2.0.1.zip" \
-                    https://console.zetapush.com/apps/dragons-chat
+                    -F "file=@avengers-chat/avengers-chat-front-2.0.1.zip" \
+                    https://console.zetapush.com/apps/avengers-chat/env/prod
       ```
 
 *THEN*
@@ -597,15 +598,12 @@ TODO: tests auto
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
-  - Mon entreprise a créé une application dont l'identifiant est `dragons-chat`
+  - Mon entreprise a créé une application dont l'identifiant est `avengers-chat`
   - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, integration, recette, production) :
     - `dev` pour le développement et les tests
     - `integration` pour l'intégration continue
     - `recette` pour la qualification
     - `prod` pour déployer mon application
-  - Je connais les tokens pour chaque environnement dont je suis en charge :
-    - `recette` : 48940684
-    - `prod` : 3589445
   - L'équipe de développement a développé un service custom avec les fonctions suivantes :
     - ```createGame(player1, player2)```
     - ```gameAction(player, name, args)```
@@ -613,25 +611,25 @@ TODO: tests auto
     - ```getWinner()```
     - ```endGame()```
   - L'environnement de recette est configuré pour 4 noeuds pour cette application
-  - L'intégration continue a généré un livrable contenant l'application web (`dragons-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
-  - J'ai téléchargé le livrable `dragons-chat-front-2.0.1.zip` sur mon poste (dans `~/dragons-chat`)
-  - L'intégration continue a généré un livrable contenant les services custom (`dragons-chat-services-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
-  - J'ai téléchargé le livrable `dragons-chat-services-2.0.1.zip` sur mon poste (dans `~/dragons-chat`)
+  - L'intégration continue a généré un livrable contenant l'application web (`avengers-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
+  - J'ai téléchargé le livrable `avengers-chat-front-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
+  - L'intégration continue a généré un livrable contenant les services custom (`avengers-chat-services-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
+  - J'ai téléchargé le livrable `avengers-chat-services-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
   - J'ai plusieurs fichiers de configuration pour les différents environnements :
-    - ```src/server/environment.yml``` (valeurs par défaut pour le développement directement contenu dans l'archive `dragons-chat-services-2.0.1.zip`) avec le contenu suivant :
+    - ```src/server/environment.yml``` (valeurs par défaut pour le développement directement contenu dans l'archive `avengers-chat-services-2.0.1.zip`) avec le contenu suivant :
       ```yml
       stripe:
           url: 'https://api.stripe.com'
           token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
       ```
-    - ```~/dragons-chat/recette.yml``` :
+    - ```~/avengers-chat/recette.yml``` :
       ```yml
       stripe:
           token: 'sk_recette_dNuiVQyTlDMH5RdFYSD4nIV0'
       ```
-  - J'ai généré un zip nommé `dragons-chat-2.0.1.zip` et contenant :
-    - `dragons-chat-front-2.0.1.zip`
-    - `dragons-chat-services-2.0.1.zip`
+  - J'ai généré un zip nommé `avengers-chat-2.0.1.zip` et contenant :
+    - `avengers-chat-front-2.0.1.zip`
+    - `avengers-chat-services-2.0.1.zip`
     - `recette.yml`
 
 *WHEN*
@@ -639,9 +637,8 @@ TODO: tests auto
       ```console
       $ curl -X POST -H "Content-Type: multipart/form-data" \
                     -u "dragons@yopmail.com:zp-password" \
-                    -F "zp-token=48940684" \
-                    -F "file=@dragons-chat/dragons-chat-2.0.1.zip" \
-                    https://console.zetapush.com/apps/dragons-chat
+                    -F "file=@avengers-chat/avengers-chat-2.0.1.zip" \
+                    https://console.zetapush.com/apps/avengers-chat/env/recette
       ```
 
 *THEN*
@@ -661,15 +658,12 @@ TODO: tests auto
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
-  - Mon entreprise a créé une application dont l'identifiant est `dragons-chat`
+  - Mon entreprise a créé une application dont l'identifiant est `avengers-chat`
   - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, integration, recette, production) :
     - `dev` pour le développement et les tests
     - `integration` pour l'intégration continue
     - `recette` pour la qualification
     - `prod` pour déployer mon application
-  - Je connais les tokens pour chaque environnement dont je suis en charge :
-    - `recette` : 48940684
-    - `prod` : 3589445
   - L'équipe de développement a développé un service custom avec les fonctions suivantes :
     - ```createGame(player1, player2)```
     - ```gameAction(player, name, args)```
@@ -677,26 +671,26 @@ TODO: tests auto
     - ```getWinner()```
     - ```endGame()```
   - L'environnement de production est configuré pour 5 noeuds pour cette application
-  - L'intégration continue a généré un livrable contenant l'application web (`dragons-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
-  - L'intégration continue a généré un livrable contenant les services custom (`dragons-chat-services-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
+  - L'intégration continue a généré un livrable contenant l'application web (`avengers-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
+  - L'intégration continue a généré un livrable contenant les services custom (`avengers-chat-services-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
   - La qualification de la version 2.0.1 est terminée et le livrable 2.0.1 est accepté pour être utilisé en production
-  - J'ai téléchargé le livrable `dragons-chat-front-2.0.1.zip` sur mon poste (dans `~/dragons-chat`)
-  - J'ai téléchargé le livrable `dragons-chat-services-2.0.1.zip` sur mon poste (dans `~/dragons-chat`)
+  - J'ai téléchargé le livrable `avengers-chat-front-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
+  - J'ai téléchargé le livrable `avengers-chat-services-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
   - J'ai plusieurs fichiers de configuration pour les différents environnements :
-    - ```src/server/environment.yml``` (valeurs par défaut pour le développement directement contenu dans l'archive `dragons-chat-services-2.0.1.zip`) avec le contenu suivant :
+    - ```src/server/environment.yml``` (valeurs par défaut pour le développement directement contenu dans l'archive `avengers-chat-services-2.0.1.zip`) avec le contenu suivant :
       ```yml
       stripe:
           url: 'https://api.stripe.com'
           token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
       ```
-    - ```~/dragons-chat/prod.yml``` :
+    - ```~/avengers-chat/prod.yml``` :
       ```yml
       stripe:
           token: 'sk_recette_dNuiVQyTlDMH5RdFYSD4nIV0'
       ```
-  - J'ai généré un zip nommé `dragons-chat-2.0.1.zip` et contenant :
-    - `dragons-chat-front-2.0.1.zip`
-    - `dragons-chat-services-2.0.1.zip`
+  - J'ai généré un zip nommé `avengers-chat-2.0.1.zip` et contenant :
+    - `avengers-chat-front-2.0.1.zip`
+    - `avengers-chat-services-2.0.1.zip`
     - `prod.yml`
 
 *WHEN*
@@ -704,9 +698,8 @@ TODO: tests auto
       ```console
       $ curl -X POST -H "Content-Type: multipart/form-data" \
                     -u "dragons@yopmail.com:zp-password" \
-                    -F "zp-token=3589445" \
-                    -F "file=@dragons-chat/dragons-chat-2.0.1.zip" \
-                    https://console.zetapush.com/apps/dragons-chat
+                    -F "file=@avengers-chat/avengers-chat-2.0.1.zip" \
+                    https://console.zetapush.com/apps/avengers-chat/env/prod
       ```
 
 *THEN*
@@ -724,95 +717,21 @@ TODO: tests auto
 
 
 
+### ETQ ... j'utilise mon propre domaine existant pour l'hébergement de mon front
+
+
+
+### ETQ ... j'utilise mon propre domaine existant pour l'hébergement de mon front en HTTPs
+
+TODO: import du certificat client
+
+
 ---
 
 TODO: gestion des versions
 TODO: mise à jour
 
 
-
-
-
-
-
-
-
---------------------------------------------------------------------------------------
-
-
-
-### ETQ dev je spécifie un nom de domaine pour mon front
-
-TODO: je spécifie un domaine existant ou je choisi un nom de domaine ?
-
-### ETQ dev je spécie des clefs ssh à utiliser pour le front
-
-/!\ CE N'EST PAS UN BESOIN ! C'est un moyen technique pour faire quelque chose, mais QUOI ???
-
-
-
-
-TODO: plus tard la suppression + pas assez précis
-
-
-
-### ETQ dev je supprime mon application (front et backend) en production
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identifiant de mon application 'my-first-apop'
-
-*WHEN*
-  - J'exécute la commande : ```zeta delete ```
-
-*THEN
-  - J'ai une demande de confirmation : ```Your application 'my-first-app' will be deleted. Are you sur Y/n ?```
-  - Si je répond oui alors l'application y compris le frontend est supprimée
-
-
-
-### ETQ dev je supprime mon front en production
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identifiant de mon application 'my-first-apop'
-
-*WHEN*
-  - J'exécute la commande : ```zeta delete --front-only```
-
-*THEN
-  - J'ai une demande de confirmation : ```Your frontend 'my-first-app' will be deleted. Are you sur Y/n ?```
-  - Si je répond oui alors le frontend est supprimé
-
-
-### ETQ dev je supprime mon backend en production
-
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identifiant de mon application 'my-first-apop'
-
-*WHEN*
-  - J'exécute la commande : ```zeta delete --server-only```
-
-*THEN
-  - J'ai une demande de confirmation : ```Your backend 'my-first-app' will be deleted. Are you sur Y/n ?```
-  - Si je répond oui alors le backend est supprimé
-
-
-
-### ETQ dev je scale (up ou down) mon application en production
-
-/!\ Il faut vérifier si c'est vraiment un besoin ! Le besoin n'est-il pas que ça scale tout seul si besoin (jusqu'aux limites liées à l'abonnement) ? N'est-il pas préférable de prévenir que la charge est trop élevée et qu'il faudrait passer par la partie abonnement pour pouvoir monter la limite de noeuds ?
-/!\ Le développeur NE DOIT PAS pouvoir lui-même gérer la scalabilité. Quel intérêt à part faire des erreurs ???
-
-
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identification de mon application 'my-first-app'
-
-*WHEN*
-  - J'exécute la commande : ```zeta scale 3```
-
-*THEN*
-  - Je modifie le nombre de noeud actifs de mon application
 
 
 
