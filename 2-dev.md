@@ -15,15 +15,6 @@ Les profils utilisés sont définis dans [commun.md](./commun.md).
 * J'ai un compte sur ZetaPush
 * J'ai une application front qui est configurée pour utiliser ZetaPush
 
-## Schéma
-
-![Développement](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/dev-front-interaction-services-zetapush.html)
-
-### Explications
-
-* Depuis son environnement local, le développeur modifie son application en agissant sur la partie front et les appels aux services (ZetaPush ou custom)
-* Le développeur peut créer son code métier, soit en utilisant un "starter" sur `console.zetapush.com`, soit par du développement local. Ensuite, quelque soit la manière, le développeur déploie son code métier sur la plateforme ZetaPush.
-
 ---
 
 # <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
@@ -36,32 +27,53 @@ Les profils utilisés sont définis dans [commun.md](./commun.md).
 
 ---
 
-### ETQ dev front j'utilise les services ZetaPush et avoir une réponse en retour
+### ETQ dev front j'utilise les services ZetaPush et je souhaite avoir une réponse en retour
 
 _GIVEN_
 
-* J'ai importé la dépendance npm nécessaire pour appeler un service ZetaPush
-* J'ai un objet `zpService` qui me permet d'appeler les services ZetaPush
+* J'ai mon application front qui est en cours de développement
+* J'ai importé le cloud service _UsersService_ qui me permet de gérer des utilisateurs
+* J'ai une cloud function qui me permet de créer des utilisateurs : _createUser()_
+* Je souhaite créer un utilisateur depuis mon code front
+* J'écris le code suivant :
+
+  ```javascript
+  /**
+   * I call the "createUser()" cloud function with many parameters.
+   * "usersService" is a UsersService
+   */
+  this.usersService
+    .createUser({
+      firstname: "Jean",
+      lastname: "Martin",
+      email: "jean-martin@zetapush.com"
+    })
+    /**
+     *  The cloud function call return a promise. In the "then" part we have the response
+     */
+    .then(createdUser => {
+      console.log(
+        `The user : ${createdUser.firstname} ${
+          createdUser.lastname
+        } is just created !`
+      );
+    })
+    /**
+     *  The cloud function call return a promise. In the "catch" part we have the response
+     */
+    .catch(error => {
+      console.errror(`Failed to create user : ${error.message}`);
+    });
+  ```
 
 _WHEN_
 
-* Lorsque j'appelle un service ZetaPush en attendant une réponse, par exemple :
-
-```javascript
-this.zpService
-  .createUser({ login, password })
-  .then(user => {
-    console.log("UserCreated", user);
-  })
-  .catch(err => {
-    console.error("ErrorCreateUser", err);
-  });
-```
+* Lorsque j'appelle un ma cloud function via le cloud service
 
 _THEN_
 
 * L'appel au service ZetaPush se fait et une réponse est renvoyée
-* La réponse et les éventuelles erreurs sont renvoyées en même temps en utilisant une promesse, async+await, RxJS ou tout autre système similaire
+* La réponse renvoyée est sous la forme d'une promesse
 
 ---
 
@@ -70,21 +82,19 @@ _THEN_
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
-* J'ai importé la dépendance npm nécessaire pour appeler un service ZetaPush
-* J'ai un objet `zpService` qui me permet d'appeler les services ZetaPush
-* Je souhaite appeler un service ZetaPush, pour créer un utilisateur par exemple
-* J'ai différents services ZetaPush : `createUser()` / `createData()` / `searchCreatedUser()` / `pushData()`
+* J'ai un objet `usersService` qui est une instance du cloud service `UsersService`
+* Je souhaite créer un utilisateur en utilisant le cloud service `UsersService`
+* J'ai différentes cloud functions disponibles au sein de mon cloud service : `createUser()` / `createOrganization()` / `getUser()`
 
 _WHEN_
 
-* Lorsque je commence à écrire mon appel au service ZetaPush : `this.zpService.create`
+* Lorsque je commence à écrire mon appel au cloud service : `this.usersService.create`
 
 _THEN_
 
-* L'autocompletion me propose les différents services auquels je peux accèder en fonction de ma saisie :
-  * this.zpService.createUser()
-  * this.zpService.createData()
-  * this.zpService.searchCreatedUser()
+* L'autocompletion me propose les différentes cloud functions auquels je peux accèder en fonction de ma saisie :
+  * this.usersService.createUser()
+  * this.usersService.createOrganization()
 
 ---
 
@@ -92,13 +102,12 @@ _THEN_
 
 _GIVEN_
 
-* J'ai importé la dépendance npm nécessaire pour appeler un service ZetaPush
-* J'ai un objet `zpService` qui me permet d'appeler les services ZetaPush et d'écouter les évènements
-* Je souhaite écouter les évènements d'un service ZetaPush, dans notre exemple la création d'utilisateur
-* J'ajoute par exemple une callback sur un évènement :
+* J'ai un cloud service pour ma gestion d'utilisateurs disponible sous `usersService`
+* Je souhaite écouter l'évènement de la création d'utilisateur
+* J'écris le code suivant pour écouter les évènements de création d'utilisateurs :
 
 ```javascript
-this.zpService.onUserCreated = user => {
+this.usersService.onCreateUser = user => {
   console.log(`User created : ${user.name}`);
 };
 ```
@@ -109,7 +118,15 @@ _WHEN_
 
 _THEN_
 
-* Mon évènement associé à `onUserCreated` est appelée. Dans l'exemple, le message `User created : Toto` est affiché dans la console
+* L'évènement `onCreateUser` est appélé est l'action résultante est exécutée
+
+#### Notes
+
+Afin d'écouter les évènements d'une cloud function précise, il faut écouter l'évènement suivant la syntaxe suivante :
+
+* "on" + _nameCloudFunction_ en camelcase
+
+Les évènements sont envoyés seulement à l'utilisateur qui appelle la cloud function.
 
 ---
 
@@ -118,18 +135,20 @@ _THEN_
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
-* J'ai importé la dépendance npm nécessaire pour appeler un service ZetaPush
-* J'ai un objet `zpService` qui me permet d'appeler les services ZetaPush
-* Je souhaite me renseigner sur un service ZetaPush
+* J'ai un objet `usersService` qui est une instance du cloud service `UsersService`
+* Je souhaite me renseigner sur la documentation de `UsersService`
 * J'utilise l'autocompletion pour afficher les différents services auquels j'ai accès
 
 _WHEN_
 
-* Lorsqu'un service est en surbrillance dans mon IDE avec l'autocompletion
+* Lorsque j'ai écris : `this.usersService.`
 
 _THEN_
 
-* La documentation du service concerné est affiché dans l'IDE avec son nom, sa description, ses paramètres entrants et son retour
+* L'autocomplétion s'affiche pour me proposer les différentes cloud functions auquel j'ai accès
+* Je peux cliquer dans la pop-up d'autocomplétion sur un lien qui me redirige vers la documentation du cloud, toujours au sein de la pop-up
+* Dans la documentation il y a une liste de toutes les cloud functions et tous les évènements utilisable pour ce service
+* Pour chaque cloud function il y a son nom, sa description, ses paramètres entrants et son retour
 
 ---
 
