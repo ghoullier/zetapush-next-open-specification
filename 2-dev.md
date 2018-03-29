@@ -1,39 +1,40 @@
 # Objectifs
 
-* Un développeur doit pouvoir appeler un service (ZetaPush ou custom) et avoir une réponse en retour.
-* Un développeur doit pouvoir développer son code métier dans des services custom.
-* Un développeur doit pouvoir utiliser l'autocomplétion de son IDE pour l'aider dans le développement ou les appels de service ZetaPush.
-* Un développeur doit avoir accès depuis son IDE à la documentation des services ZetaPush.
-* Un développeur doit pouvoir écouter les évènements des services ZetaPush.
+* Un développeur doit pouvoir appeler un _cloud service_ (ZetaPush ou custom) et avoir une réponse en retour.
+* Un développeur doit pouvoir développer son code métier dans des _custom cloud services_.
+* Un développeur doit pouvoir utiliser l'autocomplétion de son IDE pour l'aider dans ses appels aux _cloud services_.
+* Un développeur doit avoir accès depuis son IDE à la documentation des _cloud services_.
+* Un développeur doit pouvoir écouter les évènements des _cloud services_.
 
-Les profils utilisés sont définis dans [commun.md](./commun.md).
+Les profils ainsi que le vocabulaire utilisés sont définis dans [commun.md](./commun.md).
 
 ---
 
 # Pré-requis
 
 * J'ai un compte sur ZetaPush
-* J'ai une application front qui est configurée pour utiliser ZetaPush
+* J'ai une application front qui est prête à utiliser les _cloud services_. (Projet initialisé, dépendances installées, éventuellement la configuration de saisie)
 
 ---
 
-# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
+# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans _custom cloud service_
 
 ## Schéma
 
-![Développement avec seulement les services ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/archi-dev-front-zp-service-only.html)
+![Développement avec seulement les _cloud services_ ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/archi-dev-front-zp-service-only.html)
 
 ## User Stories
 
 ---
 
-### ETQ dev front j'utilise les services ZetaPush et je souhaite avoir une réponse en retour
+### ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour
 
 _GIVEN_
 
 * J'ai mon application front qui est en cours de développement
-* J'ai importé le cloud service _UsersService_ qui me permet de gérer des utilisateurs
-* J'ai une cloud function qui me permet de créer des utilisateurs : _createUser()_
+* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UsersService` via l'objet `usersService`
+* J'ai une _cloud function_ qui me permet de créer des utilisateurs : `createUser()`
 * Je souhaite créer un utilisateur depuis mon code front
 * J'écris le code suivant :
 
@@ -49,17 +50,13 @@ _GIVEN_
       email: "jean-martin@zetapush.com"
     })
     /**
-     *  The cloud function call return a promise. In the "then" part we have the response
+     *  The cloud function return a promise. In the "then" part we have the response
      */
     .then(createdUser => {
-      console.log(
-        `The user : ${createdUser.firstname} ${
-          createdUser.lastname
-        } is just created !`
-      );
+      console.log(`The user : ${createdUser.firstname} ${createdUser.lastname} is just created !`);
     })
     /**
-     *  The cloud function call return a promise. In the "catch" part we have the response
+     *  The cloud function return a promise. In the "catch" part we have the error
      */
     .catch(error => {
       console.errror(`Failed to create user : ${error.message}`);
@@ -68,41 +65,73 @@ _GIVEN_
 
 _WHEN_
 
-* Lorsque j'appelle un ma cloud function via le cloud service
+* Lorsque j'appelle ma _cloud function_ `createUser` via le _cloud service_ `UsersService` et que tout s'est bien passé
 
 _THEN_
 
-* L'appel au service ZetaPush se fait et une réponse est renvoyée
+* L'appel au service ZetaPush se fait de manière asynchrone et une réponse est renvoyée
 * La réponse renvoyée est sous la forme d'une promesse
+* La réponse est renvoyée dans le `.then()`
 
 ---
 
-### ETQ dev front j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser les services ZetaPush
+### ETQ dev front j'utilise un _cloud service_ et j'ai une erreur en retour
 
 _GIVEN_
 
-* J'utilise Visual Studio Code comme IDE
-* J'ai un objet `usersService` qui est une instance du cloud service `UsersService`
-* Je souhaite créer un utilisateur en utilisant le cloud service `UsersService`
-* J'ai différentes cloud functions disponibles au sein de mon cloud service : `createUser()` / `createOrganization()` / `getUser()`
+* J'ai mon application front qui est en cours de développement
+* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UsersService` via l'objet `usersService`
+* J'ai une _cloud function_ qui me permet de créer des utilisateurs : `createUser()`
+* Je souhaite créer un utilisateur depuis mon code front
+* J'écris le code suivant :
+
+  ```javascript
+  /**
+   * I call the "createUser()" cloud function with many parameters.
+   * "usersService" is a UsersService
+   */
+  this.usersService
+    .createUser({
+      firstname: "Jean",
+      lastname: "Martin",
+      email: "jean-martin@zetapush.com"
+    })
+    /**
+     *  The cloud function return a promise. In the "then" part we have the response
+     */
+    .then(createdUser => {
+      console.log(`The user : ${createdUser.firstname} ${createdUser.lastname} is just created !`);
+    })
+    /**
+     *  The cloud function return a promise. In the "catch" part we have the error
+     */
+    .catch(error => {
+      console.errror(`Failed to create user : ${error.message}`);
+    });
+  ```
 
 _WHEN_
 
-* Lorsque je commence à écrire mon appel au cloud service : `this.usersService.create`
+* Lorsque j'appelle ma _cloud function_ `createUser` via le _cloud service_ `UsersService` et qu'une erreur est survenue
 
 _THEN_
 
-* L'autocompletion me propose les différentes cloud functions auquels je peux accèder en fonction de ma saisie :
-  * this.usersService.createUser()
-  * this.usersService.createOrganization()
+* L'appel au service ZetaPush se fait de manière asynchrone et une réponse est renvoyée
+* La réponse renvoyée est sous la forme d'une promesse
+* Comme il y a eu un dysfonctionnement, une erreur est renvoyée dans la partie `.catch()`
+* L'objet d'erreur renvoyé comporte 2 paramètres : `tag` qui est un identifiant unique pour cette erreur et `message` qui est une description plus précise de cette erreur.
 
 ---
 
-### ETQ dev front j'écoute les évènements d'un service ZetaPush
+### ETQ dev front j'écoute les évènements d'un _cloud service_
 
 _GIVEN_
 
-* J'ai un cloud service pour ma gestion d'utilisateurs disponible sous `usersService`
+* J'ai mon application front qui est en cours de développement
+* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UsersService` via l'objet `usersService`
+* J'ai une _cloud function_ qui me permet de créer des utilisateurs : `createUser()`
 * Je souhaite écouter l'évènement de la création d'utilisateur
 * J'écris le code suivant pour écouter les évènements de création d'utilisateurs :
 
@@ -118,41 +147,67 @@ _WHEN_
 
 _THEN_
 
-* L'évènement `onCreateUser` est appélé est l'action résultante est exécutée
+* L'évènement `onCreateUser` est appelé et l'action résultante est exécutée
+* Dans notre exemple, `User created : "name"` est affiché dans sortie console
 
-#### Notes
+#### Précisions
 
-Afin d'écouter les évènements d'une cloud function précise, il faut écouter l'évènement suivant la syntaxe suivante :
+Afin d'écouter les évènements d'une _cloud function_ précise, il faut écouter l'évènement suivant la syntaxe suivante :
 
-* "on" + _nameCloudFunction_ en camelcase
+* "on" + _nameCloudFunction_ en camelCase
 
-Les évènements sont envoyés seulement à l'utilisateur qui appelle la cloud function.
+Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
 
 ---
 
-### ETQ dev front j'ai accès à la documentation des services ZetaPush depuis mon IDE (VSCode)
+### ETQ dev front j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser les _cloud services_
 
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
-* J'ai un objet `usersService` qui est une instance du cloud service `UsersService`
-* Je souhaite me renseigner sur la documentation de `UsersService`
-* J'utilise l'autocompletion pour afficher les différents services auquels j'ai accès
+* J'ai mon application front qui est en cours de développement
+* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UsersService` via l'objet `usersService`
+* J'ai différentes _cloud functions_ disponibles au sein de mon _cloud service_ : `createUser()` / `createOrganization()` / `getUser()`
 
 _WHEN_
 
-* Lorsque j'ai écris : `this.usersService.`
+* Lorsque je commence à écrire mon appel au _cloud service_ : `this.usersService.create`
 
 _THEN_
 
-* L'autocomplétion s'affiche pour me proposer les différentes cloud functions auquel j'ai accès
-* Je peux cliquer dans la pop-up d'autocomplétion sur un lien qui me redirige vers la documentation du cloud, toujours au sein de la pop-up
-* Dans la documentation il y a une liste de toutes les cloud functions et tous les évènements utilisable pour ce service
-* Pour chaque cloud function il y a son nom, sa description, ses paramètres entrants et son retour
+* L'autocompletion me propose les différentes _cloud functions_ auquels j'ai accès en fonction de ma saisie :
+  * `this.usersService.createUser()`
+  * `this.usersService.createOrganization()`
+* La _cloud function_ `getUser()` ne correspond pas et n'est donc pas affichée
 
 ---
 
-# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des services custom
+
+### ETQ dev front j'ai accès à la documentation des _cloud services_ depuis mon IDE (VSCode)
+
+_GIVEN_
+
+* J'utilise Visual Studio Code comme IDE
+* J'ai mon application front qui est en cours de développement
+* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UsersService` via l'objet `usersService`
+* J'ai différentes _cloud functions_ disponibles au sein de mon _cloud service_ : `createUser()` / `createOrganization()` / `getUser()`
+
+_WHEN_
+
+* Lorsque je commence à écrire mon appel au _cloud service_ : `this.usersService.create`
+
+_THEN_
+
+* L'autocomplétion s'affiche pour me proposer les différentes _cloud functions_ auquel j'ai accès en fonction de ma saisie
+* Au sein de la pop-up d'autocomplétion, je peux cliquer sur un lien `view documentation` qui va me rediriger (Toujours dans la pop-up) sur la liste des _cloud functions_ pour ce _cloud service_
+* Je peux naviguer au sein de la documentation dans la pop-up, en utilisant différents liens.
+* Pour chaque _cloud function_ il y a son nom, sa description, ses paramètres entrants et son retour
+
+---
+
+# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des _custom cloud services_
 
 ## Schéma
 
@@ -162,178 +217,236 @@ _THEN_
 
 ---
 
-### ETQ dev je développe mon code métier dans un service custom
+### ETQ dev full-stack je développe mon code métier dans une _custom cloud function_
 
 _GIVEN_
 
-* J'ai importé les dépendancenpm s nécessaires pour créer un service custom
-* J'écris mon service custom, exemple :
-
-```javascript
-function createGame({name: string}): Promise<any> {
-  ...
-}
-```
+* J'ai mon application front qui est en cours de développement
+* Je souhaite réaliser mon code métier et le déployer côté back
+* Je souhaite créer un _custom cloud service_ nommé `GameService` qui va me permettre de gérer un jeu
+* Dans un premier temps je veux seulement ajouter une _cloud function_ à mon _custom cloud service_ qui est `createGame()` qui va me permettre d'initialiser un jeu
 
 _WHEN_
 
-* Lorsque je publie mon service custom dans mon application
+* Lorsque j'écris mon _custom cloud service_ selon cette syntaxe :
+
+  ```javascript
+  /**
+   *  This class gathers the cloud functions for my own custom cloud service to manage a game
+   *  Each method is a cloud function
+   *  We extends with "CustomCloudService" to get special methods and say to ZetaPush that is a custom cloud service
+   */
+  class GameService extends CustomCloudService {
+
+    /**
+     * Cloud function to create a new game with a name
+     */
+    function createGame(name) {
+      // ...
+      // Some code
+      // ...
+    }
+  }
+  ```
 
 _THEN_
 
-* Je peux utiliser mon service custom de la même manière qu'un service ZetaPush existant
-* Je peux l'appeler avec la syntaxe :
+* Mon _custom cloud service_ est complet (pour le moment)
+* Il n'est pas utilisable en l'état, il faut le déployer avec la CLI : `zeta push --server-only`
+* Une fois le _custom cloud service_ déployé, ce dernier est appelable au même titre qu'un _cloud service_ avec la syntaxe :
+
+  ```javascript
+  /**
+   *  "gameService" is an instance of GameService
+   */
+  this.gameService.createGame("Avengers Game");
+  ```
+
+- Un listener d'évènement est automatiquement créé pour chaque _cloud function_, ici nous pouvons écouter la création de jeu avec :
+
+  ```javascript
+  /**
+   *  "gameService" is an instance of GameService
+   *  We assume that the createGame() cloud function return an objet with a 'name' parameter
+   */
+  this.gameService.onCreateGame = game => {
+    console.log(`New game created : ${game.name}`);
+  };
+  ```
+
+---
+
+### ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une réponse en retour
+
+_GIVEN_
+
+* J'ai mon application front qui est en cours de développement
+* J'ai importé le _custom cloud service_ `GameService` qui me permet de gérer un jeu
+* J'ai accès à `GameService` via l'objet `gameService`
+* J'ai une _cloud function_ qui me permet d'initialiser un jeu : `createGame()`
+* Je souhaite initialiser un jeu depuis mon code front
+* J'écris le code suivant :
+
+  ```javascript
+  /**
+   * I call the "createGame()" cloud function with a name.
+   * "gameService" is a GameService instance
+   */
+  this.gameService
+    .createGame({
+      name: "Avengers game"
+    })
+    /**
+     *  The cloud function call return a promise. In the "then" part we have the response
+     */
+    .then(createdGame => {
+      console.log(`The created game : ${createdGame.name} with the id : ${createdGame.id}, is just created !`);
+    })
+    /**
+     *  The cloud function call return a promise. In the "catch" part we have the error
+     */
+    .catch(error => {
+      console.errror(`Failed to create game : ${error.message}`);
+    });
+  ```
+
+_WHEN_
+
+* Lorsque j'appelle ma _cloud function_ `createGame` via le _custom cloud service_ `GameService` et que tout s'est bien passé
+
+_THEN_
+
+* L'appel au service ZetaPush se fait de manière asynchrone et une réponse est renvoyée
+* La réponse renvoyée est sous la forme d'une promesse
+* La réponse est renvoyée dans le `.then()`
+
+---
+
+### ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une erreur en retour
+
+_GIVEN_
+
+* J'ai mon application front qui est en cours de développement
+* J'ai importé le _custom cloud service_ `GameService` qui me permet de gérer un jeu
+* J'ai accès à `GameService` via l'objet `gameService`
+* J'ai une _cloud function_ qui me permet d'initialiser un jeu : `createGame()`
+* Je souhaite initialiser un jeu depuis mon code front
+* J'écris le code suivant :
+
+  ```javascript
+  /**
+   * I call the "createGame()" cloud function with a name.
+   * "gameService" is a GameService instance
+   */
+  this.gameService
+    .createGame({
+      name: "Avengers game"
+    })
+    /**
+     *  The cloud function call return a promise. In the "then" part we have the response
+     */
+    .then(createdGame => {
+      console.log(`The created game : ${createdGame.name} with the id : ${createdGame.id}, is just created !`);
+    })
+    /**
+     *  The cloud function call return a promise. In the "catch" part we have the error
+     */
+    .catch(error => {
+      console.errror(`Failed to create game : ${error.message}`);
+    });
+  ```
+
+_WHEN_
+
+* Lorsque j'appelle ma _cloud function_ `createGame` via le _cloud service_ `GameService` et qu'une erreur est survenue
+
+_THEN_
+
+* L'appel au service ZetaPush se fait de manière asynchrone et une réponse est renvoyée
+* La réponse renvoyée est sous la forme d'une promesse
+* Comme il y a eu un dysfonctionnement, une erreur est renvoyée dans la partie `.catch()`
+* L'objet d'erreur renvoyé comporte 2 paramètres : `tag` qui est un identifiant unique pour cette erreur et `message` qui est une description plus précise de cette erreur.
+
+---
+
+### ETQ dev full-stack j'écoute les évènements d'un _custom cloud service_
+
+_GIVEN_
+
+* J'ai mon application front qui est en cours de développement
+* J'ai importé le _custom cloud service_ `GameService` qui me permet de gérer un jeu
+* J'ai accès à `GameService` via l'objet `gameService`
+* J'ai une _cloud function_ qui me permet d'initialiser un jeu : `creatGame()`
+* Je souhaite écouter l'évènement de la création d'un jeu
+* J'écris le code suivant pour écouter les évènements de création de jeu :
 
 ```javascript
-this.zpService
-  .createGame({ name })
-  .then(game => {
-    console.log(`GameCreated : ${game.name}`);
-  })
-  .catch(err => {
-    console.error(`ErrorCreateGame : ${err}`);
-  });
-```
-
-* Un évènement peut être écouté lorsqu'un appel à ce service est fait avec la syntaxe :
-
-```javascript
-this.zpService.onCreateGame = result => {
-  console.log(`CreateGameEvent : ${result}`);
+this.usersService.onCreateGame = game => {
+  console.log(`Game created : ${game.name}`);
 };
 ```
 
----
-
-### ETQ dev j'utilise mes services custom et avoir une réponse en retour
-
-_GIVEN_
-
-* J'ai importé la dépendance npm nécessaire pour appeler un service ZetaPush
-* J'ai un objet `zpService` qui me permet d'appeler les services ZetaPush
-* J'ai déjà créé un service custom, exemple : `createGame()`
-* Mon service custom a été déployé sur ZetaPush
-* J'ai écrit l'appel à mon service custom :
-
-```javascript
-this.zpService
-  .createGame({ name })
-  .then(game => {
-    console.log("gameCreated", game);
-  })
-  .catch(err => {
-    console.error("ErrorCreateGame", err);
-  });
-```
-
 _WHEN_
 
-* Lorsque j'appelle mon service custom
+* Lorsqu'un nouveau jeu est créé sur mon application
 
 _THEN_
 
-* L'appel au service custom se fait et une réponse est renvoyée
-* La réponse et les éventuelles erreurs sont renvoyées en même temps en utilisant une promesse, async+await, RxJS ou tout autre système similaire
+* L'évènement `onCreateGame` est appelé et l'action résultante est exécutée
+* Dans notre exemple, `Game created : "name"` est affiché dans sortie console
+
+#### Précisions
+
+Afin d'écouter les évènements d'une _cloud function_ précise, il faut écouter l'évènement suivant la syntaxe suivante :
+
+* "on" + _nameCloudFunction_ en camelCase
+
+Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
 
 ---
 
-### ETQ dev j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser mes services custom
+### ETQ dev full-stack j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser mes _custom cloud services_
 
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
-* J'ai importé la dépendance npm nécessaire pour appeler un service ZetaPush ou custom déployés
-* J'ai un objet `zpService` qui me permet d'appeler les services ZetaPush ou custom déployés
-* Je souhaite appeler un service custom, `createGame()` par exemple
+* J'ai mon application front qui est en cours de développement
+* J'ai importé le _custom cloud service_ `GameService` qui me permet de gérer un jeu
+* J'ai accès à `GameService` via l'objet `gameService`
+* J'ai différentes _cloud functions_ disponibles au sein de mon _custom cloud service_ : `createGame()` / `createPlayer()` / `movePlayer()`
 
 _WHEN_
 
-* Lorsque je commence à écrire mon appel au service ZetaPush : `this.zpService.create`
+* Lorsque je commence à écrire mon appel au _custom cloud service_ : `this.gameService.create`
 
 _THEN_
 
-* L'autocompletion me propose les différents services auquels je peux accèder en fonction de ma saisie :
-  * this.zpService.createUser()
-  * this.zpService.createGame()
-  * this.zpService.createOrganization()
-  * this.zpService.createRoom()
-  * ...
-* L'autocompletion ne fait pas de distinction entre un service ZetaPush ou un service custom déployé
+* L'autocompletion me propose les différentes _cloud functions_ auquels j'ai accès en fonction de ma saisie :
+  * `this.gameService.createGame()`
+  * `this.gameService.createPlayer()`
+* La _cloud function_ `movePlayer()` ne correspond pas et n'est donc pas affichée
 
 ---
 
-### ETQ dev j'écoute les évènements d'un service custom
-
-_GIVEN_
-
-* J'ai importé la dépendance npm nécessaire pour appeler un service ZetaPush ou un service custom déployé
-* J'ai un objet `zpService` qui me permet d'appeler les services ZetaPush ou un service custom déployé et d'écouter les évènements
-* Je souhaite écouter les évènements d'un service custom que j'ai créé, dans notre exemple l'évènement de création de jeu
-* Le service custom est déployé sur mon application
-* J'ajoute par exemple une callback sur un évènement :
-
-```javascript
-this.zpService.onCreateGame = result => {
-  console.log(`GameCreatedEvent : ${result}`);
-};
-```
-
-_WHEN_
-
-* Lorsque le service custom appelé, `createGame()` dans l'exemple
-
-_THEN_
-
-* Mon évènement associé (`onCreateGame` dans l'exemple) est appelée.
-
----
-
-### ETQ dev j'ai accès à la documentation de mes services custom depuis mon IDE (VSCode)
+### ETQ dev full-stack j'ai accès à la documentation de mes _custom cloud services_ depuis mon IDE (VSCode)
 
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
-* J'ai importé la dépendance npm nécessaire pour appeler un service ZetaPush ou un service custom déployé
-* J'ai un objet `zpService` qui me permet d'appeler les services ZetaPush ou un service custom déployé
-* Je souhaite me renseigner sur un service custom que j'ai créé
-* Mon service custom est déployé sur mon application
-* J'ai documenté mon code en suivant les bonnes pratiques de documentation de mon code
-* J'utilise l'autocompletion pour afficher les différents services auquels j'ai accès
+* J'ai mon application front qui est en cours de développement
+* J'ai importé le _custom cloud service_ `GameService` qui me permet de gérer un jeu
+* J'ai accès à `GameService` via l'objet `gameService`
+* J'ai différentes _cloud functions_ disponibles au sein de mon _cloud service_ : `createGame()` / `createPlayer()` / `movePlayer()`
 
 _WHEN_
 
-* Lorsqu'un service est en surbrillance dans mon IDE avec l'autocompletion
+* Lorsque je commence à écrire mon appel au _custom cloud service_ : `this.gameService.create`
 
 _THEN_
 
-* La documentation du service concerné est affiché dans l'IDE avec son nom, sa description, ses paramètres entrants et son retour
-* L'affichage de la documentation et de l'autocompletion ne fait aucune distinction entre un service ZetaPush ou un service custom
-* La documentation du service custom se base sur les commentaires et types lors de la création de ce service
+* L'autocomplétion s'affiche pour me proposer les différentes _cloud functions_ auquel j'ai accès en fonction de ma saisie
+* Au sein de la pop-up d'autocomplétion, je peux cliquer sur un lien `view documentation` qui va me rediriger (Toujours dans la pop-up) sur la liste des _cloud functions_ pour ce _cloud service_
+* Je peux naviguer au sein de la documentation dans la pop-up, en utilisant différents liens.
+* Pour chaque _cloud function_ il y a son nom, sa description, ses paramètres entrants et son retour
 
 ---
-
-# <a name="parcours-3"></a> Parcours 3 : Mon équipe développe une application front avec ZetaPush sans services custom
-
-## Schéma
-
-TODO
-
-## User Stories
-
-TODO
-
-### ETQ équipe de dev front, nous souhaitons utiliser les services ZetaPush
-
----
-
-# <a name="parcours-4"></a> Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
-
-## Schéma
-
-TODO
-
-## User Stories
-
-TODO
-
-### ETQ équipe de dev front, nous souhaitons utiliser les services custom ZetaPush
