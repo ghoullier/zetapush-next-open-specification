@@ -1,240 +1,82 @@
 # Créer un chat temps-réel avec ZetaPush
 
-## Objectif
-
-L'objectif de ce tutoriel est de construire une application de chat en utilisant ZetaPush depuis le démarrage du projet jusqu'à son déploiement.
-Pour ceci tu vas découvrir comment utiliser les services ZetaPush existants (chat, gestion des utilisateurs). Ensuite, tu vas voir comment étendre toi même ces services pour développer les fonctionnalités précises que tu souhaites.
-
 ## Sommaire
 
-1.  Pré-requis
-2.  Installation de nodeJS / npm
+1. [Introduction](#introduction)
+2. [Préparation de l'environnement](#préparation-de-lenvironnement)
+3. [Initialisation du projet](#initialisation-du-projet)
+4. [Création du design de l'application](#création-du-design-de-lapplication)
+5. [Utilisation des _cloud services_](#utilisation-des-cloud-services)
+6. [Déploiement de l'application](#déploiement-de-lapplication)
+7. [Développement back avec ZetaPush](#développement-back-avec-zetapush)
+8. [Utilisation d'un _custom cloud service_](#utilisation-dun-custom-cloud-service)
+9. [Conclusion](#conclusion)
 
-## Pré-requis
+## Introduction
 
-Pour suivre ce tutoriel, tu as simplement besoin d'un éditeur de texte de type Visual Studio Code, Atom ou encore Vim. Tu peux utiliser l'IDE que tu souhaite. Si tu n'as pas ou peu de compétences en développement ce n'est pas grave, nous allons partir du début.
+### Objectif
 
-## Tutoriel
+L'objectif de ce tutoriel est de construire une application de chat en utilisant ZetaPush depuis le démarrage du projet jusqu'à son déploiement.
+Pour ceci tu vas découvrir comment utiliser les _cloud services_ de ZetaPush (chat, gestion des utilisateurs). Ensuite, tu vas voir comment étendre toi même ces services pour développer les fonctionnalités précises que tu souhaites.
 
-### Installation de nodejs / npm
+### Pré-requis
 
-Dans un premier temps, il est nécessaire d'avoir nodejs et npm d'installés sur sa machine. Suis ce lien pour procéder à l'installation : https://nodejs.org
+Pour suivre ce tutoriel, tu as simplement besoin d'un éditeur de texte de type Visual Studio Code, Atom ou encore Vim. Tu peux utiliser l'IDE que tu souhaites. Si tu n'as pas ou peu de compétences en développement ce n'est pas grave, ce tutoriel est accessible à tous, quelque soit ton niveau.
 
-### Initialisation du projet
+À noter que dans tout ce tutoriel, tu écriras en _JavaScript_ pour plus de simplicité. En revanche pour tes futurs développements nous te recommandons d'utiliser _TypeScript_ puisque cela va te permettre d'utiliser d'avantage de fonctionnalités comme la génération de SDK ou de documentation par exemple. 
 
-Maintenant que tu as les outils nécessaires, créé ton application en suivant ces étapes :
+### Description du projet
 
-```bash
-    $ zeta new avengers-chat
-```
+Comme nous l'avons énoncé plus haut, tu vas créer une application de chat et plus précisément un **Avengers chat** ! Le but est d'avoir un chat en pouvant choisir son personnage des Avengers. Ce chat sera une application web qui sera déployée et accessible via une URL unique.
 
-Ensuite il te faut ajouter la dépendance à ZetaPush :
+---
+[CAPTURE ECRAN] Capture d'écran du chat lors de son utilisation avec plusieurs personnages et messages
+---
 
-```bash
-    $ cd avengers-chat
-    $ npm install --save zetapush
-```
+Dans un premier temps tu vas préparer ton environnement de travail et initialiser un projet avec la CLI ZetaPush. 
 
-À présent créé les différentes fichiers pour avoir le front de ton application :
+---
+[CAPTURE ECRAN] Capture d'écran de la sortie de CLI qui génère un squelette de ton projet
+---
 
-```bash
-    $ mkdir front
-    $ cd front
-    $ touch index.html style.css script.js
-```
+Ensuite, tu vas réaliser la première partie du chat. C'est à dire créer un chat temps réel sans pouvoir choisir son personnage au démarrage de l'application. Pour ceci tu vas d'abord te concentrer sur le design de ton application web, puis tu vas apprendre à utiliser les _cloud services_ pour ajouter la partie fonctionnelle du chat.
 
-Voici l'arborescence que tu dois avoir suite à ces commandes :
+---
+[CAPTURE ECRAN] Capture d'écran du design de l'application, sans le choix des personnages, il y aura donc les id des utilisateurs d'affichés pour chaque message envoyé
+---
 
-![arborescence-init-app](./images/arborescence_init_app.png)
+À ce moment ton chat est prêt et fonctionnel, donc tu souhaiteras sûrement déployer ton application pour qu'elle soit accessible via une URL. C'est ici que tu vas découvrir `zeta push` qui va te permettre d'exposer ton application en ligne.
 
-Et maintenant remplis les différents fichiers :
+---
+[CAPTURE ECRAN] Capture d'écran de la sortie de la CLI après un `zeta push`
+---
 
-#### index.html
+Ton chat est bien, mais ce que tu voulais c'est aussi de pouvoir choisir ton personnage des Avengers au lancement de ton application. Ce n'est pas un comportement fournit par défaut par ZetaPush, donc tu vas pouvoir créer cette fonctionnalité dans un _custom cloud service_.
 
-TODO
+Une fois que tu as écrit et déployé ta fonctionnalité, tu vas pouvoir l'utiliser et déployer la nouvelle version de ton application.
 
-#### style.css
+---
+[CAPTURE ECRAN] Capture d'écran de l'écran de sélection d'un personnage d'avengers
+---
 
-TODO
+Avec toutes ces étapes tu pourras chatter avec les Avengers !
 
-#### script.js
+---
+[CAPTURE ECRAN] De retour la capture d'écran de l'application finie ?
+---
 
-Dans le fichier de script tu as simplement besoin pour l'instant d'initialiser la communication avec ZetaPush :
+## Préparation de l'environnement
 
-TODO
+## Initialisation du projet
 
-### Utilisateur du service ZetaPush
+## Création du design de l'application
 
-Une fois le design de notre application fait, nous allons utiliser les services ZetaPush pour créer le fonctionnel de notre application de chat.
+## Utilisation des _cloud services_
 
-Dans un premier temps nous devons faire en sorte d'appeler un service ZetaPush lorsqu'on envoi un message. Pour ceci saisi ce code dans `script.js` :
+## Déploiement de l'application
 
-```javascript
-import ZetaPushClient from "zetapush@core";
+## Développement back avec ZetaPush
 
-const zpClient = new ZetaPushClient();
+## Utilisation d'un _custom cloud service_
 
-const btnAddMsg = document.getElementById("btnAddMsg");
-const inputMsg = document.getElementById("inputMsg");
-
-zpClient.connect().then(() => {
-  console.log("ZetaPush::ConnectionSuccessful");
-});
-
-btnAddMsg.addEventListener("click", () => {
-  zpClient.callService.sendMessage(inputMsg.value);
-});
-```
-
-Ensuite il faut écouter les messages entrants pour les afficher à l'écran. Pour ceci saisi ce code dans `script.js` :
-
-```javascript
-// Some code
-
-const conversation = document.getElementById("conversationArea");
-
-zpClient.connect().then(() => {
-  console.log("ZetaPush::ConnectionSuccessful");
-
-  zpClient.listenService("onMessage", message => {
-    conversation.value += `\n ${message.author} (${message.timestamp}) >>> ${
-      message.value
-    }`;
-  });
-});
-```
-
-Faisons aussi en sorte d'afficher lorsqu'un correspondant est en train d'écrire :
-
-```javascript
-const displayUserTyping = document.getElementById("textUserTyping");
-
-let intervalTyping;
-
-zpClient.connect().then(() => {
-  console.log("ZetaPush::ConnectionSuccessful");
-
-  zpClient.listenService("onUserTyping", author => {
-    clearInterval(intervalTyping);
-    displayUserTyping.value = `${author} is typing...`;
-
-    intervalTyping = setTimeout(() => {
-      displayUserTyping.value = "";
-    }, 3000);
-  });
-});
-```
-
-Voici le code complet pour le chat avec ZetaPush :
-
-```javascript
-import ZetaPushClient from "zetapush@core";
-
-const zpClient = new ZetaPushClient();
-
-const conversation = document.getElementById("conversationArea");
-const btnAddMsg = document.getElementById("btnAddMsg");
-const inputMsg = document.getElementById("inputMsg");
-const displayUserTyping = document.getElementById("textUserTyping");
-
-let intervalTyping;
-
-zpClient.connect().then(() => {
-  console.log("ZetaPush::ConnectionSuccessful");
-
-  zpClient.listenService("onMessage", message => {
-    conversation.value += `\n ${message.author} (${message.timestamp}) >>> ${
-      message.value
-    }`;
-  });
-
-  zpClient.listenService("onUserTyping", author => {
-    clearInterval(intervalTyping);
-    displayUserTyping.value = `${author} is typing...`;
-
-    intervalTyping = setTimeout(() => {
-      displayUserTyping.value = "";
-    }, 3000);
-  });
-});
-
-btnAddMsg.addEventListener("click", () => {
-  zpClient.callService.sendMessage(inputMsg.value);
-});
-```
-
-Il ne te reste plus qu'à déployer pour discuter avec les Avengers !
-
-### Déploiement du code sur ZetaPush
-
-Pour déployer il suffit de se placer à la racine de notre application et d'exécuter :
-
-    $ zeta push
-
-Suite à ça tu peux suivre la progression du déploiement et une fois fini une URL t'es renvoyée et te donne accès à ton application déployée et fonctionnelle.
-
-## Ajout de fonctionnalités
-
-En dehors des services existants sur ZetaPush (voir la catégorie `Services existantes`), tu as aussi la possibilité d'étendre ton application avec tes propres fonctionnalités. Pour illustrer ceci, nous allons donner la possibilité aux utilisateurs de notre application de choisir son pseudo au sein du chat Avengers.
-
-Pour ceci voici les modifications front à apporter pour permettre à l'utilisateur de saisir un nom :
-
-### Partie front
-
-#### index.html
-
-// TODO
-
-#### style.css
-
-// TODO
-
-### Création d'un service custom
-
-L'extension de fonctionnalités passe par la création d'un service custom. C'est exactement la même chose qu'un service ZetaPush à la différence que c'est toi qui l'a créé.
-
-Tu vas créer un nouveau fichier pour avoir une arborescence claire et différencier ton code front et ton code back.
-
-```bash
-    $ cd tutorialV3
-    $ mkdir server
-    $ cd server
-    $ touch set-username.ts
-```
-
-Voici à quoi doit ressembler l'arborescence de fichier :
-
-![arborescence-service-custom](./images/arborescence-service-custom.png)
-
-Maintenant créons notre service. Pour ceci saisi dans `set-username.ts` :
-
-#### set-username.ts
-
-    import ChatService from 'zetapush@server';
-
-    function setUsername(name: string) extends ChatService {
-        ChatService.displayedName = name;
-    }
-
-### Appel de notre service custom
-
-À présent voici le code complet avec l'appel à notre service précédement créé pour se nommer sur le chat :
-
-    // TODO
-
-### Déploiement du code sur ZetaPush
-
-Pour rendre ce rajout de fonctionnalités opérationel, nous devons à nouveau déployer notre code. Pour ceci nous refaisons :
-
-    $ zeta push
-
-Cette commande déploie à la fois le code front et back.
-Suite à ça, tu auras de nouveau une barre de progression pour suivre l'avancement du déploiement et une URL en retour pour accèder à ton application déployée.
-
-# Conclusion
-
-TODO : Conclusion tuto
-
-TODO : Lien vers les services existants
-
-TODO : Explication création service from scratch
+## Conclusion
