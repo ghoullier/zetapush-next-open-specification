@@ -9,28 +9,30 @@
 
 * Un développeur doit pouvoir exécuter ses tests en parallèle
 
+---
+
 # Pré-requis
 
 * J'utilise mon éditeur de texte ou IDE préféré.
-* J'ai une application front existante créée avec mon framework préféré et initialisé avec ZetaPush.
+* J'ai une application front qui est prête à utiliser les cloud services. (Projet initialisé, dépendances installées, éventuellement la configuration de saisie)
 * J'utilise mon framework de test préféré. Dans les exemples de syntaxe, nous utiliserons _Mocha_.
 
-# Contextes
+---
 
-Dans cette section nous allons spécifier différents contextes que nous allons utiliser tout au loin de nos User Stories dans la section _GIVEN_.
-
-# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
+# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans _custom cloud service_
 
 ## User Stories
 
-### ETQ dev je mock un appel à un service ZetaPush
+---
+
+### ETQ dev je mock un appel à un _cloud service_
 
 _GIVEN_
 
 * J'ai une application front de développée
-* J'ai l'ensemble des dépendances nécessaires à l'utilisation de ZetaPush dans mon application front
-* Mon application utilise le cloud service `users` qui me permet de gérer mes utilisateurs
-* Je souhaiter tester mon code front, qui me permet de créer un utilisateur, pour ceci je mock l'appel à la cloud function `createUser()` suivant cette syntaxe :
+* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UsersService` via l'objet `usersService`
+* Je souhaiter tester mon code front, qui me permet de créer un utilisateur, pour ceci je mock l'appel à la _cloud function_ `createUser()` suivant cette syntaxe :
 
   ```javascript
   var assert = require("assert");
@@ -76,18 +78,22 @@ _WHEN_
 
 _THEN_
 
-* L'appel à la cloud function ne se fait pas, un objet prédéfini est renvoyé en réponse
-* Pour le code front, le mock de la cloud function est complètement transparent, le comportement (d'un point de vue front) est le même hormis la réponse renvoyée.
+* L'appel à la cloud function ne se fait pas, un objet prédéfini est renvoyé en réponse (dans l'exemple : `{ firstname: "Jean", lastname: "Martin", id: "7682164" }`)
+* Pour le code front, le mock de la _cloud function_ est complètement transparent, le comportement (d'un point de vue front) est le même hormis la réponse renvoyée.
+
+---
 
 ### ETQ dev je souhaite pouvoir appliquer à mon test un état de mon application précédemment sauvegardé
 
 _GIVEN_
 
 * J'ai une application front de développée
-* J'ai l'ensemble des dépendances nécessaires à l'utilisation de ZetaPush dans mon application front
-* Mon application utilise le cloud service `users` qui me permet de gérer mes utilisateurs
+* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UsersService` via l'objet `usersService`
+* J'ai importé le _cloud service_ `UtilsService` qui me permet d'utiliser des _cloud functions_ utilitaires de ZetaPush
+* J'ai accès à `UtilsService` via l'objet `utilsService`
 * Je souhaite donner un état particulier à mon application côté back. Pour ceci je spécifie un snapshot de mon application.
-* Je souhaiter tester mon code front, qui me permet de créer un utilisateur, pour ceci je mock l'appel à la cloud function `createUser()` suivant cette syntaxe :
+* Je souhaiter tester mon code front, qui me permet de créer un utilisateur, pour ceci je mock l'appel à la _cloud function_ `createUser()` suivant cette syntaxe :
 
   ```javascript
   var assert = require("assert");
@@ -135,19 +141,23 @@ _THEN_
 
 * Mon test s'est lancé en prenant en compte l'état de mon application précédemment spécifié, ici un état où 3 utilisateurs sont déjà créés dans mon application côté back.
 * On peut spécifier l'état de l'application de 3 manières :
-  * this.utilsService.setSnapshotName(name-of-remote-snapshot);
-  * this.utilsService.setSnapshotFile(path/to/local/snap);
-  * this.utilsService.setToScratch();
+  * `this.utilsService.setSnapshotName(name-of-remote-snapshot);`
+  * `this.utilsService.setSnapshotFile(path/to/local/snap);`
+  * `this.utilsService.setToScratch();`
+
+---
 
 ### ETQ dev je teste mon application dans un environnement vierge
 
 _GIVEN_
 
 * J'ai une application front de développée
-* J'ai l'ensemble des dépendances nécessaires à l'utilisation de ZetaPush dans mon application front
-* Mon application utilise le cloud service `users` qui me permet de gérer mes utilisateurs
-* Je souhaite que mon application soit en un état "neuf" pour le côté back.
-* Je souhaiter tester mon code front, qui me permet de créer un utilisateur, pour ceci je mock l'appel à la cloud function `createUser()` suivant cette syntaxe :
+* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UsersService` via l'objet `usersService`
+* J'ai importé le _cloud service_ `UtilsService` qui me permet d'utiliser des _cloud functions_ utilitaires de ZetaPush
+* J'ai accès à `UtilsService` via l'objet `utilsService`
+* Je souhaite que mon application soit en un état vierge pour le côté back.
+* Je souhaiter tester mon code front, qui me permet de créer un utilisateur, pour ceci je mock l'appel à la _cloud function_ `createUser()` suivant cette syntaxe :
 
   ```javascript
   var assert = require("assert");
@@ -195,24 +205,25 @@ _THEN_
 
 * Mon test s'est lancé en prenant en compte que mon application côté back est vierge.
 * On peut spécifier l'état de l'application de 3 manières :
-  * this.utilsService.setSnapshotName(name-of-remote-snapshot);
-  * this.utilsService.setSnapshotFile(path/to/local/snap);
-  * this.utilsService.setToScratch();
+  * `this.utilsService.setSnapshotName(name-of-remote-snapshot);`
+  * `this.utilsService.setSnapshotFile(path/to/local/snap);`
+  * `this.utilsService.setToScratch();`
 
-# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des services customs
+# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des _custom cloud services_
 
 ## User Stories
 
-### ETQ dev full-stack je teste un service custom
+
+---
+
+### ETQ dev full-stack je teste un _custom cloud service_
 
 _GIVEN_
 
 * J'ai une application front de développée
-* J'ai l'ensemble des dépendances nécessaires à l'utilisation de ZetaPush dans mon application front
-* J'ai l'ensemble des dépendances nécessaires pour créer un custom cloud service
-* J'ai le custom cloud service de créé et de déployé nommé _HealthDataManager_ et qui comporte la cloud function _pushNewHealthData()_
-* Je souhaite tester unitairemenent le fonctionnement de _pushNewHealthData()_
-* J'ai écris le test unitaire suivant :
+* J'ai un _custom cloud service_ de créé et de déployé nommé `HealthDataManager` et qui comporte la _cloud function_ `pushNewHealthData()`
+* Je souhaite tester unitairement le fonctionnement de `pushNewHealthData()`
+* J'ai écrit le test unitaire suivant :
 
   ```javascript
   /**
@@ -247,3 +258,59 @@ _WHEN_
 _THEN_
 
 * Je reçois en réponse le retour de mon test conformément au framework utilisé
+* Les éventuelles actions réalisées côté back sont effectives sur l'application (Pas de contexte neuf de spécifié)
+
+---
+
+### ETQ dev full-stack je teste un _custom cloud service_ dans un nouveau contexte
+
+_GIVEN_
+
+* J'ai une application front de développée
+* J'ai un _custom cloud service_ de créé et de déployé nommé `HealthDataManager` et qui comporte la _cloud function_ `pushNewHealthData()`
+* Je souhaite tester unitairement le fonctionnement de `pushNewHealthData()`
+* Je souhaite que les actions côté serveur n'affecte pas mon application et que j'exécute mon application dans un nouveau contexte "jetable"
+* J'ai importé le _cloud service_ `UtilsService` qui me permet d'utiliser des _cloud functions_ utilitaires de ZetaPush
+* J'ai accès à `UtilsService` via l'objet `utilsService`
+* J'ai écrit le test unitaire suivant :
+
+  ```javascript
+  /**
+   *    Test to check if "pushNewHealthData()" is correctly working
+   */
+  describe("HealthData", function() {
+    describe("#checkPushNewHealthData()", function() {
+      it("The cloud function should return a specific object", async function() {
+          /**
+          * I specify that I use a new context to execute my test
+          */
+          await this.utilsService.workInDisposableContext();
+
+          /**
+          * I specify the wanted object when we call the "pushNewHealthData" cloud function
+          */
+          const wantedResponse = { type: "heart", unit: "bpm", state: "added", value: "78"};
+
+        /**
+         *  We call our cloud function from our custom cloud service "HealthDataManager"
+         */
+         const response = this.healthDataManager.pushNewHealthData({
+             type: "heart",
+             value: "78"
+         });
+
+         /**
+          * Check if the response is equal to wanted response
+          */
+        assert.equal(response, wantedResponse);
+  ```
+
+_WHEN_
+
+* Lorsque je lance l'exécution de mon test
+
+_THEN_
+
+* Je reçois en réponse le retour de mon test conformément au framework utilisé
+* Le test s'est exécuté dans un contexte neuf et jetable
+* Les éventuelles actions réalisées côté back n'ont pas affecté l'application
