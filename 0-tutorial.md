@@ -31,24 +31,28 @@ Comme nous l'avons énoncé plus haut, tu vas créer une application de chat et 
 
 ---
 [CAPTURE ECRAN] Capture d'écran du chat lors de son utilisation avec plusieurs personnages et messages
+
 ---
 
 Dans un premier temps tu vas préparer ton environnement de travail et initialiser un projet avec la CLI ZetaPush. 
 
 ---
 [CAPTURE ECRAN] Capture d'écran de la sortie de CLI qui génère un squelette de ton projet
+
 ---
 
 Ensuite, tu vas réaliser la première partie du chat. C'est à dire créer un chat temps réel sans pouvoir choisir son personnage au démarrage de l'application. Pour ceci tu vas d'abord te concentrer sur le design de ton application web, puis tu vas apprendre à utiliser les _cloud services_ pour ajouter la partie fonctionnelle du chat.
 
 ---
 [CAPTURE ECRAN] Capture d'écran du design de l'application, sans le choix des personnages, il y aura donc les id des utilisateurs d'affichés pour chaque message envoyé
+
 ---
 
 À ce moment ton chat est prêt et fonctionnel, donc tu souhaiteras sûrement déployer ton application pour qu'elle soit accessible via une URL. C'est ici que tu vas découvrir `zeta push` qui va te permettre d'exposer ton application en ligne.
 
 ---
 [CAPTURE ECRAN] Capture d'écran de la sortie de la CLI après un `zeta push`
+
 ---
 
 Ton chat est bien, mais ce que tu voulais c'est aussi de pouvoir choisir ton personnage des Avengers au lancement de ton application. Ce n'est pas un comportement fournit par défaut par ZetaPush, donc tu vas pouvoir créer cette fonctionnalité dans un _custom cloud service_.
@@ -57,17 +61,49 @@ Une fois que tu as écrit et déployé ta fonctionnalité, tu vas pouvoir l'util
 
 ---
 [CAPTURE ECRAN] Capture d'écran de l'écran de sélection d'un personnage d'avengers
+
 ---
 
 Avec toutes ces étapes tu pourras chatter avec les Avengers !
 
 ---
 [CAPTURE ECRAN] De retour la capture d'écran de l'application finie ?
+
 ---
 
 ## Préparation de l'environnement
 
+Pour utiliser ZetaPush, tu as seulement besoin de _NodeJS_ (et implicitement _npm_). Il te faut donc installer _NodeJS_ via : https://nodejs.org
+
+Une fois que c'est fait, tu vas pouvoir initialiser ton Avengers chat.
+
+
 ## Initialisation du projet
+
+Pour initialiser ton application, tu as plusieurs possibilités. Tu peux utiliser le wizard disponible sur https://console.zetapush.com qui vas te guider pas à pas, utiliser la CLI ou encore démarrer en créant manuellement les fichiers nécessaires. Ici tu vas directement utiliser la CLI pour aller au plus vite.
+
+Pour utiliser la CLI, il va te falloir la dépendance _npm_ `@zetapush/cli`. Commence alors par initialiser un projet _npm_, et d'y installer la dépendance à la CLI de ZetaPush :
+
+```bash
+$ cd ~/workspace/
+$ mkdir avengersChat 
+$ cd avengersChat/
+$ npm init
+$ npm install --save @zetapush/cli
+```
+
+Une fois ton dossier de prêt, lance la commande de génération d'un nouveau projet avec ZetaPush :
+
+```bash
+$ zeta new
+```
+
+Cette commande va te créer une arborescence de projet pour différencier ton code front et ton code back. Ce n'est pas obligatoire mais c'est une bonne pratique pour bien différencier les différentes composantes de ton application.
+
+![Arborescence init projet](./images/arborescence-init-app.png)
+
+
+À présent ton application est prête à ếtre développée ! Commence par créer le design.
 
 ## Création du design de l'application
 
