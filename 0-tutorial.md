@@ -107,6 +107,97 @@ Cette commande va te créer une arborescence de projet pour différencier ton co
 
 ## Création du design de l'application
 
+Dans cette section tu vas commencer par faire le design de ton Avengers Chat. Voici à quoi ça va ressembler :
+
+![Design sans gestion des avengers](./images/tuto-design-only.png)
+
+Dans ce tutoriel ce n'est pas la partie design de l'application qui nous intéresse, donc voici les fichiers à utiliser, tu peux directement les copier-coller. À noter que nous avons ajouté un fichier `style.css` dans le sous-dossier `front`.
+
+### **index.html**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Avengers Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Avengers Chat</title>
+</head>
+
+<body>
+    <!-- Area where we add the messages -->
+    <div class="content" id="conversation"></div>
+
+    <div id="buttons">
+        <input placeholder="Your message" />
+        <button class="button">Send</button>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
+```
+
+### **style.css**
+
+```css
+body {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+}
+
+#buttons {
+    display: flex;
+    justify-content: flex-start;
+    width: 70%;
+    height: 5vh;
+    max-width: 700px;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+}
+
+.button {
+    width: 20%;
+    height: 100%;
+}
+
+#conversation {
+    margin: 5vh;
+    border: 5px double grey;
+    width: 70%;
+    height: 40vh;
+    max-width: 700px;
+    padding: 10px;
+    overflow-y: auto;
+}
+```
+
+Le design est maintenant prêt, utilise à présent les _cloud services_ pour rajouter le fonctionnel du chat.
+
 ## Utilisation des _cloud services_
 
 ## Déploiement de l'application
