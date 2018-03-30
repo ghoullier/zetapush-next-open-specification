@@ -55,7 +55,7 @@ Ensuite, tu vas réaliser la première partie du chat. C'est à dire créer un c
 
 ---
 
-Ton chat est bien, mais ce que tu voulais c'est aussi de pouvoir choisir ton personnage des Avengers au lancement de ton application. Ce n'est pas un comportement fournit par défaut par ZetaPush, donc tu vas pouvoir créer cette fonctionnalité dans un _custom cloud service_.
+Ton chat est bien, mais ce que tu voulais c'est aussi de pouvoir choisir ton personnage des Avengers au lancement de ton application et découvrir sa compétence associée. Ce n'est pas un comportement fournit par défaut par ZetaPush, donc tu vas pouvoir créer cette fonctionnalité dans un _custom cloud service_.
 
 Une fois que tu as écrit et déployé ta fonctionnalité, tu vas pouvoir l'utiliser et déployer la nouvelle version de ton application.
 
@@ -209,7 +209,7 @@ En ce qui concerne la connexion, tu vas te connecter auprès de ZetaPush en tant
 
 Dans la plupart des cas tu utiliseras une connexion "standard" avec un couple login/mot de passe, mais ici, une connexion anonyme vas te suffire. Voici comment procéder :
 
-### **index.js**
+### **front/index.js**
 
 ```javascript
 // TODO: Code de connexion avec les détails de chaque objet
@@ -217,7 +217,7 @@ Dans la plupart des cas tu utiliseras une connexion "standard" avec un couple lo
 
 Ensuite, pour envoyer un message et écouter les nouveaux, tu vas pouvoir utiliser le _cloud service_ `ChatService` fourni par ZetaPush. Ce dernier va te fournir la _cloud function_ `sendMessage()` et l'évènement `onNewMessage()` pour répondre à ton besoin. Voici comment les utiliser :
 
-### **index.js**
+### **front/index.js**
 
 ```javascript
 // TODO: Utilisation de "sendMessage()" et de "onNewMessage()"
@@ -232,7 +232,7 @@ Petite précision concernant les _cloud services_ et les _cloud functions_. Un _
 
 À présent voici le code source complet. Il est nécessaire d'être connecté avant de pouvoir appeler une _cloud function_.
 
-### **index.js**
+### **front/index.js**
 
 ```javascript
 // TODO: Connexion à la plateforme suivi de l'utilisation de "sendMessage()" et de "onNewMessage()"
@@ -292,6 +292,84 @@ Pour l'instant, nous ne gérons pas les utilisateurs donc ce sont les identifian
 
 ## Développement back avec ZetaPush
 
+À présent, tu vas créer ton propre code métier avec ZetaPush en utilisant JavaScript. Pour ceci tu vas créer un _custom cloud service_. 
+
+---
+### Précisions
+
+Un _custom cloud service_ est exactement la même chose qu'un _cloud service_ sauf qu'ici, c'est toi qui va le créer. Une fois déployé sur ton application, tu vas pouvoir l'utiliser de la même manière qu'un _cloud service_.
+
+---
+
+Ton _custom cloud service_ va te servir dans un premier temps à choisir ton personnage des _Avengers_ quand tu accèdes au chat. Pour ceci tu vas utiliser la _cloud function_ `setUserName()` du _cloud service_ `UtilsService`. Cette dernière va te permettre de donner un nom à afficher pour l'utilisateur courant. Ensuite il faut associer une compétence à ton personnage, pour ceci nous allons stocker l'information côté back. Pour ceci tu vas utiliser le _cloud service_ `StorageService`.
+
+Pour ceci créé ton _custom cloud service_ dans **server/index.js**. Ton _custom cloud service_ se nommera `AvengersService` et tu auras les _cloud functions_ suivantes : `setAvengersName()` / `setSkillByAvengers()` / `getSkillByAvengers()`.
+
+Tu pourrais créer cette logique métier côté front, mais c'est toujours une bonne pratique de mettre ton code fonctionnel, propre à ton application, côté back.
+
+Nous faisons en sorte que la définition de la compétence pour chaque Avengers se fait au déploiement du code back.
+
+
+### **server/index.js**
+
+```javascript
+// TODO: "AvengersService"
+// TODO: "setAvengersName()"
+// TODO: "setSkillByAvengers()"
+// TODO: "getSkillByAvengers()"
+```
+
+Ton _custom cloud service_ est maintenant prêt, avant de l'utiliser déploies le. Ici, tu vas utiliser la commande `zeta push`, seulement pour déployer le côté back de ton application, voici la démarche à suivre :
+
+// TODO: Revoir comment la commande `zeta push` sera réellement appelée
+// TODO: Comment ajouter du code d'init dans un service ? Lancé au déploiement ?
+
+```bash
+$ zeta push --back /path/of/your/back
+``` 
+
+Dans ton cas, si tu te trouve à la racine du projet, il te faut lancer :
+
+```bash
+$ zeta push --back ./server/
+```
+
+Maintenant que ton _custom cloud service_ est disponible, utilises le !
+
 ## Utilisation d'un _custom cloud service_
 
+Maintenant il faut que tu fasses en sorte de demander quel Avengers un utilisateur veut utiliser lorsqu'il se connecte. Ensuite il faut ajouter un bouton pour que chaque Avengers puisse utiliser sa compétence sur le chat !
+
+// TODO: Ajouter ascii art pour matérialiser chaque compétence
+
+Voici la nouvelle version des fichiers pour implémenter ces fonctionnalités. Tu peux voir que tu utilises exactement de la même manière un _custom cloud service_ et un _cloud service_.
+
+### **front/index.js**
+
+```javascript
+// TODO:
+```
+
+### **index.html**
+
+```javascript
+// TODO:
+```
+
+Il ne te reste plus qu'à déployer la partie front de ton application :
+
+// TODO: Revoir comment la commande `zeta push` sera réellement appelée
+
+```bash
+$ zeta push --front ./front
+```
+
+Si tu avais voulu déployer en même temps le back et le front tu aurais pu utiliser :
+
+```bash
+$ zeta push --back /path/of/your/back --front /path/of/your/front
+``` 
+
 ## Conclusion
+
+
