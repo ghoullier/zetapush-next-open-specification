@@ -200,7 +200,95 @@ Le design est maintenant prêt, utilise à présent les _cloud services_ pour ra
 
 ## Utilisation des _cloud services_
 
+Pour que ton chat fonctionne il te faut 3 choses dans ton application :
+- Une connexion à la plateforme ZetaPush
+- Un moyen d'envoyer un message
+- Un moyen d'écouter les nouveaux messages
+
+En ce qui concerne la connexion, tu vas te connecter auprès de ZetaPush en tant qu'utilisateur anonyme. C'est à dire que tu n'as pas besoin d'authentification mais que tu as quand même accès aux _cloud services_.
+
+Dans la plupart des cas tu utiliseras une connexion "standard" avec un couple login/mot de passe, mais ici, une connexion anonyme vas te suffire. Voici comment procéder :
+
+### **index.js**
+
+```javascript
+// TODO: Code de connexion avec les détails de chaque objet
+```
+
+Ensuite, pour envoyer un message et écouter les nouveaux, tu vas pouvoir utiliser le _cloud service_ `ChatService` fourni par ZetaPush. Ce dernier va te fournir la _cloud function_ `sendMessage()` et l'évènement `onNewMessage()` pour répondre à ton besoin. Voici comment les utiliser :
+
+### **index.js**
+
+```javascript
+// TODO: Utilisation de "sendMessage()" et de "onNewMessage()"
+```
+
+--- 
+### _cloud services et cloud functions_
+
+Petite précision concernant les _cloud services_ et les _cloud functions_. Un _cloud service_ est un ensemble de _cloud functions_ regroupées par thème. C'est à dire que nous avons des _cloud services_ pour le chat, la gestion d'utilisateurs, la remontée de données, etc... La _cloud function_ effectue une action précise, comme par exemple `createUser()`, `sendMessage()` ou encore `pushData()`.
+
+---
+
+À présent voici le code source complet. Il est nécessaire d'être connecté avant de pouvoir appeler une _cloud function_.
+
+### **index.js**
+
+```javascript
+// TODO: Connexion à la plateforme suivi de l'utilisation de "sendMessage()" et de "onNewMessage()"
+```
+
+Le fonctionnel de ton chat est maintenant fait, il te faut maintenant déployer ton application pour qu'elle soit accessible à tous.
+
+
 ## Déploiement de l'application
+
+C'est ici que tu vas découvrir la commande `zeta push`. Cette dernière va te permettre, en une seule ligne, de déployer ton application et de te retourner une URL où ton front a été publié. Voici la démarche à suivre :
+
+Pour l'instant nous avons seulement du code front, nous n'avons pas encore créé de _custom cloud service_ (tu verras en détails ce que c'est par la suite), donc voici la commande à exécuter :
+
+// TODO: Revoir comment la commande `zeta push` sera réellement appelée
+
+```bash
+$ zeta push --front /path/of/your/front
+```
+
+Dans ton cas, si tu te positionne à la racine de ton application ça sera :
+
+```bash
+$ zeta push --front ./front
+```
+
+Cette commande va faire plusieurs choses :
+- Te créer un compte sur la plateforme ZetaPush
+- Créer ta nouvelle application
+- Ajouter les _cloud services_ nécessaires à ton application (ici `ChatService`)
+- Déployer le front sur une URL unique
+- Brancher le front avec les _cloud services_
+
+---
+[CAPTURE ECRAN] Capture de la barre de progression de la CLI
+
+---
+
+Une fois le déploiement effectué, la CLI va te retourner plusieurs informations :
+- URL unique de ton application
+- login/password temporaire de ton compte sur la plateforme ZetaPush
+- Période de validité de ton application
+
+---
+
+// TODO: Définir le process complet d'une application sans compte ZetaPush
+// TODO: Définir le temps de validité d'une application "anonyme"
+
+### Précisions
+
+Dans ce tutoriel, tu as créé une application sans avoir de compte sur la plateforme ZetaPush. Dans ce cas, il y en a un qui est fourni par défaut, avec un couple login/mot de passe temporaire. Ton application est aussi temporaire, mais tu peux rapidement la rendre permanente en te connectant à https://console.zetapush.com avec ton couple login/mot de passe pour modifier tes identifiants et activer ton compte. Le fait d'avoir un compte ZetaPush va te permettre de regrouper toutes tes applications et de les exploiter d'avantage.
+
+---
+
+Tu peux maintenant te rendre sur l'URL fourni par la CLI et voir ton chat fonctionner !
+Pour l'instant, nous ne gérons pas les utilisateurs donc ce sont les identifiants uniques par utilisateur qui sont affichés en tant que membre du chat. Tu vas y remédier tout de suite en ajoutons ta nouvelle fonctionnalité dans un _custom cloud service_.
 
 ## Développement back avec ZetaPush
 
