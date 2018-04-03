@@ -123,7 +123,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --server-only```
+- J'exécute la commande : ```zeta push --server-only```
 
 *THEN*
   - Mon code custom est envoyé sur ZetaPush
@@ -154,7 +154,6 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
   - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
   - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
-
 
 TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
@@ -437,6 +436,11 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
     ```yml
     stripe:
         url: 'https://api.stripe.com'
+        token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
+    ```
+  - ```src/server/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
+    ```yml
+    stripe:
         token: 'sk_prod_dNuiVQyTlDMH5RdFYSD4nIV0'
     ```
   - Je peux utiliser mon frontend pour interagir avec mon service custom déployé en production
@@ -709,7 +713,6 @@ TODO: tests auto
   - TODO: logs
   - TODO: status pour savoir si tout est ok
   - TODO: utiliser curl/wget pour interroger le status ?
-
 
 ### ETQ exploitant je mets à disposition l'application web avec les services custom en production avec les outils ZetaPush
 
