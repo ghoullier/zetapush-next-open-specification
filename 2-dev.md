@@ -14,6 +14,7 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [commun.md](./
 
 * J'ai un compte sur ZetaPush
 * J'ai une application front qui est prête à utiliser les _cloud services_. (Projet initialisé, dépendances installées, éventuellement la configuration de saisie)
+* Nous utilisons le **Avengers Chat** comme cas d'usage (Chat temps réel)
 
 ---
 
@@ -31,9 +32,9 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [commun.md](./
 
 _GIVEN_
 
-* J'ai mon application front qui est en cours de développement
-* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
-* J'ai accès à `UsersService` via l'objet `usersService`
+* Je suis en cours de développement de mon _Avengers Chat_
+* J'ai importé le _cloud service_ `UserService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UserService` via l'objet `userService`
 * J'ai une _cloud function_ qui me permet de créer des utilisateurs : `createUser()`
 * Je souhaite créer un utilisateur depuis mon code front
 * J'écris le code suivant :
@@ -41,31 +42,34 @@ _GIVEN_
   ```javascript
   /**
    * I call the "createUser()" cloud function with many parameters.
-   * "usersService" is a UsersService
+   * "userService" is a UserService
    */
-  this.usersService
-    .createUser({
-      firstname: "Jean",
-      lastname: "Martin",
-      email: "jean-martin@zetapush.com"
-    })
-    /**
-     *  The cloud function return a promise. In the "then" part we have the response
-     */
-    .then(createdUser => {
-      console.log(`The user : ${createdUser.firstname} ${createdUser.lastname} is just created !`);
-    })
-    /**
-     *  The cloud function return a promise. In the "catch" part we have the error
-     */
-    .catch(error => {
-      console.errror(`Failed to create user : ${error.message}`);
-    });
+  this.userService.createUser({
+    firstname: "Peter",
+    lastname: "Parker",
+    lastname: "Spider-Man"
+  })
+  .then((newUser) => {
+    console.log(`new user created : ${newUser.username}`);
+  })
+  .catch((error) => {
+    console.error(`Error to create new user : ${error.message}`);
+  });
+
+
+  /**
+   *  Other syntaxe to call a cloud function
+   */
+  const newUser = await this.userService.createUser({
+    firstname: "Peter",
+    lastname: "Parker",
+    lastname: "Spider-Man"
+  });
   ```
 
 _WHEN_
 
-* Lorsque j'appelle ma _cloud function_ `createUser` via le _cloud service_ `UsersService` et que tout s'est bien passé
+* Lorsque j'appelle ma _cloud function_ `createUser` via le _cloud service_ `UserService` et que tout s'est bien passé
 
 _THEN_
 
@@ -79,9 +83,9 @@ _THEN_
 
 _GIVEN_
 
-* J'ai mon application front qui est en cours de développement
-* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
-* J'ai accès à `UsersService` via l'objet `usersService`
+* Je suis en cours de développement de mon _Avengers Chat_
+* J'ai importé le _cloud service_ `UserService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UserService` via l'objet `userService`
 * J'ai une _cloud function_ qui me permet de créer des utilisateurs : `createUser()`
 * Je souhaite créer un utilisateur depuis mon code front
 * J'écris le code suivant :
@@ -89,31 +93,34 @@ _GIVEN_
   ```javascript
   /**
    * I call the "createUser()" cloud function with many parameters.
-   * "usersService" is a UsersService
+   * "userService" is a UserService
    */
-  this.usersService
-    .createUser({
-      firstname: "Jean",
-      lastname: "Martin",
-      email: "jean-martin@zetapush.com"
-    })
-    /**
-     *  The cloud function return a promise. In the "then" part we have the response
-     */
-    .then(createdUser => {
-      console.log(`The user : ${createdUser.firstname} ${createdUser.lastname} is just created !`);
-    })
-    /**
-     *  The cloud function return a promise. In the "catch" part we have the error
-     */
-    .catch(error => {
-      console.errror(`Failed to create user : ${error.message}`);
-    });
+  this.userService.createUser({
+    firstname: "Peter",
+    lastname: "Parker",
+    lastname: "Spider-Man"
+  })
+  .then((newUser) => {
+    console.log(`new user created : ${newUser.username}`);
+  })
+  .catch((error) => {
+    console.error(`Error to create new user : ${error.message}`);
+  });
+
+
+  /**
+   *  Other syntaxe to call a cloud function
+   */
+  const newUser = await this.userService.createUser({
+    firstname: "Peter",
+    lastname: "Parker",
+    lastname: "Spider-Man"
+  });
   ```
 
 _WHEN_
 
-* Lorsque j'appelle ma _cloud function_ `createUser` via le _cloud service_ `UsersService` et qu'une erreur est survenue
+* Lorsque j'appelle ma _cloud function_ `createUser` via le _cloud service_ `UserService` et qu'une erreur est survenue
 
 _THEN_
 
@@ -128,16 +135,16 @@ _THEN_
 
 _GIVEN_
 
-* J'ai mon application front qui est en cours de développement
-* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
-* J'ai accès à `UsersService` via l'objet `usersService`
+* Je suis en cours de développement de mon _Avengers Chat_
+* J'ai importé le _cloud service_ `UserService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UserService` via l'objet `userService`
 * J'ai une _cloud function_ qui me permet de créer des utilisateurs : `createUser()`
 * Je souhaite écouter l'évènement de la création d'utilisateur
 * J'écris le code suivant pour écouter les évènements de création d'utilisateurs :
 
 ```javascript
-this.usersService.onCreateUser = user => {
-  console.log(`User created : ${user.name}`);
+this.userService.onCreateUser = user => {
+  console.log(`My new Avenger is : ${user.username}`);
 };
 ```
 
@@ -148,7 +155,7 @@ _WHEN_
 _THEN_
 
 * L'évènement `onCreateUser` est appelé et l'action résultante est exécutée
-* Dans notre exemple, `User created : "name"` est affiché dans sortie console
+* Dans notre exemple, `My new Avenger is : "name"` est affiché dans sortie console
 
 #### Précisions
 
@@ -165,20 +172,20 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
-* J'ai mon application front qui est en cours de développement
-* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
-* J'ai accès à `UsersService` via l'objet `usersService`
+* Je suis en cours de développement de mon _Avengers Chat_
+* J'ai importé le _cloud service_ `UserService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UserService` via l'objet `userService`
 * J'ai différentes _cloud functions_ disponibles au sein de mon _cloud service_ : `createUser()` / `createOrganization()` / `getUser()`
 
 _WHEN_
 
-* Lorsque je commence à écrire mon appel au _cloud service_ : `this.usersService.create`
+* Lorsque je commence à écrire mon appel au _cloud service_ : `this.userService.create`
 
 _THEN_
 
 * L'autocompletion me propose les différentes _cloud functions_ auquels j'ai accès en fonction de ma saisie :
-  * `this.usersService.createUser()`
-  * `this.usersService.createOrganization()`
+  * `this.userService.createUser()`
+  * `this.userService.createOrganization()`
 * La _cloud function_ `getUser()` ne correspond pas et n'est donc pas affichée
 
 ---
@@ -189,14 +196,14 @@ _THEN_
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
-* J'ai mon application front qui est en cours de développement
-* J'ai importé le _cloud service_ `UsersService` qui me permet de gérer des utilisateurs
-* J'ai accès à `UsersService` via l'objet `usersService`
+* Je suis en cours de développement de mon _Avengers Chat_
+* J'ai importé le _cloud service_ `UserService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UserService` via l'objet `userService`
 * J'ai différentes _cloud functions_ disponibles au sein de mon _cloud service_ : `createUser()` / `createOrganization()` / `getUser()`
 
 _WHEN_
 
-* Lorsque je commence à écrire mon appel au _cloud service_ : `this.usersService.create`
+* Lorsque je commence à écrire mon appel au _cloud service_ : `this.userService.create`
 
 _THEN_
 
@@ -221,10 +228,10 @@ _THEN_
 
 _GIVEN_
 
-* J'ai mon application front qui est en cours de développement
+* Je suis en cours de développement de mon _Avengers Chat_
 * Je souhaite réaliser mon code métier et le déployer côté back
-* Je souhaite créer un _custom cloud service_ nommé `GameService` qui va me permettre de gérer un jeu
-* Dans un premier temps je veux seulement ajouter une _cloud function_ à mon _custom cloud service_ qui est `createGame()` qui va me permettre d'initialiser un jeu
+* Je souhaite créer un _custom cloud service_ nommé `AvengersService` qui va me permettre de réaliser le code métier de mon chat
+* Dans un premier temps je veux seulement ajouter une _cloud function_ à mon _custom cloud service_ qui est `attackWithRandomSkill()` qui va me permettre de lancer une attaque aléatoire en fonction du personnage (chaque Avenger a plusieurs compétences possibles)
 
 _WHEN_
 
@@ -232,21 +239,27 @@ _WHEN_
 
   ```javascript
   /**
-   *  This class gathers the cloud functions for my own custom cloud service to manage a game
+   *  This class gathers the cloud functions for my own custom cloud service
    *  Each method is a cloud function
-   *  We extends with "CustomCloudService" to get special methods and say to ZetaPush that is a custom cloud service
    */
-  class GameService extends CustomCloudService {
+  class AvengersService {
 
-    /**
-     * Cloud function to create a new game with a name
-     */
-    function createGame(name) {
-      // ...
-      // Some code
-      // ...
-    }
+  /**
+   *  Function to print that an Avenger do a random attack
+   */
+  attackWithRandomSkill(avengerName) {
+    // Get the Avengers
+    const avenger = this.userService.getUserByLogin({login: avengerName}):
+
+    // Get a random power of this Avenger
+    const superpower = avenger.superpowers[Math.floor(Math.random()*avenger.superpowers.length)];
+
+    // Print that we attack with a random skill !
+    print(`${avengerName} attacks with ${superpower} !!!`);
+
+    return superpower;
   }
+}
   ```
 
 _THEN_
@@ -257,20 +270,20 @@ _THEN_
 
   ```javascript
   /**
-   *  "gameService" is an instance of GameService
+   *  "avengersService" is an instance of AvengersService
    */
-  this.gameService.createGame("Avengers Game");
+  this.avengersService.attackWithRandomSkill("Spider-Man");
   ```
 
 - Un listener d'évènement est automatiquement créé pour chaque _cloud function_, ici nous pouvons écouter la création de jeu avec :
 
   ```javascript
   /**
-   *  "gameService" is an instance of GameService
-   *  We assume that the createGame() cloud function return an objet with a 'name' parameter
+   *  "avengersService" is an instance of AvengersService
+   *  We assume that the attackWithRandomSkill() cloud function return a string
    */
-  this.gameService.onCreateGame = game => {
-    console.log(`New game created : ${game.name}`);
+  this.avengersService.attackWithRandomSkill = superpower => {
+    console.log(`The Avenger attacks with the skill : ${superpower} !!`);
   };
   ```
 
@@ -280,39 +293,36 @@ _THEN_
 
 _GIVEN_
 
-* J'ai mon application front qui est en cours de développement
-* J'ai importé le _custom cloud service_ `GameService` qui me permet de gérer un jeu
-* J'ai accès à `GameService` via l'objet `gameService`
-* J'ai une _cloud function_ qui me permet d'initialiser un jeu : `createGame()`
-* Je souhaite initialiser un jeu depuis mon code front
+* Je suis en cours de développement de mon _Avengers Chat_
+* J'ai importé le _custom cloud service_ `AvengersService` qui me permet de gérer un jeu
+* J'ai accès à `AvengersService` via l'objet `avengersService`
+* J'ai une _cloud function_ qui me permet de faire une attaque d'Avenger aléatoire (en fonction du personnage) : `attackWithRandomSkill()`
+* Je souhaite lancer une attaque avec un Avenger particulier côté front
 * J'écris le code suivant :
 
   ```javascript
   /**
-   * I call the "createGame()" cloud function with a name.
-   * "gameService" is a GameService instance
+   * I call the "attackWithRandomSkill()" cloud function with an username.
+   * "avengersService" is a AvengersService instance
    */
-  this.gameService
-    .createGame({
-      name: "Avengers game"
-    })
+  this.avengersService.attackWithRandomSkill("Spider-Man")
     /**
      *  The cloud function call return a promise. In the "then" part we have the response
      */
-    .then(createdGame => {
-      console.log(`The created game : ${createdGame.name} with the id : ${createdGame.id}, is just created !`);
+    .then(superpower => {
+      console.log(`The Avenger attacks with the skill : ${superpower} !!`);
     })
     /**
      *  The cloud function call return a promise. In the "catch" part we have the error
      */
     .catch(error => {
-      console.errror(`Failed to create game : ${error.message}`);
+      console.errror(`Failed to launch an attack with this Avenger : ${error.message}`);
     });
   ```
 
 _WHEN_
 
-* Lorsque j'appelle ma _cloud function_ `createGame` via le _custom cloud service_ `GameService` et que tout s'est bien passé
+* Lorsque j'appelle ma _cloud function_ `attackWithRandomSkill` via le _custom cloud service_ `AvengersService` et que tout s'est bien passé
 
 _THEN_
 
@@ -326,39 +336,36 @@ _THEN_
 
 _GIVEN_
 
-* J'ai mon application front qui est en cours de développement
-* J'ai importé le _custom cloud service_ `GameService` qui me permet de gérer un jeu
-* J'ai accès à `GameService` via l'objet `gameService`
-* J'ai une _cloud function_ qui me permet d'initialiser un jeu : `createGame()`
-* Je souhaite initialiser un jeu depuis mon code front
+* Je suis en cours de développement de mon _Avengers Chat_
+* J'ai importé le _custom cloud service_ `AvengersService` qui me permet de gérer un jeu
+* J'ai accès à `AvengersService` via l'objet `avengersService`
+* J'ai une _cloud function_ qui me permet de faire une attaque d'Avenger aléatoire (en fonction du personnage) : `attackWithRandomSkill()`
+* Je souhaite lancer une attaque avec un Avenger particulier côté front
 * J'écris le code suivant :
 
   ```javascript
   /**
-   * I call the "createGame()" cloud function with a name.
-   * "gameService" is a GameService instance
+   * I call the "attackWithRandomSkill()" cloud function with an username.
+   * "avengersService" is a AvengersService instance
    */
-  this.gameService
-    .createGame({
-      name: "Avengers game"
-    })
+  this.avengersService.attackWithRandomSkill("Spider-Man")
     /**
      *  The cloud function call return a promise. In the "then" part we have the response
      */
-    .then(createdGame => {
-      console.log(`The created game : ${createdGame.name} with the id : ${createdGame.id}, is just created !`);
+    .then(superpower => {
+      console.log(`The Avenger attacks with the skill : ${superpower} !!`);
     })
     /**
      *  The cloud function call return a promise. In the "catch" part we have the error
      */
     .catch(error => {
-      console.errror(`Failed to create game : ${error.message}`);
+      console.errror(`Failed to launch an attack with this Avenger : ${error.message}`);
     });
   ```
 
 _WHEN_
 
-* Lorsque j'appelle ma _cloud function_ `createGame` via le _cloud service_ `GameService` et qu'une erreur est survenue
+* Lorsque j'appelle ma _cloud function_ `attackWithRandomSkill` via le _custom cloud service_ `AvengersService` et qu'une erreur est survenue
 
 _THEN_
 
@@ -373,27 +380,27 @@ _THEN_
 
 _GIVEN_
 
-* J'ai mon application front qui est en cours de développement
-* J'ai importé le _custom cloud service_ `GameService` qui me permet de gérer un jeu
-* J'ai accès à `GameService` via l'objet `gameService`
-* J'ai une _cloud function_ qui me permet d'initialiser un jeu : `creatGame()`
-* Je souhaite écouter l'évènement de la création d'un jeu
-* J'écris le code suivant pour écouter les évènements de création de jeu :
+* Je suis en cours de développement de mon _Avengers Chat_
+* J'ai importé le _custom cloud service_ `AvengersService` qui me permet de gérer un jeu
+* J'ai accès à `AvengersService` via l'objet `avengersService`
+* J'ai une _cloud function_ qui me permet de faire une attaque d'Avenger aléatoire (en fonction du personnage) : `attackWithRandomSkill()`
+* Je souhaite écouter l'évènement d'attaque d'un Avenger
+* J'écris le code suivant pour écouter les évènements d'attaque :
 
 ```javascript
-this.usersService.onCreateGame = game => {
-  console.log(`Game created : ${game.name}`);
+this.avengersService.onAttackWithRandomSkill = superpower => {
+  console.log(`The Avenger attacks with the skill : ${superpower} !!`);
 };
 ```
 
 _WHEN_
 
-* Lorsqu'un nouveau jeu est créé sur mon application
+* Lorsqu'une attaque est lancée par un Avenger
 
 _THEN_
 
-* L'évènement `onCreateGame` est appelé et l'action résultante est exécutée
-* Dans notre exemple, `Game created : "name"` est affiché dans sortie console
+* L'évènement `onAttackWithRandomSkill` est appelé et l'action résultante est exécutée
+* Dans notre exemple, `The Avenger attacks with the skill : "superpower" !!` est affiché dans sortie console
 
 #### Précisions
 
@@ -410,21 +417,21 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
-* J'ai mon application front qui est en cours de développement
-* J'ai importé le _custom cloud service_ `GameService` qui me permet de gérer un jeu
-* J'ai accès à `GameService` via l'objet `gameService`
-* J'ai différentes _cloud functions_ disponibles au sein de mon _custom cloud service_ : `createGame()` / `createPlayer()` / `movePlayer()`
+* Je suis en cours de développement de mon _Avengers Chat_
+* J'ai importé le _custom cloud service_ `AvengersService` qui me permet de gérer un jeu
+* J'ai accès à `AvengersService` via l'objet `avengersService`
+* J'ai différentes _cloud functions_ disponibles au sein de mon _custom cloud service_ : `attackWithRandomSkill()` / `attackWithSpecificSkill()` / `getHealthAvenger()`
 
 _WHEN_
 
-* Lorsque je commence à écrire mon appel au _custom cloud service_ : `this.gameService.create`
+* Lorsque je commence à écrire mon appel au _custom cloud service_ : `this.avengersService.attack`
 
 _THEN_
 
 * L'autocompletion me propose les différentes _cloud functions_ auquels j'ai accès en fonction de ma saisie :
-  * `this.gameService.createGame()`
-  * `this.gameService.createPlayer()`
-* La _cloud function_ `movePlayer()` ne correspond pas et n'est donc pas affichée
+  * `this.avengersService.attackWithRandomSkill()`
+  * `this.avengersService.attackWithSpecificSkill()`
+* La _cloud function_ `getHealthAvenger()` ne correspond pas et n'est donc pas affichée
 
 ---
 
@@ -433,14 +440,14 @@ _THEN_
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
-* J'ai mon application front qui est en cours de développement
-* J'ai importé le _custom cloud service_ `GameService` qui me permet de gérer un jeu
-* J'ai accès à `GameService` via l'objet `gameService`
-* J'ai différentes _cloud functions_ disponibles au sein de mon _cloud service_ : `createGame()` / `createPlayer()` / `movePlayer()`
+* Je suis en cours de développement de mon _Avengers Chat_
+* J'ai importé le _custom cloud service_ `AvengersService` qui me permet de gérer un jeu
+* J'ai accès à `AvengersService` via l'objet `avengersService`
+* J'ai différentes _cloud functions_ disponibles au sein de mon _custom cloud service_ : `attackWithRandomSkill()` / `attackWithSpecificSkill()` / `getHealthAvenger()`
 
 _WHEN_
 
-* Lorsque je commence à écrire mon appel au _custom cloud service_ : `this.gameService.create`
+* Lorsque je commence à écrire mon appel au _custom cloud service_ : `this.avengersService.attack`
 
 _THEN_
 
