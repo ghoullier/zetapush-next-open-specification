@@ -23,3 +23,5 @@ Client final d'une ESN | client
 - ETQ : En tant que
 - dev : Terme générique pour dire dev front / back ou fullstack
 - ZP : ZetaPush
+- Service : Fonctionnalité haut niveau proposée par ZetaPush appelable par le client
+- Service custom : Fonctionnalité créée par le développeur qui sera déployé côté back. Un service custom peut être autonome ou étendre un service existant
