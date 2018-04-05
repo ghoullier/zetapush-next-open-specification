@@ -123,7 +123,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --server-only```
+- J'exécute la commande : ```zeta push --server-only```
 
 *THEN*
   - Mon code custom est envoyé sur ZetaPush
@@ -154,7 +154,6 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
   - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
   - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
-
 
 TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
@@ -437,6 +436,11 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
     ```yml
     stripe:
         url: 'https://api.stripe.com'
+        token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
+    ```
+  - ```src/server/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
+    ```yml
+    stripe:
         token: 'sk_prod_dNuiVQyTlDMH5RdFYSD4nIV0'
     ```
   - Je peux utiliser mon frontend pour interagir avec mon service custom déployé en production
@@ -710,16 +714,80 @@ TODO: tests auto
   - TODO: status pour savoir si tout est ok
   - TODO: utiliser curl/wget pour interroger le status ?
 
-
 ### ETQ exploitant je mets à disposition l'application web avec les services custom en production avec les outils ZetaPush
 
+### ETQ dev je supprime mon application (front et backend) en production
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identifiant de mon application 'my-first-apop'
+
+*WHEN*
+  - J'exécute la commande : ```zeta delete ```
+
+*THEN
+  - J'ai une demande de confirmation : ```Your application 'my-first-app' will be deleted. Are you sur Y/n ?```
+  - Si je répond oui alors l'application y compris le frontend est supprimée
 
 
+
+### ETQ dev je supprime mon front en production
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identifiant de mon application 'my-first-apop'
+
+*WHEN*
+  - J'exécute la commande : ```zeta delete --front-only```
+
+*THEN
+  - J'ai une demande de confirmation : ```Your frontend 'my-first-app' will be deleted. Are you sur Y/n ?```
+  - Si je répond oui alors le frontend est supprimé
+
+
+### ETQ dev je supprime mon backend en production
+
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identifiant de mon application 'my-first-apop'
+
+*WHEN*
+  - J'exécute la commande : ```zeta delete --server-only```
+
+*THEN
+  - J'ai une demande de confirmation : ```Your backend 'my-first-app' will be deleted. Are you sur Y/n ?```
+  - Si je répond oui alors le backend est supprimé
+
+### ETQ dev je test l'état des mon application en production
+
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identification de mon application 'my-first-app'
+
+*WHEN*
+  - J'exécute la commande : ```zeta status```
+
+*THEN*
+  - Je visualise le nombre de noeuds actifs de mon application
+  - Je visualise l'état de chaque noeud (Pending, Running, Succeeded, Failed, Unknown)
+
+| node1  | node2  | node3  | node4  | node5  |
+|---|---|---|---|---|
+| Running  | Running  | Pending  | Pending  | Pending |
+
+
+### ETQ dev je scale (up ou down) mon application en production
+
+*GIVEN*
+  - J'ai une application en production
+  - J'ai l'identification de mon application 'my-first-app'
+
+*WHEN*
+  - J'exécute la commande : ```zeta scale 3```
+
+*THEN*
+  - Je modifie le nombre de noeud actifs de mon application
 
 
 ### ETQ ... j'utilise mon propre domaine existant pour l'hébergement de mon front
-
-
 
 ### ETQ ... j'utilise mon propre domaine existant pour l'hébergement de mon front en HTTPs
 

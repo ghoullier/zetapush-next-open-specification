@@ -20,8 +20,8 @@ Je créé une nouvelle application front avec mon framework préféré (Angular,
 
 
 *GIVEN*
-  - J'ai un gestionnaire de package installé (npm ou yarn par exemple)
-  - J'ai un début d'application front (au moins le package.json)
+- J'ai un gestionnaire de package installé (npm ou yarn par exemple)
+- J'ai un début d'application front (au moins le package.json)
   
 *WHEN*
   - Lorsque j'ajoute la dépendance au SDK JavaScript ZetaPush, exemple:
@@ -163,7 +163,6 @@ Je créé une nouvelle application front avec mon framework préféré (Angular,
   - J'ai un exemple de service type "Welcome/HelloWorld" dans mon front
   - J'ai un exemple de service custom `hello-service.js`
   - La console m'indique que je peux lancer ma première application avec `zeta start`
-
 
 ### ETQ dev full-stack je créé ma première application via la CLI avec une arborescence spécifique
 
