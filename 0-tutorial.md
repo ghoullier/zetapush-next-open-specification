@@ -221,7 +221,25 @@ Pour que ton chat fonctionne il te faut 3 choses dans ton application :
 - Un moyen d'envoyer un message
 - Un moyen d'écouter les nouveaux messages
 
-En ce qui concerne la connexion, tu vas te connecter auprès de ZetaPush en tant qu'utilisateur anonyme. C'est à dire que tu n'as pas besoin d'authentification au sein de ton application mais que tu as quand même accès aux _cloud services_.
+---
+
+### Précision sur l'authentification
+
+Il est nécessaire de bien comprendre l'authentification avec ZetaPush puisqu'elle se passe à deux niveaux.
+
+Tout d'abord tu as l'authentification avec ton compte ZetaPush. Cette authentification est totalement indépendante de tes applications, elle te sert juste à avoir accès aux _Cloud Services_ de ZetaPush. Dans ce tutoriel, un compte (et donc une authentification) t'as été automatiquement créée, tu ne verras pas cette partie ici.
+
+Ensuite tu as l'authentification au sens applicatif. Cela veut dire l'authentification propre à ton application, ici à notre _Avengers Chat_. Tu peux distinguer deux types d'authentifications au niveau applicatif : L'authentification normale en mode _login/mot de passe_ et l'authentification anonyme où comme son nom l'indique, tu te connectes en tant qu'utilisateur anonyme, mais tu as quand même accès aux _Cloud Services_. 
+
+Voici un schéma qui illustre ces concepts :
+
+![Explications authentifications](./schemas/schema-authentications.png)
+
+
+---
+
+
+En ce qui concerne la connexion, tu vas te connecter auprès de ZetaPush en tant qu'utilisateur anonyme (Voir Précision au dessus).
 
 Dans la plupart des cas tu utiliseras une connexion "standard" avec un couple login/mot de passe, mais ici, une connexion anonyme va te suffire. Voici comment procéder :
 
