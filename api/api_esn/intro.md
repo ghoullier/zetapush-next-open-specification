@@ -28,15 +28,17 @@ Ce service permet de :
 
 [Lien vers l'API](./api-users.md)
 
-## RightManagementService
-_Gestion des droits des utilisateurs_
+## SecurityService
+_Gestion de la sécurité._
 
 Ce service permet de :
 - Créer des droits (utilisable dans tous les autres services par la suite)
 - Utiliser des droits préféfinis (Stockage de données, lecture ...)
 - Affecter des droits à des utilisateurs ou des groupes d'utilisateurs
+- Appliquer des droits sur différents services
+- Créer et appliquer des règles globales de sécurité
 
-[Lien vers l'API](./api-right-management.md)
+[Lien vers l'API](./api-security.md)
 
 ## CommunicationService
 _Communication exterieure, email, SMS, push notifications..._
@@ -68,3 +70,4 @@ Ce service permet de :
 - Récupérer les informations de connexion d'un utilisateur
 
 [Lien vers l'API](./api-authentication.md)
+

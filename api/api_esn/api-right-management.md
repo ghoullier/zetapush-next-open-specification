@@ -1,1 +1,0 @@
-# Cloud Functions pour le service _RightManagementService_
