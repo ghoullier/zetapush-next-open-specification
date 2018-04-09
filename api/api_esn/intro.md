@@ -60,14 +60,3 @@ Ce service permet de :
 - Récupérer / Supprimer des fichiers en utilisant l'arborescence
 
 [Lien vers l'API](./api-file.md)
-
-## AuthenticationService
-_Gestion globale de l'authentification au sein d'une application._
-
-Ce service permet de :
-- Se connecter en tant qu'utilisateur
-- Se connecter en tant qu'utilisateur anonyme
-- Récupérer les informations de connexion d'un utilisateur
-
-[Lien vers l'API](./api-authentication.md)
-
