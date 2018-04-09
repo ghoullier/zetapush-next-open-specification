@@ -27,7 +27,7 @@ Pour suivre ce tutoriel, tu as simplement besoin d'un éditeur de texte de type 
 
 ### Description du projet
 
-Comme nous l'avons énoncé plus haut, tu vas créer une application de chat et plus précisément un **Avengers chat** ! Le but est d'avoir un chat en pouvant choisir son personnage des Avengers. Chaque Avengers aura une compétence qui lui sera associée et qu'il pourra utiliser sur le chat. Ce dernier sera une application web déployée et accessible via une URL unique.
+Comme nous l'avons énoncé plus haut, tu vas créer une application de chat et plus précisément un **Avengers chat** ! Le but est d'avoir un chat en pouvant choisir son personnage des Avengers. Chaque Avengers aura plusieurs compétences qui lui seront associées et qu'il pourra utiliser sur le chat. Ce dernier sera une application web déployée et accessible via une URL unique.
 
 Voici la liste des personnages d'Avengers avec leurs compétences :
 
@@ -49,7 +49,7 @@ Voici le résultat final de l'application :
 
 ---
 
-Dans un premier temps tu vas préparer ton environnement de travail et initialiser un projet avec la CLI ZetaPush. La CLI est juste là pour te permettre d'aller plus vite, tu pourrais bien sur créer ton projet from scratch.
+Dans un premier temps tu vas préparer ton environnement de travail et initialiser un projet avec la CLI ZetaPush. La CLI est juste là pour te permettre d'aller plus vite, tu pourrais bien-sûr créer ton projet from scratch.
 
 ---
 [CAPTURE ECRAN] Capture d'écran de la sortie de CLI qui génère un squelette de ton projet
@@ -70,7 +70,7 @@ Ensuite, tu vas réaliser la première partie du chat. C'est à dire créer un c
 
 ---
 
-Ton chat fonctionne, mais ce que tu voulais c'est aussi de pouvoir choisir ton personnage des Avengers au lancement de ton application et découvrir sa compétence associée. Ce n'est pas un comportement fournit par défaut par ZetaPush, donc tu vas pouvoir créer cette fonctionnalité dans un _custom cloud service_ (présenté plus tard).
+Ton chat fonctionne, mais ce que tu voulais c'est aussi de pouvoir choisir ton personnage des Avengers au lancement de ton application et utiliser ses compétences associées. Ce n'est pas un comportement fournit par défaut par ZetaPush, donc tu vas pouvoir créer cette fonctionnalité dans un _custom cloud service_ (présenté plus tard). Ici notre fonctionnalité sera la possibilité pour un personnage d'utiliser une compétence aléatoire dans la liste des compétences qui lui sont affectées.
 
 Une fois que tu as écrit et déployé ta fonctionnalité, tu vas pouvoir l'utiliser et déployer la nouvelle version de ton application.
 
@@ -90,28 +90,42 @@ Avec toutes ces étapes tu pourras chatter avec les Avengers !
 
 Pour utiliser ZetaPush, tu n'as besoin d'aucune dépendances extérieures. En revanche, dans le cadre de ce tutoriel, nous allons utiliser la CLI ZetaPush (pour un gain de productivité). Tu auras donc besoin de _NodeJS_ (et implicitement _npm_) pour ceci. Il te faut donc installer _NodeJS_ via : https://nodejs.org
 
-Une fois que c'est fait, tu vas pouvoir initialiser ton Avengers chat.
+Comme ici tu vas utiliser la CLI ZetaPush, installe la :
 
+```bash
+$ npm install -g @zetapush/cli
+```
+
+Une fois que c'est fait, tu vas pouvoir initialiser ton Avengers chat.
 
 ## Initialisation du projet
 
 Pour initialiser ton application, tu as plusieurs possibilités. Tu peux utiliser le wizard disponible sur https://console.zetapush.com (En cours de développement) qui va te guider pas à pas, utiliser la CLI ou encore démarrer en créant manuellement les fichiers nécessaires. Ici tu vas directement utiliser la CLI pour aller au plus vite.
 
-Pour utiliser la CLI, il va te falloir la dépendance _npm_ `@zetapush/cli`. Commence alors par initialiser un projet _npm_, et d'y installer la dépendance à la CLI de ZetaPush :
+Voici la démarche à suivre pour utiliser ton projet :
 
 ```bash
-$ cd ~/workspace/
-$ mkdir avengers-chat 
-$ cd avengers-chat/
-$ npm init
-$ npm install --save @zetapush/cli
+$ cd ~/workspace
+$ zeta init avengers-chat
 ```
-
-Une fois ton dossier prêt, lance la commande de génération d'un nouveau projet avec ZetaPush :
+Cette commande va te créer l'arborescence suivante :
 
 ```bash
-$ zeta new
+workspace
+|__ avengers-chat
+    |__ .package.json
+    |__ .zeta-conf.json
+    |__ .gitignore
+    |__ server
+        |__ index.js
+    |__ front
+        |__ index.html
+        |__ index.js
 ```
+
+Le fichier `.package.json` comporte les différentes dépendances nécessaires à l'utilisation de ZetaPush (_@zetapush/js_ et _@zetapush/server_). `.zeta-conf.json` comporte la configuration nécessaire à l'utilisation
+
+
 
 Cette commande va te créer une arborescence de projet pour différencier ton code front et ton code back qui sera utilisé plus tard dans ce tutoriel (nous appellerons custom could services la partie back).
 Le découpage en deux projets n'est pas obligatoire mais c'est une bonne pratique pour bien différencier les différentes composantes de ton application. De plus dans le cadre du tutoriel, ceci te permettra de bien comprendre les interactions entre le front et les customs services.
