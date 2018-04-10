@@ -1,5 +1,7 @@
 # Cloud Functions pour le service _CommunicationService_
 
+## Cloud Functions
+
 ```javascript
 /**
  *  Configure the email tool sender
@@ -9,7 +11,7 @@
  *  @param {number} smtp_port - SMTP Port (default 25)
  *  @param {boolean} ssl - Enable SSL
  *  @param {boolean} starttls - Enable STARTTLS
- *  @return {Promise} - Return the success of the request
+ *  @return {Promise<boolean>} - Return the success of the request
  */
 function configureEmail({ smtp_user, smtp_pass, smtp_host, smtp_port, ssl, starttls})
 ```
@@ -23,7 +25,7 @@ function configureEmail({ smtp_user, smtp_pass, smtp_host, smtp_port, ssl, start
  *  @param {string} subject : Subject of the email
  *  @param {Array} cc : List of email addresses of the copy recipients
  *  @param {Array} bcc : List of email addresses of the blind copy recipients 
- *  @return {Promise} - Return the success of the request
+ *  @return {Promise<boolean>} - Return the success of the request
  */
 function sendEmail({ to, sender, html, subject, cc, bcc });
 ```
@@ -35,7 +37,7 @@ function sendEmail({ to, sender, html, subject, cc, bcc });
  *  @param {string} app_secret - Application secret of the service
  *  @param {string} consumer_key - Consumer key of the service
  *  @param {string} service_name - Service name
- *  @return {Promise} - Return the success of the request
+ *  @return {Promise<boolean>} - Return the success of the request
  */
 function configureSMS({ app_key, app_secret, consumer_key, service_name});
 ```
@@ -46,7 +48,7 @@ function configureSMS({ app_key, app_secret, consumer_key, service_name});
  *  @param {string} sender - Name of the sender
  *  @param {string} message - SMS content
  *  @param {Array} to - Array of recicipents (phone number)
- *  @return {Promise} - Return the success of the request 
+ *  @return {Promise<boolean>} - Return the success of the request 
  */
 function sendSMS({ sender, message, to });
 ```
@@ -59,7 +61,7 @@ function sendSMS({ sender, message, to });
  *  @param {string} parseMode - Optional, by default "json"
  *  @param {Array} headers - List of headers (JSON format)
  *  @param {Object} content - Content of the HTTP request
- *  @return {Promise} - Return the success of the request
+ *  @return {Promise<boolean>} - Return the success of the request
  */
 function sendHTTPRequest({ url, method, parseMode, headers, content });
 ```

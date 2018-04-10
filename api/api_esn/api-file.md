@@ -1,12 +1,14 @@
 # Cloud Functions pour _FileService_
 
+## Cloud functions
+
 ```javascript
 /**
  *  Upload a file on a HDFS storage
  *  @param {string} file - File we want to upload
  *  @param {string} path - Path of the storage
  *  @param {string} owner - Optional owner to separate files
- *  @return {Promise} - Success of the upload in promise
+ *  @return {Promise<boolean>} - Success of the upload
  */
 function uploadFile({ file, path, owner });
 ```
@@ -15,7 +17,7 @@ function uploadFile({ file, path, owner });
 /**
  *  @param {string} path - Path of the storage
  *  @param {string} owner - Optional owner to separate files
- *  @return {Promise} - Array of files returned in a promise
+ *  @return {Promise<Array>} - Array of files returned
  */
 function getFiles({ path, owner });
 ```
@@ -24,7 +26,7 @@ function getFiles({ path, owner });
 /**
  *  @param {string} path - Path of the storage
  *  @param {string} owner - Optional owner to separate files
- *  @return {Promise} - Deleted file returned in a promise
+ *  @return {Promise<Object>} - Deleted file returned
  */
 function deleteFile({ path, owner });
 ```
