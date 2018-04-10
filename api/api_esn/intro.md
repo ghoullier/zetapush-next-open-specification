@@ -21,9 +21,11 @@ Ce service permet de :
 _Gestion des utilisateurs, de groupes ..._
 
 Ce service permet de :
-- Créer / Mettre à jour / Supprimer des utilisateurs
-- Créer / Mettre à jour / Supprimer des groupes d'utilisateurs
+- Créer / Récupérer / Mettre à jour / Supprimer des utilisateurs
+- Créer / Récupérer / Mettre à jour / Supprimer des groupes d'utilisateurs
 - Affecter / Supprimer des utilisateurs à des groupes
+- Récupérer les utilisateurs d'un groupe
+- Récupérer l'ensemble des groupes auquel un utilisateur appartient
 - Gestion de la présence d'un utilisateur
 
 [Lien vers l'API](./api-users.md)
