@@ -34,11 +34,7 @@ Ce service permet de :
 _Gestion de la sécurité._
 
 Ce service permet de :
-- Créer des droits (utilisable dans tous les autres services par la suite)
-- Utiliser des droits préféfinis (Stockage de données, lecture ...)
-- Affecter des droits à des utilisateurs ou des groupes d'utilisateurs
-- Appliquer des droits sur différents services
-- Créer et appliquer des règles globales de sécurité
+- D'appliquer des règles d'accès aux différentes _cloud functions_
 
 [Lien vers l'API](./api-security.md)
 
