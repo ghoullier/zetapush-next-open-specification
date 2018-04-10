@@ -10,7 +10,7 @@ _Gestion du stockage, de la récupération et de la recherche de données._
 Ce service permet de :
 - Stocker / Récupérer / Supprimer une données sous forme de clé/valeur
 - Séparation des données en fonction des utilisateurs ou groupes d'utilisateurs
-- Récupération/Suppression d'un ensemble de données en fonction d'une requête (fonction)
+- Récupération / Suppression d'un ensemble de données en fonction d'une requête (fonction)
 - Rechercher un ensemble de données en fonction d'une requête (fonction)
 - Récupérer le nombre de données en résultat d'une fonction sans les récupérer
 
@@ -18,7 +18,7 @@ Ce service permet de :
 
 
 ## UserService
-_Gestion des utilisateurs, des droits, de groupes ..._
+_Gestion des utilisateurs, de groupes ..._
 
 Ce service permet de :
 - Créer / Mettre à jour / Supprimer des utilisateurs

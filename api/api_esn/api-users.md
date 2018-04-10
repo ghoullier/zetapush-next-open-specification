@@ -1,11 +1,16 @@
 # Cloud Functions pour le service _UserService_
 
+## Précisions
+
+
+## Cloud Functions
+
 ```javascript
 /**
  *  Create an user with a specific login, password and additional properties
  *  @param {string} login - Login of the created user
  *  @param {string} password - Password of the created user
- *  @param {object} properties - Additionnal properties with JSON format.
+ *  @param {object} properties - Additional properties with JSON format.
  *  @return {Promise} - Return the created user in a promise (each user has a ID)
  */
 function createUser({ login, password, properties });
