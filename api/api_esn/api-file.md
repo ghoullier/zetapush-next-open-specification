@@ -1,5 +1,11 @@
 # Cloud Functions pour _FileService_
 
+---
+
+# **TODO : Revoir façon de faire et mettre en cas d'utilisations** 
+
+---
+
 ## Cloud functions
 
 ```javascript

@@ -1,5 +1,11 @@
 # Cloud Functions pour le service _UserService_
 
+---
+
+# **TODO : Revoir façon de faire et mettre en cas d'utilisations** 
+
+---
+
 ## Précisions
 
 ### Création d'utilisateurs et de groupes

@@ -1,5 +1,13 @@
 # Cloud Functions pour _ChatService_
 
+---
+
+# **TODO : Revoir façon de faire et mettre en cas d'utilisations** 
+
+---
+
+
+
 ## Objets
 
 ### Room

@@ -1,5 +1,11 @@
 # Cloud Functions pour le service _SecurityService_
 
+---
+
+# **TODO : Revoir façon de faire et mettre en cas d'utilisations** 
+
+---
+
 ## Précisions
 
 ### setSecurityRule

@@ -4,6 +4,12 @@ On part du principe qu'un développeur en ESN a déjà une stack technique à di
 
 Voici la liste des _Cloud Services_ que nous mettons à disposition :
 
+---
+
+# **TODO : Revoir façon de faire et mettre en cas d'utilisations** 
+
+---
+
 ## StorageService
 _Gestion du stockage, de la récupération et de la recherche de données._
 

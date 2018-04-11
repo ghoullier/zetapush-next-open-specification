@@ -1,5 +1,11 @@
 # _Cloud Services_ pour les développeurs seuls
 
+---
+
+# **TODO : Revoir façon de faire et mettre en cas d'utilisations** 
+
+---
+
 On part du principe qu'un développeur seul n'a pas les mêmes besoins qu'une entreprise avec des process et une stack technique bien rodée. Dans ce cas, nous allons spécifier des _Cloud Services_ d'un point de vue plus fonctionnel. Chaque profil aura bien-sûr accès à tous les _Cloud Services_ mes ceux présentés ci-dessous seront plus pertinent pour un développeur seul.
 
 ## ChatService
