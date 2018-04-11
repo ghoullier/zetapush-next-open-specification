@@ -97,27 +97,24 @@ Une fois que c'est fait, tu vas pouvoir initialiser ton Avengers chat.
 
 Pour initialiser ton application, tu as plusieurs possibilités. Tu peux utiliser le wizard disponible sur https://console.zetapush.com (En cours de développement) qui va te guider pas à pas, utiliser la CLI ou encore démarrer en créant manuellement les fichiers nécessaires. Ici tu vas directement utiliser la CLI pour aller au plus vite.
 
-Pour utiliser la CLI, il va te falloir la dépendance _npm_ `@zetapush/cli`. Commence alors par initialiser un projet _npm_, et d'y installer la dépendance à la CLI de ZetaPush :
+Pour utiliser la CLI, il va te falloir la dépendance _npm_ `@zetapush/cli` d'installée en global. Ensuite tu lances la commande `zeta init` pour générer le squelette de ton application :
 
 ```bash
+$ sudo npm install -g @zetapush/cli
 $ cd ~/workspace/
-$ mkdir avengers-chat 
-$ cd avengers-chat/
-$ npm init
-$ npm install --save @zetapush/cli
+$ zeta init avengers-chat
 ```
 
-Une fois ton dossier prêt, lance la commande de génération d'un nouveau projet avec ZetaPush :
+Voici le squelette de ton application :
 
-```bash
-$ zeta new
-```
+---
+[CAPTURE ECRAN] Squelette de l'application + écran splité pour afficher tous les codes source
+
+---
+
 
 Cette commande va te créer une arborescence de projet pour différencier ton code front et ton code back qui sera utilisé plus tard dans ce tutoriel (nous appellerons custom could services la partie back).
-Le découpage en deux projets n'est pas obligatoire mais c'est une bonne pratique pour bien différencier les différentes composantes de ton application. De plus dans le cadre du tutoriel, ceci te permettra de bien comprendre les interactions entre le front et les customs services.
-
-![Arborescence init projet](./images/arborescence-init-app.png)
-
+Le découpage en deux projets n'est pas obligatoire mais c'est une bonne pratique pour bien différencier les différentes composantes de ton application. De plus dans le cadre du tutoriel, ceci te permettra de bien comprendre les interactions entre le front et les customs services. Comme tu as pu le voir, la CLI te donne un code d'exemple. Nous n'allons pas l'utiliser donc tu peux supprimer de contenu de `server/index.js`, `front/index.html` et de `front/index.js`.
 
 À présent ton application est prête à ếtre développée ! Commence par créer le design.
 
@@ -223,7 +220,7 @@ Pour que ton chat fonctionne il te faut 3 choses dans ton application :
 
 En ce qui concerne la connexion, tu vas te connecter auprès de ZetaPush en tant qu'utilisateur anonyme. C'est à dire que tu n'as pas besoin d'authentification au sein de ton application mais que tu as quand même accès aux _cloud services_.
 
-Dans la plupart des cas tu utiliseras une connexion "standard" avec un couple login/mot de passe, mais ici, une connexion anonyme va te suffire. Voici comment procéder :
+Dans la plupart des cas tu utiliseras une connexion "classique" avec un couple login/mot de passe, mais ici, une connexion anonyme te suffira. Voici comment procéder :
 
 Il te faut d'abord ajouter la dépendance _npm_ pour utiliser les _cloud services_ :
 

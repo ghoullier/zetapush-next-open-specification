@@ -38,16 +38,40 @@ Ce service permet de :
 
 [Lien vers l'API](./api-security.md)
 
-## CommunicationService
-_Communication exterieure, email, SMS, push notifications..._
+## PushService
+_Envoi de push notifications._
 
 Ce service permet de :
-- Envoyer un email
-- Envoyer des SMS
+- Configurer son outils de push notification
 - Envoyer des Push notifications
+
+[Lien vers l'API](./api-push.md)
+
+## SMSService
+_Envoi de SMS._
+
+Ce service permet de :
+- Configurer son client d'envoi de sms
+- Envoyer des sms
+
+[Lien vers l'API](./api-sms.md)
+
+## MailService
+_Envoi d'email._
+
+Ce service permet de :
+- Configurer son client mail
+- Envoyer des mails
+
+[Lien vers l'API](./api-mail.md)
+
+## HTTPService
+_Envoi de requête HTTP._
+
+Ce service permet de :
 - Envoyer des requêtes HTTP
 
-[Lien vers l'API](./api-communication.md)
+[Lien vers l'API](./api-http.md)
 
 ## FileService
 _Gestion des fichiers, upload, stockage, récupération._
