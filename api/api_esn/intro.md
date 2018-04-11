@@ -14,7 +14,7 @@ Ce service permet de :
 - Rechercher un ensemble de données en fonction d'une requête (fonction)
 - Récupérer le nombre de données en résultat d'une fonction sans les récupérer
 
-[Lien vers l'API](./api-storage.md)
+[Lien vers des exemples d'utilisation](./utilisation-storage.md)
 
 
 ## UserService
