@@ -26,6 +26,15 @@ Ce service permet de :
 
 [Lien vers des exemples d'utilisation](./utilisation-users.md)
 
+## GroupService
+_Gestion des groupes._
+
+Ce service permet de :
+- Créer / Récupérer / Supprimer / Mettre à jour des groupes
+- Affecter / Enlever des utilisateurs à des groupes
+- Récupérer la liste des utilisateurs par groupe
+- Récupérer la liste des groupes auquel un utilisateur appartient
+
 ## SecurityService
 _Gestion de la sécurité._
 
