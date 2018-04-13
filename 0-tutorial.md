@@ -20,13 +20,13 @@ Pour ceci tu vas découvrir comment utiliser les _cloud services_ de ZetaPush (c
 
 ### Pré-requis
 
-Pour suivre ce tutoriel, tu as simplement besoin d'un éditeur de texte de type Visual Studio Code, Atom ou encore Vim. Tu peux utiliser l'IDE que tu souhaites. Si tu n'as pas ou peu de compétences en développement ce n'est pas grave, ce tutoriel est accessible à tous, quelque soit ton niveau.
+Pour suivre ce tutoriel, tu as simplement besoin d'un éditeur de texte de type Visual Studio Code, Atom ou encore Vim. Tu peux utiliser l'IDE que tu souhaites.
 
 À noter que dans ce tutoriel, tu écriras en _JavaScript_ pour plus de simplicité. En revanche pour tes futurs développements nous te recommandons d'utiliser _TypeScript_ puisque cela va te permettre d'utiliser d'avantage de fonctionnalités comme la génération de SDK ou de documentation par exemple. 
 
 ### Description du projet
 
-Comme nous l'avons énoncé plus haut, tu vas créer une application de chat et plus précisément un **Avengers chat** ! Le but est d'avoir un chat en pouvant choisir son personnage des Avengers. Chaque Avengers aura plusieurs compétences qui lui seront associées et qu'il pourra utiliser sur le chat (Un message sera affiché dans le chat à chaque action). Ce dernier sera une application web déployée et accessible via une URL unique.
+Comme nous l'avons énoncé plus haut, tu vas créer une application de chat et plus précisément un **Avengers Chat** ! Le but est d'avoir un chat en pouvant choisir son personnage des Avengers. Chaque Avenger aura plusieurs compétences qui lui seront associées et qu'il pourra utiliser sur le chat (Un message sera affiché dans le chat). Ce dernier sera une application web déployée et accessible via une URL unique.
 
 Voici la liste des personnages d'Avengers avec leurs compétences :
 
@@ -97,7 +97,7 @@ $ npm install -g @zetapush/cli
 
 Une fois que c'est fait, tu vas pouvoir initialiser ton Avengers chat.
 
-Pour initialiser ton application, tu as plusieurs possibilités. Tu peux utiliser le wizard disponible sur https://console.zetapush.com (En cours de développement) qui va te guider pas à pas, utiliser la CLI ou encore démarrer en créant manuellement les fichiers nécessaires. Ici tu vas directement utiliser la CLI pour aller au plus vite.
+Pour initialiser ton application, tu as plusieurs possibilités. Tu peux utiliser le wizard disponible sur https://console.zetapush.com (En cours de développement) qui va te guider pas à pas, utiliser la CLI ou encore démarrer en créant manuellement les fichiers nécessaires. Ici tu vas directement utiliser la CLI.
 
 Voici la démarche à suivre pour utiliser ton projet :
 
@@ -105,12 +105,18 @@ Voici la démarche à suivre pour utiliser ton projet :
 $ cd ~/workspace
 $ zeta init avengers-chat
 ```
+
+Si tu veux plus de détails sur la commande `zeta init` tu peux utiliser `zeta init --help` ou voir la documentation sur https://console.zetapush.com/documentation/init
+
+
 Cette commande va te créer l'arborescence suivante :
 
 ```bash
 workspace
 |__ avengers-chat
     |__ .package.json
+    |__ .zetarc
+    |__ .gitignore
     |__ server
         |__ index.js
     |__ front
@@ -118,12 +124,12 @@ workspace
         |__ index.js
 ```
 
-Le fichier `.package.json` comporte les différentes dépendances et la configuration nécessaires à l'utilisation de ZetaPush (_@zetapush/js_ et _@zetapush/server_).
 
-Cette commande va te créer une arborescence de projet pour différencier ton code front et ton code back qui sera utilisé plus tard dans ce tutoriel.
-Le découpage en deux projets n'est pas obligatoire mais c'est une bonne pratique pour bien différencier les différentes composantes de ton application. De plus dans le cadre du tutoriel, ceci te permettra de bien comprendre les interactions entre le front et le back.
+Le fichier `.package.json` comporte les différentes dépendances nécessaires à l'utilisation de ZetaPush (_@zetapush/js_ et _@zetapush/server_). Ensuite le fichier `.zetarc` comporte la configuration de ton projet ainsi que les informations de connexion à ton compte ZetaPush. En effet, un compte temporaire t'es automatiquement créé sur la plateforme ZetaPush (Avec ton application **avengers-chat** d'associée). Tu peux dès à présent rentre ton compte permanent en te rendant sur https://console.zetapush.com.
 
-À présent ton application est prête à ếtre développée ! Commence par créer le design.
+Les fichiers `server/index.js` / `front/index.html` et `front/index.js` sont remplis d'un exemple de projet type _Hello World_. Tu peux t'y inspirer pour créer une application mais dans ce tutoriel tu peux supprimer le contenu de ces fichiers, nous allons partir de zéro.
+
+Maintenant que ton application est prête à ếtre développée, commence par créer le design.
 
 ## Création du design de l'application
 
@@ -133,7 +139,7 @@ Dans cette section tu vas commencer par faire le design de ton Avengers Chat. Vo
 
 Dans ce tutoriel ce n'est pas la partie design de l'application qui nous intéresse, donc voici les fichiers à utiliser, tu peux directement les copier-coller. À noter que nous avons ajouté un fichier `style.css` dans le sous-dossier `front`.
 
-### **index.html**
+### **front/index.html**
 
 ```html
 <!DOCTYPE html>
@@ -162,7 +168,7 @@ Dans ce tutoriel ce n'est pas la partie design de l'application qui nous intére
 </html>
 ```
 
-### **style.css**
+### **front/style.css**
 
 ```css
 body {
@@ -216,19 +222,19 @@ Pour que ton chat fonctionne il te faut 3 choses dans ton application :
 
 Il est nécessaire de bien comprendre l'authentification avec ZetaPush puisqu'elle se passe à deux niveaux.
 
-Tout d'abord tu as l'authentification avec ton compte ZetaPush. Cette authentification est totalement indépendante de tes applications, elle te sert juste à avoir accès aux _Cloud Services_ de ZetaPush. Dans ce tutoriel, un compte (et donc une authentification) t'as été automatiquement créée, tu ne verras pas cette partie ici.
+Tout d'abord tu as l'authentification avec ton compte ZetaPush. Cette authentification est totalement indépendante de tes applications, elle te sert juste à avoir accès aux _Cloud Services_ de ZetaPush. Dans ce tutoriel, un compte t'as été automatiquement créée, tu ne verras pas cette partie ici. Pour que cette authentification fonctionne correctement, il te faut simplement avoir un fichier `.zetarc` de correctement configuré.
 
-Ensuite tu as l'authentification au sens applicatif. Cela veut dire l'authentification propre à ton application, ici à notre _Avengers Chat_. Tu peux distinguer deux types d'authentifications au niveau applicatif : L'authentification normale en mode _login/mot de passe_ et l'authentification anonyme où comme son nom l'indique, tu te connectes en tant qu'utilisateur anonyme, mais tu as quand même accès aux _Cloud Services_. 
+Ensuite tu as l'authentification au sens applicatif. Cela veut dire l'authentification propre à ton application, ici à notre _Avengers Chat_. 
+
+Tu peux distinguer deux types d'authentifications au niveau applicatif : L'authentification normale en mode _login/mot de passe_ et l'authentification anonyme où comme son nom l'indique, tu te connectes en tant qu'utilisateur anonyme, mais tu as quand même accès aux _Cloud Services_. 
 
 Voici un schéma qui illustre ces concepts :
 
 ![Explications authentifications](./schemas/schema-authentications.png)
 
 
----
 
-
-En ce qui concerne la connexion, tu vas te connecter auprès de ZetaPush en tant qu'utilisateur anonyme (Voir Précision au dessus).
+Dans ton _Avengers Chat_, tu vas te connecter auprès de ZetaPush en tant qu'utilisateur anonyme.
 
 Dans la plupart des cas tu utiliseras une connexion "standard" avec un couple login/mot de passe, mais ici, une connexion anonyme va te suffire. Voici comment procéder :
 
@@ -236,22 +242,73 @@ Il te faut d'abord ajouter la dépendance _npm_ pour utiliser les _cloud service
 
 ```bash
 $ cd avengers-chat/
-$ npm install --save @zetapush/cli
+$ npm install --save @zetapush/front
+$ npm install --save @zetapush/services
 ```
+
+Le package `@zetapush/front` te permets d'utiliser le SDK JavaScript et `@zetapush/services` d'avoir accès à tous les _Cloud Services_ fournis par ZetaPush.
+
+Maintenant voici le code source pour avoir une connexion d'un point de vue applicatif au démarrage de ton application avec une authentification anonyme :
 
 ### **front/index.js**
 
 ```javascript
-// TODO: Code de connexion avec les détails de chaque objet
+import { ZetaPushClient } from "@zetapush/front";
+
+// Create the ZetaPush client to communicate with the platform and cloud services
+const zpClient = new ZetaPushClient();
+
+// Launch an anonymous connection at launch of the application
+await zpClient.connect();
 ```
 
-Ensuite, pour envoyer un message et recevoir les messages, tu vas pouvoir utiliser le _cloud service_ `ChatService` fourni par ZetaPush. Ce dernier va te fournir la _cloud function_ `sendMessage()` et l'évènement `onNewMessage()` pour répondre à ton besoin. Voici comment les utiliser :
+---
+
+Ensuite, pour envoyer un message et recevoir les messages entrants, tu vas pouvoir utiliser le _cloud service_ `ChatService` fourni par ZetaPush. Ce dernier va te fournir les _cloud function_ `sendMessage()` et `listenIncomingMessages()` pour répondre à ton besoin. Voici comment les utiliser :
 
 ### **front/index.js**
 
 ```javascript
-// TODO: Utilisation de "sendMessage()" et de "onNewMessage()"
+import { ZetaPushClient } from "@zetapush/front";
+import { ChatService } from "@zetapush/services";
+
+// Get the elements from the HTML
+const validBtn = document.getElementById("valid-button");
+const inputMsg = document.getElementById("input-message");
+const conversation = document.getElementById("conversation");
+
+// Create the ZetaPush client to communicate with the platform and cloud services
+const zpClient = new ZetaPushClient();
+
+// Create a new ChatService instance to use this CloudService
+export const chatService = new ChatService();
+
+// Launch an anonymous connection at launch of the application
+await zpClient.connect();
+
+// When the user click on the validation button,
+// the application send a new message to the chat (from the input)
+validBtn.addEventListener("click", function() {
+	// Get the typed message by the user from the input
+	const inputValue = inputMsg.value;
+
+	// We send the message only if the input if not null
+	if (inputMsg.length > 0) {
+		// We send the message to all users (also the sender)
+		chatService.sendMessage({ message: inputValue, send_to_sender: true });
+	}
+});
+
+// We need to listen incoming messages and add them to the text area to display them
+chatService.listenIncomingMessages({
+	callback: function(message) {
+		conversation.innerHTML += `<p>${message.sender} >>> ${message.content}</p>`;
+	}
+});
 ```
+
+
+Le fonctionnel de ton chat est maintenant fait, il te faut maintenant déployer ton application pour qu'elle soit accessible à tous.
 
 --- 
 ### _cloud services et cloud functions_
@@ -260,20 +317,7 @@ Petite précision concernant les _cloud services_ et les _cloud functions_. Un _
 
 La liste de l'ensemble des _cloud services_ existants est disponible sur https://console.zetapush.com/documentation
 
-// TODO: Revoir le lien de la documentation
-
 ---
-
-À présent voici le code source complet. Il est nécessaire d'établir une connexion avec ZetaPush pour appeler une _cloud function_.
-
-### **front/index.js**
-
-```javascript
-// TODO: Connexion à la plateforme suivi de l'utilisation de "sendMessage()" et de "onNewMessage()"
-```
-
-Le fonctionnel de ton chat est maintenant fait, il te faut maintenant déployer ton application pour qu'elle soit accessible à tous.
-
 
 ## Déploiement de l'application
 
@@ -281,21 +325,13 @@ C'est ici que tu vas découvrir la commande `zeta push`. Cette dernière va te p
 
 Pour l'instant nous avons seulement du code front, nous n'avons pas encore créé de _custom cloud service_ (tu verras en détails ce que c'est par la suite), donc voici la commande à exécuter :
 
-// TODO: Revoir comment la commande `zeta push` sera réellement appelée
-
 ```bash
-$ zeta push --front /path/of/your/front
+$ zeta push --front-only
 ```
 
-Dans ton cas, si tu te positionne à la racine de ton application ça sera :
-
-```bash
-$ zeta push --front ./front
-```
+Si tu veux plus de détails sur la commande `zeta push` tu peux utiliser `zeta push --help` ou voir la documentation sur https://console.zetapush.com/documentation/push
 
 Cette commande va faire plusieurs choses :
-- Te créer un compte sur la plateforme ZetaPush
-- Créer ta nouvelle application
 - Ajouter les _cloud services_ utiles à ton application (ici `ChatService`)
 - Déployer le front sur une URL unique
 - Brancher le front avec les _cloud services_
@@ -307,111 +343,298 @@ Cette commande va faire plusieurs choses :
 
 Une fois le déploiement effectué, la CLI va te retourner plusieurs informations :
 - URL unique de ton application
-- login/password temporaire de ton compte sur la plateforme ZetaPush
 - Période de validité de ton application
 
----
+Au même titre que ton compte sur la plateforme ZetaPush, ton application est temporaire tant que ton compte n'est pas validé (à faire via https://console.zetapush.com).
 
-// TODO: Définir le process complet d'une application sans compte ZetaPush
-
-// TODO: Définir le temps de validité d'une application "anonyme"
-
-### Précisions
-
-Dans ce tutoriel, tu as créé une application sans avoir de compte sur la plateforme ZetaPush. Dans ce cas, il y en a un qui est fourni par défaut, avec un couple login/mot de passe temporaire. Ton application est aussi temporaire, mais tu peux rapidement la rendre permanente en te connectant à https://console.zetapush.com avec ton couple login/mot de passe pour modifier tes identifiants et activer ton compte. Le fait d'avoir un compte ZetaPush va te permettre de regrouper toutes tes applications et de les exploiter d'avantage.
-
----
 
 Tu peux maintenant te rendre sur l'URL fourni par la CLI et voir ton chat fonctionner !
 Pour l'instant, nous ne gérons pas les utilisateurs donc ce sont les identifiants uniques par utilisateur qui sont affichés en tant que membre du chat. Tu vas y remédier tout de suite en ajoutant ta nouvelle fonctionnalité dans un _custom cloud service_.
 
 ## Développement back avec ZetaPush
 
-À présent, tu vas créer ton propre code métier avec ZetaPush en utilisant JavaScript. Pour ceci tu vas créer un _custom cloud service_. 
+Pour créer ton code métier tu vas créer un _custom cloud service_. 
 
 ---
 ### Précisions
 
 Un _custom cloud service_ est exactement la même chose qu'un _cloud service_ sauf qu'ici, c'est toi qui va le créer. Une fois déployé sur ton application, tu vas pouvoir l'utiliser de la même manière qu'un _cloud service_.
 
----
-
-Ton _custom cloud service_ va te servir dans un premier temps à choisir ton personnage des _Avengers_ quand tu accèdes au chat. Dans ce cas, tu vas utiliser la _cloud function_ `setUserName()` du _cloud service_ `UtilsService`. Cette dernière va te permettre de donner un nom à afficher pour l'utilisateur courant. Ensuite il faut associer une compétence à ton personnage, donc nous allons stocker l'information côté back, et nous utiliserons le _cloud service_ `StorageService`.
-
-Pour ceci créé ton _custom cloud service_ dans **server/index.js**. Ton _custom cloud service_ se nommera `AvengersService` et tu auras les _cloud functions_ suivantes : `setAvengersName()` / `setSkillByAvengers()` / `getSkillByAvengers()`.
-
 Tu pourrais créer cette logique métier côté front, mais c'est toujours une bonne pratique de mettre ton code fonctionnel, propre à ton application, côté back, surtout si tu décides d'avoir plusieurs fronts (Web, Android, iOS par exemple).
 
-Nous faisons en sorte que la définition de la compétence pour chaque Avengers se fait au déploiement du code back.
+---
+
+Ton _custom cloud service_ va te permettre de choisir ton personnage des _Avengers_ quand tu accèdes au chat et de lancer des actions en fonction des compétences de chaque avengers. Voici la démarche à suivre :
+
+1. Enregistrer les _Avengers_ et leurs compétences associées dans le _Custom Cloud Service_
+2. Réaliser l'UI pour choisir son _Avenger_ 
+3. Réaliser l'UI pour lancer une attaque avec son _Avenger_
+4. Brancher la sélection du _Avenger_ dans le _Custom Cloud Service_
+5. Brancher le lancement d'une attaque dans le _Custom Cloud Service_
+
+Créé étape par étape notre fonctionnel :
+
+### Enregister les _Avengers_ et leurs compétences
+
+Afin d'enregistrer les différents _Avengers_ et leurs compétences associées, tu créé un nouveau fichier. 
+C'est une bonne pratique de mettre ce genre d'informations dans un fichier à part.
 
 
-### **server/index.js**
-
-```javascript
-// TODO: "AvengersService"
-// TODO: "setAvengersName()"
-// TODO: "setSkillByAvengers()"
-// TODO: "getSkillByAvengers()"
-```
-
-Ton _custom cloud service_ est maintenant prêt, avant de l'utiliser déploies le. Ici, tu vas utiliser la commande `zeta push`, seulement pour déployer le côté back de ton application, voici la démarche à suivre :
-
-// TODO: Revoir comment la commande `zeta push` sera réellement appelée
-
-// TODO: Comment ajouter du code d'init dans un service ? Lancé au déploiement ?
-
-```bash
-$ zeta push --back /path/of/your/back
-``` 
-
-Dans ton cas, si tu te trouve à la racine du projet, il te faut lancer :
-
-```bash
-$ zeta push --back ./server/
-```
-
-Maintenant que ton _custom cloud service_ est disponible, utilises le !
-
-## Utilisation d'un _custom cloud service_
-
-Maintenant il faut que tu fasses en sorte de demander quel Avengers un utilisateur veut utiliser lorsqu'il se connecte. Ensuite il faut ajouter un bouton pour que chaque Avengers puisse utiliser sa compétence sur le chat !
-
-// TODO: Ajouter ascii art pour matérialiser chaque compétence
-
-Voici la nouvelle version des fichiers pour implémenter ces fonctionnalités. Tu peux voir que tu utilises exactement de la même manière un _custom cloud service_ et un _cloud service_.
-
-### **front/index.js**
+#### **utils/avengers.js**
 
 ```javascript
-// TODO:
+export const avengers = [
+	{ id: 0, name: "Captain America",skills: ["Lancer de bouclier", "Guérison"] },
+	{ id: 1, name: "Oeil de Faucon", skills: ["Tir à l'arc", "Super vision"] },
+	{ id: 2, name: "Iron Man", skills: ["Vol", "Lance missile"] },
+	{ id: 3, name: "Hulk", skills: ["Coup de poing", "Regénération"] },
+	{ id: 4, name: "Thor", skills: ["Coup de marteau", "Contrôle de la foudre"] },
+	{ id: 5, name: "Spider-Man", skills: ["Lancé de toile", "Saut avec toile"] },
+	{ id: 6, name: "Wolverine", skills: ["Coup de griffes", "Regénération"] }
+];
+
 ```
 
-### **index.html**
+### Réaliser l'UI
+
+À présent, ajoute l'UI pour sélectionner l'_Avenger_ au démarrage de l'application et lancer l'exécution d'une attaque sur le chat.
+
+#### **front/index.html**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Avengers Chat</title>
+</head>
+
+<body>
+    <div id="modal-select-avengers">
+        <p id="title-modal">Select your Avenger :</p>
+
+        <select id="select-avenger">
+            <option value="0">Captain America</option>
+            <option value="1">Oeil de Faucon</option>
+            <option value="2">Iron Man</option>
+            <option value="3">Hulk</option>
+            <option value="4">Thor</option>
+            <option value="5">Spider-Man</option>
+            <option value="6">Wolverine</option>
+        </select>
+
+        <button id="select-avenger-button" onclick="validAvenger()">Valid</button>
+
+    </div>
+
+    <!-- Area where we add the messages -->
+    <div class="content" id="conversation"></div>
+    <div id="buttons">
+        <input id="input-message" placeholder="Your message" />
+        <button id="valid-button" class="button">Send</button>
+        <button id="attack-button" class="button">Attack</button>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+</body>
+
+</html>
+```
+
+#### **front/style.css**
+
+```css
+body {
+	display: flex;
+	justify-content: start;
+	flex-direction: column;
+	align-items: center;
+}
+
+#buttons {
+	display: flex;
+	justify-content: flex-start;
+	width: 70%;
+	height: 5vh;
+	max-width: 700px;
+}
+
+#input-message {
+	width: 80%;
+	padding: 10px;
+}
+
+.button {
+	width: 20%;
+	height: 100%;
+}
+
+#conversation {
+	margin: 5vh;
+	border: 5px double grey;
+	width: 70%;
+	height: 40vh;
+	max-width: 700px;
+	padding: 10px;
+	overflow-y: auto;
+}
+
+#modal-select-avengers {
+	width: 25vw;
+	height: 25vh;
+	position: absolute;
+	left: 50%;
+	top: 35%;
+	transform: translate(-50%, -50%);
+	z-index: 0;
+	border: 1px solid grey;
+	background-color: blanchedalmond;
+}
+
+#title-modal {
+	margin: 5px;
+	font-style: oblique;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#modal-select-avengers {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#select-avenger-button {
+	margin-top: 50px;
+	width: 100px;
+}
+
+#select-avenger {
+	margin-top: 50px;
+}
+```
+
+
+### Sélection d'un _Avenger_ au démarrage
+
+Maintenant il te faut brancher la sélection de ton _Avenger_ sur l'envoi du message. 
+Pour ça tu fais appel à `sendMessage()` en changeant le paramètre `sender`.
+
+#### **front/index.js**
+
 
 ```javascript
-// TODO:
+import { ZetaPushClient } from "@zetapush/front";
+import { ChatService } from "@zetapush/services";
+import { avengers } from "../utils/avengers.js";
+
+// Get the elements from the HTML
+const validBtn = document.getElementById("valid-button");
+const inputMsg = document.getElementById("input-message");
+const conversation = document.getElementById("conversation");
+const inputAvenger = document.getElementById("select-avenger");
+const modalSelectAvenger = document.getElementById("modal-select-avengers");
+
+// The name of our Avenger
+let avengerName = "";
+
+// Create the ZetaPush client to communicate with the platform and cloud services
+const zpClient = new ZetaPushClient();
+
+// Create a new ChatService instance to use this CloudService
+export const chatService = new ChatService();
+
+// Launch an anonymous connection at launch of the application
+await zpClient.connect();
+
+// When the user click on the validation button,
+// the application send a new message to the chat (from the input)
+validBtn.addEventListener("click", function() {
+	// Get the typed message by the user from the input
+	const inputValue = inputMsg.value;
+
+	// We send the message only if the input if not null
+	if (inputMsg.length > 0) {
+		// We send the message to all users (also the sender)
+		chatService.sendMessage({ message: inputValue, send_to_sender: true, sender: avengerName });
+	}
+});
+
+// We need to listen incoming messages and add them to the text area to display them
+chatService.listenIncomingMessages({
+	callback: function(message) {
+		conversation.innerHTML += `<p>${message.sender} >>> ${message.content}</p>`;
+	}
+});
+
+/**
+ * Function to set the sender value
+ */
+window.validAvenger = function() {
+	avengerName = avengers[inputAvenger.value].name;
+	modalSelectAvenger.style.display = "none";
+};
 ```
 
-Il ne te reste plus qu'à déployer la partie front de ton application :
+### Lancement d'une attaque
+ 
+ C'est à ce moment la que tu vas créer ta première _Cloud Function_.
+ Son rôle est de lancer une attaque sur le chat, en fonction des compétences de ton _Avenger_. Pour ceci voici le _Cloud Service_ que tu vas créer :
 
-// TODO: Revoir comment la commande `zeta push` sera réellement appelée
+#### **server/index.js**
 
-```bash
-$ zeta push --front ./front
+```javascript
+import { avengers } from "../utils/avengers.js";
+import { chatService } from "../front/index";
+
+/**
+ * Cloud Service to manage Avengers
+ */
+class AvengerService {
+	/**
+	 * Attack with a random skill
+	 * @param {number} index
+	 * @param {name} name
+	 */
+	attackWithRandomSkill(index, name) {
+		// Get the random skill
+		const usedSkill =
+			avengers[index].skills[
+				Math.floor(Math.random() * avengers[index].skills.length)
+			];
+
+		// Send the message to the chatroom
+		chatService.sendMessage({
+			message: `${name} attacks with : ${usedSkill}`,
+			send_to_sender: true,
+			sender: name
+		});
+	}
+}
 ```
 
-Si tu avais voulu déployer en même temps le back et le front tu aurais pu utiliser :
+## Déploiement
+
+
+Maintenant que ton code est prêt, il te faut à nouveau déployer ton application pour qu'elle soit disponible en ligne.
+Tu as cette fois ci une partie back-end donc tu utilises :
 
 ```bash
-$ zeta push --back /path/of/your/back --front /path/of/your/front
-``` 
+$ zeta push
+```
+
 
 ## Conclusion
 
 Ton **Avengers Chat** est prêt, tu vas pouvoir communiquer avec les Avengers ! 
-
 Tout au long de ce tutoriel, tu as pu voir comment utiliser les _cloud services_ de ZetaPush et même créer tes propres fonctionnalités en utilisant les _custom cloud services_. 
-
 À présent n'hésite pas à aller sur https://console.zetapush.com pour gérer ton application, ou voir les _cloud services_ disponibles chez ZetaPush. 
-
-// TODO: Voir sur quoi on souhaite rediriger l'utilisateur pour qu'il découvre ZetaPush
