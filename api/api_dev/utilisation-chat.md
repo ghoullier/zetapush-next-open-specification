@@ -248,42 +248,6 @@ _L'écoute d'un évènement de présence se fait via UserService._
 
 ### Envoi de messages
 
-#### Envoi de message à une liste d'utilisateurs ou à un utilisateur particulier
-
-Dans ce cas, nous voulons pouvoir envoyer un message à un ou des utilisateurs de la room. Nous pouvons identifier la room soit par son ID, soit par son nom. 
-
-```javascript
-// Create our services
-const chatService = new ChatService();
-
-// Create a room
-const createdRoom  = await chatService.createRoom({ id: "my-room-id", name: "my-room" });
-
-// Send message to all users
-const sentMessage = await chatService.sendMessage({ room: createdRoom.id, message: "My message content", recipient: "id-of-recipient-user" });
-// OR
-const sentMessage = await chatService.sendMessage({ room: createdRoom.name, message: "My message content", recipient: "id-of-recipient-user" });
-```
-
-Le paramètre `message` peut aussi être un objet.
-Voici le format du message :
-
-```json
-{
-    "id": "id_of_my_message",
-    "message": "My message content",
-    "sender": "id-of-sender-user",
-    "recipient": "id-of-recipient-user",
-    "timestamp": 1523527476595
-}
-```
-
-Il est aussi possible d'envoyer un message à plusieurs utilisateurs en même temps. Dans ce cas la _cloud function_ renvoi un tableau de message envoyés. Nous avons forcément un seul _sender_ et un seul _recipient_ par message. Voici la syntaxe pour envoyer un message à plusieurs utilisateurs en même temps :
-
-```javascript
-// Send message to all users
-const sentMessages = await chatService.sendMessage({ room: createdRoom.id, message: "My message content", recipients: ["id-user-1", "id-user-2" });
-```
 
 #### Envoi d'un message à toute la room
 
@@ -315,6 +279,22 @@ Voici le format de chaque message :
     "timestamp": 1523527476595
 }
 ```
+
+#### Envoi de message en personnalisant le sender
+
+Dans ce cas, nous voulons définir au moment de l'envoi du message, le nom à afficher pour l'envoyeur :
+
+```javascript
+// Create our service
+const chatService = new ChatService();
+
+// Create a room
+const createdRoom  = await chatService.createRoom({ id: "my-room-id", name: "my-room" });
+
+// Send message to all users
+const sentMessage = await chatService.sendMessageToAllUsers({ room: createdRoom.id, message: "My message content", sender: "Damien" });
+```
+
 
 #### Envoi de message avec des metadata
 
@@ -423,4 +403,18 @@ const chatService2 = new ChatService({ id: "my-service-2"});
 // Create two instances of UserService that have same data
 const chatService3 = new ChatService({ id: "my-service-global"});
 const chatService4 = new ChatService({ id: "my-service-global"});
+```
+
+### Room par défaut
+
+#### Envoi d'un message sans création de room
+
+Il est possible d'utiliser le `ChatService` sans avoir créé de room au préalable. Dans ce cas, tous les utilisateurs et messages appartiennent à une room par défaut.
+
+```javascript
+// Create one instance of ChatService
+const chatService1 = new ChatService();
+
+// Send message to all users on default room
+const sentMessage = await chatService.sendMessageToAllUsers({ message: "My message content"});
 ```
