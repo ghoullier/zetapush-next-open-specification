@@ -36,10 +36,10 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
   └── package.json
   ```
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
-- Je remplis `.zetarc` avec le chemin relatif vers mon code front
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
 - Je créé un dossier `front/`, c'est ici que mon code front sera stocké
 - Je remplis `package.json` avec le nom de mon application
+- Je remplis `package.json` avec le chemin relatif vers mon code front
 - J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
 
 *THEN*
@@ -60,9 +60,9 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 *WHEN*
 - Je déplace mon code front dans un sous dossier pour plus de clarté
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
-- Je remplis `.zetarc` avec le chemin relatif vers mon code front
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
-- Je remplis un `package.json` avec le nom de mon application
+- Je remplis `package.json` avec le nom de mon application
+- Je remplis `package.json` avec le chemin relatif vers mon code front
 - J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
 
 *THEN*
@@ -225,11 +225,11 @@ To deploy your application you can use the command zeta push.
   └── package.json
   ```
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
-- Je remplis `.zetarc` avec les chemins relatifs vers mon code front et mon code back 
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
 - Je créé un dossier `front/`, c'est ici que mon code front sera stocké
 - Je créé un dossier `server/`, c'est ici que mon code back sera stocké
 - Je remplis `package.json` avec le nom de mon application
+- Je remplis `package.json` avec les chemins relatifs vers mon code front et mon code back 
 - J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
 - J'installe la dépendance _@zetapush/server_ avec : `npm install --save @zetapush/server`
 
@@ -253,9 +253,9 @@ To deploy your application you can use the command zeta push.
 - Je déplace mon code front dans un sous dossier `front` pour plus de clarté
 - Je créé un dossier `server` pour y stocker mon code back
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
-- Je remplis `.zetarc` avec les chemins relatifs vers mon code front et mon code back
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
 - Je remplis un `package.json` avec le nom de mon application
+- Je remplis `package.json` avec les chemins relatifs vers mon code front et mon code back
 - J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
 - J'installe la dépendance _@zetapush/server_ avec : `npm install --save @zetapush/server`
 
@@ -451,12 +451,6 @@ Cette section permet de spécifier ce que contient chaque fichier dans l'arbores
 # Compte existant sur la plateforme ZetaPush
 zeta_user = user@gmail.com
 zeta_password = password
-
-# Chemin relatif vers le code front
-zeta_path_front = ./front/
-
-# Chemin relatif vers le code back (si nécessaire)
-zeta_path_back = ./server/
 ``` 
 
 ## .gitignore
@@ -478,6 +472,10 @@ Comporte le nom de l'application ainsi que les dépendances ZetaPush nécessaire
   "dependencies": {
     "@zetapush/front": "1.0.0",
     "@zetapush/server": "1.0.0", // Pas forcément nécessaire
+  },
+  "zetapush": {
+      "front": "./front",
+      "back": "./server"
   }
 }
 ```
