@@ -89,7 +89,7 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
 - Je souhaite créer une application nommée **myApp** et seulement utiliser les _Cloud Services_ existants
 
 *WHEN*
-- Lorsque je lance la commande : `zeta new myApp --user user@gmail.com --front-only`
+- Lorsque je lance la commande : `zeta new myApp --login user@gmail.com --front-only`
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
@@ -177,7 +177,7 @@ As no account is specified, a temporary account has been created for you :
 ```
 
 *WHEN*
-- Lorsque je lance la commande `zeta new --front-only --user user@gmail.com` au sein de mon dossier `myApp`
+- Lorsque je lance la commande `zeta new --front-only --login user@gmail.com` au sein de mon dossier `myApp`
 
 *THEN*
 - La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer comme les fichiers suivants vont être créés :
@@ -299,7 +299,7 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
 - Je souhaite créer une application avec une partie front et une partie back
 
 *WHEN*
-- Lorsque je lance la commande : `zeta new myApp --user user@gmail.com`
+- Lorsque je lance la commande : `zeta new myApp --login user@gmail.com`
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
@@ -391,7 +391,7 @@ Now you can use Cloud Services in your application. You can see the documentatio
 - Je souhaite créer une application avec une partie front et une partie back
 
 *WHEN*
-- Lorsque je lance la commande : `zeta new myApp --user user@gmail.com  --front ./front --back ./server`
+- Lorsque je lance la commande : `zeta new myApp --login user@gmail.com  --front ./front --back ./server`
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
@@ -439,7 +439,7 @@ To deploy your application you can use the command zeta push. You have already a
 ```
 
 *WHEN*
-- Lorsque de lance la commande `zeta new myApp --user user@gmail.com`
+- Lorsque de lance la commande `zeta new myApp --login user@gmail.com`
 
 
 *THEN*
