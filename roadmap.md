@@ -41,18 +41,3 @@
   ## Juillet - Beta 1
 
   ## Août - Beta 2
-
-
-
-<style>
-li{
-  font-size: 1.3rem;
-}
-li>ul>li{
-  font-size: 1rem;
-}
-li > img{
-  vertical-align: middle;
-  margin-top: -4px;
-}
-</style>
