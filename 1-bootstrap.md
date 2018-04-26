@@ -130,6 +130,24 @@ To deploy your application you can use the command zeta push. You have already a
 - Lorsque je lance la commande : `zeta new myApp --front-only`
 
 *THEN*
+- Un Ascii Art est affiché pour faire office de _captcha_. J'ai un prompt qui me demande de résoudre ce captcha pour créer un compte. (Permet d'éviter la création de comptes en boucle)
+
+```console
+   #                #####               #####  
+  ##        #      #     #             #     # 
+ # #        #            #    #####          # 
+   #      #####     #####                 ###  
+   #        #      #          #####       #    
+   #        #      #                           
+ #####             #######                #    
+
+Veuillez résoudre cette opération pour créer votre compte sur la plateforme ZetaPush : 
+
+$ Réponse : 
+```
+
+
+
 - Un compte temporaire sur la plateforme ZetaPush a été créé
 - Une application au nom de **myApp** a été ajouté à ce compte
 - Une arborescence fichier à été créée sous la forme :
