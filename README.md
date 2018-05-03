@@ -13,7 +13,17 @@ Sommaire
 
 # Objectifs
 
-TODO
+## Objectifs de ZetaPush Celtia
+
+Chez ZetaPush, nous sommes convaincus que le développement logiciel est actuellement trop coûteux et trop long. Les développeurs perdent trop de temps sur des problématiques techniques n'ayant aucune plus-value pour le client final (initialisation du poste de travail, installation, mise en production...).
+Nous sommes également convaincus que la réussite d'un projet est extrèmement liée à l'ergonomie de l'application (autrement dit, l'utilisateur est au centre de toutes les décisions).
+
+ZetaPush souhaite donc offrir une expérience de développement agréable et efficace pour une productivité accrue. Nous souhaitons que les développeurs se concentrent sur le code utile. Nous souhaitons également que les développeurs se focalisent sur la partie visible de l'iceberg (l'interface utilisateur - UI) dans le but de répondre efficacement aux besoins grandissants d'ergonomie.
+
+
+## Objectifs de ce repository
+
+Ce repository github trace nos réflexions, idées et propositions. Nous utilisons ce repository pour communiquer sur nos avancées. Ce repository est aussi la base pour que nos utilisateurs (vous) puissent aussi contribuer en terme de réflextion, d'idées et de propositions. Ce repository est ouvert à tous ceux qui partagent les mêmes convictions que nous.
 
 # Schémas de principe
 
