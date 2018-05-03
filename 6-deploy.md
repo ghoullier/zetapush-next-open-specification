@@ -1,8 +1,7 @@
 # Objectifs
 
-- Un développeur web doit pouvoir développer son front en utilisant les services ZetaPush et sans être obligé de développer de code backend spécifique. Il doit pouvoir déployer son front sur ZetaPush.
-- Un développeur web doit pouvoir coder son propre métier pour simplifier le développement de son/ses front(s). Il doit pouvoir déployer ses services custom sur ZetaPush.
-- Un développeur web ayant un front et des services custom doit pouvoir déployer son application sur ZetaPush (front et backend custom)
+- Un développeur front doit pouvoir développer son front en utilisant les services ZetaPush et sans être obligé de développer de code backend spécifique. Il doit pouvoir déployer son front sur ZetaPush.
+- Un développeur full-stack ayant un front et des services custom doit pouvoir déployer son application sur ZetaPush (front et backend custom)
 
 
 # Pré-requis
@@ -18,18 +17,16 @@
 ### ETQ dev front je déploie mon application en production
 
 *GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  - J'ai le nom de l'application dans le fichier `package.json`
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
-  - Je n'appartient pas à une organisation (je développe seul)
-  - J'ai l'identifiant de mon application (my-first-app)
-  - J'ai un seul environnement fourni par ZetaPush (production)
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire `dist`
-  - Mon front s'appelle `avengers-chat-web`
+  - Le nom de mon application est _avengers chat web_
 
 *WHEN*
-  - J'exécute la commande : ```zeta push```
+  - J'exécute la commande : ```zeta push --front-only```
 
 *THEN*
-  - Le code présent dans `dist` est envoyé sur ZetaPush
+  - Le code présent dans les chemins spécifiés dans le `package.json` est envoyé sur ZetaPush (front seulement)
   - Je vois l'état d'avancement du déploiement global :
     ```
     $ zeta push
@@ -46,49 +43,7 @@
 
     Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
     ```
-  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
-
-
-
-
-### ETQ dev front je déploie mon application sans identifiants de connexion
-
-*GIVEN*
-  - Je n'ai pas explicitement créé de compte chez ZetaPush
-  - Je n'ai pas explicitement choisi l'identifiant de mon application
-  - Je n'ai pas connaissance d'un éventuel environnement de développement
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire `dist`
-  - Mon front s'appelle `avengers-chat-web`
-
-*WHEN*
-  - J'éxécute la commande : ```zeta push```
-
-*THEN*
-  - Le code présent dans `dist` est envoyé sur ZetaPush
-  - Je vois l'état d'avancement du déploiement global :
-    ```
-    $ zeta push
-    Deploying your application on production environment:
-      ✓ Code uploaded
-      | Publishing web application            ██████░░░░░░
-    ```
-  - Je sais lorsque mon application est prête à être utilisée :
-    ```
-    $ zeta push
-    Deploying your application on production environment:
-      ✓ Code uploaded
-      ✓ Web application published
-
-    Your web application is ready and available at https://avangers-chat.prod.my-first-app.fgfhjoh48971zfgq.zetapush-apps.com
-    You can manage your application on "http://console.zetapush.com" using the following account:
-      - login : "fgfhjoh48971zfgq" 
-      - password "fzoqfhue9454nhd"
-    The ID of your application is : "my-first-app"
-    This application will expired in X days.
-    ```
-  - Mon front est disponible sur le site `avangers-chat.prod.my-first-app.fgfhjoh48971zfgq.zetapush-apps.com`
-  - Un compte temporaire m'a été créé chez ZetaPush
-  - Je sais comment gérer mon application, sachant qu'elle va expirer dans X jours
+  - Mon front est disponible sur le site https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
 
 
 # <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des services custom
@@ -110,10 +65,9 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 ### ETQ dev full-stack je déploie mes services custom en production
 
 *GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  - J'ai le nom de l'application dans le fichier `package.json`
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
-  - Je n'appartient pas à une organisation (je développe seul)
-  - J'ai l'identifiant de mon application (my-first-app)
-  - J'ai un seul environnement fourni par ZetaPush
   - J'ai développé un service custom avec les fonctions suivantes :
     - ```createGame(player1, player2)```
     - ```gameAction(player, name, args)```
@@ -126,7 +80,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 - J'exécute la commande : ```zeta push --server-only```
 
 *THEN*
-  - Mon code custom est envoyé sur ZetaPush
+  - Mon code custom (indiqué par le fichier `package.json`) est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
     ```
     $ zeta push
@@ -158,69 +112,12 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
 
-### ETQ dev full-stack je déploie mes services custom sans identifiants de connexion
-
-*GIVEN*
-  - Je n'ai pas explicitement créé de compte chez ZetaPush
-  - Je n'ai pas explicitement choisi l'identifiant de mon application
-  - Je n'ai pas connaissance d'un éventuel environnement de développement
-  - J'ai développé un service custom avec les fonctions suivantes :
-    - ```createGame(player1, player2)```
-    - ```gameAction(player, name, args)```
-    - ```isFinished()```
-    - ```getWinner()```
-    - ```endGame()```
-  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
-  - Mon front s'appelle `avengers-chat-web`
-
-*WHEN*
-  - J'exécute la commande : ```zeta push --server-only```
-
-*THEN*
-  - Mon code custom est envoyé sur ZetaPush
-  - Je vois l'état d'avancement du déploiement global
-    ```
-    $ zeta push
-    Deploying your application on production environment:
-      ✓ Code uploaded
-      | Publishing custom services on node 1   ██████░░░░░░
-      - Publishing custom services on node 2   ████████░░░░
-      / Publishing custom services on node 3   ██░░░░░░░░░░
-    ```
-  - Je sais lorsque mon application est prête à être utilisée
-    ```
-    $ zeta push
-    Deploying your application on production environment:
-      ✓ Code uploaded
-      ✓ Custom services published on node 1
-      ✓ Custom services published on node 2
-      ✓ Custom services published on node 3
-
-    Your custom services are ready and accessible through ZetaPush
-    You can manage your application on "http://console.zetapush.com" using the following account:
-      - login : "fgfhjoh48971zfgq" 
-      - password "fzoqfhue9454nhd"
-    The ID of your application is : "my-first-app"
-    This application will expired in X days.
-    ```
-  - Je peux utiliser mon frontend pour interagir avec mon service custom déployé en production
-  - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
-    - ```player1 = {"name": "Georgesdelajungle"}```
-    - ```player2 = {"name": "Aladdin"}```
-  - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
-  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
-  - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
-  - Un compte temporaire m'a été créé chez ZetaPush
-  - Je sais comment gérer mon application, sachant qu'elle va expirer dans X jours
-  - J'ai un identifiant d'application qui m'a été donné pour l'utiliser sur la partie front
-
-
 ### ETQ dev full-stack je déploie mon application (front et service custom) en production
 
 *GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  - J'ai le nom de l'application dans le fichier `package.json`
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
-  - J'ai l'identifiant de mon application (my-first-app)
-  - J'ai un seul environnement fourni par ZetaPush
   - J'ai développé un service custom avec les fonctions suivantes :
     - ```createGame(player1, player2)```
     - ```gameAction(player, name, args)```
@@ -291,73 +188,14 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
                                    └────────┘ └────────┘ └────────┘
     ```
 
-### ETQ dev je déploie mon application (front et service custom) sans identifiants de connexion
-
-*GIVEN*
-  - Je n'ai pas de compte chez ZetaPush
-  - Je n'ai pas d'identifiant d'application
-  - Je n'ai pas connaissance d'un éventuel environnement de développement
-  - J'ai développé un service custom avec les fonctions suivantes :
-    - ```createGame(player1, player2)```
-    - ```gameAction(player, name, args)```
-    - ```isFinished()```
-    - ```getWinner()```
-    - ```endGame()```
-  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire `dist`
-
-*WHEN*
-  - J'exécute la commande : ```zeta push```
-
-*THEN*
-  - Mon code custom est envoyé sur ZetaPush
-  - Je vois l'état d'avancement du déploiement global
-    ```
-    $ zeta push
-    Deploying your application on production environment:
-      ✓ Code uploaded
-      | Publishing web application             ██████░░░░░░
-      / Publishing custom services on node 1   ██████░░░░░░
-      - Publishing custom services on node 2   ████████░░░░
-      \ Publishing custom services on node 3   ██░░░░░░░░░░
-    ```
-  - Je sais lorsque mon application est prête à être utilisée
-    ```
-    $ zeta push
-    Deploying your application on production environment:
-      ✓ Code uploaded
-      ✓ Web application published
-      ✓ Custom services published on node 1
-      ✓ Custom services published on node 2
-      ✓ Custom services published on node 3
-
-    Your application is ready:
-    - Your web application is ready and available at https://avangers-chat.prod.my-first-app.fgfhjoh48971zfgq.zetapush-apps.com
-    - Your custom services are ready and accessible through ZetaPush
-    
-    You can manage your application on "http://console.zetapush.com" using the following account:
-      - login : "fgfhjoh48971zfgq" 
-      - password "fzoqfhue9454nhd"
-    The ID of your application is : "my-first-app"
-    This application will expired in X days.
-    ```
-  - Mon frontend est envoyé sur ZetaPush
-  - Mon front est disponible sur le site `https://avengers-chat-web.prod.my-first-app.fgfhjoh48971zfgq.zetapush-apps.com`
-  - Mon frontend de production déployé utilise les services custom déployés
-  - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
-  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
-  - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
-  - Mon front est disponible sur le site `https://avengers-chat-web.prod.my-first-app.fgfhjoh48971zfgq.zetapush-apps.com`
-  - Un compte temporaire m'a été créé chez ZetaPush
-  - Je sais comment gérer mon application, sachant qu'elle va expirer dans X jours
 
 ### ETQ dev je suis aidé lorsque mon application (front et service custom) n'a pas pu être déployé en production
 
 
 *GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  - J'ai le nom de l'application dans le fichier `package.json`
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
-  - J'ai l'identifiant de mon application (my-first-app)
-  - J'ai un seul environnement fourni par ZetaPush
   - J'ai développé un service custom avec les fonctions suivantes :
     - ```createGame(player1, player2)```
     - ```gameAction(player, name, args)```
@@ -399,8 +237,9 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
 
 
 *GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  - J'ai le nom de l'application dans le fichier `package.json`
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
-  - J'ai l'identifiant de mon application (my-first-app)
   - J'ai deux environnements fournis par ZetaPush : 
     - `dev` pour le développement et les tests
     - `prod` pour déployer mon application
