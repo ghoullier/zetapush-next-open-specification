@@ -99,6 +99,7 @@ Une fois que c'est fait, tu vas pouvoir initialiser ton Avengers chat.
 
 Pour initialiser ton application, tu as plusieurs possibilités. Tu peux utiliser le wizard disponible sur https://console.zetapush.com (En cours de développement) qui va te guider pas à pas, utiliser la CLI ou encore démarrer en créant manuellement les fichiers nécessaires. Ici tu vas directement utiliser la CLI.
 
+
 Voici la démarche à suivre pour utiliser ton projet :
 
 ```bash
@@ -127,6 +128,8 @@ Cette commande va te créer l'arborescence suivante :
 
 Le fichier `.package.json` comporte les différentes dépendances nécessaires à l'utilisation de ZetaPush (_@zetapush/js_ et _@zetapush/server_). Ensuite le fichier `.zetarc` comporte la configuration nécessaire à l'identification de ton compte sur la plateforme ZetaPush. En effet, un compte temporaire t'es automatiquement créé sur ZetaPush (Avec ton application **avengers-chat** d'associée). Tu peux dès à présent rentre ton compte permanent en te rendant sur https://console.zetapush.com ou en utilisant la CLI.
 
+Cette commande va te créer une arborescence de projet pour différencier ton code front et ton code back qui sera utilisé plus tard dans ce tutoriel (nous appellerons custom could services la partie back).
+Le découpage en deux projets n'est pas obligatoire mais c'est une bonne pratique pour bien différencier les différentes composantes de ton application. De plus dans le cadre du tutoriel, ceci te permettra de bien comprendre les interactions entre le front et les customs services. Comme tu as pu le voir, la CLI te donne un code d'exemple. Nous n'allons pas l'utiliser donc tu peux supprimer de contenu de `server/index.js`, `front/index.html` et de `front/index.js`.
 
 ---
 ### Activation d'un compte via la CLI
@@ -229,6 +232,7 @@ Pour que ton chat fonctionne il te faut 3 choses dans ton application :
 - Une connexion à la plateforme ZetaPush
 - Un moyen d'envoyer un message
 - Un moyen d'écouter les nouveaux messages
+
 
 
 Dans ton _Avengers Chat_, tu vas te connecter auprès de ZetaPush en tant qu'utilisateur anonyme.
