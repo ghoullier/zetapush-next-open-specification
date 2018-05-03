@@ -5,10 +5,12 @@
 Sommaire
 
 - [Objectifs](#objectifs)
-- [Schéma de principe](#schemas-de-principe.md)
-- [Developer Experience](#developer-experience.md)
-- [Profils identifiés](#profils-identifies.md)
-- [Je veux du concret : Tutoriel](#tutoriel.md)
+- [Vocabulaire](#vocabulaire)
+- [Schéma de principe](#schemas-de-principe)
+- [Developer Experience](#parcours-utilisateurs)
+- [Profils identifiés](#profils-identifies)
+- [Roadmap](#roadmap)
+- [Je veux du concret : Tutoriel](#tutoriels)
 
 
 # Objectifs
@@ -24,6 +26,26 @@ ZetaPush souhaite donc offrir une expérience de développement agréable et eff
 ## Objectifs de ce repository
 
 Ce repository github trace nos réflexions, idées et propositions. Nous utilisons ce repository pour communiquer sur nos avancées. Ce repository est aussi la base pour que nos utilisateurs (vous) puissent aussi contribuer en terme de réflexion, d'idées et de propositions. Ce repository est ouvert à tous ceux qui partagent les mêmes convictions que nous.
+
+
+# Vocabulaire
+
+* ETQ : En tant que
+* dev : Terme générique pour dire dev front / back ou fullstack
+* ZP : ZetaPush
+
+## Services
+
+Afin de bien comprendre les différents services que ZetaPush fournit, petite précision sur le nommage :
+
+|          Nom           |                                                                                                                                                        Description                                                                                                                                                        |
+| :--------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|    _Cloud service_     |                                                                          Classe regroupant un ensemble de _cloud functions_ du même domaine fournie par ZetaPush. Par exemple nous avons un _cloud service_ pour le chat, un autre pour la gestion d'utilisateurs...                                                                           |
+|    _Cloud function_    |                                       Méthode d'une classe. Cela correspond à une fonction appelable via un _cloud service_. Par exemple dans le _cloud service_ de gestion des utilisateurs, nous avons les _cloud functions_ suivantes : `createUser()` / `createOrganization()`.                                       |
+| _Custom cloud service_ | Correspond exactement à la même chose qu'un _cloud service_. La seule différence est que c'est le développeur qui l'a créé. Une fois déployé, le _custom cloud service_ est appelable de la même manière qu'un _cloud service_. Il inclut lui aussi un ensemble de _cloud functions_ que le développeur a défini lui même |
+
+À noter que par abus de langage, nous parlerons parfois seulement de _service_ et de _function_ suivant le contexte si cela ne porte pas à confusion.
+
 
 # Schémas de principe
 
@@ -54,11 +76,11 @@ ZetaPush n'impose aucun pré-requis technique. Nous souhaitons que vous puissiez
 
 # Parcours utilisateurs
 
-Cette section a pour but de présenter l'ensemble des parcours utilisateurs envisagé dans le cadre de ZetaPush V3. Chaque partie correspond à un profil présenté dans [commun.md](./commun.md).
+Cette section a pour but de présenter l'ensemble des parcours utilisateurs envisagé dans le cadre de ZetaPush V3. Chaque partie correspond à un profil présenté [ci-dessous](#profils-identifies).
 
 ## Developer experience
 
-### Parcours 1 : Je développe une application front avec ZetaPush sans service custom
+### Parcours 1 : Je développe une application front avec ZetaPush sans _custom cloud service_
 
 Mon objectif est de réaliser une application rapidement. Je ne veux pas m'occuper de la partie backend, je souhaite me concentrer sur l'IHM uniquement. Les services proposés par ZetaPush correspondent parfaitement aux besoins de mon applications (ex: gestion des utilisateurs, stockage de données, chat, ...).
 Je ne souhaite pas m'occuper de la gestion de mon application en production. Une fois déployée, elle tourne et je ne m'en occupe plus.
@@ -73,10 +95,10 @@ Je ne souhaite pas m'occuper de la gestion de mon application en production. Une
 - [Deploiement de l'application](./6-deploy.md#parcours-1)
 
 
-### Parcours 2 : Je développe une application avec ZetaPush et des services custom
+### Parcours 2 : Je développe une application avec ZetaPush et des _custom cloud services_
 
 Mon objectif est de réaliser une application rapidement. Certains services proposés par ZetaPush correspondent parfaitement aux besoins de mon applications (ex: gestion des utilisateurs, stockage de données, chat, ...).
-Cependant, mon application nécessite une certaine logique métier. Je souhaite donc pouvoir développer rapidement mon code métier. Ce code métier ne peut pas être codé directement dans l'IHM car je souhaite réaliser une application Web, iOS et Android. Il faut donc que ce code métier soit mutualisé (ajout de services custom). Je souhaite que mon code métier soit simple à réaliser et puisse s'appuyer sur les services proposés par ZetaPush (stockage par exemple).
+Cependant, mon application nécessite une certaine logique métier. Je souhaite donc pouvoir développer rapidement mon code métier. Ce code métier ne peut pas être codé directement dans l'IHM car je souhaite réaliser une application Web, iOS et Android. Il faut donc que ce code métier soit mutualisé (ajout de _custom cloud services_). Je souhaite que mon code métier soit simple à réaliser et puisse s'appuyer sur les services proposés par ZetaPush (stockage par exemple).
 Je ne souhaite pas m'occuper de la gestion de mon application en production. Une fois déployée, elle tourne et je ne m'en occupe plus.
 
 - [Démarrage](./1-bootstrap.md#parcours-2)
@@ -88,7 +110,7 @@ Je ne souhaite pas m'occuper de la gestion de mon application en production. Une
 - [Deploiement de l'application](./6-deploy.md#parcours-2)
 
 
-### Parcours 3 : Mon équipe développe une application front avec ZetaPush sans services custom
+### Parcours 3 : Mon équipe développe une application front avec ZetaPush sans _custom cloud service_
 
 Je travaille dans une entreprise et nous devons développer une application.
 L'application peut être développée from scratch mais le coût serait trop élevé.
@@ -97,7 +119,7 @@ Les services proposés par ZetaPush correspondent parfaitement aux besoins de ce
 Nous décidons donc d'utiliser ZetaPush pour gérer tout notre backend.
 
 Je ne souhaite pas que ZetaPush nous impose une manière de travailler. Au contraire, je souhaite que ZetaPush s'inscrive dans notre processus de travail habituel :
-L'équipe de développement développe des fonctionnalités. Nous disposons d'une Intégration Continue pour builder et packager notre application. Ce livrable généré est ensuite transmis à l'équipe d'exploitation pour être déployée en recette, pré-production ou production. Une fois le déploiement de l'application effectué, c'est cette équipe d'exploitant qui gère la production (monitoring, mises à jour de sécurité, ...). L'équipe d'exploitation souhaite pouvoir connaître la santé de l'application et également avoir des métriques sur les services ZetaPush utilisés (nombre d'appels, nombre de OK, nombre de KO, temps de réponse, ...).
+L'équipe de développement développe des fonctionnalités. Nous disposons d'une Intégration Continue pour builder et packager notre application. Ce livrable généré est ensuite transmis à l'équipe d'exploitation pour être déployée en recette, pré-production ou production. Une fois le déploiement de l'application effectué, c'est habituellement cette équipe d'exploitant qui gère la production (monitoring, mises à jour de sécurité, ...). L'équipe d'exploitation souhaite pouvoir connaître la santé de l'application et également avoir des métriques sur les services ZetaPush utilisés (nombre d'appels, nombre de OK, nombre de KO, temps de réponse, ...).
 
 Après quelques mois, l'application tourne correctement. Nous souhaitons l'améliorer et corriger les quelques bugs restants. Une nouvelle équipe prend le relais.
 Cette nouvelle équipe de développement souhaite pouvoir rapidement remettre un environnement de développement en place. 
@@ -115,7 +137,7 @@ Pour déterminer l'origine de certains bugs, cette nouvelle équipe a besoin d'a
 - [Une nouvelle équipe reprend la suite du développement](./8-evolution.md#parcours-3)
 
 
-### Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
+### Parcours 4 : Mon équipe développe une application avec ZetaPush et des _custom cloud services_
 
 Je travaille dans une entreprise et nous devons développer une application.
 L'application peut être développée from scratch mais le coût serait trop élevé.
@@ -124,7 +146,7 @@ Cependant, notre application nécessite une certaine logique métier. Nous souha
 Nous décidons donc d'utiliser ZetaPush pour gérer tout notre backend.
 
 Je ne souhaite pas que ZetaPush nous impose une manière de travailler. Au contraire, je souhaite que ZetaPush s'inscrive dans notre processus de travail habituel :
-L'équipe de développement développe des fonctionnalités. Nous disposons d'une Intégration Continue pour builder et packager notre application. Ce livrable généré est ensuite transmis à l'équipe d'exploitation pour être déployée en recette, pré-production ou production. Une fois le déploiement de l'application effectué, c'est cette équipe d'exploitant qui gère la production (monitoring, mises à jour de sécurité, ...). L'équipe d'exploitation souhaite pouvoir connaître la santé de l'application et également avoir des métriques sur les services ZetaPush utilisés (nombre d'appels, nombre de OK, nombre de KO, temps de réponse, ...). L'équipe d'exploitation souhaite aussi pouvoir monitorer et suivre le comportement du code métier (services custom développés). Il faut donc qu'ils puissent avoir accès aux métriques des services custom (nombre d'appels, nombre de OK, nombre de KO, temps de réponse, ...) ainsi qu'un accès aux logs produits par les services custom.
+L'équipe de développement développe des fonctionnalités. Nous disposons d'une Intégration Continue pour builder et packager notre application. Ce livrable généré est ensuite transmis à l'équipe d'exploitation pour être déployée en recette, pré-production ou production. Une fois le déploiement de l'application effectué, c'est habituellement cette équipe d'exploitant qui gère la production (monitoring, mises à jour de sécurité, ...). L'équipe d'exploitation souhaite pouvoir connaître la santé de l'application et également avoir des métriques sur les services ZetaPush utilisés (nombre d'appels, nombre de OK, nombre de KO, temps de réponse, ...). L'équipe d'exploitation souhaite aussi pouvoir monitorer et suivre le comportement du code métier (services custom développés). Il faut donc qu'ils puissent avoir accès aux métriques des services custom (nombre d'appels, nombre de OK, nombre de KO, temps de réponse, ...) ainsi qu'un accès aux logs produits par les services custom.
 
 Après quelques mois, l'application tourne correctement. Nous souhaitons l'améliorer et corriger les quelques bugs restants. Une nouvelle équipe prend le relais.
 Cette nouvelle équipe de développement souhaite pouvoir rapidement remettre un environnement de développement en place. 
@@ -149,72 +171,26 @@ L'équipe d'exploitant
 
 # Profils identifiés
 
-TODO: à compléter
-TODO: reprendre les User Stories de chaque partie
 
-## Profils principaux
+Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage dans l'ensemble du projet.
 
-
-### Développeur Front-End
-
-Correspond aux parcours :
-- Parcours 1 : Je développe une application front avec ZetaPush sans service custom
-- Parcours 3 : Mon équipe développe une application front avec ZetaPush sans services custom
-
-### Développeur Full-Stack
-
-Correspond aux parcours :
-- Parcours 2 : Je développe une application avec ZetaPush et des services custom
-- Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
+|                Profil                 |    Nommage    | Description                           | Parcours correspondants                    |
+| :-----------------------------------: | :-----------: | ------------------------------------- | ------------------------------------------ |
+|         Développeur Front-End         |   dev front   |                                       | <ul><li>**Parcours 1** : Je développe une application front avec ZetaPush sans service custom</li><li>**Parcours 3** : Mon équipe développe une application front avec ZetaPush sans services custom</li></ul> |
+|         Développeur Back-End          |   dev back    | TODO: souhaits et rôle d'un dev backend avec ZetaPush ? | <ul><li>**Parcours 2** : Je développe une application avec ZetaPush et des services custom</li><li>**Parcours 4** : Mon équipe développe une application avec ZetaPush et des services custom</li></ul> |
+|        Développeur Full-Stack         | dev fullstack |                                       | <ul><li>**Parcours 1** : Je développe une application front avec ZetaPush sans service custom</li><li>**Parcours 2** : Je développe une application avec ZetaPush et des services custom</li><li>**Parcours 3** : Mon équipe développe une application front avec ZetaPush sans services custom</li><li>**Parcours 4** : Mon équipe développe une application avec ZetaPush et des services custom</li></ul> |
+| Opérationnel / Administrateur système |      ops      | Gestion de la production :<ul><li>déploiement</li><li>mise à jour</li><li>monitoring/supervision/alerting</li></ul>
+|            Chef de projet             |      CP       | Visibilité sur l'application :<ul><li>risques (TODO: pouvoir rassurer un chef de projet sur le choix ZetaPush)</li><li>coûts (TODO: savoir concrètement combien ZetaPush va lui coûter et combien il va économiser)</li><li>planification/avancement du projet (TODO: lien avec ZetaPush ? Visibilité sur la roadmap ZetaPush ?)</li><li>analytics (TODO: remonter des métriques pour que le chef de projet puisse savoir comment son application est utilisée : le nombre d'utilisateurs, parcours clients, ...)</li><li>dashboard projet (TODO: vision complète)</li></ul> |                                            |
+|              Commercial               |  commercial   | <ul><li>évaluation des risques (TODO: pouvoir rassurer un chef de projet sur le choix ZetaPush)</li><li>évaluation des coûts (TODO: savoir concrètement combien ZetaPush va lui coûter et combien il va économiser)</li></ul> |                                            |
+|                  CEO                  |      CEO      | <ul><li>évaluation des risques (TODO: pouvoir rassurer un chef de projet sur le choix ZetaPush)</li><li>évaluation des coûts (TODO: savoir concrètement combien ZetaPush va lui coûter et combien il va économiser)</li></ul>  |                                            |
+|                  CTO                  |      CTO      | <ul><li>évaluation des services proposés (matching avec le besoin fonctionnel)</li></ul> |                                            |
+|        Client final d'une ESN         |    client     | <ul><li>analytics (TODO: remonter des métriques pour que le chef de projet puisse savoir comment son application est utilisée : le nombre d'utilisateurs, parcours clients, ...)</li><li>suivi de l'application en production</li><li>monitoring</li></ul> |                                            |
 
 
-### Exploitant/Administrateur système
+# Roadmap
 
-Gestion de la production :
-- déploiement
-- mise à jour
-- monitoring/supervision/alerting
+TODO
 
+# Tutoriels
 
-## Autres profils identifiés
-
-
-### Développeur Back-End (TODO)
-
-TODO: souhaits et rôle d'un dev backend avec ZetaPush ?
-
-
-### Chef de projet (TODO)
-
-Visibilité sur l'application :
-- risques (TODO: pouvoir rassurer un chef de projet sur le choix ZetaPush)
-- coûts (TODO: savoir concrètement combien ZetaPush va lui coûter et combien il va économiser)
-- planification/avancement du projet (TODO: lien avec ZetaPush ? Visibilité sur la roadmap ZetaPush ?)
-- analytics (TODO: remonter des métriques pour que le chef de projet puisse savoir comment son application est utilisée : le nombre d'utilisateurs, parcours clients, ...)
-- dashboard projet (TODO: vision complète)
-
-### Commercial (TODO)
-
-- évaluation des risques (TODO: pouvoir rassurer un chef de projet sur le choix ZetaPush)
-- évaluation des coûts (TODO: savoir concrètement combien ZetaPush va lui coûter et combien il va économiser)
-
-### CEO (TODO)
-
-- évaluation des risques (TODO: pouvoir rassurer un chef de projet sur le choix ZetaPush)
-- évaluation des coûts (TODO: savoir concrètement combien ZetaPush va lui coûter et combien il va économiser)
-
-
-### CTO (TODO)
-
-- évaluation des services proposés (matching avec le besoin fonctionnel)
-
-### Client final (TODO)
-
-
-- analytics (TODO: remonter des métriques pour que le chef de projet puisse savoir comment son application est utilisée : le nombre d'utilisateurs, parcours clients, ...)
-- suivi de l'application en production
-- monitoring
-
-# Tutoriel
-
-TODO: chat
+- [Avengers Chat](./0-tutorial.md)

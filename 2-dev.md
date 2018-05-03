@@ -6,7 +6,7 @@
 * Un développeur doit avoir accès depuis son IDE à la documentation des _cloud services_.
 * Un développeur doit pouvoir écouter les évènements des _cloud services_.
 
-Les profils ainsi que le vocabulaire utilisés sont définis dans [commun.md](./commun.md).
+Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./README.md#vocabulaire).
 
 ---
 

@@ -4,7 +4,7 @@
 - Un développeur full-stack doit pouvoir utiliser les services ZetaPush dans son code front et coder son propre métier pour simplifier le développement de son/ses front(s)
 - Un développeur doit pouvoir initialiser un squelette de projet avec la CLI
 
-Les profils utilisés sont définis dans [commun.md](./commun.md).
+Les profils utilisés sont définis dans [le readme](./README.md#profils-identifies).
 
 Pour chaque User Story, nous définissons seulement les fichiers qui sont créés. Pour voir le contenu de chacun, voir la rubrique _fichiers créés_.
 
