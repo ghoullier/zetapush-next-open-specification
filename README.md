@@ -13,11 +13,43 @@ Sommaire
 
 # Objectifs
 
-TODO
+## Objectifs de ZetaPush Celtia
+
+Chez ZetaPush, nous sommes convaincus que le développement logiciel est actuellement trop coûteux et trop long. Les développeurs perdent trop de temps sur des problématiques techniques n'ayant aucune plus-value pour le client final (initialisation du poste de travail, installation, mise en production...).
+Nous sommes également convaincus que la réussite d'un projet est extrèmement liée à l'ergonomie de l'application (autrement dit, l'utilisateur est au centre de toutes les décisions).
+
+ZetaPush souhaite donc offrir une expérience de développement agréable et efficace pour une productivité accrue. Nous souhaitons que les développeurs se concentrent sur le code utile. Nous souhaitons également que les développeurs se focalisent sur la partie visible de l'iceberg (l'interface utilisateur - UI) dans le but de répondre efficacement aux besoins grandissants d'ergonomie.
+
+
+## Objectifs de ce repository
+
+Ce repository github trace nos réflexions, idées et propositions. Nous utilisons ce repository pour communiquer sur nos avancées. Ce repository est aussi la base pour que nos utilisateurs (vous) puissent aussi contribuer en terme de réflexion, d'idées et de propositions. Ce repository est ouvert à tous ceux qui partagent les mêmes convictions que nous.
 
 # Schémas de principe
 
-TODO
+ZetaPush propose un ensemble de _cloud services_ dont l'objectif est de répondre aux usages standards/habituels.
+Ces services ont pour but de répondre aux besoin pour la plupart des situations et donc de vous concentrer sur la partie UI/UX (interface utilisateur/ergonomie) :
+
+![Développement avec seulement les _cloud services_ ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/principes-phase-dev-utilise-cloud-services.html)
+
+
+
+Fournir des services prêts à l'emploi ne suffisent pas toujours. Il existe deux formes de situations non couvertes :
+- Vous souhaitez utiliser un _cloud service_ mais celui-ci ne répond que partiellement à votre besoin
+- Aucun des _cloud service_ fournis par ZetaPush n'est adapté à l'un de vos besoins spécifique
+
+Dans le premier cas, nous offrons la possibilité de configurer ou d'étendre les _cloud services_ existants pour les adapter à vos besoins.
+Dans le second cas, nous vous permettons de développer vos propres _cloud services custom_.
+
+![Développement avec seulement les _cloud services_ ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/principes-phase-dev-custom-cloud-services.html)
+
+
+Au delà de la partie développement de votre application, ZetaPush se charge également de l'hébergement :
+
+![Développement avec seulement les _cloud services_ ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/principes-prod.html)
+
+
+ZetaPush n'impose aucun pré-requis technique. Nous souhaitons que vous puissiez utiliser les technologies avec lesquelles vous êtes les plus à l'aise. De même ZetaPush se refuse d'impacter vos processus de travail mais cherche au contraire à s'adapter à votre workflow de travail.
 
 
 # Parcours utilisateurs
