@@ -8,7 +8,7 @@
 
 # User stories
 
-## ETQ chef de projet, j'écris ma configuration dans la console en JSON
+## ETQ chef de projet, j'écris ma configuration dans la console ZetaPush en JSON
 
 > TODO
 

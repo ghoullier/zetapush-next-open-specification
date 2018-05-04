@@ -8,7 +8,7 @@
 
 Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./README.md#vocabulaire).
 
----
+
 
 # Pré-requis
 
@@ -16,7 +16,7 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 * J'ai une application front qui est prête à utiliser les _cloud services_. (Projet initialisé, dépendances installées, éventuellement la configuration de saisie)
 * Nous utilisons le **Avengers Chat** comme cas d'usage (Chat temps réel)
 
----
+
 
 # <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans _custom cloud service_
 
@@ -26,9 +26,8 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 
 ## User Stories
 
----
 
-### ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour
+### [P01-DEV01] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour
 
 _GIVEN_
 
@@ -77,9 +76,11 @@ _THEN_
 * La réponse renvoyée est sous la forme d'une promesse
 * La réponse est renvoyée dans le `.then()`
 
+
 ---
 
-### ETQ dev front j'utilise un _cloud service_ et j'ai une erreur en retour
+
+### [P01-DEV02] ETQ dev front j'utilise un _cloud service_ et j'ai une erreur en retour
 
 _GIVEN_
 
@@ -129,9 +130,11 @@ _THEN_
 * Comme il y a eu un dysfonctionnement, une erreur est renvoyée dans la partie `.catch()`
 * L'objet d'erreur renvoyé comporte 2 paramètres : `tag` qui est un identifiant unique pour cette erreur et `message` qui est une description plus précise de cette erreur.
 
+
 ---
 
-### ETQ dev front j'écoute les évènements d'un _cloud service_
+
+### [P01-DEV03] ETQ dev front j'écoute les évènements d'un _cloud service_
 
 _GIVEN_
 
@@ -165,9 +168,11 @@ Afin d'écouter les évènements d'une _cloud function_ précise, il faut écout
 
 Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
 
+
 ---
 
-### ETQ dev front j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser les _cloud services_
+
+### [P01-DEV04] ETQ dev front j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser les _cloud services_
 
 _GIVEN_
 
@@ -188,10 +193,11 @@ _THEN_
   * `this.userService.createOrganization()`
 * La _cloud function_ `getUser()` ne correspond pas et n'est donc pas affichée
 
+
 ---
 
 
-### ETQ dev front j'ai accès à la documentation des _cloud services_ depuis mon IDE (VSCode)
+### [P01-DEV05] ETQ dev front j'ai accès à la documentation des _cloud services_ depuis mon IDE (VSCode)
 
 _GIVEN_
 
@@ -212,7 +218,7 @@ _THEN_
 * Je peux naviguer au sein de la documentation dans la pop-up, en utilisant différents liens.
 * Pour chaque _cloud function_ il y a son nom, sa description, ses paramètres entrants et son retour
 
----
+
 
 # <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des _custom cloud services_
 
@@ -222,9 +228,9 @@ _THEN_
 
 ## User Stories
 
----
 
-### ETQ dev full-stack je développe mon code métier dans une _custom cloud function_
+
+### [P02-DEV01] ETQ dev full-stack je développe mon code métier dans une _custom cloud function_
 
 _GIVEN_
 
@@ -287,9 +293,11 @@ _THEN_
   };
   ```
 
+
 ---
 
-### ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une réponse en retour
+
+### [P02-DEV02] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une réponse en retour
 
 _GIVEN_
 
@@ -332,7 +340,8 @@ _THEN_
 
 ---
 
-### ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une erreur en retour
+
+### [P02-DEV03] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une erreur en retour
 
 _GIVEN_
 
@@ -374,9 +383,11 @@ _THEN_
 * Comme il y a eu un dysfonctionnement, une erreur est renvoyée dans la partie `.catch()`
 * L'objet d'erreur renvoyé comporte 2 paramètres : `tag` qui est un identifiant unique pour cette erreur et `message` qui est une description plus précise de cette erreur.
 
+
 ---
 
-### ETQ dev full-stack j'écoute les évènements d'un _custom cloud service_
+
+### [P02-DEV04] ETQ dev full-stack j'écoute les évènements d'un _custom cloud service_
 
 _GIVEN_
 
@@ -410,9 +421,11 @@ Afin d'écouter les évènements d'une _cloud function_ précise, il faut écout
 
 Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
 
+
 ---
 
-### ETQ dev full-stack j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser mes _custom cloud services_
+
+### [P02-DEV05] ETQ dev full-stack j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser mes _custom cloud services_
 
 _GIVEN_
 
@@ -433,9 +446,11 @@ _THEN_
   * `this.avengersService.attackWithSpecificSkill()`
 * La _cloud function_ `getHealthAvenger()` ne correspond pas et n'est donc pas affichée
 
+
 ---
 
-### ETQ dev full-stack j'ai accès à la documentation de mes _custom cloud services_ depuis mon IDE (VSCode)
+
+### [P02-DEV06] ETQ dev full-stack j'ai accès à la documentation de mes _custom cloud services_ depuis mon IDE (VSCode)
 
 _GIVEN_
 
@@ -456,4 +471,3 @@ _THEN_
 * Je peux naviguer au sein de la documentation dans la pop-up, en utilisant différents liens.
 * Pour chaque _cloud function_ il y a son nom, sa description, ses paramètres entrants et son retour
 
----

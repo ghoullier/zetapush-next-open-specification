@@ -6,7 +6,7 @@
 
 Les profils utilisés sont définis dans [le readme](./README.md#profils-identifies).
 
-Pour chaque User Story, nous définissons seulement les fichiers qui sont créés. Pour voir le contenu de chacun, voir la rubrique _fichiers créés_.
+Pour chaque User Story, nous définissons seulement les fichiers qui sont créés. Pour voir le contenu de chacun, voir la rubrique [fichiers créés](#fichiers).
 
 # Pré-requis
 
@@ -17,7 +17,7 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 
 ## User stories
 
-### ETQ dev front je créé une application sans CLI
+### [P01-BOOT01] ETQ dev front je créé une application sans CLI
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -28,8 +28,8 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
   ├── .zetarc
   ├── .gitignore
   ├── front
-      ├── index.html
-      └── index.js
+  │   ├── index.html
+  │   └── index.js
   └── package.json
   ```
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
@@ -45,7 +45,11 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
 *THEN*
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 
-### ETQ de front j'utilise les _Cloud Services_ dans mon application existante sans CLI
+
+---
+
+
+### [P01-BOOT02] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -74,14 +78,17 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
   ├── .zetarc
   ├── .gitignore
   ├── front
-      ├── index.html
-      └── index.js
+  │   ├── index.html
+  │   └── index.js
   └── package.json
   ```
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 
 
-### ETQ dev front je créé une application avec la CLI
+---
+
+
+### [P01-BOOT03] ETQ dev front je créé une application avec la CLI
 
 *GIVEN*
 - J'ai la dépendance à `@zetapush/cli` qui est installée en global
@@ -101,8 +108,8 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
   ├── .zetarc
   ├── .gitignore
   ├── front
-      └── index.html
-      └── index.js
+  │   └── index.html
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
@@ -119,7 +126,11 @@ Now you can use Cloud Services in your application. You can see the documentatio
 To deploy your application you can use the command zeta push. You have already an existing use of Cloud Service in front/index.js, test it !
 ```
 
-### ETQ dev front je créé une application avec la CLI sans compte existant
+
+---
+
+
+### [P01-BOOT04] ETQ dev front je créé une application avec la CLI sans compte existant
 
 *GIVEN*
 - J'ai la dépendance à `@zetapush/cli` qui est installée en global
@@ -157,8 +168,8 @@ $ Réponse :
   ├── .zetarc
   ├── .gitignore
   ├── front
-      └── index.html
-      └── index.js
+  │   └── index.html
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
@@ -182,7 +193,11 @@ As no account is specified, a temporary account has been created for you :
     NOTE: By registering, your current work and data will be kept
 ```
 
-### ETQ dev front j'utilise les _Cloud Services_ dans mon application existante en utilisant la CLI
+
+---
+
+
+### [P01-BOOT05] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante en utilisant la CLI
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -234,7 +249,7 @@ To deploy your application you can use the command zeta push.
 
 ## User stories
 
-### ETQ dev full-stack je créé une application
+### [P02-BOOT01] ETQ dev full-stack je créé une application sans CLI
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -245,10 +260,10 @@ To deploy your application you can use the command zeta push.
   ├── .zetarc
   ├── .gitignore
   ├── front
-      ├── index.html
-      └── index.js
+  │   ├── index.html
+  │   └── index.js
   ├── server
-      └── index.js
+  │   └── index.js
   └── package.json
   ```
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
@@ -268,7 +283,11 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_ et à créer mes _Custom Cloud Services_.
 
 
-### ETQ dev full-stack j'ajoute  des _Cloud Services_ et je créé  des _Custom Cloud Services_ au sein d'une application existante
+
+---
+
+
+### [P02-BOOT02] ETQ dev full-stack j'ajoute  des _Cloud Services_ et je créé  des _Custom Cloud Services_ au sein d'une application existante
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -299,17 +318,20 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
   ├── .zetarc
   ├── .gitignore
   ├── front
-      ├── index.html
-      └── index.js
+  │   ├── index.html
+  │   └── index.js
   ├── back
-      └── index.js
+  │   └── index.js
   └── package.json
   ```
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 
 
 
-### ETQ dev full-stack je créé une application avec la CLI 
+---
+
+
+### [P02-BOOT03] ETQ dev full-stack je créé une application avec la CLI 
 
 *GIVEN*
 - J'ai la dépendance à `@zetapush/cli` qui est installée en global
@@ -329,10 +351,10 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
   ├── .zetarc
   ├── .gitignore
   ├── front
-      ├── index.html
-      └── index.js
+  │   ├── index.html
+  │   └── index.js
   ├── server
-      └── index.js
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
@@ -350,8 +372,10 @@ To deploy your application you can use the command zeta push.  You have already 
   ```
 
 
+---
 
-### ETQ dev full-stack je créé une application avec la CLI sans compte existant
+
+### [P02-BOOT04] ETQ dev full-stack je créé une application avec la CLI sans compte existant
 
 *GIVEN*
 - J'ai la dépendance à `@zetapush/cli` qui est installée en global
@@ -372,11 +396,11 @@ To deploy your application you can use the command zeta push.  You have already 
   ├── .zetarc
   ├── .gitignore
   ├── front
-      └── index.html
-      └── index.js
-      └── style.css
+  │   └── index.html
+  │   └── index.js
+  │   └── style.css
   ├── server
-      └── index.js
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
@@ -401,7 +425,11 @@ A new application named myApp was added to your account.
 Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation. You have already an existing use of Cloud Service in front/index.js, test it !
 ```
 
-### ETQ dev full-stack je créé une application avec la CLI et une arborescence spécifiée
+
+---
+
+
+### [P02-BOOT05] ETQ dev full-stack je créé une application avec la CLI et une arborescence spécifiée
 
 *GIVEN*
 - J'ai la dépendance à `@zetapush/cli` qui est installée en global
@@ -421,11 +449,11 @@ Now you can use Cloud Services in your application. You can see the documentatio
   ├── .zetarc
   ├── .gitignore
   ├── front
-      └── index.html
-      └── index.js
-      └── style.css
+  │   └── index.html
+  │   └── index.js
+  │   └── style.css
   ├── server
-      └── index.js
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
@@ -442,8 +470,10 @@ Now you can use Cloud Services in your application. You can see the documentatio
 To deploy your application you can use the command zeta push. You have already an existing use of Cloud Service in front/index.js, test it !
   ```
 
+---
 
-### ETQ dev full-stack j'ajoute des _Custom Cloud Services_ au sein d'une application existante avec la CLI
+
+### [P02-BOOT06] ETQ dev full-stack j'ajoute des _Custom Cloud Services_ au sein d'une application existante avec la CLI
 
 
 *GIVEN*
@@ -484,7 +514,7 @@ package.json
 - Il peut être intéressant pour plus de clarté de déplacer dans le front dans un sous-dossier
 
 
-# Fichiers créés / à créer
+# <a name="fichiers"></a> Fichiers créés / à créer
 
 Cette section permet de spécifier ce que contient chaque fichier dans l'arborescence créée ou à créer dans lors de l'initialisation de projet.
 
