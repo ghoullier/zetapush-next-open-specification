@@ -321,7 +321,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
   - Mon entreprise a créé une application dont l'identifiant est `avengers-chat`
-  - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, integration, recette, production) :
+  - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, intégration, recette, production) :
     - `dev` pour le développement et les tests
     - `integration` pour l'intégration continue
     - `recette` pour la qualification
@@ -361,7 +361,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
   - Mon entreprise a créé une application dont l'identifiant est `avengers-chat`
-  - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, integration, recette, production) :
+  - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, intégration, recette, production) :
     - `dev` pour le développement et les tests
     - `integration` pour l'intégration continue
     - `recette` pour la qualification
@@ -400,7 +400,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 ## Vue d'ensemble
 
-TODO: est que les services ZetaPush sont partagés en dev ? Risque de se marcher sur les pieds !
+TODO: est-ce que les services ZetaPush sont partagés en dev ? Risque de se marcher sur les pieds !
 TODO: cette vue d'ensemble devrait être mutualisée et il faudrait se concentrer ici sur la partie déploiement uniquement
 
 En phase de développement, chaque développeur travaille en local sur son poste. Il utilise son navigateur préféré ainsi que son nodeJS en local.
@@ -429,7 +429,7 @@ TODO: tests auto
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
   - Mon entreprise a créé une application dont l'identifiant est `avengers-chat`
-  - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, integration, recette, production) :
+  - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, intégration, recette, production) :
     - `dev` pour le développement et les tests
     - `integration` pour l'intégration continue
     - `recette` pour la qualification
@@ -499,7 +499,7 @@ TODO: tests auto
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
   - Mon entreprise a créé une application dont l'identifiant est `avengers-chat`
-  - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, integration, recette, production) :
+  - Mon entreprise a souscrit plusieurs environnements sur ZetaPush (developpement, intégration, recette, production) :
     - `dev` pour le développement et les tests
     - `integration` pour l'intégration continue
     - `recette` pour la qualification
