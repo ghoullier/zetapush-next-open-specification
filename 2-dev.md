@@ -18,7 +18,7 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 
 
 
-# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans _custom cloud service_
+# <a name="parcours-1"></a> Parcours 1 : Je développe sur mon environement local une application front avec ZetaPush sans _custom cloud service_
 
 ## Schéma
 
@@ -220,7 +220,7 @@ _THEN_
 
 
 
-# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des _custom cloud services_
+# <a name="parcours-2"></a> Parcours 2 : Je développe sur mon environement local une application avec ZetaPush et des _custom cloud services_
 
 ## Schéma
 
@@ -230,7 +230,7 @@ _THEN_
 
 
 
-### [P02-DEV01] ETQ dev full-stack je développe mon code métier dans une _custom cloud function_
+### [P02-DEV01] ETQ dev full-stack je développe sur mon environement local mon code métier dans une _custom cloud function_
 
 _GIVEN_
 
@@ -470,4 +470,3 @@ _THEN_
 * Au sein de la pop-up d'autocomplétion, je peux cliquer sur un lien `view documentation` qui va me rediriger (Toujours dans la pop-up) sur la liste des _cloud functions_ pour ce _cloud service_
 * Je peux naviguer au sein de la documentation dans la pop-up, en utilisant différents liens.
 * Pour chaque _cloud function_ il y a son nom, sa description, ses paramètres entrants et son retour
-
