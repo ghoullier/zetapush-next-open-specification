@@ -144,7 +144,7 @@ Choose your email : damien@gmail.com
 ``` 
 ---
 
-Les fichiers `server/index.js` / `front/index.html` et `front/index.js` sont remplis d'un exemple de projet type _Hello World_. Tu peux t'y inspirer pour créer une application mais pour ce tutoriel tu peux supprimer le contenu de ces fichiers, nous allons partir de zéro.
+Les fichiers `server/index.js` / `front/index.html` et `front/index.js` sont remplis d'un exemple de projet type _Hello World_. Tu peux t'en inspirer pour créer une application mais pour ce tutoriel tu peux supprimer le contenu de ces fichiers, nous allons partir de zéro.
 
 Maintenant que ton application est prête à ếtre développée, commence par créer le design.
 
