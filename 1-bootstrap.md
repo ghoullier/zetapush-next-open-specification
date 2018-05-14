@@ -6,7 +6,7 @@
 
 Les profils utilisés sont définis dans [le readme](./README.md#profils-identifies).
 
-Pour chaque User Story, nous définissons seulement les fichiers qui sont créés. Pour voir le contenu de chacun, voir la rubrique _fichiers créés_.
+Pour chaque User Story, nous définissons seulement les fichiers qui sont créés. Pour voir le contenu de chacun, voir la rubrique [fichiers créés](#fichiers).
 
 # Pré-requis
 
@@ -17,35 +17,37 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 
 ## User stories
 
-### ETQ dev front je créé une application sans CLI
+### [P01-BOOT01] ETQ dev front je créé une application sans CLI en utilisant mon compte ZetaPush
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
-- Je souhaite créer une application nommée **myApp** et seulement utiliser les _Cloud Services_ existants
-- Je créé l'arboresence suivante :
+- Je souhaite créer une application nommée **myApp** et seulement utiliser les _Cloud Services_ fournis pas ZetaPush
+- Je créé l'arboresence suivante (en utilisant la convention ZetaPush) :
   ```
-  .
+  myApp
   ├── .zetarc
   ├── .gitignore
   ├── front
-      ├── index.html
-      └── index.js
+  │   ├── index.html
+  │   └── index.js
   └── package.json
   ```
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
 - Je remplis `package.json` avec le nom de mon application
-- Je remplis `package.json` avec le chemin relatif vers la location de mon code front. 
-Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui est utilisé.
 - J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
 
 *WHEN*
 - Lorsque la création des fichiers et l'installation des dépendances est finie
 
 *THEN*
-- Mon application est prête et je suis prêt à utiliser les _Cloud Services_
+- Mon application est prête et je suis prêt à utiliser les _Cloud Services_ avec mon compte `user@gmail.com`
 
-### ETQ de front j'utilise les _Cloud Services_ dans mon application existante sans CLI
+
+---
+
+
+### [P01-BOOT02] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI en utilisant mon compte ZetaPush
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -59,9 +61,7 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
 - Je remplis `package.json` avec le nom de mon application
-- Je remplis `package.json` avec le chemin relatif vers la location de mon code front. 
-Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui est utilisé.
-(Dans notre exemple, notre code front sera dans le dossier `./front`)
+- Je remplis `package.json` avec le chemin relatif vers la location de mon code front (`./`). 
 - J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
 
 *WHEN*
@@ -73,23 +73,25 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
   myApp
   ├── .zetarc
   ├── .gitignore
-  ├── front
-      ├── index.html
-      └── index.js
+  ├── index.html
+  ├── index.js
   └── package.json
   ```
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 
 
-### ETQ dev front je créé une application avec la CLI
+---
+
+
+### [P01-BOOT03] ETQ dev front je créé une application avec la CLI en utilisant mon compte ZetaPush
 
 *GIVEN*
-- J'ai la dépendance à `@zetapush/cli` qui est installée en global
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
 - Je souhaite créer une application nommée **myApp** et seulement utiliser les _Cloud Services_ existants
+- J'utilise la convention ZetaPush
 
 *WHEN*
-- Lorsque je lance la commande : `zeta new myApp --login user@gmail.com --front-only`
+- Lorsque je lance la commande : `npm init myApp --login user@gmail.com --front`
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
@@ -101,8 +103,8 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
   ├── .zetarc
   ├── .gitignore
   ├── front
-      └── index.html
-      └── index.js
+  │   ├── index.html
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
@@ -119,18 +121,22 @@ Now you can use Cloud Services in your application. You can see the documentatio
 To deploy your application you can use the command zeta push. You have already an existing use of Cloud Service in front/index.js, test it !
 ```
 
-### ETQ dev front je créé une application avec la CLI sans compte existant
+
+---
+
+
+### [P01-BOOT04] ETQ dev front je créé une application avec la CLI sans compte existant
 
 *GIVEN*
-- J'ai la dépendance à `@zetapush/cli` qui est installée en global
 - Je n'ai pas de compte ZetaPush existant
 - Je souhaite créer une application nommée **myApp** et seulement utiliser les _Cloud Services_ existants
 
 *WHEN*
-- Lorsque je lance la commande : `zeta new myApp --front-only`
+- Lorsque je lance la commande : `npm init myApp --front`
 
 *THEN*
-- Un Ascii Art est affiché pour faire office de _captcha_. J'ai un prompt qui me demande de résoudre ce captcha pour créer un compte. (Permet d'éviter la création de comptes en boucle)
+- Un _captcha_ est affiché pour vérifier que je ne suis pas un robot
+- J'ai un prompt qui me demande de résoudre ce captcha pour créer un compte
 
 ```console
    #                #####               #####  
@@ -145,20 +151,17 @@ Veuillez résoudre cette opération pour créer votre compte sur la plateforme Z
 
 $ Réponse : 
 ```
-
-
-
 - Un compte temporaire sur la plateforme ZetaPush a été créé
 - Une application au nom de **myApp** a été ajouté à ce compte
 - Une arborescence fichier à été créée sous la forme :
 
   ```
-  .
+  myApp
   ├── .zetarc
   ├── .gitignore
   ├── front
-      └── index.html
-      └── index.js
+  │   ├── index.html
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
@@ -182,42 +185,48 @@ As no account is specified, a temporary account has been created for you :
     NOTE: By registering, your current work and data will be kept
 ```
 
-### ETQ dev front j'utilise les _Cloud Services_ dans mon application existante en utilisant la CLI
+TODO: le captcha ne devrait pas être demandé à l'init de projet, c'est trop intrusif !
+
+---
+
+
+### [P01-BOOT05] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante avec la CLI en utilisant mon compte ZetaPush
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
 - J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
-- Mon code est sous l'arborescence suivante :
+- Mon code est sous l'arborescence suivante (respecte la convention ZetaPush) :
 ```
   myApp
-    ├── index.html
-    └── index.js
+  └── front
+      └── index.html
+      └── index.js
 ```
 
 *WHEN*
-- Lorsque je lance la commande `zeta new --front-only --login user@gmail.com` au sein de mon dossier `myApp`
+- Lorsque je lance la commande `npm init --login user@gmail.com` au sein de mon dossier `myApp`
 
 *THEN*
-- La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer comme les fichiers suivants vont être créés :
+- La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
 ```console
 .zetarc
 .gitignore
 README.md
 package.json
 ```
-- Un prompt est lancé pour que je puisse saisir mon mot de passe
+- Un prompt est lancé pour que je puisse saisir mon mot de passe (`password`)
 - J'ai l'arborescence suivante qui est créée :
   ```
   myApp
   ├── .zetarc
   ├── .gitignore
-  ├── index.html
-  ├── index.js
+  ├── front
+  │   ├── index.html
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
-- Il est possible de spécifier où se trouve le code front avec l'argument `--front /path/`
 - J'ai un README.md avec les informations m'indiquant comment démarrer (utilisation de la CLI, les bonnes pratiques ZetaPush, les liens vers la documentation)
 - La sortie de la console est la suivante :
 
@@ -230,25 +239,76 @@ Now you can use Cloud Services in your application. You can see the documentatio
 To deploy your application you can use the command zeta push.
 ```
 
+
+### [P01-BOOT06] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante et une arborescence custom avec la CLI en utilisant mon compte ZetaPush
+
+
+*GIVEN*
+- J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
+- J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
+- Mon code est sous l'arborescence suivante :
+```
+  myApp
+    ├── index.html
+    └── index.js
+```
+- Je spécifie où se trouve le code front avec l'argument `--front=.`
+
+*WHEN*
+- Lorsque je lance la commande `npm init --front=. --login user@gmail.com` au sein de mon dossier `myApp`
+
+*THEN*
+- La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
+```console
+.zetarc
+.gitignore
+README.md
+package.json
+```
+- Un prompt est lancé pour que je puisse saisir mon mot de passe (`password`)
+- J'ai l'arborescence suivante qui est créée :
+  ```
+  myApp
+  ├── .zetarc
+  ├── .gitignore
+  ├── index.html
+  ├── index.js
+  ├── README.md
+  └── package.json
+  ```
+- Mon application est prête et je suis prêt à utiliser les _Cloud Services_
+- J'ai un README.md avec les informations m'indiquant comment démarrer (utilisation de la CLI, les bonnes pratiques ZetaPush, les liens vers la documentation)
+- La sortie de la console est la suivante :
+
+```
+Welcome to ZetaPush !
+
+A new application named myApp was added to your account.
+Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
+
+To deploy your application you can use the command zeta push.
+```
+
+
 # <a name="parcours-2"></a> Parcours 2 : Je développe une application front avec ZetaPush avec service custom
 
 ## User stories
 
-### ETQ dev full-stack je créé une application
+### [P02-BOOT01] ETQ dev full-stack je créé une application sans CLI
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
 - Je souhaite créer une application nommée **myApp** , utiliser les _Cloud Services_ existants et pouvoir créer mes _Custom Cloud Services_
-- Je créé l'arboresence suivante :
+- Je créé l'arboresence suivante (en suivant les conventions ZetaPush) :
   ```
   .
   ├── .zetarc
   ├── .gitignore
   ├── front
-      ├── index.html
-      └── index.js
+  │   ├── index.html
+  │   └── index.js
   ├── server
-      └── index.js
+  │   └── index.js
   └── package.json
   ```
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
@@ -256,8 +316,6 @@ To deploy your application you can use the command zeta push.
 - Je créé un dossier `front/`, c'est ici que mon code front sera stocké
 - Je créé un dossier `server/`, c'est ici que mon code back sera stocké
 - Je remplis `package.json` avec le nom de mon application
-- Je remplis `package.json` avec les chemins relatifs vers la location de mon code front et de mon code back. 
-Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui est utilisé pour le code front et `./server/` pour le code back.
 - J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
 - J'installe la dépendance _@zetapush/server_ avec : `npm install --save @zetapush/server`
 
@@ -268,24 +326,32 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_ et à créer mes _Custom Cloud Services_.
 
 
-### ETQ dev full-stack j'ajoute  des _Cloud Services_ et je créé  des _Custom Cloud Services_ au sein d'une application existante
+
+---
+
+
+### [P02-BOOT02] ETQ dev full-stack j'ajoute  des _Cloud Services_ et je créé  des _Custom Cloud Services_ au sein d'une application existante
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
 - J'ai une application existante nommée **myApp** et je souhaite utiliser les _Cloud Services_ existants et créer mes _Custom Cloud Services_
-- Mon code est sous l'arboresence suivante :
-```
-  myApp
-    ├── index.html
-    └── index.js
-```
 - Je créé un dossier `server` pour y stocker mon code back
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
 - Je remplis un `package.json` avec le nom de mon application
 - Je remplis `package.json` avec les chemins relatifs vers la location de mon code front et de mon code back. 
-Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui est utilisé pour le code front et `./server/` pour le code back.
-(Dans notre exemple, nous allons déplacer le code front dans un dossier `./front/` pour plus de clarté)
+- Mon code est sous l'arboresence suivante (en respectant la convention ZetaPush) :
+  ```
+  myApp
+  ├── .zetarc
+  ├── .gitignore
+  ├── front
+  │   ├── index.html
+  │   └── index.js
+  ├── server
+  │   └── index.js
+  └── package.json
+  ```
 - J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
 - J'installe la dépendance _@zetapush/server_ avec : `npm install --save @zetapush/server`
 
@@ -293,31 +359,21 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
 - Lorsque la création des fichiers et l'installation des dépendances est finie
 
 *THEN*
-- J'ai l'arborescence suivante qui est créée :
-  ```
-  myApp
-  ├── .zetarc
-  ├── .gitignore
-  ├── front
-      ├── index.html
-      └── index.js
-  ├── back
-      └── index.js
-  └── package.json
-  ```
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 
 
 
-### ETQ dev full-stack je créé une application avec la CLI 
+---
+
+
+### [P02-BOOT03] ETQ dev full-stack je créé une application avec la CLI 
 
 *GIVEN*
-- J'ai la dépendance à `@zetapush/cli` qui est installée en global
 - J'ai un compte ZetaPush existant avec user@gmail.com / password comme couple login/password
 - Je souhaite créer une application avec une partie front et une partie back
 
 *WHEN*
-- Lorsque je lance la commande : `zeta new myApp --login user@gmail.com`
+- Lorsque je lance la commande : `npm init myApp --login user@gmail.com`
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
@@ -329,10 +385,10 @@ Par convention, si aucun chemin n'est spécifié c'est le dossier `./front/` qui
   ├── .zetarc
   ├── .gitignore
   ├── front
-      ├── index.html
-      └── index.js
+  │   ├── index.html
+  │   └── index.js
   ├── server
-      └── index.js
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
@@ -350,66 +406,57 @@ To deploy your application you can use the command zeta push.  You have already 
   ```
 
 
+---
 
-### ETQ dev full-stack je créé une application avec la CLI sans compte existant
+
+### [P02-BOOT04] ETQ dev full-stack je créé une application avec la CLI sans compte existant
 
 *GIVEN*
-- J'ai la dépendance à `@zetapush/cli` qui est installée en global
 - Je n'ai pas de compte ZetaPush
 - Je souhaite créer une application avec une partie front et une partie back
 
 *WHEN*
-- Lorsque je lance la commande : `zeta new myApp`
+- Lorsque je lance la commande : `npm init myApp`
 
 *THEN*
-- Un compte temporaire sur la plateforme ZetaPush a été créé
-- Une application au nom de **myApp** a été ajouté à ce compte
-- Je suis alerté que mon compte est temporaire et que je peux le rendre permanent sur https://console.zetapush.com
+- Une application au nom de **myApp**
 - Une arborescence fichier à été créée sous la forme :
 
   ```
-  .
+  myApp
   ├── .zetarc
   ├── .gitignore
   ├── front
-      └── index.html
-      └── index.js
-      └── style.css
+  │   ├── index.html
+  │   ├── index.js
+  │   └── style.css
   ├── server
-      └── index.js
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
-
-- Un lien pour accèder à mon compte avec les crédentials est affiché dans la console
-- Une aide sur le déploiement de l'application est affiché dans la console (Comment utiliser `zeta push`)
 - J'ai un README.md avec les informations m'indiquant comment démarrer (utilisation de la CLI, les bonnes pratiques ZetaPush, les liens vers la documentation)
 - La console m'affiche toutes les informations précédentes de la manière suivante :
 
 ```
 Welcome to ZetaPush !
 
-As no account is specified, a temporary account has been created for you : 
-- login: vsgygfzq12ffq4fq
-- password: zhfuqzbvgfhreq4f56q4fqf6
-This account is only available for X days.
-You can convert this temporary account into a permanent account with your own login/password here : 
-https://console.zetapush.com/account/register/vsgygfzq12ffq4fq/zhfuqzbvgfhreq4f56q4fqf6
-NOTE: By registering, your current work and data will be kept
-
-A new application named myApp was added to your account.
 Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation. You have already an existing use of Cloud Service in front/index.js, test it !
 ```
 
-### ETQ dev full-stack je créé une application avec la CLI et une arborescence spécifiée
+
+---
+
+
+### [P02-BOOT05] ETQ dev full-stack je créé une application avec la CLI et une arborescence spécifiée en utilisant mon compte ZetaPush
 
 *GIVEN*
-- J'ai la dépendance à `@zetapush/cli` qui est installée en global
 - J'ai un compte ZetaPush existant avec user@gmail.com / password comme couple login/password
 - Je souhaite créer une application avec une partie front et une partie back
+- J'utilise la convention ZetaPush
 
 *WHEN*
-- Lorsque je lance la commande : `zeta new myApp --login user@gmail.com  --front ./front --back ./server`
+- Lorsque je lance la commande : `npm init myApp --login user@gmail.com`
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
@@ -417,15 +464,15 @@ Now you can use Cloud Services in your application. You can see the documentatio
 - Une arborescence fichier à été créée sous la forme :
 
   ```
-  .
+  myApp
   ├── .zetarc
   ├── .gitignore
   ├── front
-      └── index.html
-      └── index.js
-      └── style.css
+  │   ├── index.html
+  │   ├── index.js
+  │   └── style.css
   ├── server
-      └── index.js
+  │   └── index.js
   ├── README.md
   └── package.json
   ```
@@ -442,8 +489,10 @@ Now you can use Cloud Services in your application. You can see the documentatio
 To deploy your application you can use the command zeta push. You have already an existing use of Cloud Service in front/index.js, test it !
   ```
 
+---
 
-### ETQ dev full-stack j'ajoute des _Custom Cloud Services_ au sein d'une application existante avec la CLI
+
+### [P02-BOOT06] ETQ dev full-stack j'ajoute des _Custom Cloud Services_ au sein d'une application existante avec la CLI
 
 
 *GIVEN*
@@ -457,7 +506,7 @@ To deploy your application you can use the command zeta push. You have already a
 ```
 
 *WHEN*
-- Lorsque de lance la commande `zeta new myApp --login user@gmail.com`
+- Lorsque de lance la commande `npm init myApp --login user@gmail.com --front=. --server`
 
 
 *THEN*
@@ -476,15 +525,15 @@ package.json
   ├── .gitignore
   ├── index.html
   ├── index.js
-  ├── back
+  ├── server
+  │   └── index.js
   └── package.json
   ```
 - Les dépendances _@zetapush/front_ et _@zetapush/server_ ont été installées
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
-- Il peut être intéressant pour plus de clarté de déplacer dans le front dans un sous-dossier
 
 
-# Fichiers créés / à créer
+# <a name="fichiers"></a> Fichiers créés / à créer
 
 Cette section permet de spécifier ce que contient chaque fichier dans l'arborescence créée ou à créer dans lors de l'initialisation de projet.
 

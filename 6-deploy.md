@@ -14,12 +14,12 @@
 
 ## User stories
 
-### ETQ dev front je déploie mon application en production
+### [P01-DEPLOY01] ETQ dev front je déploie mon application en production
 
 *GIVEN*
-  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
   - J'ai le nom de l'application dans le fichier `package.json`
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc` contenant les informations de mon compte ZetaPush
   - Le nom de mon application est _avengers chat web_
 
 *WHEN*
@@ -62,7 +62,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ## User stories
 
-### ETQ dev full-stack je déploie mes services custom en production
+### [P02-DEPLOY01] ETQ dev full-stack je déploie mes services custom en production
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -111,8 +111,9 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
+---
 
-### ETQ dev full-stack je déploie mon application (front et service custom) en production
+### [P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et service custom) en production
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -164,32 +165,9 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
   - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
 
 
-TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
-    ```
-    $ zeta push
-    Deploying your application on production environment:
-      
-                          ┌──────────────┐
-                          │ Upload code  │
-               ┌──────────│              │─────────┐
-               │          │ ✓ Done in 2s │         │
-               │          └──────────────┘         │
-               │                                   │
-      ┌────────────────┐                 ┌───────────────────┐
-      │ Publishing web │                 │ Publishing custom │
-      │  application   │                 │      services     │
-      │                │                 └───────────────────┘
-      │ 3s             │                  /        │        \
-      │ ██████░░░░░░   │           ┌────────┐ ┌────────┐ ┌────────┐
-      └────────────────┘           │ node 1 │ │ node 2 │ │ node 3 │
-                                   │        │ │        │ │        │
-                                   │ 5s     │ │ 20s    │ │ 10s    │
-                                   │████░░░░│ │██████░░│ │██░░░░░░│
-                                   └────────┘ └────────┘ └────────┘
-    ```
+---
 
-
-### ETQ dev je suis aidé lorsque mon application (front et service custom) n'a pas pu être déployé en production
+### [P02-DEPLOY03] ETQ dev je suis aidé lorsque mon application (front et service custom) n'a pas pu être déployé en production
 
 
 *GIVEN*
@@ -233,7 +211,9 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
   - Mon frontend de production déployé utilise les services custom déployés pour la version précédente
 
 
-### ETQ dev je déploie mon service custom en production avec une configuration dédiée à cet environnement avec les credentials externalisés
+---
+
+### [P02-DEPLOY04] ETQ dev je déploie mon service custom en production avec une configuration dédiée à cet environnement avec les credentials externalisés
 
 
 *GIVEN*
@@ -290,8 +270,9 @@ TODO: autre visualisation possible (pipeline mais plus complexe à dev) :
   - Je peux visualiser les logs applicatifs de mon service custom mis en production (voir autres US)
   - Je peux consulter la santé des noeuds déployés par ZetaPush mis en production (voir autres US)
 
+---
 
-### ETQ dev je vérifie l'état des mon application en production
+### [P02-DEPLOY05] ETQ dev je vérifie l'état des mon application en production
 
 TODO: ne pas se calquer sur une implémentation particulière !
 
@@ -313,7 +294,9 @@ TODO: donner un état global de la santé plutôt (il n'y a pas que les nodeJS, 
 | Running  | Running  | Pending  | Pending  | Pending |
 
 
-### ETQ dev je mets à jour mon application en production
+---
+
+### [P02-DEPLOY06] ETQ dev je mets à jour mon application en production
 
 TODO: snapshot automatique faite par ZP avant l'upgrade pour backup des données en cas de code foireux ?
 
@@ -332,7 +315,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 ## User stories
 
 
-### ETQ exploitant je mets à disposition l'application web pour la qualification avec mes outils habituels
+### [P03-DEPLOY01] ETQ exploitant je mets à disposition l'application web pour la qualification avec mes outils habituels
 
 
 *GIVEN*
@@ -365,11 +348,14 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
   - TODO: status pour savoir si tout est ok
   - TODO: utiliser curl/wget pour interroger le status ?
 
+---
 
-### ETQ exploitant je mets à disposition l'application web pour la qualification avec les outils ZetaPush
+### [P03-DEPLOY02] ETQ exploitant je mets à disposition l'application web pour la qualification avec les outils ZetaPush
 
 
-### ETQ exploitant je mets à disposition l'application web en production avec mes outils habituels
+---
+
+### [P03-DEPLOY03] ETQ exploitant je mets à disposition l'application web en production avec mes outils habituels
 
 
 *GIVEN*
@@ -404,8 +390,9 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
   - TODO: utiliser curl/wget pour interroger le status ?
 
 
+---
 
-### ETQ exploitant je mets à disposition l'application web en production avec les outils ZetaPush
+### [P03-DEPLOY04] ETQ exploitant je mets à disposition l'application web en production avec les outils ZetaPush
 
 
 # <a name="parcours-4"></a> Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
@@ -436,7 +423,7 @@ TODO: tests auto
 
 ## User stories
 
-### ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec mes outils habituels
+### [P04-DEPLOY01] ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec mes outils habituels
 
 
 *GIVEN*
@@ -493,10 +480,20 @@ TODO: tests auto
   - TODO: utiliser curl/wget pour interroger le status ?
 
 
-### ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec les outils ZetaPush
+---
+
+### [P04-DEPLOY02] ETQ exploitant je mets à disposition l'application web avec les services custom en production avec les outils ZetaPush
 
 
-### ETQ exploitant je mets à disposition l'application web avec les services custom en production avec mes outils habituels
+
+---
+
+### [P04-DEPLOY03] ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec les outils ZetaPush
+
+
+---
+
+### [P04-DEPLOY04] ETQ exploitant je mets à disposition l'application web avec les services custom en production avec mes outils habituels
 
 
 *GIVEN*
@@ -552,85 +549,6 @@ TODO: tests auto
   - TODO: logs
   - TODO: status pour savoir si tout est ok
   - TODO: utiliser curl/wget pour interroger le status ?
-
-### ETQ exploitant je mets à disposition l'application web avec les services custom en production avec les outils ZetaPush
-
-### ETQ dev je supprime mon application (front et backend) en production
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identifiant de mon application 'my-first-apop'
-
-*WHEN*
-  - J'exécute la commande : ```zeta delete ```
-
-*THEN
-  - J'ai une demande de confirmation : ```Your application 'my-first-app' will be deleted. Are you sur Y/n ?```
-  - Si je répond oui alors l'application y compris le frontend est supprimée
-
-
-
-### ETQ dev je supprime mon front en production
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identifiant de mon application 'my-first-apop'
-
-*WHEN*
-  - J'exécute la commande : ```zeta delete --front-only```
-
-*THEN
-  - J'ai une demande de confirmation : ```Your frontend 'my-first-app' will be deleted. Are you sur Y/n ?```
-  - Si je répond oui alors le frontend est supprimé
-
-
-### ETQ dev je supprime mon backend en production
-
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identifiant de mon application 'my-first-apop'
-
-*WHEN*
-  - J'exécute la commande : ```zeta delete --server-only```
-
-*THEN
-  - J'ai une demande de confirmation : ```Your backend 'my-first-app' will be deleted. Are you sur Y/n ?```
-  - Si je répond oui alors le backend est supprimé
-
-### ETQ dev je test l'état des mon application en production
-
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identification de mon application 'my-first-app'
-
-*WHEN*
-  - J'exécute la commande : ```zeta status```
-
-*THEN*
-  - Je visualise le nombre de noeuds actifs de mon application
-  - Je visualise l'état de chaque noeud (Pending, Running, Succeeded, Failed, Unknown)
-
-| node1  | node2  | node3  | node4  | node5  |
-|---|---|---|---|---|
-| Running  | Running  | Pending  | Pending  | Pending |
-
-
-### ETQ dev je scale (up ou down) mon application en production
-
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identification de mon application 'my-first-app'
-
-*WHEN*
-  - J'exécute la commande : ```zeta scale 3```
-
-*THEN*
-  - Je modifie le nombre de noeud actifs de mon application
-
-
-### ETQ ... j'utilise mon propre domaine existant pour l'hébergement de mon front
-
-### ETQ ... j'utilise mon propre domaine existant pour l'hébergement de mon front en HTTPs
-
-TODO: import du certificat client
 
 
 ---

@@ -9,7 +9,6 @@
 
 * Un développeur doit pouvoir exécuter ses tests en parallèle
 
----
 
 # Pré-requis
 
@@ -19,15 +18,13 @@
 * Nous allons utiliser _sinon.js_ pour réaliser dans mocks et des stubs dans nos tests.
 * Le cas d'usage de nos Users Stories sera un chat temps réel entre des personnages Avengers.
 
----
 
 # <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans _custom cloud service_
 
 ## User Stories
 
----
 
-### ETQ dev je mock un appel à un _cloud service_
+### [P01-TEST01] ETQ dev je mock un appel à un _cloud service_
 
 _GIVEN_
 
@@ -115,7 +112,7 @@ _THEN_
 
 ---
 
-### ETQ dev je souhaite pouvoir appliquer à mon test un état de mon application précédemment sauvegardé
+### [P01-TEST02] ETQ dev je souhaite pouvoir appliquer à mon test un état de mon application précédemment sauvegardé
 
 _GIVEN_
 
@@ -217,7 +214,7 @@ _THEN_
 
 ---
 
-### ETQ dev je teste mon application dans un environnement vierge
+### [P01-TEST03] ETQ dev je teste mon application dans un environnement vierge
 
 _GIVEN_
 
@@ -323,9 +320,8 @@ _THEN_
 ## User Stories
 
 
----
 
-### ETQ dev full-stack je teste un _custom cloud service_
+### [P02-TEST01] ETQ dev full-stack je teste un _custom cloud service_
 
 _GIVEN_
 
@@ -402,7 +398,7 @@ _THEN_
 
 ---
 
-### ETQ dev full-stack je teste un _custom cloud service_ dans un nouveau contexte
+### [P02-TEST02] ETQ dev full-stack je teste un _custom cloud service_ dans un nouveau contexte
 
 _GIVEN_
 
