@@ -301,6 +301,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
   - J'exécute la commande : ```zeta push```
 
 *THEN*
+  - La création d'un compte temporaire se lance
   - Un _captcha_ est affiché pour vérifier que je ne suis pas un robot
   - J'ai un prompt qui me demande de résoudre ce captcha pour créer un compte
 
@@ -342,6 +343,14 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
     Your application is ready:
     - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
     - Your custom services are ready and accessible through ZetaPush
+
+    As no account is specified, a temporary account has been created for you : 
+    - login: vsgygfzq12ffq4fq
+    - password: zhfuqzbvgfhreq4f56q4fqf6
+    This account is only available for X days.
+    You can convert this temporary account into a permanent account with your own login/password here : 
+    https://console.zetapush.com/account/register/vsgygfzq12ffq4fq/zhfuqzbvgfhreq4f56q4fqf6
+    NOTE: By registering, your current work and data will be kept
     ```
   - Mon frontend est envoyé sur ZetaPush
   - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`

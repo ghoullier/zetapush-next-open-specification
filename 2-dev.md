@@ -259,7 +259,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
  * Je souhaite exécuter mon code back pour le tester
 
 *WHEN*
-- J'exécute mon _custom cloud service_ en local avec la commande `zeta run worker`
+- J'exécute mon _custom cloud service_ en local avec la commande : `zeta run worker`
 
 *THEN*
 - Je peux utiliser mon _custom cloud service_ dans mon code front en appelant les _cloud functions_ sous la forme suivante :
@@ -421,7 +421,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 
 ---
 
-### <a name="P02-DEV05"></a> [P02-DEV05] ETQ dev full-stack je développe et exécute mon code métier
+### <a name="P02-DEV05"></a> [P02-DEV05] ETQ dev full-stack je développe et exécute mon code métier application sur mon compte ZetaPush
 
 *GIVEN*
 
