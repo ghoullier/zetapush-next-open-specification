@@ -1,7 +1,7 @@
 # Objectifs
 
-- Un développeur front doit pouvoir utiliser les services ZetaPush dans son code front
-- Un développeur full-stack doit pouvoir utiliser les services ZetaPush dans son code front et coder son propre métier pour simplifier le développement de son/ses front(s)
+- Un développeur front doit pouvoir initialiser un projet pour utiliser les _cloud services_
+- Un développeur full-stack doit pouvoir initialiser un projet pour utiliser les _cloud services_ et créer ses propres _custom cloud services_.
 - Un développeur doit pouvoir initialiser un squelette de projet avec la CLI
 
 Les profils utilisés sont définis dans [le readme](./README.md#profils-identifies).
@@ -11,7 +11,6 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 # Pré-requis
 
 * J'utilise mon éditeur de texte ou IDE préféré.
-
 
 # <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
 
@@ -35,14 +34,14 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
 - Je remplis `package.json` avec le nom de mon application
-- J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
+- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
+- Je créé un dossier `front` où j'utilise les _cloud services_ de ZetaPush
 
 *WHEN*
 - Lorsque la création des fichiers et l'installation des dépendances est finie
 
 *THEN*
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_ avec mon compte `user@gmail.com`
-
 
 ---
 
@@ -52,7 +51,7 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
 - J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
-- Mon code est sous l'arboresence suivante :
+- Mon code est sous l'arborescence suivante :
 ```
   myApp
     ├── index.html
@@ -61,8 +60,8 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
 - Je remplis `package.json` avec le nom de mon application
-- Je remplis `package.json` avec le chemin relatif vers la location de mon code front (`./`). 
-- J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
+- Je remplis `package.json` avec le chemin relatif vers la location de mon code front (ici `./`). 
+- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
 
 *WHEN*
 - Lorsque la création des fichiers et l'installation des dépendances est finie
@@ -79,7 +78,6 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
   ```
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 
-
 ---
 
 
@@ -91,12 +89,13 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 - J'utilise la convention ZetaPush
 
 *WHEN*
-- Lorsque je lance la commande : `npm init myApp --login user@gmail.com --front`
+- Lorsque je lance la commande : `npm init @zetapush --login user@gmail.com --front`
 
 *THEN*
-- Un prompt est lancé pour que je puisse saisir mon mot de passe
-- Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush
-- Une arborescence fichier à été créée sous la forme :
+- Un prompt est lancé pour que je puisse saisir mon mot de passe (comme j'utilise un compte que je spécifie en paramètre avec `--login`)
+- Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush (Le nom est configurable avec `--name`)
+- Un projet avec seulement un dossier pour la partie front est créé puisque j'ai spécifié que cette application comportait seulement une partie front avec `--front`
+- Une arborescence fichier a été créée sous la forme :
 
   ```
   .
@@ -108,22 +107,22 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
   ├── README.md
   └── package.json
   ```
+- La dépendance à _@zetapush/core_ est installée
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 - J'ai un README.md avec les informations m'indiquant comment démarrer (utilisation de la CLI, les bonnes pratiques ZetaPush, les liens vers la documentation)
+- J'ai un exemple d'application front avec les fichiers `index.html` et `index.js`
 - La sortie de la console est la suivante :
 
 ```
 Welcome to ZetaPush !
 
 A new application named myApp was added to your account.
-Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
+Now you can use the Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
 
-To deploy your application you can use the command zeta push. You have already an existing use of Cloud Service in front/index.js, test it !
+To deploy your application you can use the command "zeta push". You have already an existing use of Cloud Service in front/index.js, test it !
 ```
 
-
 ---
-
 
 ### <a name="P01-BOOT04"></a> [P01-BOOT04] ETQ dev front je créé une application avec la CLI sans compte existant
 
@@ -132,31 +131,13 @@ To deploy your application you can use the command zeta push. You have already a
 - Je souhaite créer une application nommée **myApp** et seulement utiliser les _Cloud Services_ existants
 
 *WHEN*
-- Lorsque je lance la commande : `npm init myApp --front`
+- Lorsque je lance la commande : `npm init @zetapush --front`
 
 *THEN*
-- Un _captcha_ est affiché pour vérifier que je ne suis pas un robot
-- J'ai un prompt qui me demande de résoudre ce captcha pour créer un compte
-
-```console
-   #                #####               #####  
-  ##        #      #     #             #     # 
- # #        #            #    #####          # 
-   #      #####     #####                 ###  
-   #        #      #          #####       #    
-   #        #      #                           
- #####             #######                #    
-
-Veuillez résoudre cette opération pour créer votre compte sur la plateforme ZetaPush : 
-
-$ Réponse : 
-```
-- Un compte temporaire sur la plateforme ZetaPush a été créé
-- Une application au nom de **myApp** a été ajoutée à ce compte
-- Une arborescence fichier à été créée sous la forme :
+- Une arborescence fichier a été créée sous la forme :
 
   ```
-  myApp
+  .
   ├── .zetarc
   ├── .gitignore
   ├── front
@@ -165,27 +146,19 @@ $ Réponse :
   ├── README.md
   └── package.json
   ```
+- La dépendance à _@zetapush/core_ est installée
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
+- Le fichier `.zetarc` a été rempli sans saisir de login et mot de passe en l'absence de compte ZetaPush
+- J'ai un README.md avec les informations m'indiquant comment démarrer (utilisation de la CLI, les bonnes pratiques ZetaPush, les liens vers la documentation)
 - La sortie de la console est la suivante :
 
 ```
 Welcome to ZetaPush !
 
-A new application named myApp was added to your account.
-Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
+Now you can use the Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
 
-To deploy your application you can use the command zeta push. You have already an existing use of Cloud Service in front/index.js, test it !
-
-As no account is specified, a temporary account has been created for you : 
-    - login: vsgygfzq12ffq4fq
-    - password: zhfuqzbvgfhreq4f56q4fqf6
-    This account is only available for X days.
-    You can convert this temporary account into a permanent account with your own login/password here : 
-    https://console.zetapush.com/account/register/vsgygfzq12ffq4fq/zhfuqzbvgfhreq4f56q4fqf6
-    NOTE: By registering, your current work and data will be kept
+To deploy your application you can use the command "zeta push". You have already an existing use of Cloud Service in front/index.js, test it !
 ```
-
-TODO: le captcha ne devrait pas être demandé à l'init de projet, c'est trop intrusif !
 
 ---
 
@@ -204,7 +177,7 @@ TODO: le captcha ne devrait pas être demandé à l'init de projet, c'est trop i
 ```
 
 *WHEN*
-- Lorsque je lance la commande `npm init --login user@gmail.com` au sein de mon dossier `myApp`
+- Lorsque je lance la commande `zeta register --login user@gmail.com` au sein de mon dossier `myApp`
 
 *THEN*
 - La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
@@ -214,7 +187,7 @@ TODO: le captcha ne devrait pas être demandé à l'init de projet, c'est trop i
 README.md
 package.json
 ```
-- Un prompt est lancé pour que je puisse saisir mon mot de passe (`password`)
+- Un prompt est lancé pour que je puisse saisir mon mot de passe de mon compte ZetaPush
 - J'ai l'arborescence suivante qui est créée :
   ```
   myApp
@@ -226,6 +199,7 @@ package.json
   ├── README.md
   └── package.json
   ```
+- La dépendance à _@zetapush/core_ est installée
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 - J'ai un README.md avec les informations m'indiquant comment démarrer (utilisation de la CLI, les bonnes pratiques ZetaPush, les liens vers la documentation)
 - La sortie de la console est la suivante :
@@ -236,7 +210,7 @@ Welcome to ZetaPush !
 A new application named myApp was added to your account.
 Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
 
-To deploy your application you can use the command zeta push.
+To deploy your application you can use the command "zeta push".
 ```
 
 
@@ -252,10 +226,10 @@ To deploy your application you can use the command zeta push.
     ├── index.html
     └── index.js
 ```
-- Je spécifie où se trouve le code front avec l'argument `--front=.`
+- Je spécifie où se trouve le code front avec l'argument `--front`
 
 *WHEN*
-- Lorsque je lance la commande `npm init --front=. --login user@gmail.com` au sein de mon dossier `myApp`
+- Lorsque je lance la commande `zeta register --front=. --login user@gmail.com` au sein de mon dossier `myApp`
 
 *THEN*
 - La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
@@ -265,7 +239,7 @@ To deploy your application you can use the command zeta push.
 README.md
 package.json
 ```
-- Un prompt est lancé pour que je puisse saisir mon mot de passe (`password`)
+- Un prompt est lancé pour que je puisse saisir mon mot de passe du compte ZetaPush
 - J'ai l'arborescence suivante qui est créée :
   ```
   myApp
@@ -276,6 +250,7 @@ package.json
   ├── README.md
   └── package.json
   ```
+- La dépendance à _@zetapush/core_ est installée
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 - J'ai un README.md avec les informations m'indiquant comment démarrer (utilisation de la CLI, les bonnes pratiques ZetaPush, les liens vers la documentation)
 - La sortie de la console est la suivante :
@@ -286,11 +261,11 @@ Welcome to ZetaPush !
 A new application named myApp was added to your account.
 Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
 
-To deploy your application you can use the command zeta push.
+To deploy your application you can use the command "zeta push".
 ```
 
 
-# <a name="parcours-2"></a> Parcours 2 : Je développe une application front avec ZetaPush avec service custom
+# <a name="parcours-2"></a> Parcours 2 : Je développe une application front avec ZetaPush et avec service custom
 
 ## User stories
 
@@ -316,8 +291,8 @@ To deploy your application you can use the command zeta push.
 - Je créé un dossier `front/`, c'est ici que mon code front sera stocké
 - Je créé un dossier `worker/`, c'est ici que mon code back sera stocké
 - Je remplis `package.json` avec le nom de mon application
-- J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
-- J'installe la dépendance _@zetapush/server_ avec : `npm install --save @zetapush/server`
+- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
+- J'installe la dépendance _@zetapush/platform_ avec : `npm install --save @zetapush/platform`
 
 *WHEN*
 - Lorsque la création des fichiers et l'installation des dépendances est finie
@@ -330,7 +305,7 @@ To deploy your application you can use the command zeta push.
 ---
 
 
-### <a name="P02-BOOT02"></a> [P02-BOOT02] ETQ dev full-stack j'ajoute  des _Cloud Services_ et je créé  des _Custom Cloud Services_ au sein d'une application existante
+### <a name="P02-BOOT02"></a> [P02-BOOT02] ETQ dev full-stack j'ajoute  des _Cloud Services_ et je créé  des _Custom Cloud Services_ au sein d'une application existante sans CLI
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -352,8 +327,8 @@ To deploy your application you can use the command zeta push.
   │   └── index.js
   └── package.json
   ```
-- J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
-- J'installe la dépendance _@zetapush/server_ avec : `npm install --save @zetapush/server`
+- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
+- J'installe la dépendance _@zetapush/platform_ avec : `npm install --save @zetapush/platform`
 
 *WHEN*
 - Lorsque la création des fichiers et l'installation des dépendances est finie
@@ -361,10 +336,7 @@ To deploy your application you can use the command zeta push.
 *THEN*
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 
-
-
 ---
-
 
 ### <a name="P02-BOOT03"></a> [P02-BOOT03] ETQ dev full-stack je créé une application avec la CLI 
 
@@ -373,12 +345,12 @@ To deploy your application you can use the command zeta push.
 - Je souhaite créer une application avec une partie front et une partie back
 
 *WHEN*
-- Lorsque je lance la commande : `npm init myApp --login user@gmail.com`
+- Lorsque je lance la commande : `npm init @zetapush --login user@gmail.com`
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
-- Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush
-- Une arborescence fichier à été créée sous la forme :
+- Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush (Le nom est configurable avec `--name`)
+- Une arborescence fichier a été créée sous la forme :
 
   ```
   .
@@ -402,12 +374,10 @@ Welcome to ZetaPush !
 A new application named myApp was added to your account.
 Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
 
-To deploy your application you can use the command zeta push.  You have already an existing use of Cloud Service in front/index.js, test it !
+To deploy your application you can use the command "zeta push".  You have already an existing use of Cloud Service in front/index.js, test it !
   ```
 
-
 ---
-
 
 ### <a name="P02-BOOT04"></a> [P02-BOOT04] ETQ dev full-stack je créé une application avec la CLI sans compte existant
 
@@ -416,11 +386,10 @@ To deploy your application you can use the command zeta push.  You have already 
 - Je souhaite créer une application avec une partie front et une partie back
 
 *WHEN*
-- Lorsque je lance la commande : `npm init myApp`
+- Lorsque je lance la commande : `npm init @zetapush myApp`
 
 *THEN*
-- Une application au nom de **myApp**
-- Une arborescence fichier à été créée sous la forme :
+- Une arborescence fichier a été créée sous la forme :
 
   ```
   myApp
@@ -441,27 +410,26 @@ To deploy your application you can use the command zeta push.  You have already 
 ```
 Welcome to ZetaPush !
 
-Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation. You have already an existing use of Cloud Service in front/index.js, test it !
+Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation. 
+
+To deploy your application you can use the command "zeta push". You have already an existing use of Cloud Service in front/index.js, test it !
 ```
 
-
 ---
-
 
 ### <a name="P02-BOOT05"></a> [P02-BOOT05] ETQ dev full-stack je créé une application avec la CLI et une arborescence spécifiée en utilisant mon compte ZetaPush
 
 *GIVEN*
 - J'ai un compte ZetaPush existant avec user@gmail.com / password comme couple login/password
 - Je souhaite créer une application avec une partie front et une partie back
-- J'utilise la convention ZetaPush
 
 *WHEN*
-- Lorsque je lance la commande : `npm init myApp --login user@gmail.com`
+- Lorsque je lance la commande : `npm init @zetapush --login user@gmail.com --front=./front --worker=./worker`
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
-- Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush
-- Une arborescence fichier à été créée sous la forme :
+- Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush (Le nom est configurable avec `--name`)
+- Une arborescence fichier a été créée sous la forme :
 
   ```
   myApp
@@ -486,7 +454,7 @@ Welcome to ZetaPush !
 A new application named myApp was added to your account.
 Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
 
-To deploy your application you can use the command zeta push. You have already an existing use of Cloud Service in front/index.js, test it !
+To deploy your application you can use the command "zeta push". You have already an existing use of Cloud Service in front/index.js, test it !
   ```
 
 ---
@@ -506,7 +474,7 @@ To deploy your application you can use the command zeta push. You have already a
 ```
 
 *WHEN*
-- Lorsque de lance la commande `npm init myApp --login user@gmail.com --front=. --worker`
+- Lorsque de lance la commande `zeta register --login user@gmail.com --front=. --worker`
 
 
 *THEN*
@@ -525,11 +493,9 @@ package.json
   ├── .gitignore
   ├── index.html
   ├── index.js
-  ├── worker
-  │   └── index.js
   └── package.json
   ```
-- Les dépendances _@zetapush/front_ et _@zetapush/server_ ont été installées
+- Les dépendances _@zetapush/core_ et _@zetapush/platform_ ont été installées
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
 
 
@@ -562,8 +528,8 @@ Comporte le nom de l'application ainsi que les dépendances ZetaPush nécessaire
   "name": "myApp",
   "version": "0.0.1",
   "dependencies": {
-    "@zetapush/front": "1.0.0",
-    "@zetapush/server": "1.0.0", // Pas forcément nécessaire
+    "@zetapush/core": "1.0.0",
+    "@zetapush/platform": "1.0.0", // Pas forcément nécessaire
   },
   "zetapush": {
       "front": "./front", // Chemin relatif vers le code front

@@ -23,7 +23,7 @@
   - Le nom de mon application est _avengers chat web_
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --front-only```
+  - J'exécute la commande : ```zeta push --front```
 
 *THEN*
   - Le code présent dans les chemins spécifiés dans le `package.json` est envoyé sur ZetaPush (front seulement)
@@ -77,7 +77,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
 
 *WHEN*
-- J'exécute la commande : ```zeta push --worker-only```
+- J'exécute la commande : ```zeta push --worker```
 
 *THEN*
   - Mon code custom (indiqué par le fichier `package.json`) est envoyé sur ZetaPush
@@ -280,6 +280,241 @@ TODO: snapshot automatique faite par ZP avant l'upgrade pour backup des données
 TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 
+---
+
+### <a name="P02-DEPLOY07"></a> [P02-DEPLOY07] ETQ dev full-stack je déploie mon application (front et service custom) en production sans credentials à disposition
+
+*GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  - J'ai le nom de l'application dans le fichier `package.json`
+  - Je n'ai pas de compte ZetaPush
+  - J'ai développé un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
+  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+
+*WHEN*
+  - J'exécute la commande : ```zeta push```
+
+*THEN*
+  - Un _captcha_ est affiché pour vérifier que je ne suis pas un robot
+  - J'ai un prompt qui me demande de résoudre ce captcha pour créer un compte
+
+  ```console
+    #                #####               #####  
+    ##        #      #     #             #     # 
+  # #        #            #    #####          # 
+    #      #####     #####                 ###  
+    #        #      #          #####       #    
+    #        #      #                           
+  #####             #######                #    
+
+  Veuillez résoudre cette opération pour créer votre compte sur la plateforme ZetaPush : 
+
+  $ Réponse : 
+  ```
+  - Un compte temporaire sur la plateforme ZetaPush a été créé
+  - Mon code custom est envoyé sur ZetaPush
+  - Je vois l'état d'avancement du déploiement global
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      | Publishing web application                        ██████░░░░░░
+      / Publishing custom services on worker instance 1   ██████░░░░░░
+      - Publishing custom services on worker instance 2   ████████░░░░
+      \ Publishing custom services on worker instance 3   ██░░░░░░░░░░
+    ```
+  - Je sais lorsque mon application est prête à être utilisée
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      ✓ Web application published
+      ✓ Custom services published on worker instance 1
+      ✓ Custom services published on worker instance 2
+      ✓ Custom services published on worker instance 3
+
+    Your application is ready:
+    - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
+    - Your custom services are ready and accessible through ZetaPush
+    ```
+  - Mon frontend est envoyé sur ZetaPush
+  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
+  - Mon frontend de production déployé utilise les services custom déployés
+  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
+  - Je peux consulter la santé de mon worker (voir autres US)
+
+
+---
+
+### <a name="P02-DEPLOY08"></a> [P02-DEPLOY08] ETQ dev full-stack je déploie mon application (front et service custom) en production sans application existante
+
+*GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - Le nom d'application spécifiée dans `package.json` est inexistante sur le compte développeur
+  - J'ai développé un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
+  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+
+*WHEN*
+  - J'exécute la commande : ```zeta push```
+
+*THEN*
+  - Une nouvelle application est instanciée sur le compte développeur
+  - Mon code custom est envoyé sur ZetaPush
+  - Je vois l'état d'avancement du déploiement global
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      | Publishing web application                        ██████░░░░░░
+      / Publishing custom services on worker instance 1   ██████░░░░░░
+      - Publishing custom services on worker instance 2   ████████░░░░
+      \ Publishing custom services on worker instance 3   ██░░░░░░░░░░
+    ```
+  - Je sais lorsque mon application est prête à être utilisée
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      ✓ Web application published
+      ✓ Custom services published on worker instance 1
+      ✓ Custom services published on worker instance 2
+      ✓ Custom services published on worker instance 3
+
+    Your application is ready:
+    - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
+    - Your custom services are ready and accessible through ZetaPush
+    ```
+  - Mon frontend est envoyé sur ZetaPush
+  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
+  - Mon frontend de production déployé utilise les services custom déployés
+  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
+  - Je peux consulter la santé de mon worker (voir autres US)
+
+---
+
+### <a name="P02-DEPLOY09"></a> [P02-DEPLOY09] ETQ dev full-stack je déploie mon application (front et service custom) en production avec la configuration en ligne de commande
+
+*GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  - J'ai le nom de l'application dans le fichier `package.json`
+  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - J'ai développé un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
+  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+
+*WHEN*
+  - J'exécute la commande : ```zeta push --login jeni@yopmail.com --pasword zp-password --front ./front --worker ./worker```
+
+*THEN*
+  - La configuration prise en compte est celle spécifiée dans la ligne de commande en priorité (la configuration est surchargée)
+  - Mon code custom est envoyé sur ZetaPush
+  - Je vois l'état d'avancement du déploiement global
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      | Publishing web application                        ██████░░░░░░
+      / Publishing custom services on worker instance 1   ██████░░░░░░
+      - Publishing custom services on worker instance 2   ████████░░░░
+      \ Publishing custom services on worker instance 3   ██░░░░░░░░░░
+    ```
+  - Je sais lorsque mon application est prête à être utilisée
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      ✓ Web application published
+      ✓ Custom services published on worker instance 1
+      ✓ Custom services published on worker instance 2
+      ✓ Custom services published on worker instance 3
+
+    Your application is ready:
+    - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
+    - Your custom services are ready and accessible through ZetaPush
+    ```
+  - Mon frontend est envoyé sur ZetaPush
+  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
+  - Mon frontend de production déployé utilise les services custom déployés
+  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
+  - Je peux consulter la santé de mon worker (voir autres US)
+
+---
+
+### <a name="P02-DEPLOY10"></a> [P02-DEPLOY10] ETQ dev full-stack je déploie mon application (front et service custom) en production sans configuration
+
+*GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  - J'ai le nom de l'application dans le fichier `package.json`
+  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - J'ai développé un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
+  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+  - Je n'ai pas de chemin de mon code front et de mon code back dans mon `package.json`
+
+*WHEN*
+  - J'exécute la commande : ```zeta push```
+
+*THEN*
+  - Les chemins du code front et du code back sont ceux par convention en l'absence de configuration : (`./front` et `./worker`) 
+  - Mon code custom est envoyé sur ZetaPush
+  - Je vois l'état d'avancement du déploiement global
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      | Publishing web application                        ██████░░░░░░
+      / Publishing custom services on worker instance 1   ██████░░░░░░
+      - Publishing custom services on worker instance 2   ████████░░░░
+      \ Publishing custom services on worker instance 3   ██░░░░░░░░░░
+    ```
+  - Je sais lorsque mon application est prête à être utilisée
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      ✓ Web application published
+      ✓ Custom services published on worker instance 1
+      ✓ Custom services published on worker instance 2
+      ✓ Custom services published on worker instance 3
+
+    Your application is ready:
+    - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
+    - Your custom services are ready and accessible through ZetaPush
+    ```
+  - Mon frontend est envoyé sur ZetaPush
+  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
+  - Mon frontend de production déployé utilise les services custom déployés
+  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
+  - Je peux consulter la santé de mon worker (voir autres US)
+
+---
 
 
 
