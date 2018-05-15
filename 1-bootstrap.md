@@ -17,7 +17,7 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 
 ## User stories
 
-### [P01-BOOT01] ETQ dev front je créé une application sans CLI en utilisant mon compte ZetaPush
+### <a name="P01-BOOT01"></a> [P01-BOOT01] ETQ dev front je créé une application sans CLI en utilisant mon compte ZetaPush
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -47,7 +47,7 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 ---
 
 
-### [P01-BOOT02] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI en utilisant mon compte ZetaPush
+### <a name="P01-BOOT02"></a> [P01-BOOT02] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI en utilisant mon compte ZetaPush
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -83,7 +83,7 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 ---
 
 
-### [P01-BOOT03] ETQ dev front je créé une application avec la CLI en utilisant mon compte ZetaPush
+### <a name="P01-BOOT03"></a> [P01-BOOT03] ETQ dev front je créé une application avec la CLI en utilisant mon compte ZetaPush
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -125,7 +125,7 @@ To deploy your application you can use the command zeta push. You have already a
 ---
 
 
-### [P01-BOOT04] ETQ dev front je créé une application avec la CLI sans compte existant
+### <a name="P01-BOOT04"></a> [P01-BOOT04] ETQ dev front je créé une application avec la CLI sans compte existant
 
 *GIVEN*
 - Je n'ai pas de compte ZetaPush existant
@@ -190,7 +190,7 @@ TODO: le captcha ne devrait pas être demandé à l'init de projet, c'est trop i
 ---
 
 
-### [P01-BOOT05] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante avec la CLI en utilisant mon compte ZetaPush
+### <a name="P01-BOOT05"></a> [P01-BOOT05] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante avec la CLI en utilisant mon compte ZetaPush
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -240,7 +240,7 @@ To deploy your application you can use the command zeta push.
 ```
 
 
-### [P01-BOOT06] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante et une arborescence custom avec la CLI en utilisant mon compte ZetaPush
+### <a name="P01-BOOT06"></a> [P01-BOOT06] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante et une arborescence custom avec la CLI en utilisant mon compte ZetaPush
 
 
 *GIVEN*
@@ -294,7 +294,7 @@ To deploy your application you can use the command zeta push.
 
 ## User stories
 
-### [P02-BOOT01] ETQ dev full-stack je créé une application sans CLI
+### <a name="P02-BOOT01"></a> [P02-BOOT01] ETQ dev full-stack je créé une application sans CLI
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -307,14 +307,14 @@ To deploy your application you can use the command zeta push.
   ├── front
   │   ├── index.html
   │   └── index.js
-  ├── server
+  ├── worker
   │   └── index.js
   └── package.json
   ```
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
 - Je créé un dossier `front/`, c'est ici que mon code front sera stocké
-- Je créé un dossier `server/`, c'est ici que mon code back sera stocké
+- Je créé un dossier `worker/`, c'est ici que mon code back sera stocké
 - Je remplis `package.json` avec le nom de mon application
 - J'installe la dépendance _@zetapush/front_ avec : `npm install --save @zetapush/front`
 - J'installe la dépendance _@zetapush/server_ avec : `npm install --save @zetapush/server`
@@ -330,12 +330,12 @@ To deploy your application you can use the command zeta push.
 ---
 
 
-### [P02-BOOT02] ETQ dev full-stack j'ajoute  des _Cloud Services_ et je créé  des _Custom Cloud Services_ au sein d'une application existante
+### <a name="P02-BOOT02"></a> [P02-BOOT02] ETQ dev full-stack j'ajoute  des _Cloud Services_ et je créé  des _Custom Cloud Services_ au sein d'une application existante
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
 - J'ai une application existante nommée **myApp** et je souhaite utiliser les _Cloud Services_ existants et créer mes _Custom Cloud Services_
-- Je créé un dossier `server` pour y stocker mon code back
+- Je créé un dossier `worker` pour y stocker mon code back
 - Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
 - Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
 - Je remplis un `package.json` avec le nom de mon application
@@ -348,7 +348,7 @@ To deploy your application you can use the command zeta push.
   ├── front
   │   ├── index.html
   │   └── index.js
-  ├── server
+  ├── worker
   │   └── index.js
   └── package.json
   ```
@@ -366,7 +366,7 @@ To deploy your application you can use the command zeta push.
 ---
 
 
-### [P02-BOOT03] ETQ dev full-stack je créé une application avec la CLI 
+### <a name="P02-BOOT03"></a> [P02-BOOT03] ETQ dev full-stack je créé une application avec la CLI 
 
 *GIVEN*
 - J'ai un compte ZetaPush existant avec user@gmail.com / password comme couple login/password
@@ -387,7 +387,7 @@ To deploy your application you can use the command zeta push.
   ├── front
   │   ├── index.html
   │   └── index.js
-  ├── server
+  ├── worker
   │   └── index.js
   ├── README.md
   └── package.json
@@ -409,7 +409,7 @@ To deploy your application you can use the command zeta push.  You have already 
 ---
 
 
-### [P02-BOOT04] ETQ dev full-stack je créé une application avec la CLI sans compte existant
+### <a name="P02-BOOT04"></a> [P02-BOOT04] ETQ dev full-stack je créé une application avec la CLI sans compte existant
 
 *GIVEN*
 - Je n'ai pas de compte ZetaPush
@@ -430,7 +430,7 @@ To deploy your application you can use the command zeta push.  You have already 
   │   ├── index.html
   │   ├── index.js
   │   └── style.css
-  ├── server
+  ├── worker
   │   └── index.js
   ├── README.md
   └── package.json
@@ -448,7 +448,7 @@ Now you can use Cloud Services in your application. You can see the documentatio
 ---
 
 
-### [P02-BOOT05] ETQ dev full-stack je créé une application avec la CLI et une arborescence spécifiée en utilisant mon compte ZetaPush
+### <a name="P02-BOOT05"></a> [P02-BOOT05] ETQ dev full-stack je créé une application avec la CLI et une arborescence spécifiée en utilisant mon compte ZetaPush
 
 *GIVEN*
 - J'ai un compte ZetaPush existant avec user@gmail.com / password comme couple login/password
@@ -471,7 +471,7 @@ Now you can use Cloud Services in your application. You can see the documentatio
   │   ├── index.html
   │   ├── index.js
   │   └── style.css
-  ├── server
+  ├── worker
   │   └── index.js
   ├── README.md
   └── package.json
@@ -492,7 +492,7 @@ To deploy your application you can use the command zeta push. You have already a
 ---
 
 
-### [P02-BOOT06] ETQ dev full-stack j'ajoute des _Custom Cloud Services_ au sein d'une application existante avec la CLI
+### <a name="P02-BOOT06"></a> [P02-BOOT06] ETQ dev full-stack j'ajoute des _Custom Cloud Services_ au sein d'une application existante avec la CLI
 
 
 *GIVEN*
@@ -506,7 +506,7 @@ To deploy your application you can use the command zeta push. You have already a
 ```
 
 *WHEN*
-- Lorsque de lance la commande `npm init myApp --login user@gmail.com --front=. --server`
+- Lorsque de lance la commande `npm init myApp --login user@gmail.com --front=. --worker`
 
 
 *THEN*
@@ -525,7 +525,7 @@ package.json
   ├── .gitignore
   ├── index.html
   ├── index.js
-  ├── server
+  ├── worker
   │   └── index.js
   └── package.json
   ```
@@ -567,7 +567,7 @@ Comporte le nom de l'application ainsi que les dépendances ZetaPush nécessaire
   },
   "zetapush": {
       "front": "./front", // Chemin relatif vers le code front
-      "back": "./server" // Chemin relatif vers le code back
+      "worker": "./worker" // Chemin relatif vers le code back
   }
 }
 ```
@@ -613,7 +613,7 @@ Code JS d'exemple à l'utilisation d'un _Cloud Service_.
 import { HelloWorldService } from '@zetapush/front';
 
 // Only if we use a custom cloud service
-import { HelloWorldCustomService } from '../server/index.js';
+import { HelloWorldCustomService } from '../worker/index.js';
 const btnSayHelloUser = document.getElementById("btnHelloUser");
 const inputName = document.getElementById("inputName");
 
@@ -641,7 +641,7 @@ function sayHelloByName() {
 }
 ```
 
-## server/index.js
+## worker/index.js
 
 Code JS d'exemple d'un _Custom Cloud Service_.
 

@@ -27,7 +27,7 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 ## User Stories
 
 
-### [P01-DEV01] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour
+### <a name="P01-DEV01"></a> [P01-DEV01] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour
 
 _GIVEN_
 
@@ -80,7 +80,7 @@ _THEN_
 ---
 
 
-### [P01-DEV02] ETQ dev front j'utilise un _cloud service_ et j'ai une erreur en retour
+### <a name="P01-DEV02"></a> [P01-DEV02] ETQ dev front j'utilise un _cloud service_ et j'ai une erreur en retour
 
 _GIVEN_
 
@@ -134,7 +134,7 @@ _THEN_
 ---
 
 
-### [P01-DEV03] ETQ dev front j'écoute les évènements d'un _cloud service_
+### <a name="P01-DEV03"></a> [P01-DEV03] ETQ dev front j'écoute les évènements d'un _cloud service_
 
 _GIVEN_
 
@@ -172,7 +172,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 ---
 
 
-### [P01-DEV04] ETQ dev front j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser les _cloud services_
+### <a name="P01-DEV04"></a> [P01-DEV04] ETQ dev front j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser les _cloud services_
 
 _GIVEN_
 
@@ -197,7 +197,7 @@ _THEN_
 ---
 
 
-### [P01-DEV05] ETQ dev front j'ai accès à la documentation des _cloud services_ depuis mon IDE (VSCode)
+### <a name="P01-DEV05"></a> [P01-DEV05] ETQ dev front j'ai accès à la documentation des _cloud services_ depuis mon IDE (VSCode)
 
 _GIVEN_
 
@@ -228,9 +228,7 @@ _THEN_
 
 ## User Stories
 
-
-
-### [P02-DEV01] ETQ dev full-stack je développe sur mon environement local mon code métier dans une _custom cloud function_
+### <a name="P02-DEV01"></a> [P02-DEV01] ETQ dev full-stack je développe mon code métier dans une _custom cloud function_
 
 _GIVEN_
 
@@ -271,7 +269,7 @@ _WHEN_
 _THEN_
 
 * Mon _custom cloud service_ est complet (pour le moment)
-* Il n'est pas utilisable en l'état, il faut le déployer avec la CLI : `zeta push --server-only`
+* Il n'est pas utilisable en l'état, il faut le déployer avec la CLI : `zeta push --worker-only`
 * Une fois le _custom cloud service_ déployé, ce dernier est appelable au même titre qu'un _cloud service_ avec la syntaxe :
 
   ```javascript
@@ -297,7 +295,7 @@ _THEN_
 ---
 
 
-### [P02-DEV02] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une réponse en retour
+### <a name="P02-DEV02"></a> [P02-DEV02] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une réponse en retour
 
 _GIVEN_
 
@@ -341,7 +339,7 @@ _THEN_
 ---
 
 
-### [P02-DEV03] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une erreur en retour
+### <a name="P02-DEV03"></a> [P02-DEV03] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une erreur en retour
 
 _GIVEN_
 
@@ -387,7 +385,7 @@ _THEN_
 ---
 
 
-### [P02-DEV04] ETQ dev full-stack j'écoute les évènements d'un _custom cloud service_
+### <a name="P02-DEV04"></a> [P02-DEV04] ETQ dev full-stack j'écoute les évènements d'un _custom cloud service_
 
 _GIVEN_
 
@@ -425,7 +423,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 ---
 
 
-### [P02-DEV05] ETQ dev full-stack j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser mes _custom cloud services_
+### <a name="P02-DEV05"></a> [P02-DEV05] ETQ dev full-stack j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser mes _custom cloud services_
 
 _GIVEN_
 
@@ -450,7 +448,7 @@ _THEN_
 ---
 
 
-### [P02-DEV06] ETQ dev full-stack j'ai accès à la documentation de mes _custom cloud services_ depuis mon IDE (VSCode)
+### <a name="P02-DEV06"></a> [P02-DEV06] ETQ dev full-stack j'ai accès à la documentation de mes _custom cloud services_ depuis mon IDE (VSCode)
 
 _GIVEN_
 

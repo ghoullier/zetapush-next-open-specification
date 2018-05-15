@@ -24,7 +24,7 @@
 ## User Stories
 
 
-### [P01-TEST01] ETQ dev je mock un appel à un _cloud service_
+### <a name="P01-TEST01"></a> [P01-TEST01] ETQ dev je mock un appel à un _cloud service_
 
 _GIVEN_
 
@@ -112,7 +112,7 @@ _THEN_
 
 ---
 
-### [P01-TEST02] ETQ dev je souhaite pouvoir appliquer à mon test un état de mon application précédemment sauvegardé
+### <a name="P01-TEST02"></a> [P01-TEST02] ETQ dev je souhaite pouvoir appliquer à mon test un état de mon application précédemment sauvegardé
 
 _GIVEN_
 
@@ -214,7 +214,7 @@ _THEN_
 
 ---
 
-### [P01-TEST03] ETQ dev je teste mon application dans un environnement vierge
+### <a name="P01-TEST03"></a> [P01-TEST03] ETQ dev je teste mon application dans un environnement vierge
 
 _GIVEN_
 
@@ -321,7 +321,7 @@ _THEN_
 
 
 
-### [P02-TEST01] ETQ dev full-stack je teste un _custom cloud service_
+### <a name="P02-TEST01"></a> [P02-TEST01] ETQ dev full-stack je teste un _custom cloud service_
 
 _GIVEN_
 
@@ -398,7 +398,7 @@ _THEN_
 
 ---
 
-### [P02-TEST02] ETQ dev full-stack je teste un _custom cloud service_ dans un nouveau contexte
+### <a name="P02-TEST02"></a> [P02-TEST02] ETQ dev full-stack je teste un _custom cloud service_ dans un nouveau contexte
 
 _GIVEN_
 
