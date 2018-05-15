@@ -567,7 +567,7 @@ Comporte le nom de l'application ainsi que les dépendances ZetaPush nécessaire
   },
   "zetapush": {
       "front": "./front", // Chemin relatif vers le code front
-      "back": "./worker" // Chemin relatif vers le code back
+      "worker": "./worker" // Chemin relatif vers le code back
   }
 }
 ```
