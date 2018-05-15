@@ -1,6 +1,6 @@
 # _Cloud Services_ pour les développeurs seuls
 
-On part du principe qu'un développeur seul n'a pas les mêmes besoins qu'une entreprise avec des process et une stack technique bien rodée. Dans ce cas, nous allons spécifier des _Cloud Services_ d'un point de vue plus fonctionnel. Chaque profil aura bien-sûr accès à tous les _Cloud Services_ mes ceux présentés ci-dessous seront plus pertinent pour un développeur seul.
+On part du principe qu'un développeur seul n'a pas les mêmes besoins qu'une entreprise avec des process et une stack technique bien rodée. Dans ce cas, nous allons spécifier des _Cloud Services_ d'un point de vue plus fonctionnel. Chaque profil aura bien-sûr accès à tous les _Cloud Services_ mais ceux présentés ci-dessous seront plus pertinent pour un développeur seul.
 
 Voici la liste des _Cloud Services_ que nous mettons à disposition. 
 Pour chacun, nous allons décrire les cas d'utilisation du point de vue développeur que nous souhaitons implémenter.

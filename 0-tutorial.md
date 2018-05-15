@@ -87,7 +87,7 @@ Avec toutes ces étapes tu pourras chatter avec les Avengers !
 
 ## Initialisation du projet
 
-Pour utiliser ZetaPush, tu n'as besoin d'aucune dépendances extérieures. En revanche, dans le cadre de ce tutoriel, nous allons utiliser la CLI ZetaPush (pour un gain de productivité). Tu auras donc besoin de _NodeJS_ (et implicitement _npm_) pour ceci. Il te faut donc installer _NodeJS_ via : https://nodejs.org
+Pour utiliser ZetaPush, tu n'as besoin d'aucune dépendance extérieure. En revanche, dans le cadre de ce tutoriel, nous allons utiliser la CLI ZetaPush (pour un gain de productivité). Tu auras donc besoin de _NodeJS_ (et implicitement _npm_) pour ceci. Il te faut donc installer _NodeJS_ via : https://nodejs.org
 
 Comme ici tu vas utiliser la CLI ZetaPush, installe la :
 
@@ -126,7 +126,7 @@ Cette commande va te créer l'arborescence suivante :
 ```
 
 
-Le fichier `.package.json` comporte les différentes dépendances nécessaires à l'utilisation de ZetaPush (_@zetapush/js_ et _@zetapush/server_). Ensuite le fichier `.zetarc` comporte la configuration nécessaire à l'identification de ton compte sur la plateforme ZetaPush. En effet, un compte temporaire t'es automatiquement créé sur ZetaPush (Avec ton application **avengers-chat** d'associée). Tu peux dès à présent rentre ton compte permanent en te rendant sur https://console.zetapush.com ou en utilisant la CLI.
+Le fichier `.package.json` comporte les différentes dépendances nécessaires à l'utilisation de ZetaPush (_@zetapush/js_ et _@zetapush/server_). Ensuite le fichier `.zetarc` comporte la configuration nécessaire à l'identification de ton compte sur la plateforme ZetaPush. En effet, un compte temporaire t'es automatiquement créé sur ZetaPush (Avec ton application **avengers-chat** d'associée). Tu peux dès à présent rendre ton compte permanent en te rendant sur https://console.zetapush.com ou en utilisant la CLI.
 
 Cette commande va te créer une arborescence de projet pour différencier ton code front et ton code back qui sera utilisé plus tard dans ce tutoriel (nous appellerons custom could services la partie back).
 Le découpage en deux projets n'est pas obligatoire mais c'est une bonne pratique pour bien différencier les différentes composantes de ton application. De plus dans le cadre du tutoriel, ceci te permettra de bien comprendre les interactions entre le front et les customs services. Comme tu as pu le voir, la CLI te donne un code d'exemple. Nous n'allons pas l'utiliser donc tu peux supprimer de contenu de `worker/index.js`, `front/index.html` et de `front/index.js`.
@@ -134,7 +134,7 @@ Le découpage en deux projets n'est pas obligatoire mais c'est une bonne pratiqu
 ---
 ### Activation d'un compte via la CLI
 
-Il est possible d'activer un compte temporaire via la CLI. Pour ça il faut que tu sois dans un dossier où se trouve un fichier `.zetarc` (Ou dans un des dossiers parent) avec les identifiants d'un compte temporaire. À ce moment là tu peux lancer la commande :
+Il est possible d'activer un compte temporaire via la CLI. Pour cela il faut que tu sois dans un dossier où se trouve un fichier `.zetarc` (Ou dans un des dossiers parent) avec les identifiants d'un compte temporaire. À ce moment là tu peux lancer la commande :
 
 ```console
 $ zeta account register
@@ -581,7 +581,7 @@ window.validAvenger = function() {
 
 ### Lancement d'une attaque
  
- C'est à ce moment la que tu vas créer ta première _Cloud Function_.
+ C'est à ce moment là que tu vas créer ta première _Cloud Function_.
  Son rôle est de lancer une attaque sur le chat, en fonction des compétences de ton _Avenger_. Pour ceci voici le _Cloud Service_ que tu vas créer :
 
 #### **worker/index.js**
@@ -620,7 +620,7 @@ class AvengerService {
 
 
 Maintenant que ton code est prêt, il te faut à nouveau déployer ton application pour que le fonctionnel soit mis à jour.
-Tu as cette fois ci une partie back-end donc tu utilises :
+Tu as cette fois-ci une partie back-end donc tu utilises :
 
 ```bash
 $ zeta push
@@ -633,10 +633,10 @@ $ cd avengers-chat/front
 $ npx serve .
 ```
 
-Tu vois maintenant ton **Avengers Chat** de complètement fonctionnel sur https://localhost:5000.
+Tu vois maintenant ton **Avengers Chat** complètement fonctionnel sur https://localhost:5000.
 
 ## Conclusion
 
 Ton **Avengers Chat** est prêt, tu vas pouvoir communiquer avec les Avengers ! 
 Tout au long de ce tutoriel, tu as pu voir comment utiliser les _cloud services_ de ZetaPush et même créer tes propres fonctionnalités en utilisant les _custom cloud services_. 
-À présent n'hésite pas à aller sur https://console.zetapush.com pour gérer ton application, ou voir les _cloud services_ disponibles chez ZetaPush. 
+À présent n'hésites pas à aller sur https://console.zetapush.com pour gérer ton application, ou voir les _cloud services_ disponibles chez ZetaPush. 

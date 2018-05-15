@@ -18,7 +18,7 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 
 
 
-# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans _custom cloud service_
+# <a name="parcours-1"></a> Parcours 1 : Je développe sur mon environement local une application front avec ZetaPush sans _custom cloud service_
 
 ## Schéma
 
@@ -46,7 +46,7 @@ _GIVEN_
   this.userService.createUser({
     firstname: "Peter",
     lastname: "Parker",
-    lastname: "Spider-Man"
+    username: "Spider-Man"
   })
   .then((newUser) => {
     console.log(`new user created : ${newUser.username}`);
@@ -62,7 +62,7 @@ _GIVEN_
   const newUser = await this.userService.createUser({
     firstname: "Peter",
     lastname: "Parker",
-    lastname: "Spider-Man"
+    username: "Spider-Man"
   });
   ```
 
@@ -99,7 +99,7 @@ _GIVEN_
   this.userService.createUser({
     firstname: "Peter",
     lastname: "Parker",
-    lastname: "Spider-Man"
+    username: "Spider-Man"
   })
   .then((newUser) => {
     console.log(`new user created : ${newUser.username}`);
@@ -115,7 +115,7 @@ _GIVEN_
   const newUser = await this.userService.createUser({
     firstname: "Peter",
     lastname: "Parker",
-    lastname: "Spider-Man"
+    username: "Spider-Man"
   });
   ```
 
@@ -188,7 +188,7 @@ _WHEN_
 
 _THEN_
 
-* L'autocompletion me propose les différentes _cloud functions_ auquels j'ai accès en fonction de ma saisie :
+* L'autocompletion me propose les différentes _cloud functions_ auxquelles j'ai accès en fonction de ma saisie :
   * `this.userService.createUser()`
   * `this.userService.createOrganization()`
 * La _cloud function_ `getUser()` ne correspond pas et n'est donc pas affichée
@@ -213,22 +213,20 @@ _WHEN_
 
 _THEN_
 
-* L'autocomplétion s'affiche pour me proposer les différentes _cloud functions_ auquel j'ai accès en fonction de ma saisie
+* L'autocomplétion s'affiche pour me proposer les différentes _cloud functions_ auxquelles j'ai accès en fonction de ma saisie
 * Au sein de la pop-up d'autocomplétion, je peux cliquer sur un lien `view documentation` qui va me rediriger (Toujours dans la pop-up) sur la liste des _cloud functions_ pour ce _cloud service_
 * Je peux naviguer au sein de la documentation dans la pop-up, en utilisant différents liens.
 * Pour chaque _cloud function_ il y a son nom, sa description, ses paramètres entrants et son retour
 
 
 
-# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des _custom cloud services_
+# <a name="parcours-2"></a> Parcours 2 : Je développe sur mon environement local une application avec ZetaPush et des _custom cloud services_
 
 ## Schéma
 
 ![Développement avec seulement les services ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/archi-dev-front-with-custom-service.html)
 
 ## User Stories
-
-
 
 ### <a name="P02-DEV01"></a> [P02-DEV01] ETQ dev full-stack je développe mon code métier dans une _custom cloud function_
 
@@ -441,7 +439,7 @@ _WHEN_
 
 _THEN_
 
-* L'autocompletion me propose les différentes _cloud functions_ auquels j'ai accès en fonction de ma saisie :
+* L'autocompletion me propose les différentes _cloud functions_ auxquelles j'ai accès en fonction de ma saisie :
   * `this.avengersService.attackWithRandomSkill()`
   * `this.avengersService.attackWithSpecificSkill()`
 * La _cloud function_ `getHealthAvenger()` ne correspond pas et n'est donc pas affichée
@@ -466,8 +464,7 @@ _WHEN_
 
 _THEN_
 
-* L'autocomplétion s'affiche pour me proposer les différentes _cloud functions_ auquel j'ai accès en fonction de ma saisie
+* L'autocomplétion s'affiche pour me proposer les différentes _cloud functions_ auxquelles j'ai accès en fonction de ma saisie
 * Au sein de la pop-up d'autocomplétion, je peux cliquer sur un lien `view documentation` qui va me rediriger (Toujours dans la pop-up) sur la liste des _cloud functions_ pour ce _cloud service_
 * Je peux naviguer au sein de la documentation dans la pop-up, en utilisant différents liens.
 * Pour chaque _cloud function_ il y a son nom, sa description, ses paramètres entrants et son retour
-

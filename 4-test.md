@@ -1,6 +1,6 @@
 # Objectifs
 
-* Un développeur front doit pouvoir mocker les appels serveurs lors de ses tests.
+* Un développeur front doit pouvoir mocker les appels serveur lors de ses tests.
 * Un développeur full-stack doit pouvoir tester unitairement son code serveur.
 * Un développeur doit pouvoir tester (test d'intégration ou test fonctionnel) son code avec un contexte d'exécution propre entre chaque test.
 * Un développeur doit pouvoir spécifier dans son test, l'état dans lequel se trouve son application avant l'exécution du test.
@@ -15,7 +15,7 @@
 * J'utilise mon éditeur de texte ou IDE préféré.
 * J'ai une application front qui est prête à utiliser les cloud services. (Projet initialisé, dépendances installées, éventuellement la configuration de saisie)
 * J'utilise mon framework de test préféré. Dans les exemples de syntaxe, nous utiliserons _Mocha_.
-* Nous allons utiliser _sinon.js_ pour réaliser dans mocks et des stubs dans nos tests.
+* Nous allons utiliser _sinon.js_ pour réaliser des mocks et des stubs dans nos tests.
 * Le cas d'usage de nos Users Stories sera un chat temps réel entre des personnages Avengers.
 
 
@@ -33,7 +33,7 @@ _GIVEN_
 * J'ai importé le _cloud service_ `SearchService` qui me permet de sauvegarder dans un moteur de recherche des données
 * J'ai accès à `UserService` via l'objet `userService`
 * J'ai accès à `SearchService` via l'objet `searchService`
-* Je souhaiter tester mon code front, qui me permet de créer un _Avenger_ pour ceci je mock mes différents appels aux _Cloud Services_ pour tester uniquement mon code front
+* Je souhaite tester mon code front qui me permet de créer un _Avenger_, pour ceci je mock mes différents appels aux _Cloud Services_ pour tester uniquement mon code front
 * J'ai une fonction côté front qui intègre ma logique métier :
 
 ```javascript
@@ -57,7 +57,7 @@ addAvengers(avenger) {
 }
 ```
 
-* Nous utilisons _sinon.js_ pour tester mocker les appels aux _Cloud Services_.
+* Nous utilisons _sinon.js_ pour mocker les appels aux _Cloud Services_.
 
 
   ```javascript
@@ -124,7 +124,7 @@ _GIVEN_
 * J'ai importé le _cloud service_ `UtilsService` qui me permet d'utiliser des _cloud functions_ utilitaires de ZetaPush
 * J'ai accès à `UtilsService` via l'objet `utilsService`
 * Je souhaite donner un état particulier à mon application côté back. Pour ceci je spécifie un snapshot de mon application.
-* Je souhaiter tester mon code front, qui me permet de créer un _Avenger_ pour ceci je mock mes différents appels aux _Cloud Services_ pour tester uniquement mon code front
+* Je souhaite tester mon code front qui me permet de créer un _Avenger_, pour ceci je mock mes différents appels aux _Cloud Services_ pour tester uniquement mon code front
 * J'ai un état précédent de mon application sauvegardé côté back, que je peux retrouver avec le nom `3-avengers-already-created`
 * J'ai une fonction côté front qui intègre ma logique métier :
 
@@ -226,7 +226,7 @@ _GIVEN_
 * J'ai importé le _cloud service_ `UtilsService` qui me permet d'utiliser des _cloud functions_ utilitaires de ZetaPush
 * J'ai accès à `UtilsService` via l'objet `utilsService`
 * Je souhaite donner un état particulier à mon application côté back. Pour ceci je spécifie un snapshot de mon application.
-* Je souhaiter tester mon code front, qui me permet de créer un _Avenger_ pour ceci je mock mes différents appels aux _Cloud Services_ pour tester uniquement mon code front
+* Je souhaite tester mon code front qui me permet de créer un _Avenger_, pour ceci je mock mes différents appels aux _Cloud Services_ pour tester uniquement mon code front
 * Je souhaite revenir à un état précédent de mon application, où la plateforme côté back est vierge
 * J'ai une fonction côté front qui intègre ma logique métier :
 
@@ -252,7 +252,7 @@ addAvengers(avenger) {
 ```
 
 
-* Nous utilisons _sinon.js_ pour tester mocker les appels aux _Cloud Services_.
+* Nous utilisons _sinon.js_ pour mocker les appels aux _Cloud Services_.
 
 
   ```javascript

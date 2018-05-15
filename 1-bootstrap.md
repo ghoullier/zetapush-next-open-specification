@@ -95,7 +95,7 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
-- Une application au nom de **myApp** a été ajouté à mon compte ZetaPush
+- Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush
 - Une arborescence fichier à été créée sous la forme :
 
   ```
@@ -152,7 +152,7 @@ Veuillez résoudre cette opération pour créer votre compte sur la plateforme Z
 $ Réponse : 
 ```
 - Un compte temporaire sur la plateforme ZetaPush a été créé
-- Une application au nom de **myApp** a été ajouté à ce compte
+- Une application au nom de **myApp** a été ajoutée à ce compte
 - Une arborescence fichier à été créée sous la forme :
 
   ```
@@ -377,7 +377,7 @@ To deploy your application you can use the command zeta push.
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
-- Une application au nom de **myApp** a été ajouté à mon compte ZetaPush
+- Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush
 - Une arborescence fichier à été créée sous la forme :
 
   ```
@@ -460,7 +460,7 @@ Now you can use Cloud Services in your application. You can see the documentatio
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
-- Une application au nom de **myApp** a été ajouté à mon compte ZetaPush
+- Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush
 - Une arborescence fichier à été créée sous la forme :
 
   ```
