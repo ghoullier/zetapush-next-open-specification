@@ -86,18 +86,18 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
     $ zeta push
     Deploying your application on production environment:
       ✓ Code uploaded
-      | Publishing custom services on worker 1   ██████░░░░░░
-      - Publishing custom services on worker 2   ████████░░░░
-      / Publishing custom services on worker 3   ██░░░░░░░░░░
+      | Publishing custom services on worker instance 1   ██████░░░░░░
+      - Publishing custom services on worker instance 2   ████████░░░░
+      / Publishing custom services on worker instance 3   ██░░░░░░░░░░
     ```
   - Je sais lorsque mon application est prête à être utilisée
     ```
     $ zeta push
     Deploying your application on production environment:
       ✓ Code uploaded
-      ✓ Custom services published on worker 1
-      ✓ Custom services published on worker 2
-      ✓ Custom services published on worker 3
+      ✓ Custom services published on worker instance 1
+      ✓ Custom services published on worker instance 2
+      ✓ Custom services published on worker instance 3
 
     Your custom services are ready and accessible through ZetaPush
     ```
@@ -138,10 +138,10 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     $ zeta push
     Deploying your application on production environment:
       ✓ Code uploaded
-      | Publishing web application               ██████░░░░░░
-      / Publishing custom services on worker 1   ██████░░░░░░
-      - Publishing custom services on worker 2   ████████░░░░
-      \ Publishing custom services on worker 3   ██░░░░░░░░░░
+      | Publishing web application                        ██████░░░░░░
+      / Publishing custom services on worker instance 1   ██████░░░░░░
+      - Publishing custom services on worker instance 2   ████████░░░░
+      \ Publishing custom services on worker instance 3   ██░░░░░░░░░░
     ```
   - Je sais lorsque mon application est prête à être utilisée
     ```
@@ -149,9 +149,9 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     Deploying your application on production environment:
       ✓ Code uploaded
       ✓ Web application published
-      ✓ Custom services published on worker 1
-      ✓ Custom services published on worker 2
-      ✓ Custom services published on worker 3
+      ✓ Custom services published on worker instance 1
+      ✓ Custom services published on worker instance 2
+      ✓ Custom services published on worker instance 3
 
     Your application is ready:
     - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
@@ -196,9 +196,9 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     Deploying your application on production environment:
       ✓ Code uploaded
       ✓ Web application published
-      x Custom services published on worker 1
-      ✓ Custom services published on worker 2
-      x Custom services published on worker 3
+      x Custom services published on worker instance 1
+      ✓ Custom services published on worker instance 2
+      x Custom services published on worker instance 3
 
     Your application couldn't be deployed. A rollback has been done to previous version.
     Here are the deployment logs:
