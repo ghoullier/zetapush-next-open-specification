@@ -118,8 +118,8 @@ Cette commande va te créer l'arborescence suivante :
     ├── .package.json
     ├── .zetarc
     ├── .gitignore
-    ├── server
-        └── index.js
+    ├── worker
+    │   └── index.js
     └── front
         ├── index.html
         └── index.js
@@ -129,7 +129,7 @@ Cette commande va te créer l'arborescence suivante :
 Le fichier `.package.json` comporte les différentes dépendances nécessaires à l'utilisation de ZetaPush (_@zetapush/js_ et _@zetapush/server_). Ensuite le fichier `.zetarc` comporte la configuration nécessaire à l'identification de ton compte sur la plateforme ZetaPush. En effet, un compte temporaire t'es automatiquement créé sur ZetaPush (Avec ton application **avengers-chat** d'associée). Tu peux dès à présent rentre ton compte permanent en te rendant sur https://console.zetapush.com ou en utilisant la CLI.
 
 Cette commande va te créer une arborescence de projet pour différencier ton code front et ton code back qui sera utilisé plus tard dans ce tutoriel (nous appellerons custom could services la partie back).
-Le découpage en deux projets n'est pas obligatoire mais c'est une bonne pratique pour bien différencier les différentes composantes de ton application. De plus dans le cadre du tutoriel, ceci te permettra de bien comprendre les interactions entre le front et les customs services. Comme tu as pu le voir, la CLI te donne un code d'exemple. Nous n'allons pas l'utiliser donc tu peux supprimer de contenu de `server/index.js`, `front/index.html` et de `front/index.js`.
+Le découpage en deux projets n'est pas obligatoire mais c'est une bonne pratique pour bien différencier les différentes composantes de ton application. De plus dans le cadre du tutoriel, ceci te permettra de bien comprendre les interactions entre le front et les customs services. Comme tu as pu le voir, la CLI te donne un code d'exemple. Nous n'allons pas l'utiliser donc tu peux supprimer de contenu de `worker/index.js`, `front/index.html` et de `front/index.js`.
 
 ---
 ### Activation d'un compte via la CLI
@@ -144,7 +144,7 @@ Choose your email : damien@gmail.com
 ``` 
 ---
 
-Les fichiers `server/index.js` / `front/index.html` et `front/index.js` sont remplis d'un exemple de projet type _Hello World_. Tu peux t'y inspirer pour créer une application mais dans ce tutoriel tu peux supprimer le contenu de ces fichiers, nous allons partir de zéro.
+Les fichiers `worker/index.js` / `front/index.html` et `front/index.js` sont remplis d'un exemple de projet type _Hello World_. Tu peux t'y inspirer pour créer une application mais dans ce tutoriel tu peux supprimer le contenu de ces fichiers, nous allons partir de zéro.
 
 Maintenant que ton application est prête à ếtre développée, commence par créer le design.
 
@@ -584,7 +584,7 @@ window.validAvenger = function() {
  C'est à ce moment la que tu vas créer ta première _Cloud Function_.
  Son rôle est de lancer une attaque sur le chat, en fonction des compétences de ton _Avenger_. Pour ceci voici le _Cloud Service_ que tu vas créer :
 
-#### **server/index.js**
+#### **worker/index.js**
 
 ```javascript
 import { avengers } from "../utils/avengers.js";

@@ -1,6 +1,6 @@
 
 
-### [P04-SUPPR01] ETQ dev je supprime mon application (front et backend) en production
+### <a name="P04-SUPPR01"></a> [P04-SUPPR01] ETQ dev je supprime mon application (front et backend) en production
 *GIVEN*
   - J'ai une application en production
   - J'ai l'identifiant de mon application 'my-first-apop'
@@ -15,7 +15,7 @@
 
 ---
 
-### [P04-SUPPR02] ETQ dev je supprime mon front en production
+### <a name="P04-SUPPR02"></a> [P04-SUPPR02] ETQ dev je supprime mon front en production
 *GIVEN*
   - J'ai une application en production
   - J'ai l'identifiant de mon application 'my-first-apop'
@@ -30,14 +30,14 @@
 
 ---
 
-### [P04-SUPPR03] ETQ dev je supprime mon backend en production
+### <a name="P04-SUPPR03"></a> [P04-SUPPR03] ETQ dev je supprime mon backend en production
 
 *GIVEN*
   - J'ai une application en production
   - J'ai l'identifiant de mon application 'my-first-apop'
 
 *WHEN*
-  - J'exécute la commande : ```zeta delete --server-only```
+  - J'exécute la commande : ```zeta delete --worker-only```
 
 *THEN
   - J'ai une demande de confirmation : ```Your backend 'my-first-app' will be deleted. Are you sur Y/n ?```

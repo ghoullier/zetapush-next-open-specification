@@ -14,7 +14,7 @@
 
 ## User stories
 
-### [P01-DEPLOY01] ETQ dev front je déploie mon application en production
+### <a name="P01-DEPLOY01"></a> [P01-DEPLOY01] ETQ dev front je déploie mon application en production
 
 *GIVEN*
   - J'ai le nom de l'application dans le fichier `package.json`
@@ -62,7 +62,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ## User stories
 
-### [P02-DEPLOY01] ETQ dev full-stack je déploie mes services custom en production
+### <a name="P02-DEPLOY01"></a> [P02-DEPLOY01] ETQ dev full-stack je déploie mes services custom en production
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -74,10 +74,10 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
     - ```isFinished()```
     - ```getWinner()```
     - ```endGame()```
-  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
 
 *WHEN*
-- J'exécute la commande : ```zeta push --server-only```
+- J'exécute la commande : ```zeta push --worker-only```
 
 *THEN*
   - Mon code custom (indiqué par le fichier `package.json`) est envoyé sur ZetaPush
@@ -86,18 +86,18 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
     $ zeta push
     Deploying your application on production environment:
       ✓ Code uploaded
-      | Publishing custom services on node 1   ██████░░░░░░
-      - Publishing custom services on node 2   ████████░░░░
-      / Publishing custom services on node 3   ██░░░░░░░░░░
+      | Publishing custom services on worker 1   ██████░░░░░░
+      - Publishing custom services on worker 2   ████████░░░░
+      / Publishing custom services on worker 3   ██░░░░░░░░░░
     ```
   - Je sais lorsque mon application est prête à être utilisée
     ```
     $ zeta push
     Deploying your application on production environment:
       ✓ Code uploaded
-      ✓ Custom services published on node 1
-      ✓ Custom services published on node 2
-      ✓ Custom services published on node 3
+      ✓ Custom services published on worker 1
+      ✓ Custom services published on worker 2
+      ✓ Custom services published on worker 3
 
     Your custom services are ready and accessible through ZetaPush
     ```
@@ -105,15 +105,15 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
     - ```player1 = {"name": "Georgesdelajungle"}```
     - ```player2 = {"name": "Aladdin"}```
-  - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
+  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
   - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
-  - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
+  - Je peux consulter la santé de mon worker (voir autres US)
 
 TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
 ---
 
-### [P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et service custom) en production
+### <a name="P02-DEPLOY02"></a> [P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et service custom) en production
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -125,7 +125,7 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     - ```isFinished()```
     - ```getWinner()```
     - ```endGame()```
-  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
   - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
 
 *WHEN*
@@ -138,10 +138,10 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     $ zeta push
     Deploying your application on production environment:
       ✓ Code uploaded
-      | Publishing web application             ██████░░░░░░
-      / Publishing custom services on node 1   ██████░░░░░░
-      - Publishing custom services on node 2   ████████░░░░
-      \ Publishing custom services on node 3   ██░░░░░░░░░░
+      | Publishing web application               ██████░░░░░░
+      / Publishing custom services on worker 1   ██████░░░░░░
+      - Publishing custom services on worker 2   ████████░░░░
+      \ Publishing custom services on worker 3   ██░░░░░░░░░░
     ```
   - Je sais lorsque mon application est prête à être utilisée
     ```
@@ -149,9 +149,9 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     Deploying your application on production environment:
       ✓ Code uploaded
       ✓ Web application published
-      ✓ Custom services published on node 1
-      ✓ Custom services published on node 2
-      ✓ Custom services published on node 3
+      ✓ Custom services published on worker 1
+      ✓ Custom services published on worker 2
+      ✓ Custom services published on worker 3
 
     Your application is ready:
     - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
@@ -160,14 +160,14 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
   - Mon frontend est envoyé sur ZetaPush
   - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
   - Mon frontend de production déployé utilise les services custom déployés
-  - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
+  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
   - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
-  - Je peux consulter la santé des noeuds déployés par ZetaPush (voir autres US)
+  - Je peux consulter la santé de mon worker (voir autres US)
 
 
 ---
 
-### [P02-DEPLOY03] ETQ dev je suis aidé lorsque mon application (front et service custom) n'a pas pu être déployé en production
+### <a name="P02-DEPLOY03"></a> [P02-DEPLOY03] ETQ dev je suis aidé lorsque mon application (front et service custom) n'a pas pu être déployé en production
 
 
 *GIVEN*
@@ -180,7 +180,7 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     - ```isFinished()```
     - ```getWinner()```
     - ```endGame()```
-  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
   - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire `dist`
   - J'ai exécuté la commande : ```zeta push```
   - Mon code a bien été envoyé sur ZetaPush
@@ -196,9 +196,9 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     Deploying your application on production environment:
       ✓ Code uploaded
       ✓ Web application published
-      x Custom services published on node 1
-      ✓ Custom services published on node 2
-      x Custom services published on node 3
+      x Custom services published on worker 1
+      ✓ Custom services published on worker 2
+      x Custom services published on worker 3
 
     Your application couldn't be deployed. A rollback has been done to previous version.
     Here are the deployment logs:
@@ -213,7 +213,7 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
 ---
 
-### [P02-DEPLOY04] ETQ dev je déploie mon service custom en production avec une configuration dédiée à cet environnement avec les credentials externalisés
+### <a name="P02-DEPLOY04"></a> [P02-DEPLOY04] ETQ dev je déploie mon service custom en production avec une configuration dédiée à cet environnement avec les credentials externalisés
 
 
 *GIVEN*
@@ -229,15 +229,15 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     - ```isFinished()```
     - ```getWinner()```
     - ```endGame()```
-  - ZetaPush me met à disposition 3 noeuds en production et je n'ai rien configuré
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
   - J'ai plusieurs fichiers de configuration pour mes différents environnements :
-    - ```src/server/environment.yml``` (valeurs par défaut pour le développement) avec le contenu suivant :
+    - ```src/worker/environment.yml``` (valeurs par défaut pour le développement) avec le contenu suivant :
       ```yml
       stripe:
           url: 'https://api.stripe.com'
           token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
       ```
-    - ```src/server/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
+    - ```src/worker/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
       ```yml
       stripe:
           token: 'sk_prod_dNuiVQyTlDMH5RdFYSD4nIV0'
@@ -245,10 +245,10 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
   - Je ne précise aucune configuration concernant l'emplacement de mes fichiers (utilisation de la convention ZetaPush)
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --server-only --prod```
+  - J'exécute la commande : ```zeta push --worker-only --prod```
 
 *THEN*
-  - Le code présent dans dist/server est envoyé sur ZetaPush
+  - Le code présent dans dist/worker est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
   - Je sais lorsque mon application est prête à être utilisée
   - Mon application est correctement configurée pour utiliser l'environnement de prod :
@@ -257,7 +257,7 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
         url: 'https://api.stripe.com'
         token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
     ```
-  - ```src/server/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
+  - ```src/worker/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
     ```yml
     stripe:
         token: 'sk_prod_dNuiVQyTlDMH5RdFYSD4nIV0'
@@ -266,37 +266,14 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
   - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
     - ```player1 = {"name": "Georgesdelajungle"}```
     - ```player2 = {"name": "Aladdin"}```
-  - ZetaPush gère le load-balancing entre les 3 noeuds (voir autres US)
-  - Je peux visualiser les logs applicatifs de mon service custom mis en production (voir autres US)
-  - Je peux consulter la santé des noeuds déployés par ZetaPush mis en production (voir autres US)
-
----
-
-### [P02-DEPLOY05] ETQ dev je vérifie l'état des mon application en production
-
-TODO: ne pas se calquer sur une implémentation particulière !
-
-TODO: donner un état global de la santé plutôt (il n'y a pas que les nodeJS, il faudrait peut-être afficher des statistiques/analytics, afficher les logs ou autre information utile)
-
-*GIVEN*
-  - J'ai une application en production
-  - J'ai l'identification de mon application 'my-first-app'
-
-*WHEN*
-  - J'exécute la commande : ```zeta status```
-
-*THEN*
-  - Je visualise le nombre de noeuds actifs de mon application
-  - Je visualise l'état de chaque noeud
-
-| node1  | node2  | node3  | node4  | node5  |
-|---|---|---|---|---|
-| Running  | Running  | Pending  | Pending  | Pending |
+  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
+  - Je peux consulter la santé de mon worker (voir autres US)
 
 
 ---
 
-### [P02-DEPLOY06] ETQ dev je mets à jour mon application en production
+### <a name="P02-DEPLOY06"></a> [P02-DEPLOY06] ETQ dev je mets à jour mon application en production
 
 TODO: snapshot automatique faite par ZP avant l'upgrade pour backup des données en cas de code foireux ?
 
@@ -315,7 +292,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 ## User stories
 
 
-### [P03-DEPLOY01] ETQ exploitant je mets à disposition l'application web pour la qualification avec mes outils habituels
+### <a name="P03-DEPLOY01"></a> [P03-DEPLOY01] ETQ exploitant je mets à disposition l'application web pour la qualification avec mes outils habituels
 
 
 *GIVEN*
@@ -326,7 +303,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
     - `integration` pour l'intégration continue
     - `recette` pour la qualification
     - `prod` pour déployer mon application
-  - L'environnement de recette est configuré pour 4 noeuds pour cette application
+  - L'environnement de recette est configuré pour répliquer 4 fois mon worker
   - L'application utilise les services standard ZetaPush
   - L'intégration continue a généré un livrable contenant l'application web (`avengers-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
   - J'ai téléchargé le livrable `avengers-chat-front-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
@@ -350,12 +327,12 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 ---
 
-### [P03-DEPLOY02] ETQ exploitant je mets à disposition l'application web pour la qualification avec les outils ZetaPush
+### <a name="P03-DEPLOY02"></a> [P03-DEPLOY02] ETQ exploitant je mets à disposition l'application web pour la qualification avec les outils ZetaPush
 
 
 ---
 
-### [P03-DEPLOY03] ETQ exploitant je mets à disposition l'application web en production avec mes outils habituels
+### <a name="P03-DEPLOY03"></a> [P03-DEPLOY03] ETQ exploitant je mets à disposition l'application web en production avec mes outils habituels
 
 
 *GIVEN*
@@ -366,7 +343,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
     - `integration` pour l'intégration continue
     - `recette` pour la qualification
     - `prod` pour déployer mon application
-  - L'environnement de production est configuré pour 5 noeuds pour cette application
+  - L'environnement de production est configuré pour pour répliquer 4 fois mon worker
   - L'application utilise les services standard ZetaPush
   - L'intégration continue a généré un livrable contenant l'application web (`avengers-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
   - La qualification de la version 2.0.1 est terminée et le livrable 2.0.1 est accepté pour être utilisé en production
@@ -392,7 +369,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 ---
 
-### [P03-DEPLOY04] ETQ exploitant je mets à disposition l'application web en production avec les outils ZetaPush
+### <a name="P03-DEPLOY04"></a> [P03-DEPLOY04] ETQ exploitant je mets à disposition l'application web en production avec les outils ZetaPush
 
 
 # <a name="parcours-4"></a> Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
@@ -423,7 +400,7 @@ TODO: tests auto
 
 ## User stories
 
-### [P04-DEPLOY01] ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec mes outils habituels
+### <a name="P04-DEPLOY01"></a> [P04-DEPLOY01] ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec mes outils habituels
 
 
 *GIVEN*
@@ -440,13 +417,13 @@ TODO: tests auto
     - ```isFinished()```
     - ```getWinner()```
     - ```endGame()```
-  - L'environnement de recette est configuré pour 4 noeuds pour cette application
+  - L'environnement de recette est configuré pour répliquer 4 fois mon worker
   - L'intégration continue a généré un livrable contenant l'application web (`avengers-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
   - J'ai téléchargé le livrable `avengers-chat-front-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
   - L'intégration continue a généré un livrable contenant les services custom (`avengers-chat-services-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
   - J'ai téléchargé le livrable `avengers-chat-services-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
   - J'ai plusieurs fichiers de configuration pour les différents environnements :
-    - ```src/server/environment.yml``` (valeurs par défaut pour le développement directement contenu dans l'archive `avengers-chat-services-2.0.1.zip`) avec le contenu suivant :
+    - ```src/worker/environment.yml``` (valeurs par défaut pour le développement directement contenu dans l'archive `avengers-chat-services-2.0.1.zip`) avec le contenu suivant :
       ```yml
       stripe:
           url: 'https://api.stripe.com'
@@ -482,18 +459,18 @@ TODO: tests auto
 
 ---
 
-### [P04-DEPLOY02] ETQ exploitant je mets à disposition l'application web avec les services custom en production avec les outils ZetaPush
+### <a name="P04-DEPLOY02"></a> [P04-DEPLOY02] ETQ exploitant je mets à disposition l'application web avec les services custom en production avec les outils ZetaPush
 
 
 
 ---
 
-### [P04-DEPLOY03] ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec les outils ZetaPush
+### <a name="P04-DEPLOY03"></a> [P04-DEPLOY03] ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec les outils ZetaPush
 
 
 ---
 
-### [P04-DEPLOY04] ETQ exploitant je mets à disposition l'application web avec les services custom en production avec mes outils habituels
+### <a name="P04-DEPLOY04"></a> [P04-DEPLOY04] ETQ exploitant je mets à disposition l'application web avec les services custom en production avec mes outils habituels
 
 
 *GIVEN*
@@ -510,14 +487,14 @@ TODO: tests auto
     - ```isFinished()```
     - ```getWinner()```
     - ```endGame()```
-  - L'environnement de production est configuré pour 5 noeuds pour cette application
+  - L'environnement de production est configuré pour répliquer 4 fois mon worker
   - L'intégration continue a généré un livrable contenant l'application web (`avengers-chat-front-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
   - L'intégration continue a généré un livrable contenant les services custom (`avengers-chat-services-2.0.1.zip`). Ce livrable est disponible sur un repository privé de l'entreprise.
   - La qualification de la version 2.0.1 est terminée et le livrable 2.0.1 est accepté pour être utilisé en production
   - J'ai téléchargé le livrable `avengers-chat-front-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
   - J'ai téléchargé le livrable `avengers-chat-services-2.0.1.zip` sur mon poste (dans `~/avengers-chat`)
   - J'ai plusieurs fichiers de configuration pour les différents environnements :
-    - ```src/server/environment.yml``` (valeurs par défaut pour le développement directement contenu dans l'archive `avengers-chat-services-2.0.1.zip`) avec le contenu suivant :
+    - ```src/worker/environment.yml``` (valeurs par défaut pour le développement directement contenu dans l'archive `avengers-chat-services-2.0.1.zip`) avec le contenu suivant :
       ```yml
       stripe:
           url: 'https://api.stripe.com'
