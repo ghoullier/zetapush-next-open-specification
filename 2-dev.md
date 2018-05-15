@@ -344,7 +344,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 * Je peux naviguer au sein de la documentation dans la pop-up, en utilisant différents liens.
 * Pour chaque _cloud function_ il y a son nom, sa description, ses paramètres entrants et son retour
 
-### <a name="P02-DEV04"></a> [P02-DEV04] ETQ dev full-stack je développe et exécute mon code métier sans compte ZetaPush
+### <a name="P02-DEV07"></a> [P02-DEV07] ETQ dev full-stack je développe et exécute mon code métier sans compte ZetaPush
 
 *GIVEN*
 
@@ -421,7 +421,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 
 ---
 
-### <a name="P02-DEV05"></a> [P02-DEV05] ETQ dev full-stack je développe et exécute mon code métier application sur mon compte ZetaPush
+### <a name="P02-DEV08"></a> [P02-DEV08] ETQ dev full-stack je développe et exécute mon code métier application sur mon compte ZetaPush
 
 *GIVEN*
 
