@@ -18,7 +18,7 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 
 
 
-# <a name="parcours-1"></a> Parcours 1 : Je développe sur mon environement local une application front avec ZetaPush sans _custom cloud service_
+# <a name="parcours-1"></a> ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) : Je développe sur mon environement local une application front avec ZetaPush sans _custom cloud service_
 
 ## Schéma
 
@@ -27,11 +27,25 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 ## User Stories
 
 
-### <a name="P01-DEV01"></a> [P01-DEV01] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour
+### <a name="P01-DEV01"></a> [P01-DEV01] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 _GIVEN_
 
 * Je suis en cours de développement de mon _Avengers Chat_
+* J'ai un compte ZetaPush (`user@gmail.com`/`password`)
+* J'ai précisé mon nom d'organisation (`mon-orga-a-moi`)
+* Mon application _Avengers Chat_ est déclarée sur ZetaPush
+* Mon application dispose de deux environnements dont les nom sont `dev` et `prod`
+* J'ai configuré le SDK client ZetaPush pour pointer sur mon application et mon environnement :
+  ```javascript
+  const client = new ZetaPush.SmartClient({
+    appName: 'Avengers Chat',
+    organizationName: 'mon-orga-a-moi',
+    env: 'dev'
+  });
+  ```
 * J'ai importé le _cloud service_ `UserService` qui me permet de gérer des utilisateurs
 * J'ai accès à `UserService` via l'objet `userService`
 * J'ai une _cloud function_ qui me permet de créer des utilisateurs : `createUser()`
@@ -80,11 +94,25 @@ _THEN_
 ---
 
 
-### <a name="P01-DEV02"></a> [P01-DEV02] ETQ dev front j'utilise un _cloud service_ et j'ai une erreur en retour
+### <a name="P01-DEV02"></a> [P01-DEV02] ETQ dev front j'utilise un _cloud service_ et j'ai une erreur en retour 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 _GIVEN_
 
 * Je suis en cours de développement de mon _Avengers Chat_
+* J'ai un compte ZetaPush (`user@gmail.com`/`password`)
+* J'ai précisé mon nom d'organisation (`mon-orga-a-moi`)
+* Mon application _Avengers Chat_ est déclarée sur ZetaPush
+* Mon application dispose de deux environnements dont les nom sont `dev` et `prod`
+* J'ai configuré le SDK client ZetaPush pour pointer sur mon application et mon environnement :
+  ```javascript
+  const client = new ZetaPush.SmartClient({
+    appName: 'Avengers Chat',
+    organizationName: 'mon-orga-a-moi',
+    env: 'dev'
+  });
+  ```
 * J'ai importé le _cloud service_ `UserService` qui me permet de gérer des utilisateurs
 * J'ai accès à `UserService` via l'objet `userService`
 * J'ai une _cloud function_ qui me permet de créer des utilisateurs : `createUser()`
@@ -139,6 +167,18 @@ _THEN_
 _GIVEN_
 
 * Je suis en cours de développement de mon _Avengers Chat_
+* J'ai un compte ZetaPush (`user@gmail.com`/`password`)
+* J'ai précisé mon nom d'organisation (`mon-orga-a-moi`)
+* Mon application _Avengers Chat_ est déclarée sur ZetaPush
+* Mon application dispose de deux environnements dont les nom sont `dev` et `prod`
+* J'ai configuré le SDK client ZetaPush pour pointer sur mon application et mon environnement :
+  ```javascript
+  const client = new ZetaPush.SmartClient({
+    appName: 'Avengers Chat',
+    organizationName: 'mon-orga-a-moi',
+    env: 'dev'
+  });
+  ```
 * J'ai importé le _cloud service_ `UserService` qui me permet de gérer des utilisateurs
 * J'ai accès à `UserService` via l'objet `userService`
 * J'ai une _cloud function_ qui me permet de créer des utilisateurs : `createUser()`
@@ -219,8 +259,81 @@ _THEN_
 * Pour chaque _cloud function_ il y a son nom, sa description, ses paramètres entrants et son retour
 
 
+---
 
-# <a name="parcours-2"></a> Parcours 2 : Je développe sur mon environement local une application avec ZetaPush et des _custom cloud services_
+### <a name="P01-DEV06"></a> [P01-DEV06] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour et je n'ai pas encore de compte ZetaPush 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+
+*GIVEN*
+
+* Je suis en cours de développement de mon _Avengers Chat_
+* Je n'ai pas de compte ZetaPush
+* J'ai importé le _cloud service_ `UserService` qui me permet de gérer des utilisateurs
+* J'ai accès à `UserService` via l'objet `userService`
+* J'ai une _cloud function_ qui me permet de créer des utilisateurs : `createUser()`
+* Je souhaite créer un utilisateur depuis mon code front
+* J'écris le code suivant :
+
+  ```javascript
+  /**
+   * I call the "createUser()" cloud function with many parameters.
+   * "userService" is a UserService
+   */
+  this.userService.createUser({
+    firstname: "Peter",
+    lastname: "Parker",
+    username: "Spider-Man"
+  })
+  .then((newUser) => {
+    console.log(`new user created : ${newUser.username}`);
+  })
+  .catch((error) => {
+    console.error(`Error to create new user : ${error.message}`);
+  });
+
+
+  /**
+   *  Other syntaxe to call a cloud function
+   */
+  const newUser = await this.userService.createUser({
+    firstname: "Peter",
+    lastname: "Parker",
+    username: "Spider-Man"
+  });
+  ```
+* Je n'ai pas configuré le SDK client ZetaPush pour pointer sur mon application et mon environnement :
+  ```javascript
+  const client = new ZetaPush.SmartClient({});
+  ```
+
+*WHEN*
+
+* Lorsque j'appelle ma _cloud function_ `createUser` via le _cloud service_ `UserService`
+
+*THEN*
+
+* La console du navigateur affiche une erreur indiquant qu'aucune information ZetaPush n'est précisée:
+  ```console
+  Missing application information for ZetaPush startup.
+  More information here: https://console.zetapush.com/documentation/sdk-js/startup
+
+  You don't have a ZetaPush account yet ?
+    - Create a temporary account by executing the command "zeta register". Your application will be automatically registered and you can then use the displayed names for ZetaPush startup.
+    - Open ZetaPush console to create an account and register a new application: https://console.zetapush.com/signup
+
+  You already have a ZetaPush account but the application is not registered ?
+    - Fill the file .zetarc with your credentials and run "zeta register". Your application will be automatically registered and you can then use the displayed identifier for ZetaPush startup.
+    - Create a new application through ZetaPush console: https://console.zetapush.com/app/register 
+
+  You already have a ZetaPush account and the application is registered ?
+    - Provide your application name, organisation name and environment name for ZetaPush startup: https://console.zetapush.com/documentation/sdk-js/startup
+  ```
+* La réponse renvoyée est sous la forme d'une promesse
+* La réponse est renvoyée dans le `.then()`
+
+
+# <a name="parcours-2"></a> ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) Je développe sur mon environement local une application avec ZetaPush et des _custom cloud services_
 
 ## Schéma
 
@@ -228,7 +341,9 @@ _THEN_
 
 ## User Stories
 
-### <a name="P02-DEV01"></a> [P02-DEV01] ETQ dev full-stack je développe mon code métier dans une _custom cloud function_
+### <a name="P02-DEV01"></a> [P02-DEV01] ETQ dev full-stack je développe mon code métier dans une _custom cloud function_ 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 _GIVEN_
 
@@ -295,7 +410,9 @@ _THEN_
 ---
 
 
-### <a name="P02-DEV02"></a> [P02-DEV02] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une réponse en retour
+### <a name="P02-DEV02"></a> [P02-DEV02] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une réponse en retour 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 _GIVEN_
 
@@ -339,7 +456,9 @@ _THEN_
 ---
 
 
-### <a name="P02-DEV03"></a> [P02-DEV03] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une erreur en retour
+### <a name="P02-DEV03"></a> [P02-DEV03] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une erreur en retour 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 _GIVEN_
 
