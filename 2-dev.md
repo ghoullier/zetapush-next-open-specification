@@ -5,6 +5,7 @@
 * Un développeur doit pouvoir utiliser l'autocomplétion de son IDE pour l'aider dans ses appels aux _cloud services_.
 * Un développeur doit avoir accès depuis son IDE à la documentation des _cloud services_.
 * Un développeur doit pouvoir écouter les évènements des _cloud services_.
+* Un développeur doit pouvoir exécuter ses _custom cloud services_ en local
 
 Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./README.md#vocabulaire).
 

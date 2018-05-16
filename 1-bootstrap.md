@@ -148,7 +148,7 @@ To deploy your application you can use the command "zeta push". You have already
   ```
 - La dépendance à _@zetapush/core_ est installée
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
-- Le fichier `.zetarc` a été rempli sans saisir de login et mot de passe en l'absence de compte ZetaPush
+- Le fichier `.zetarc` a été rempli sans login et mot de passe en l'absence de compte ZetaPush
 - J'ai un README.md avec les informations m'indiquant comment démarrer (utilisation de la CLI, les bonnes pratiques ZetaPush, les liens vers la documentation)
 - La sortie de la console est la suivante :
 
