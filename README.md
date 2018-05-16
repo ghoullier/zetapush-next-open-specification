@@ -185,7 +185,17 @@ Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage da
 |                  CEO                  |      CEO      | <ul><li>évaluation des risques (TODO: pouvoir rassurer un chef de projet sur le choix ZetaPush)</li><li>évaluation des coûts (TODO: savoir concrètement combien ZetaPush va lui coûter et combien il va économiser)</li></ul>  |                                            |
 |                  CTO                  |      CTO      | <ul><li>évaluation des services proposés (matching avec le besoin fonctionnel)</li></ul> |                                            |
 |        Client final d'une ESN         |    client     | <ul><li>analytics (TODO: remonter des métriques pour que le chef de projet puisse savoir comment son application est utilisée : le nombre d'utilisateurs, parcours clients, ...)</li><li>suivi de l'application en production</li><li>monitoring</li></ul> |                                            |
+# Convention de nommage
 
+Dans l'ensemble des spécifications de ce repository, nous allons parler des différentes conventions définies par ZetaPush. Voici la liste correspondante :
+
+#### Nommage des dossiers dans l'architecture d'une application 
+
+Au sein d'une application ZetaPush Celtia, nous préconisons par soucis de bonnes pratiques, de séparer le code front du code back. Le code back étant les différents _custom cloud services_ que vous allez créer pour étendre le fonctionnel de votre application. 
+
+Par défaut et par convention le code se trouvera dans 2 dossiers à la racine de l'application : **front** pour le code front et **worker** pour le code back.
+
+> Nous avons choisi de nommer le dossier du code back _worker_ puisque ce n'est pas réellement du code back même si celui-ci se trouve côté serveur. En effet le worker est le code qui correspond à votre extension des _cloud services_ ZetaPush (vos _custom cloud services_).
 
 # Roadmap
 
