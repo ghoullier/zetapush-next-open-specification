@@ -33,6 +33,7 @@ Ce repository GitHub trace nos réflexions, idées et propositions. Nous utiliso
 * ETQ : En tant que
 * dev : Terme générique pour dire dev front / back ou fullstack
 * ZP : ZetaPush
+* credentials : Couple login/password du compte développeur
 
 ## Services
 
@@ -204,3 +205,7 @@ TODO
 # Tutoriels
 
 - [Avengers Chat](./0-tutorial.md)
+
+# Fichiers
+
+Certains fichiers générés (par la CLI par exemple) ont toujours le même contenu. Afin d'éviter de se répéter certain de ces fichiers sont présent dans le sous dossier `fichiers`.

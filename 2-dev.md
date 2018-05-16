@@ -306,7 +306,6 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 * J'ai importé le _custom cloud service_ `AvengersService` qui me permet de gérer un jeu
 * J'ai accès à `AvengersService` via l'objet `avengersService`
 * J'ai différentes _cloud functions_ disponibles au sein de mon _custom cloud service_ : `attackWithRandomSkill()` / `attackWithSpecificSkill()` / `getHealthAvenger()`
-* J'ai lancé la commande `zeta run worker` pour lancer mon _custom cloud service_ en local
 
 *WHEN*
 
@@ -332,7 +331,6 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 * J'ai importé le _custom cloud service_ `AvengersService` qui me permet de gérer un jeu
 * J'ai accès à `AvengersService` via l'objet `avengersService`
 * J'ai différentes _cloud functions_ disponibles au sein de mon _custom cloud service_ : `attackWithRandomSkill()` / `attackWithSpecificSkill()` / `getHealthAvenger()`
-* J'ai lancé la commande `zeta run worker` pour lancer mon _custom cloud service_ en local
 
 *WHEN*
 
