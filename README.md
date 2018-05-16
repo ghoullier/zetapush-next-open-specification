@@ -25,7 +25,7 @@ ZetaPush souhaite donc offrir une expérience de développement agréable et eff
 
 ## Objectifs de ce repository
 
-Ce repository github trace nos réflexions, idées et propositions. Nous utilisons ce repository pour communiquer sur nos avancées. Ce repository est aussi la base pour que nos utilisateurs (vous) puissent aussi contribuer en terme de réflexion, d'idées et de propositions. Ce repository est ouvert à tous ceux qui partagent les mêmes convictions que nous.
+Ce repository GitHub trace nos réflexions, idées et propositions. Nous utilisons ce repository pour communiquer sur nos avancées. Ce repository est aussi la base pour que nos utilisateurs (vous) puissent aussi contribuer en terme de réflexion, d'idées et de propositions. Ce repository est ouvert à tous ceux qui partagent les mêmes convictions que nous.
 
 
 # Vocabulaire
@@ -61,7 +61,7 @@ Fournir des services prêts à l'emploi ne suffisent pas toujours. Il existe deu
 - Aucun des _cloud services_ fournis par ZetaPush n'est adapté à l'un de vos besoins spécifiques
 
 Dans le premier cas, nous offrons la possibilité de configurer ou d'étendre les _cloud services_ existants pour les adapter à vos besoins.
-Dans le second cas, nous vous permettons de développer vos propres _cloud services custom_.
+Dans le second cas, nous vous permettons de développer vos propres _custom cloud services_.
 
 ![Développement avec seulement les _cloud services_ ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/principes-phase-dev-custom-cloud-services.html)
 
@@ -76,7 +76,7 @@ ZetaPush n'impose aucun pré-requis technique. Nous souhaitons que vous puissiez
 
 # Parcours utilisateurs
 
-Cette section a pour but de présenter l'ensemble des parcours utilisateurs envisagés dans le cadre de ZetaPush V3. Chaque partie correspond à un profil présenté [ci-dessous](#profils-identifies).
+Cette section a pour but de présenter l'ensemble des parcours utilisateurs envisagés dans le cadre de ZetaPush Celtia. Chaque partie correspond à un profil présenté [ci-dessous](#profils-identifies).
 
 ## Developer experience
 
