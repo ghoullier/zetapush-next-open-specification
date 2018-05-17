@@ -51,7 +51,7 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 
 ### <a name="P01-BOOT02"></a> [P01-BOOT02] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI en utilisant mon compte ZetaPush 
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -88,6 +88,8 @@ Pour chaque User Story, nous définissons seulement les fichiers qui sont créé
 
 
 ### <a name="P01-BOOT03"></a> [P01-BOOT03] ETQ dev front je créé une application avec la CLI en utilisant mon compte ZetaPush
+
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -130,6 +132,8 @@ To deploy your application you can use the command zeta push. You have already a
 
 
 ### <a name="P01-BOOT04"></a> [P01-BOOT04] ETQ dev front je créé une application avec la CLI sans compte existant
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
 - Je n'ai pas de compte ZetaPush existant
@@ -196,6 +200,8 @@ TODO: le captcha ne devrait pas être demandé à l'init de projet, c'est trop i
 
 ### <a name="P01-BOOT05"></a> [P01-BOOT05] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante avec la CLI en utilisant mon compte ZetaPush
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
 - J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
@@ -246,7 +252,7 @@ To deploy your application you can use the command zeta push.
 
 ### <a name="P01-BOOT06"></a> [P01-BOOT06] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante et une arborescence custom avec la CLI en utilisant mon compte ZetaPush 
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 
 *GIVEN*
@@ -340,7 +346,7 @@ To deploy your application you can use the command zeta push.
 
 ### <a name="P02-BOOT02"></a> [P02-BOOT02] ETQ dev full-stack j'ajoute  des _Cloud Services_ et je créé  des _Custom Cloud Services_ au sein d'une application existante 
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -377,6 +383,8 @@ To deploy your application you can use the command zeta push.
 
 
 ### <a name="P02-BOOT03"></a> [P02-BOOT03] ETQ dev full-stack je créé une application avec la CLI 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant avec user@gmail.com / password comme couple login/password
@@ -420,6 +428,8 @@ To deploy your application you can use the command zeta push.  You have already 
 
 
 ### <a name="P02-BOOT04"></a> [P02-BOOT04] ETQ dev full-stack je créé une application avec la CLI sans compte existant
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 - Je n'ai pas de compte ZetaPush

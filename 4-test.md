@@ -26,6 +26,8 @@
 
 ### <a name="P01-TEST01"></a> [P01-TEST01] ETQ dev je mock un appel à un _cloud service_
 
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
+
 _GIVEN_
 
 * Je suis en cours de développement de mon _Avengers Chat_
@@ -113,6 +115,8 @@ _THEN_
 ---
 
 ### <a name="P01-TEST02"></a> [P01-TEST02] ETQ dev je souhaite pouvoir appliquer à mon test un état de mon application précédemment sauvegardé
+
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
 
 _GIVEN_
 
@@ -215,6 +219,8 @@ _THEN_
 ---
 
 ### <a name="P01-TEST03"></a> [P01-TEST03] ETQ dev je teste mon application dans un environnement vierge
+
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
 
 _GIVEN_
 
@@ -322,6 +328,8 @@ _THEN_
 
 
 ### <a name="P02-TEST01"></a> [P02-TEST01] ETQ dev full-stack je teste un _custom cloud service_
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 _GIVEN_
 
