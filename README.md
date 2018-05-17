@@ -25,7 +25,7 @@ ZetaPush souhaite donc offrir une expérience de développement agréable et eff
 
 ## Objectifs de ce repository
 
-Ce repository github trace nos réflexions, idées et propositions. Nous utilisons ce repository pour communiquer sur nos avancées. Ce repository est aussi la base pour que nos utilisateurs (vous) puissent aussi contribuer en terme de réflexion, d'idées et de propositions. Ce repository est ouvert à tous ceux qui partagent les mêmes convictions que nous.
+Ce repository GitHub trace nos réflexions, idées et propositions. Nous utilisons ce repository pour communiquer sur nos avancées. Ce repository est aussi la base pour que nos utilisateurs (vous) puissent aussi contribuer en terme de réflexion, d'idées et de propositions. Ce repository est ouvert à tous ceux qui partagent les mêmes convictions que nous.
 
 
 # Vocabulaire
@@ -33,6 +33,7 @@ Ce repository github trace nos réflexions, idées et propositions. Nous utiliso
 * ETQ : En tant que
 * dev : Terme générique pour dire dev front / back ou fullstack
 * ZP : ZetaPush
+* credentials : Couple login/password du compte développeur
 
 ## Services
 
@@ -61,7 +62,7 @@ Fournir des services prêts à l'emploi ne suffisent pas toujours. Il existe deu
 - Aucun des _cloud services_ fournis par ZetaPush n'est adapté à l'un de vos besoins spécifiques
 
 Dans le premier cas, nous offrons la possibilité de configurer ou d'étendre les _cloud services_ existants pour les adapter à vos besoins.
-Dans le second cas, nous vous permettons de développer vos propres _cloud services custom_.
+Dans le second cas, nous vous permettons de développer vos propres _custom cloud services_.
 
 ![Développement avec seulement les _cloud services_ ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/principes-phase-dev-custom-cloud-services.html)
 
@@ -76,7 +77,7 @@ ZetaPush n'impose aucun pré-requis technique. Nous souhaitons que vous puissiez
 
 # Parcours utilisateurs
 
-Cette section a pour but de présenter l'ensemble des parcours utilisateurs envisagés dans le cadre de ZetaPush V3. Chaque partie correspond à un profil présenté [ci-dessous](#profils-identifies).
+Cette section a pour but de présenter l'ensemble des parcours utilisateurs envisagés dans le cadre de ZetaPush Celtia. Chaque partie correspond à un profil présenté [ci-dessous](#profils-identifies).
 
 ## Developer experience
 
@@ -185,7 +186,17 @@ Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage da
 |                  CEO                  |      CEO      | <ul><li>évaluation des risques (TODO: pouvoir rassurer un chef de projet sur le choix ZetaPush)</li><li>évaluation des coûts (TODO: savoir concrètement combien ZetaPush va lui coûter et combien il va économiser)</li></ul>  |                                            |
 |                  CTO                  |      CTO      | <ul><li>évaluation des services proposés (matching avec le besoin fonctionnel)</li></ul> |                                            |
 |        Client final d'une ESN         |    client     | <ul><li>analytics (TODO: remonter des métriques pour que le chef de projet puisse savoir comment son application est utilisée : le nombre d'utilisateurs, parcours clients, ...)</li><li>suivi de l'application en production</li><li>monitoring</li></ul> |                                            |
+# Convention de nommage
 
+Dans l'ensemble des spécifications de ce repository, nous allons parler des différentes conventions définies par ZetaPush. Voici la liste correspondante :
+
+#### Nommage des dossiers dans l'architecture d'une application 
+
+Au sein d'une application ZetaPush Celtia, nous préconisons par soucis de bonnes pratiques, de séparer le code front du code back. Le code back étant les différents _custom cloud services_ que vous allez créer pour étendre le fonctionnel de votre application. 
+
+Par défaut et par convention le code se trouvera dans 2 dossiers à la racine de l'application : **front** pour le code front et **worker** pour le code back.
+
+> Nous avons choisi de nommer le dossier du code back _worker_ puisque ce n'est pas réellement du code back même si celui-ci se trouve côté serveur. En effet le worker est le code qui correspond à votre extension des _cloud services_ ZetaPush (vos _custom cloud services_).
 
 # Roadmap
 
@@ -264,7 +275,7 @@ Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage da
 
 ####             Développement ![progress](http://progressed.io/bar/10)
 
-> - [ ] [**[P02-DEV01] ETQ dev full-stack je développe sur mon environement local mon code métier dans une custom cloud function**](./2-dev.md#P02-DEV01)
+> - [ ] [**[P02-DEV01] ETQ dev full-stack je développe sur mon environnement local mon code métier dans une custom cloud function**](./2-dev.md#P02-DEV01)
 >   - [ ] Rédiger les specs
 >   - [ ] Implémenter la commande `zeta run`
 >   - [ ] `zeta run` appelle automatiquement `zeta register` si besoin
@@ -536,3 +547,7 @@ TODO
 # Tutoriels
 
 - [Avengers Chat](./0-tutorial.md)
+
+# Fichiers
+
+Certains fichiers générés (par la CLI par exemple) ont toujours le même contenu. Afin d'éviter de se répéter certain de ces fichiers sont présent dans le sous dossier `fichiers`.
