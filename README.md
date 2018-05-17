@@ -254,9 +254,6 @@ Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage da
 
 ####             Démarrage ![progress](http://progressed.io/bar/10)
 
-> - [ ] [**[P02-BOOT01] ETQ dev full-stack je créé une application sans CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P02-BOOT01)
->   - [ ] Rédiger les specs
->   - [ ] Documenter le démarrage manuel
 > - [ ] [**[P02-BOOT02] ETQ dev full-stack j'ajoute des Cloud Services et je créé des Custom Cloud Services au sein d'une application existante**](./1-bootstrap.md#P02-BOOT02)
 >   - [ ] Rédiger les specs
 >   - [ ] Documenter le démarrage manuel
@@ -316,15 +313,16 @@ Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage da
 
 ###       ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
 
+> Hors scope dans 'celtia-alpha-1'
 
 ###       ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
 
+> Hors scope dans 'celtia-alpha-1'
 
 ---
 
 ## ![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-lightgrey.svg) ![progress](http://progressed.io/bar/0)
 
-TODO
 
 ###       ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
 
@@ -340,18 +338,199 @@ TODO
 >   - [ ] Rédiger les specs
 >   - [ ] Documenter le démarrage manuel
 
+TODO
+
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application avec ZetaPush et des _custom cloud services_**
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+> - [ ] [**[P02-BOOT01] ETQ dev full-stack je créé une application sans CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P02-BOOT01)
+>   - [ ] Rédiger les specs
+>   - [ ] Documenter le démarrage manuel
+
+TODO
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
+###       ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
 
 ---
 
 ## ![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-lightgrey.svg) ![progress](http://progressed.io/bar/0)
 
+
+
+###       ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application front avec ZetaPush sans _custom cloud service_**
+
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+
 TODO
+
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application avec ZetaPush et des _custom cloud services_**
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
+###       ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
 
 ---
 
 ## ![celtia-beta-2](https://img.shields.io/badge/milestone-celtia--beta--2-lightgrey.svg) ![progress](http://progressed.io/bar/0)
 
+
+
+###       ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application front avec ZetaPush sans _custom cloud service_**
+
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
 TODO
+
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application avec ZetaPush et des _custom cloud services_**
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
+###       ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
 
 
 # Tutoriels
