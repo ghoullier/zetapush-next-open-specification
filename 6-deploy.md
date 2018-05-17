@@ -174,6 +174,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ### <a name="P02-DEPLOY03"></a> [P02-DEPLOY03] ETQ dev je suis aidé lorsque mon application (front et service custom) n'a pas pu être déployé en production
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
