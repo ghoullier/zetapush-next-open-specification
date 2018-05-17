@@ -18,7 +18,6 @@ Les profils utilisés sont définis dans [le readme](./README.md#profils-identif
 
 ### <a name="P01-BOOT01"></a> [P01-BOOT01] ETQ dev front je créé une application sans CLI en utilisant mon compte ZetaPush 
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -48,22 +47,21 @@ ZP_DEVELOPER_PASSWORD = password
 .zetarc
 ```
 
-- Je remplis `package.json` avec le nom de mon application et j'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
+- Je créé un dossier `front` où j'utilise les _cloud services_ de ZetaPush
+
+- Je remplis `package.json` avec le nom de mon application
 
 ```json
 {
   "name": "myApp",
   "version": "0.0.1",
   "dependencies": {
-    "@zetapush/core": "1.0.0"
   }
 }
 ```
 
-- Je créé un dossier `front` où j'utilise les _cloud services_ de ZetaPush
-
 *WHEN*
-- Lorsque la création des fichiers et l'installation des dépendances est finie
+- J'ajoute la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
 
 *THEN*
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_ avec mon compte `user@gmail.com`
@@ -73,7 +71,6 @@ ZP_DEVELOPER_PASSWORD = password
 
 ### <a name="P01-BOOT02"></a> [P01-BOOT02] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI en utilisant mon compte ZetaPush avec une arborescence custom
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -97,14 +94,13 @@ ZP_DEVELOPER_PASSWORD = password
 .zetarc
 ```
 
-- Je remplis `package.json` avec le nom de mon application et avec le chemin relatif vers la location de mon code front (ici `./`) puis j'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
+- Je remplis `package.json` avec le nom de mon application et avec le chemin relatif vers la location de mon code front `./`
 
 ```json
 {
   "name": "myApp",
   "version": "0.0.1",
   "dependencies": {
-    "@zetapush/core": "1.0.0"
   },
   "zetapush": {
     "front": "./"
@@ -113,7 +109,7 @@ ZP_DEVELOPER_PASSWORD = password
 ```
 
 *WHEN*
-- Lorsque la création des fichiers et l'installation des dépendances est finie
+- J'ajoute la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
 
 *THEN*
 - J'ai l'arborescence suivante qui est créée :
@@ -154,7 +150,7 @@ ZP_DEVELOPER_PASSWORD = password
 .zetarc
 ```
 
-- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
+- Je remplis `package.json` avec le nom de mon application
 
 ```json
 {
@@ -167,10 +163,10 @@ ZP_DEVELOPER_PASSWORD = password
 ```
 
 *WHEN*
-- Lorsque la création des fichiers et l'installation des dépendances est finie
+- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
 
 *THEN*
-- J'ai l'arborescence suivante qui est créée :
+- L'arborescence suivante est créée :
   ```
   myApp
   ├── .zetarc
@@ -195,7 +191,7 @@ ZP_DEVELOPER_PASSWORD = password
 - Lorsque je lance la commande : `npm init @zetapush myApp --login user@gmail.com --front`
 
 *THEN*
-- Un prompt est lancé pour que je puisse saisir mon mot de passe (comme j'utilise un compte que je spécifie en paramètre avec `--login`)
+- Un prompt est lancé pour que je puisse saisir mon mot de passe
 
 ```console
 $ Please type your developer password of your ZetaPush account :
@@ -539,20 +535,19 @@ To deploy your application you can use the command "zeta push".
         └── index.js
 ```
 
-- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
+- Je remplis `package.json` avec le nom de mon application
 
 ```json
 {
   "name": "myApp",
   "version": "0.0.1",
   "dependencies": {
-    "@zetapush/core": "1.0.0"
   }
 }
 ```
 
 *WHEN*
-- Lorsque la création des fichiers et l'installation des dépendances est finie
+- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
 
 *THEN*
 - J'ai l'arborescence suivante qui est créée :
@@ -598,15 +593,6 @@ $
 
 *WHEN*
 - Lorsque je me rends compte que je ne suis pas dans le bon dossier, je refuse de créer ces fichiers et je répond "n" à la demande de création
-
-```console
-$ Do you want to create/update this files in this place ? (Y/n)
-  .zetarc
-  .gitignore
-  README.md
-  package.json
-$ n
-```
 
 *THEN*
 - La console m'explique comment procéder avec la commande `npm init @zetapush`
@@ -668,22 +654,20 @@ ZP_DEVELOPER_PASSWORD = password
 
 - Je créé un dossier `front/`, c'est ici que mon code front sera stocké
 - Je créé un dossier `worker/`, c'est ici que mon code back sera stocké
-- Je remplis `package.json` avec le nom de mon application, j'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core` et j'installe la dépendance _@zetapush/platform_ avec : `npm install --save @zetapush/platform`
+- Je remplis `package.json` avec le nom de mon application 
 
 ```json
 {
   "name": "myApp",
   "version": "0.0.1",
   "dependencies": {
-    "@zetapush/core": "1.0.0",
-    "@zetapush/platform": "1.0.0"
   }
 }
 ```
 
 
 *WHEN*
-- Lorsque la création des fichiers et l'installation des dépendances est finie
+- J'installe ls dépendances _@zetapush/core_ et _@zetapush/platform_ avec : `npm install --save @zetapush/core` et `npm install --save @zetapush/platform`
 
 *THEN*
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_ et à créer mes _Custom Cloud Services_.
@@ -723,16 +707,13 @@ ZP_DEVELOPER_PASSWORD = password
 .zetarc
 ```
 
-- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
-- J'installe la dépendance _@zetapush/platform_ avec : `npm install --save @zetapush/platform`
+- Je remplis `package.json` avec le nom de mon application 
 
 ```json
 {
   "name": "myApp",
   "version": "0.0.1",
   "dependencies": {
-    "@zetapush/core": "1.0.0",
-    "@zetapush/platform": "1.0.0"
   }
 }
 ```
@@ -751,7 +732,8 @@ ZP_DEVELOPER_PASSWORD = password
   ```
 
 *WHEN*
-- Lorsque la création des fichiers et l'installation des dépendances est finie
+- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
+- J'installe la dépendance _@zetapush/platform_ avec : `npm install --save @zetapush/platform`
 
 *THEN*
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
@@ -1161,7 +1143,7 @@ $ *****
   ├── index.js
   ├── README.md
   ├── worker
-      └── index.js
+  │   └── index.js
   └── package.json
   ```
 
@@ -1233,22 +1215,20 @@ To deploy your application you can use the command "zeta push".
 
 - Je créé un dossier `front/`, c'est ici que mon code front sera stocké
 - Je créé un dossier `worker/`, c'est ici que mon code back sera stocké
-- Je remplis `package.json` avec le nom de mon application, j'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core` et j'installe la dépendance _@zetapush/platform_ avec : `npm install --save @zetapush/platform`
+- Je remplis `package.json` avec le nom de mon application
 
 ```json
 {
   "name": "myApp",
   "version": "0.0.1",
   "dependencies": {
-    "@zetapush/core": "1.0.0",
-    "@zetapush/platform": "1.0.0"
   }
 }
 ```
 
 
 *WHEN*
-- Lorsque la création des fichiers et l'installation des dépendances est finie
+- j'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core` et j'installe la dépendance _@zetapush/platform_ avec : `npm install --save @zetapush/platform`
 
 *THEN*
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_ et à créer mes _Custom Cloud Services_.
@@ -1286,15 +1266,12 @@ ZP_DEVELOPER_PASSWORD = password
 - Je créé mes fichiers `index.html` et `index.js` pour mon code front
 - Je créé un dossier `worker/`, c'est ici que mon code back sera stocké
 - Je remplis `package.json` avec le nom de mon application et les paths vers les dossiers du code front et du code back
-- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core` et j'installe la dépendance _@zetapush/platform_ avec : `npm install --save @zetapush/platform`
 
 ```json
 {
   "name": "myApp",
   "version": "0.0.1",
   "dependencies": {
-    "@zetapush/core": "1.0.0",
-    "@zetapush/platform": "1.0.0"
   },
   "zetapush": {
     "front": "./",
@@ -1305,7 +1282,7 @@ ZP_DEVELOPER_PASSWORD = password
 
 
 *WHEN*
-- Lorsque la création des fichiers et l'installation des dépendances est finie
+- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core` et j'installe la dépendance _@zetapush/platform_ avec : `npm install --save @zetapush/platform`
 
 *THEN*
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_ et à créer mes _Custom Cloud Services_.
