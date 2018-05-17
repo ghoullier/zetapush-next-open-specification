@@ -150,7 +150,7 @@ ZP_DEVELOPER_PASSWORD = password
 .zetarc
 ```
 
-- Je remplis `package.json` avec le nom de mon application et avec le chemin relatif vers la location de mon code front (ici `./`) puis j'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
+- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
 
 ```json
 {
@@ -195,7 +195,7 @@ ZP_DEVELOPER_PASSWORD = password
 
 ```console
 $ Please type your developer password of your ZetaPush account :
-$ 
+$ *****
 ```
 
 - Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush
@@ -359,7 +359,7 @@ To deploy your application you can use the command "zeta push". You have already
 - La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
 
 ```console
-$ Do you want to create this files in this place ? (Y/n)
+$ Do you want to create/update this files in this place ? (Y/n)
   .zetarc
   .gitignore
   README.md
@@ -371,7 +371,7 @@ $
 
 ```console
 $ Please type your developer password of your ZetaPush account :
-$ 
+$ *****
 ```
 
 - J'ai l'arborescence suivante qui est créée :
@@ -463,7 +463,7 @@ $
 
 ```console
 $ Please type your developer password of your ZetaPush account :
-$ 
+$ *****
 ```
 
 - J'ai l'arborescence suivante qui est créée :
@@ -533,7 +533,7 @@ To deploy your application you can use the command "zeta push".
         └── index.js
 ```
 
-- Je remplis `package.json` avec le nom de mon application et avec le chemin relatif vers la location de mon code front (ici `./front`) puis j'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
+- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
 
 ```json
 {
@@ -560,6 +560,65 @@ To deploy your application you can use the command "zeta push".
   └── package.json
   ```
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_
+
+---
+
+### <a name="P01-BOOT09"></a> [P01-BOOT09] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante avec la CLI mais je me trompe de dossier cible
+
+
+*GIVEN*
+- J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
+- J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
+- Mon code est sous l'arborescence suivante (respect de la convention ZetaPush) :
+```
+  myApp
+  └── front
+      ├── index.html
+      └── index.js
+```
+
+- Je lance la commande `npm init @zetapush --login user@gmail.com --front` au sein du dossier parent de `myApp`
+
+- La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
+
+```console
+$ Do you want to create/update this files in this place ? (Y/n)
+  .zetarc
+  .gitignore
+  README.md
+  package.json
+$ 
+```
+
+*WHEN*
+- Lorsque je me rends compte que je ne suis pas dans le bon dossier, je refuse de créer ces fichiers et je répond "n" à la demande de création
+
+```console
+$ Do you want to create/update this files in this place ? (Y/n)
+  .zetarc
+  .gitignore
+  README.md
+  package.json
+$ n
+```
+
+*THEN*
+- La console m'explique comment procéder avec la commande `npm init @zetapush`
+
+```console
+$ Do you want to create/update this files in this place ? (Y/n)
+  .zetarc
+  .gitignore
+  README.md
+  package.json
+$ n
+$ ---------------------
+$ The command "npm init @zetapush" allow you to create a new application from scratch or update an existing application to configure it with ZetaPush.
+$
+$ If you want to create a new application named "myApp" you use "npm init @zetapush myApp". Otherwise, if you want to update an existing application, you need to place you in the folder of your application and launch "npm init @zetapush" (without application name)
+$ Happy coding !
+$ --------------------
+```
 
 ---
 
@@ -703,7 +762,7 @@ ZP_DEVELOPER_PASSWORD = password
 
 ```console
 $ Please type your developer password of your ZetaPush account :
-$ 
+$ *****
 ```
 
 - Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush
@@ -866,14 +925,14 @@ To deploy your application you can use the command "zeta push". You have already
 - Je souhaite créer une application nommée **myApp** et je souhaite utiliser les _Cloud Services_ existants et créer mes propres _custom cloud services_.
 
 *WHEN*
-- Lorsque je lance la commande : `npm init @zetapush myApp --login user@gmail.com --front=./front --worker=./worker`
+- Lorsque je lance la commande : `npm init @zetapush myApp --login user@gmail.com --front=. --worker=./worker`
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe (comme j'utilise un compte que je spécifie en paramètre avec `--login`)
 
 ```console
 $ Please type your developer password of your ZetaPush account :
-$ 
+$ *****
 ```
 
 - Une application au nom de **myApp** a été ajoutée à mon compte ZetaPush
@@ -883,9 +942,8 @@ $
   .
   ├── .zetarc
   ├── .gitignore
-  ├── front
-  │   ├── index.html
-  │   └── index.js
+  ├── index.html
+  ├── index.js
   ├── worker
   │   └── index.js
   ├── README.md
@@ -905,9 +963,9 @@ ZP_DEVELOPER_PASSWORD = password
 .zetarc
 ```
 
-- Mon fichier `front/index.html` comporte le contenu spécifié [ici](./fichiers/index-fullstack.html)
+- Mon fichier `index.html` comporte le contenu spécifié [ici](./fichiers/index-fullstack.html)
 
-- Mon fichier `front/index.js` comporte le contenu spécifié [ici](./fichiers/index-fullstack.js)
+- Mon fichier `index.js` comporte le contenu spécifié [ici](./fichiers/index-fullstack.js)
 
 - Mon fichier `worker/index.js` comporte le contenu spécifié [ici](./fichiers/index-worker.js)
 
@@ -924,7 +982,7 @@ ZP_DEVELOPER_PASSWORD = password
     "@zetapush/platform": "1.0.0"
   },
   "zetapush": {
-    "front": "./front",
+    "front": ".",
     "worker": "./worker"
   }
 }
@@ -934,7 +992,7 @@ ZP_DEVELOPER_PASSWORD = password
 - La dépendance à _@zetapush/core_ est installée
 - La dépendance à _@zetapush/platform_ est installée
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_ et créer mes _custom cloud services_.
-- J'ai un exemple d'application avec les fichiers `front/index.html`, `front/index.js` et `worker/index.js`
+- J'ai un exemple d'application avec les fichiers `./index.html`, `./index.js` et `worker/index.js`
 - La sortie de la console est la suivante :
 
 ```
@@ -964,7 +1022,7 @@ To deploy your application you can use the command "zeta push". You have already
 ```
 
 *WHEN*
-- Lorsque je lance la commande `npm init @zetapush --login user@gmail.com --front` au sein de mon dossier `myApp`
+- Lorsque je lance la commande `npm init @zetapush --login user@gmail.com` au sein de mon dossier `myApp`
 
 *THEN*
 - La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
@@ -975,6 +1033,7 @@ $ Do you want to create/replace this files in this place ? (Y/n)
   .gitignore
   README.md
   package.json
+  worker/index.js
 $ 
 ```
 
@@ -982,7 +1041,7 @@ $
 
 ```console
 $ Please type your developer password of your ZetaPush account :
-$ 
+$ *****
 ```
 
 - J'ai l'arborescence suivante qui est créée :
@@ -1031,6 +1090,7 @@ ZP_DEVELOPER_PASSWORD = password
 ```
 
 - La dépendance à _@zetapush/core_ est installée
+- La dépendance à _@zetapush/platform_ est installée
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_ et créer des _Custom Cloud Services_.
 - La sortie de la console est la suivante :
 
@@ -1057,7 +1117,7 @@ To deploy your application you can use the command "zeta push".
 ```
 
 *WHEN*
-- Lorsque je lance la commande `npm init @zetapush --login user@gmail.com --front=./ --worker=./worker` au sein de mon dossier `myApp`
+- Lorsque je lance la commande `npm init @zetapush --login user@gmail.com --front=. --worker=./worker` au sein de mon dossier `myApp`
 
 *THEN*
 - La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
@@ -1068,6 +1128,7 @@ $ Do you want to create/update this files in this place ? (Y/n)
   .gitignore
   README.md
   package.json
+  worker/index.js
 $ 
 ```
 
@@ -1075,7 +1136,7 @@ $
 
 ```console
 $ Please type your developer password of your ZetaPush account :
-$ 
+$ *****
 ```
 
 - J'ai l'arborescence suivante qui est créée :
@@ -1117,7 +1178,7 @@ ZP_DEVELOPER_PASSWORD = password
     "@zetapush/platform": "1.0.0"
   },
   "zetapush": {
-    "front": "./",
+    "front": ".",
     "worker": "./worker"
   }
 }
@@ -1253,7 +1314,7 @@ ZP_DEVELOPER_PASSWORD = password
 ```
 
 *WHEN*
-- Lorsque je lance la commande `npm init @zetapush --login user@gmail.com --front` au sein de mon dossier `myApp`
+- Lorsque je lance la commande `npm init @zetapush` au sein de mon dossier `myApp`
 
 *THEN*
 - La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
@@ -1264,6 +1325,7 @@ $ Do you want to create/replace this files in this place ? (Y/n)
   .gitignore
   README.md
   package.json
+  worker/index.js
 $ 
 ```
 
@@ -1313,14 +1375,75 @@ ZP_DEVELOPER_PASSWORD =
 ```
 
 - La dépendance à _@zetapush/core_ est installée
+- La dépendance à _@zetapush/platform_ est installée
 - Mon application est prête et je suis prêt à utiliser les _Cloud Services_ et créer des _Custom Cloud Services_.
 - La sortie de la console est la suivante :
 
 ```
 Welcome to ZetaPush !
 
-A new application named myApp was added to your account.
+A new application named myApp was created.
 Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
 
 To deploy your application you can use the command "zeta push".
 ```
+
+### <a name="P02-BOOT11"></a> [P02-BOOT11] ETQ dev full-stack j'ajoute des _Custom Cloud Services_ dans mon application existante avec la CLI mais je me trompe de dossier cible
+
+
+*GIVEN*
+- J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
+- J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
+- Mon code est sous l'arborescence suivante (respect de la convention ZetaPush) :
+```
+  myApp
+  └── front
+      ├── index.html
+      └── index.js
+```
+
+- Je lance la commande `npm init @zetapush --login user@gmail.com` au sein du dossier parent de `myApp`
+
+- La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
+
+```console
+$ Do you want to create/update this files in this place ? (Y/n)
+  .zetarc
+  .gitignore
+  README.md
+  package.json
+  worker/index.js
+$ 
+```
+
+*WHEN*
+- Lorsque je me rends compte que je ne suis pas dans le bon dossier, je refuse de créer ces fichiers et je répond "n" à la demande de création
+
+```console
+$ Do you want to create/update this files in this place ? (Y/n)
+  .zetarc
+  .gitignore
+  README.md
+  package.json
+$ n
+```
+
+*THEN*
+- La console m'explique comment procéder avec la commande `npm init @zetapush`
+
+```console
+$ Do you want to create/update this files in this place ? (Y/n)
+  .zetarc
+  .gitignore
+  README.md
+  package.json
+$ n
+$ ---------------------
+$ The command "npm init @zetapush" allow you to create a new application from scratch or update an existing application to configure it with ZetaPush.
+$
+$ If you want to create a new application named "myApp" you use "npm init @zetapush myApp". Otherwise, if you want to update an existing application, you need to place you in the folder of your application and launch "npm init @zetapush" (without application name)
+$ Happy coding !
+$ --------------------
+```
+
+---
