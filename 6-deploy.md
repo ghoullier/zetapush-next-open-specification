@@ -174,7 +174,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ### <a name="P02-DEPLOY03"></a> [P02-DEPLOY03] ETQ dev je suis aidé lorsque mon application (front et service custom) n'a pas pu être déployé en production
 
-![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -221,6 +221,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ### <a name="P02-DEPLOY04"></a> [P02-DEPLOY04] ETQ dev je déploie mon service custom en production avec une configuration dédiée à cet environnement avec les credentials externalisés
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -281,7 +282,9 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ### <a name="P02-DEPLOY06"></a> [P02-DEPLOY06] ETQ dev je mets à jour mon application en production 
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+> TODO: A spécifier, avec le rollback
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 TODO: snapshot automatique faite par ZP avant l'upgrade pour backup des données en cas de code foireux ?
 
@@ -292,8 +295,10 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 ### <a name="P02-DEPLOY07"></a> [P02-DEPLOY07] ETQ dev full-stack je déploie mon application (front et service custom) en production sans credentials à disposition
 
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+
 *GIVEN*
-  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  - Je suis au sein d'un dossier ne contenant pas de fichier `.zetarc`
   - J'ai le nom de l'application dans le fichier `package.json`
   - Je n'ai pas de compte ZetaPush
   - J'ai développé un service custom avec les fonctions suivantes :
@@ -367,64 +372,11 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
   - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
   - Je peux consulter la santé de mon worker (voir autres US)
 
-
----
-
-### <a name="P02-DEPLOY08"></a> [P02-DEPLOY08] ETQ dev full-stack je déploie mon application (front et service custom) en production sans application existante
-
-*GIVEN*
-  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
-  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
-  - Le nom d'application spécifiée dans `package.json` est inexistante sur le compte développeur
-  - J'ai développé un service custom avec les fonctions suivantes :
-    - ```createGame(player1, player2)```
-    - ```gameAction(player, name, args)```
-    - ```isFinished()```
-    - ```getWinner()```
-    - ```endGame()```
-  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
-
-*WHEN*
-  - J'exécute la commande : ```zeta push```
-
-*THEN*
-  - Une nouvelle application est instanciée sur le compte développeur
-  - Mon code custom est envoyé sur ZetaPush
-  - Je vois l'état d'avancement du déploiement global
-    ```
-    $ zeta push
-    Deploying your application on production environment:
-      ✓ Code uploaded
-      | Publishing web application                        ██████░░░░░░
-      / Publishing custom services on worker instance 1   ██████░░░░░░
-      - Publishing custom services on worker instance 2   ████████░░░░
-      \ Publishing custom services on worker instance 3   ██░░░░░░░░░░
-    ```
-  - Je sais lorsque mon application est prête à être utilisée
-    ```
-    $ zeta push
-    Deploying your application on production environment:
-      ✓ Code uploaded
-      ✓ Web application published
-      ✓ Custom services published on worker instance 1
-      ✓ Custom services published on worker instance 2
-      ✓ Custom services published on worker instance 3
-
-    Your application is ready:
-    - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
-    - Your custom services are ready and accessible through ZetaPush
-    ```
-  - Mon frontend est envoyé sur ZetaPush
-  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
-  - Mon frontend de production déployé utilise les services custom déployés
-  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
-  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
-  - Je peux consulter la santé de mon worker (voir autres US)
-
 ---
 
 ### <a name="P02-DEPLOY09"></a> [P02-DEPLOY09] ETQ dev full-stack je déploie mon application (front et service custom) en production avec la configuration en ligne de commande
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -478,7 +430,9 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 ---
 
-### <a name="P02-DEPLOY10"></a> [P02-DEPLOY10] ETQ dev full-stack je déploie mon application (front et service custom) en production sans configuration
+### <a name="P02-DEPLOY10"></a> [P02-DEPLOY10] ETQ dev full-stack je déploie mon application (front et service custom) avec une aborescence custom
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -533,7 +487,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 ---
 
-### <a name="P02-DEPLOY07"></a> [P02-DEPLOY07] ETQ dev full-stack je sais lorsque mon worker n'a pas démarré 
+### <a name="P02-DEPLOY11"></a> [P02-DEPLOY11] ETQ dev full-stack je sais lorsque mon worker n'a pas démarré 
 
 ![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
@@ -552,6 +506,7 @@ TODO
 
 ### <a name="P03-DEPLOY01"></a> [P03-DEPLOY01] ETQ exploitant je mets à disposition l'application web pour la qualification avec mes outils habituels
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
@@ -587,11 +542,13 @@ TODO
 
 ### <a name="P03-DEPLOY02"></a> [P03-DEPLOY02] ETQ exploitant je mets à disposition l'application web pour la qualification avec les outils ZetaPush
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 ---
 
 ### <a name="P03-DEPLOY03"></a> [P03-DEPLOY03] ETQ exploitant je mets à disposition l'application web en production avec mes outils habituels
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
@@ -629,6 +586,7 @@ TODO
 
 ### <a name="P03-DEPLOY04"></a> [P03-DEPLOY04] ETQ exploitant je mets à disposition l'application web en production avec les outils ZetaPush
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 # <a name="parcours-4"></a> ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) Mon équipe développe une application avec ZetaPush et des services custom
 
@@ -660,6 +618,7 @@ TODO: tests auto
 
 ### <a name="P04-DEPLOY01"></a> [P04-DEPLOY01] ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec mes outils habituels
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
@@ -719,17 +678,19 @@ TODO: tests auto
 
 ### <a name="P04-DEPLOY02"></a> [P04-DEPLOY02] ETQ exploitant je mets à disposition l'application web avec les services custom en production avec les outils ZetaPush
 
-
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 ---
 
 ### <a name="P04-DEPLOY03"></a> [P04-DEPLOY03] ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec les outils ZetaPush
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 ---
 
 ### <a name="P04-DEPLOY04"></a> [P04-DEPLOY04] ETQ exploitant je mets à disposition l'application web avec les services custom en production avec mes outils habituels
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
