@@ -384,7 +384,7 @@ To deploy your application you can use the command zeta push.
 
 ### <a name="P02-BOOT03"></a> [P02-BOOT03] ETQ dev full-stack je créé une application avec la CLI 
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant avec user@gmail.com / password comme couple login/password
@@ -469,6 +469,8 @@ Now you can use Cloud Services in your application. You can see the documentatio
 
 
 ### <a name="P02-BOOT05"></a> [P02-BOOT05] ETQ dev full-stack je créé une application avec la CLI et une arborescence spécifiée en utilisant mon compte ZetaPush
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant avec user@gmail.com / password comme couple login/password
