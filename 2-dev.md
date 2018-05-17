@@ -29,7 +29,7 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 
 ### <a name="P01-DEV01"></a> [P01-DEV01] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour 
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 _GIVEN_
 
@@ -96,7 +96,7 @@ _THEN_
 
 ### <a name="P01-DEV02"></a> [P01-DEV02] ETQ dev front j'utilise un _cloud service_ et j'ai une erreur en retour 
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 _GIVEN_
 
@@ -164,6 +164,8 @@ _THEN_
 
 ### <a name="P01-DEV03"></a> [P01-DEV03] ETQ dev front j'écoute les évènements d'un _cloud service_
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+
 _GIVEN_
 
 * Je suis en cours de développement de mon _Avengers Chat_
@@ -214,6 +216,8 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 
 ### <a name="P01-DEV04"></a> [P01-DEV04] ETQ dev front j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser les _cloud services_
 
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
+
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
@@ -239,6 +243,8 @@ _THEN_
 
 ### <a name="P01-DEV05"></a> [P01-DEV05] ETQ dev front j'ai accès à la documentation des _cloud services_ depuis mon IDE (VSCode)
 
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
+
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
@@ -261,9 +267,9 @@ _THEN_
 
 ---
 
-### <a name="P01-DEV06"></a> [P01-DEV06] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour et je n'ai pas encore de compte ZetaPush 
+### <a name="P01-DEV06"></a> [P01-DEV06] ETQ dev front j'utilise un _cloud service_ sans renseigner mes informations de connexion à ZetaPUsh
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 
@@ -506,6 +512,8 @@ _THEN_
 
 ### <a name="P02-DEV04"></a> [P02-DEV04] ETQ dev full-stack j'écoute les évènements d'un _custom cloud service_
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+
 _GIVEN_
 
 * Je suis en cours de développement de mon _Avengers Chat_
@@ -544,6 +552,8 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 
 ### <a name="P02-DEV05"></a> [P02-DEV05] ETQ dev full-stack j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser mes _custom cloud services_
 
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
+
 _GIVEN_
 
 * J'utilise Visual Studio Code comme IDE
@@ -568,6 +578,8 @@ _THEN_
 
 
 ### <a name="P02-DEV06"></a> [P02-DEV06] ETQ dev full-stack j'ai accès à la documentation de mes _custom cloud services_ depuis mon IDE (VSCode)
+
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
 
 _GIVEN_
 
