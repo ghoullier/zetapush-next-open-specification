@@ -6,7 +6,7 @@
 
 # Pré-requis
 
-# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
+# <a name="parcours-1"></a> ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) : Je développe une application front avec ZetaPush sans service custom
 
 ## Vue d'ensemble
 
@@ -14,7 +14,9 @@
 
 ## User stories
 
-### <a name="P01-DEPLOY01"></a> [P01-DEPLOY01] ETQ dev front je déploie mon application en production
+### <a name="P01-DEPLOY01"></a> [P01-DEPLOY01] ETQ dev front je déploie mon application en production 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
   - J'ai le nom de l'application dans le fichier `package.json`
@@ -46,7 +48,7 @@
   - Mon front est disponible sur le site https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
 
 
-# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des services custom
+# <a name="parcours-2"></a> ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) Je développe une application avec ZetaPush et des services custom
 
 ## Vue d'ensemble
 
@@ -62,7 +64,9 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ## User stories
 
-### <a name="P02-DEPLOY01"></a> [P02-DEPLOY01] ETQ dev full-stack je déploie mes services custom en production
+### <a name="P02-DEPLOY01"></a> [P02-DEPLOY01] ETQ dev full-stack je déploie mes services custom en production 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -109,11 +113,12 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
   - Je peux consulter la santé de mon worker (voir autres US)
 
-TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
 ---
 
-### <a name="P02-DEPLOY02"></a> [P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et service custom) en production
+### <a name="P02-DEPLOY02"></a> [P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et service custom) en production 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -273,17 +278,23 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
 ---
 
-### <a name="P02-DEPLOY06"></a> [P02-DEPLOY06] ETQ dev je mets à jour mon application en production
+### <a name="P02-DEPLOY06"></a> [P02-DEPLOY06] ETQ dev je mets à jour mon application en production 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 TODO: snapshot automatique faite par ZP avant l'upgrade pour backup des données en cas de code foireux ?
 
 TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 
+### <a name="P02-DEPLOY07"></a> [P02-DEPLOY07] ETQ dev full-stack je sais lorsque mon worker n'a pas démarré 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 
 
-# <a name="parcours-3"></a> Parcours 3 : Mon équipe développe une application front avec ZetaPush sans services custom
+
+# <a name="parcours-3"></a> ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) Mon équipe développe une application front avec ZetaPush sans services custom
 
 
 ## Vue d'ensemble
@@ -372,7 +383,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 ### <a name="P03-DEPLOY04"></a> [P03-DEPLOY04] ETQ exploitant je mets à disposition l'application web en production avec les outils ZetaPush
 
 
-# <a name="parcours-4"></a> Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
+# <a name="parcours-4"></a> ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) Mon équipe développe une application avec ZetaPush et des services custom
 
 
 ## Vue d'ensemble

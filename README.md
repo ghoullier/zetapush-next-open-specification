@@ -80,7 +80,7 @@ Cette section a pour but de présenter l'ensemble des parcours utilisateurs envi
 
 ## Developer experience
 
-### Parcours 1 : Je développe une application front avec ZetaPush sans _custom cloud service_
+### ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) : Je développe une application front avec ZetaPush sans _custom cloud service_
 
 Mon objectif est de réaliser une application rapidement. Je ne veux pas m'occuper de la partie backend, je souhaite me concentrer sur l'IHM uniquement. Les services proposés par ZetaPush correspondent parfaitement aux besoins de mon application (ex: gestion des utilisateurs, stockage de données, chat, ...).
 Je ne souhaite pas m'occuper de la gestion de mon application en production. Une fois déployée, elle tourne et je ne m'en occupe plus.
@@ -95,7 +95,7 @@ Je ne souhaite pas m'occuper de la gestion de mon application en production. Une
 - [Deploiement de l'application](./6-deploy.md#parcours-1)
 
 
-### Parcours 2 : Je développe une application avec ZetaPush et des _custom cloud services_
+### ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) : Je développe une application avec ZetaPush et des _custom cloud services_
 
 Mon objectif est de réaliser une application rapidement. Certains services proposés par ZetaPush correspondent parfaitement aux besoins de mon application (ex: gestion des utilisateurs, stockage de données, chat, ...).
 Cependant, mon application nécessite une certaine logique métier. Je souhaite donc pouvoir développer rapidement mon code métier. Ce code métier ne peut pas être codé directement dans l'IHM car je souhaite réaliser une application Web, iOS et Android. Il faut donc que ce code métier soit mutualisé (ajout de _custom cloud services_). Je souhaite que mon code métier soit simple à réaliser et puisse s'appuyer sur les services proposés par ZetaPush (stockage par exemple).
@@ -110,7 +110,7 @@ Je ne souhaite pas m'occuper de la gestion de mon application en production. Une
 - [Deploiement de l'application](./6-deploy.md#parcours-2)
 
 
-### Parcours 3 : Mon équipe développe une application front avec ZetaPush sans _custom cloud service_
+### ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) : Mon équipe développe une application front avec ZetaPush sans _custom cloud service_
 
 Je travaille dans une entreprise et nous devons développer une application.
 L'application peut être développée from scratch mais le coût serait trop élevé.
@@ -137,7 +137,7 @@ Pour déterminer l'origine de certains bugs, cette nouvelle équipe a besoin d'a
 - [Une nouvelle équipe reprend la suite du développement](./8-evolution.md#parcours-3)
 
 
-### Parcours 4 : Mon équipe développe une application avec ZetaPush et des _custom cloud services_
+### ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) : Mon équipe développe une application avec ZetaPush et des _custom cloud services_
 
 Je travaille dans une entreprise et nous devons développer une application.
 L'application peut être développée from scratch mais le coût serait trop élevé.
@@ -189,7 +189,349 @@ Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage da
 
 # Roadmap
 
+## ![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg) ![progress](http://progressed.io/bar/10)
+
+###       ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application front avec ZetaPush sans _custom cloud service_**
+
+
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+> - [ ] [**[P01-BOOT05] ETQ dev front j'utilise les Cloud Services dans mon application existante avec la CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P01-BOOT05)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter la gestion de `npm init @zetapush`
+> - [ ] [**[P01-BOOT06] ETQ dev front j'utilise les Cloud Services dans mon application existante et une arborescence custom avec la CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P01-BOOT06)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter la gestion de `npm init @zetapush` avec un mapping custom
+
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+> - [ ] [**[P01-DEV01] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour**](./2-dev.md#P01-DEV01)
+>   - [X] Rédiger les specs
+>   - [ ] Documenter la création manuelle de compte via la console
+>   - [ ] Documenter l'appel de _cloud service_ ZetaPush
+>   - [ ] Lien vers la documentation de référence vers les _cloud service_ ZetaPush
+>   - [ ] Documenter l'organisation de la documentation de référence actuelle
+> - [ ] [**[P01-DEV02] ETQ dev front j'utilise un _cloud service_ et j'ai une erreur en retour**](./2-dev.md#P01-DEV02)
+>   - [X] Rédiger les specs
+> - [ ] [**[P01-DEV06] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour et je n'ai pas encore de compte ZetaPush**](./2-dev.md#P01-DEV06)
+>   - [ ] Rédiger les specs
+>   - [ ] Documenter l'initialisation du SDK
+>   - [ ] Console : parcours de création de compte
+>   - [ ] Console : parcours d'engistrement d'application
+>   - [ ] SDK JS : afficher un message dans la console du navigateur
+
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+> Hors scope dans 'celtia-alpha-1'
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+> Hors scope dans 'celtia-alpha-1'
+
+####             Build ![progress](http://progressed.io/bar/100)
+
+> Hors scope dans 'celtia-alpha-1'
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+> - [ ] [**[P01-DEPLOY01] ETQ dev front je déploie mon application en production**](./6-deploy.md#P01-DEPLOY01)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter `zeta push --front`
+>   - [ ] `zeta push` appelle automatiquement `zeta register` si besoin
+>   - [ ] Implémenter l'hébergement du front
+>   - [ ] Afficher la progression du déploiement
+
+
+
+###       ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application avec ZetaPush et des _custom cloud services_**
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+> - [ ] [**[P02-BOOT02] ETQ dev full-stack j'ajoute des Cloud Services et je créé des Custom Cloud Services au sein d'une application existante**](./1-bootstrap.md#P02-BOOT02)
+>   - [ ] Rédiger les specs
+>   - [ ] Documenter le démarrage manuel
+> - [ ] [**[P02-BOOT06] ETQ dev full-stack j'ajoute des _Custom Cloud Services_ au sein d'une application existante avec la CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P02-BOOT06)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter la gestion de `npm init @zetapush`
+
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+> - [ ] [**[P02-DEV01] ETQ dev full-stack je développe sur mon environement local mon code métier dans une custom cloud function**](./2-dev.md#P02-DEV01)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter la commande `zeta run`
+>   - [ ] `zeta run` appelle automatiquement `zeta register` si besoin
+>   - [ ] Implémenter la commande `zeta register`
+>   - [ ] Décrire `zeta run` dans l'aide
+>   - [ ] Documenter la commande `zeta run`
+>   - [ ] Démarrer et configurer les _cloud services_ demandés
+> - [ ] [**[P02-DEV02] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une réponse en retour**](./2-dev.md#P02-DEV02)
+>   - [ ] Rédiger les specs
+>   - [ ] Documenter le développement d'un _custom cloud service_
+>   - [ ] Documenter l'appel d'un _cloud service_ existant depuis un _custom cloud service_
+> - [ ] [**[P02-DEV03] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une erreur en retour**](./2-dev.md#P02-DEV03)
+>   - [ ] Rédiger les specs
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+> Hors scope dans 'celtia-alpha-1'
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+> Hors scope dans 'celtia-alpha-1'
+
+####             Build ![progress](http://progressed.io/bar/100)
+
+> Hors scope dans 'celtia-alpha-1'
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+> - [ ] [**[P02-DEPLOY01] ETQ dev full-stack je déploie mes services custom en production**](./6-deploy.md#P02-DEPLOY01)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter `zeta push --worker`
+>   - [X] Implémenter l'hébergement du worker
+>   - [X] Afficher la progression du déploiement
+>   - [ ] Documenter l'utilisation des _custom cloud services_ nouvellement déployés
+> - [ ] [**[P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et service custom) en production**](./6-deploy.md#P02-DEPLOY02)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter `zeta push`
+>   - [ ] Afficher la progression du déploiement
+> - [ ] [**[P02-DEPLOY06] ETQ dev je mets à jour mon application en production**](./6-deploy.md#P02-DEPLOY06)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter `zeta push` pour mettre à jour le code
+>   - [ ] Afficher la progression de la mise à jour
+> - [ ] [**[P02-DEPLOY07] ETQ dev full-stack je sais lorsque mon worker n'a pas démarré**](./6-deploy.md#P02-DEPLOY07)
+>   - [ ] Rédiger les specs
+>   - [ ] Afficher un message d'aide
+
+###       ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+> Hors scope dans 'celtia-alpha-1'
+
+###       ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+> Hors scope dans 'celtia-alpha-1'
+
+---
+
+## ![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-lightgrey.svg) ![progress](http://progressed.io/bar/0)
+
+
+###       ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application front avec ZetaPush sans _custom cloud service_**
+
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+> - [ ] [**[P01-BOOT01] ETQ dev front je créé une application sans CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P01-BOOT01)
+>   - [ ] Rédiger les specs
+>   - [ ] Documenter le démarrage manuel
+> - [ ] [**[P01-BOOT02] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P01-BOOT02)
+>   - [ ] Rédiger les specs
+>   - [ ] Documenter le démarrage manuel
+
 TODO
+
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application avec ZetaPush et des _custom cloud services_**
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+> - [ ] [**[P02-BOOT01] ETQ dev full-stack je créé une application sans CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P02-BOOT01)
+>   - [ ] Rédiger les specs
+>   - [ ] Documenter le démarrage manuel
+
+TODO
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
+###       ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+
+---
+
+## ![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-lightgrey.svg) ![progress](http://progressed.io/bar/0)
+
+
+
+###       ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application front avec ZetaPush sans _custom cloud service_**
+
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+
+TODO
+
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application avec ZetaPush et des _custom cloud services_**
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
+###       ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+---
+
+## ![celtia-beta-2](https://img.shields.io/badge/milestone-celtia--beta--2-lightgrey.svg) ![progress](http://progressed.io/bar/0)
+
+
+
+###       ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application front avec ZetaPush sans _custom cloud service_**
+
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application avec ZetaPush et des _custom cloud services_**
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Développement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+####             Debug ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Test ![progress](http://progressed.io/bar/100)
+
+TODO
+
+####             Déploiement ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
+###       ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
+###       ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+TODO
+
+
 
 # Tutoriels
 

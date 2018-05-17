@@ -19,7 +19,7 @@
 * Le cas d'usage de nos Users Stories sera un chat temps réel entre des personnages Avengers.
 
 
-# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans _custom cloud service_
+# <a name="parcours-1"></a> ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) : Je développe une application front avec ZetaPush sans _custom cloud service_
 
 ## User Stories
 
@@ -315,7 +315,7 @@ _THEN_
   * `this.utilsService.setToScratch();`
 
 
-# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des _custom cloud services_
+# <a name="parcours-2"></a> ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) Je développe une application avec ZetaPush et des _custom cloud services_
 
 ## User Stories
 
