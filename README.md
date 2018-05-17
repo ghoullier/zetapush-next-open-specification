@@ -199,12 +199,6 @@ Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage da
 
 ####             Démarrage ![progress](http://progressed.io/bar/10)
 
-> - [ ] [**[P01-BOOT01] ETQ dev front je créé une application sans CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P01-BOOT01)
->   - [ ] Rédiger les specs
->   - [ ] Documenter le démarrage manuel
-> - [ ] [**[P01-BOOT02] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P01-BOOT02)
->   - [ ] Rédiger les specs
->   - [ ] Documenter le démarrage manuel
 > - [ ] [**[P01-BOOT05] ETQ dev front j'utilise les Cloud Services dans mon application existante avec la CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P01-BOOT05)
 >   - [ ] Rédiger les specs
 >   - [ ] Implémenter la gestion de `npm init @zetapush`
@@ -233,15 +227,15 @@ Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage da
 
 ####             Debug ![progress](http://progressed.io/bar/100)
 
-> Rien à faire pour cette version
+> Hors scope dans 'celtia-alpha-1'
 
 ####             Test ![progress](http://progressed.io/bar/100)
 
-> Rien à faire pour cette version
+> Hors scope dans 'celtia-alpha-1'
 
 ####             Build ![progress](http://progressed.io/bar/100)
 
-> Rien à faire pour cette version
+> Hors scope dans 'celtia-alpha-1'
 
 ####             Déploiement ![progress](http://progressed.io/bar/10)
 
@@ -288,17 +282,17 @@ Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage da
 > - [ ] [**[P02-DEV03] ETQ dev full-stack j'utilise un _custom cloud service_ et j'ai une erreur en retour**](./2-dev.md#P02-DEV03)
 >   - [ ] Rédiger les specs
 
-####             Debug
+####             Debug ![progress](http://progressed.io/bar/100)
 
-> Rien à faire pour cette version
+> Hors scope dans 'celtia-alpha-1'
 
-####             Test
+####             Test ![progress](http://progressed.io/bar/100)
 
-> Rien à faire pour cette version
+> Hors scope dans 'celtia-alpha-1'
 
-####             Build
+####             Build ![progress](http://progressed.io/bar/100)
 
-> Rien à faire pour cette version
+> Hors scope dans 'celtia-alpha-1'
 
 ####             Déploiement ![progress](http://progressed.io/bar/10)
 
@@ -331,6 +325,21 @@ Ensemble des profils analysés dans le cadre de ZetaPush V3 avec leur nommage da
 ## ![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-lightgrey.svg) ![progress](http://progressed.io/bar/0)
 
 TODO
+
+###       ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) ![progress](http://progressed.io/bar/10)
+
+       **Je développe une application front avec ZetaPush sans _custom cloud service_**
+
+
+####             Démarrage ![progress](http://progressed.io/bar/10)
+
+> - [ ] [**[P01-BOOT01] ETQ dev front je créé une application sans CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P01-BOOT01)
+>   - [ ] Rédiger les specs
+>   - [ ] Documenter le démarrage manuel
+> - [ ] [**[P01-BOOT02] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P01-BOOT02)
+>   - [ ] Rédiger les specs
+>   - [ ] Documenter le démarrage manuel
+
 
 ---
 
