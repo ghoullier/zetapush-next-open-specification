@@ -29,7 +29,7 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 
 ### <a name="P01-DEV01"></a> [P01-DEV01] ETQ dev front j'utilise un _cloud service_ et j'ai une réponse en retour 
 
-![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+![celtia-alpha-3](https://img.shields.io/badge/milestone-celtia--alpha--3-blue.svg)
 
 *GIVEN*
 
@@ -93,7 +93,7 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 
 ### <a name="P01-DEV02"></a> [P01-DEV02] ETQ dev front j'utilise un _cloud service_ et j'ai une erreur en retour 
 
-![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+![celtia-alpha-3](https://img.shields.io/badge/milestone-celtia--alpha--3-blue.svg)
 
 *GIVEN*
 
@@ -161,7 +161,7 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 
 ### <a name="P01-DEV03"></a> [P01-DEV03] ETQ dev front j'écoute les évènements d'un _cloud service_
 
-![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+![celtia-alpha-3](https://img.shields.io/badge/milestone-celtia--alpha--3-blue.svg)
 
 *GIVEN*
 
@@ -212,7 +212,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 
 ### <a name="P01-DEV04"></a> [P01-DEV04] ETQ dev front j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser les _cloud services_
 
-![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
+![celtia-alpha-3](https://img.shields.io/badge/milestone-celtia--alpha--3-blue.svg)
 
 
 *GIVEN*
@@ -264,7 +264,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 
 ---
 
-### <a name="P01-DEV06"></a> [P01-DEV06] ETQ dev front j'utilise un _cloud service_ sans renseigner mes informations de connexion à ZetaPUsh
+### <a name="P01-DEV06"></a> [P01-DEV06] ETQ dev front j'utilise un _cloud service_ sans renseigner mes informations de connexion à ZetaPush
 
 ![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
@@ -422,6 +422,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 
 ### <a name="P02-DEV05"></a> [P02-DEV05] ETQ dev full-stack j'utilise l'autocompletion de mon IDE (VSCode) pour découvrir et utiliser mes _custom cloud services_
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 
@@ -448,6 +449,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 
 ### <a name="P02-DEV06"></a> [P02-DEV06] ETQ dev full-stack j'ai accès à la documentation de mes _custom cloud services_ depuis mon IDE (VSCode)
 
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
 
 *GIVEN*
 
@@ -469,6 +471,8 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 * Pour chaque _cloud function_ il y a son nom, sa description, ses paramètres entrants et son retour
 
 ### <a name="P02-DEV07"></a> [P02-DEV07] ETQ dev full-stack je développe et exécute mon code métier sans compte ZetaPush
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
 
@@ -541,84 +545,5 @@ Afin d'écouter les évènements d'une _cloud function_ précise, il faut écout
 * "on" + _nameCloudFunction_ en camelCase
 
 Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
-
-
----
-
-### <a name="P02-DEV08"></a> [P02-DEV08] ETQ dev full-stack je développe et exécute mon code métier application sur mon compte ZetaPush
-
-*GIVEN*
-
-![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
-
-* Je suis en cours de développement de mon _Avengers Chat_
-* Je souhaite réaliser mon code métier et le déployer côté back
-* Je souhaite créer un _custom cloud service_ nommé `AvengersService` qui va me permettre de réaliser le code métier de mon chat
-* Dans un premier temps je veux seulement ajouter une _cloud function_ à mon _custom cloud service_ qui est `attackWithRandomSkill()` qui va me permettre de lancer une attaque aléatoire en fonction du personnage (chaque Avenger a plusieurs compétences possibles)
-* J'ai écris mon _custom cloud service_ comme ci-dessous : 
-
-  ```javascript
-  /**
-   *  This class gathers the cloud functions for my own custom cloud service
-   *  Each method is a cloud function
-   */
-  class AvengersService {
-
-    /**
-    *  Function to print that an Avenger do a random attack
-    */
-    attackWithRandomSkill(avengerName) {
-      // Get the Avengers
-      const avenger = this.userService.getUserByLogin({login: avengerName}):
-
-      // Get a random power of this Avenger
-      const superpower = avenger.superpowers[Math.floor(Math.random()*avenger.superpowers.length)];
-
-      // Print that we attack with a random skill !
-      print(`${avengerName} attacks with ${superpower} !!!`);
-
-      return superpower;
-    }
-  }
-  ```
- * Je souhaite exécuter mon code back pour le tester
-  * Je n'ai pas d'application avec le nom spécifié sur mon compte ZetaPush
-
-*WHEN*
-- J'exécute mon _custom cloud service_ en local avec la commande `zeta run worker`
-
-*THEN*
-- Une nouvelle application est créée sur le nouveau compte
-- Les différents services et les différents _custom cloud services_ sont déployés sur l'application
-- Je peux utiliser mon _custom cloud service_ dans mon code front en appelant les _cloud functions_ sous la forme suivante :
-
-
-  ```javascript
-  /**
-   *  "avengersService" is an instance of AvengersService
-   */
-  this.avengersService.attackWithRandomSkill("Spider-Man");
-  ```
-
-- Un listener d'évènement est automatiquement créé pour chaque _cloud function_, ici nous pouvons écouter la création de jeu avec :
-
-  ```javascript
-  /**
-   *  "avengersService" is an instance of AvengersService
-   *  We assume that the attackWithRandomSkill() cloud function return a string
-   */
-  this.avengersService.onAttackWithRandomSkill = superpower => {
-    console.log(`The Avenger attacks with the skill : ${superpower} !!`);
-  };
-  ```
-
-#### Précisions
-
-Afin d'écouter les évènements d'une _cloud function_ précise, il faut écouter l'évènement suivant la syntaxe suivante :
-
-* "on" + _nameCloudFunction_ en camelCase
-
-Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
-
 
 ---
