@@ -547,9 +547,9 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 
 ### <a name="P02-DEV08"></a> [P02-DEV08] ETQ dev full-stack je développe et exécute mon code métier application sur mon compte ZetaPush
 
-*GIVEN*
-
 ![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
+
+*GIVEN*
 
 * Je suis en cours de développement de mon _Avengers Chat_
 * Je souhaite réaliser mon code métier et le déployer côté back
@@ -620,5 +620,19 @@ Afin d'écouter les évènements d'une _cloud function_ précise, il faut écout
 
 Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
 
+---
+
+### <a name="P02-DEV09"></a> [P02-DEV09] ETQ dev full-stack je m'enregistre sur ZetaPush
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+
+*GIVEN*
+* Je souhaite m'enregister sur la plateforme ZetaPush
+
+*WHEN*
+- J'exécute la commande `zeta register`
+
+*THEN*
+- Un compte est créé sur la plateforme ZetaPush
 
 ---
