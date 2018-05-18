@@ -545,5 +545,3 @@ Afin d'écouter les évènements d'une _cloud function_ précise, il faut écout
 * "on" + _nameCloudFunction_ en camelCase
 
 Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
-
----
