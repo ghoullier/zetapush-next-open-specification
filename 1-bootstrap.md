@@ -18,6 +18,7 @@ Les profils utilisés sont définis dans [le readme](./README.md#profils-identif
 
 ### <a name="P01-BOOT01"></a> [P01-BOOT01] ETQ dev front je créé une application sans CLI en utilisant mon compte ZetaPush 
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -69,9 +70,9 @@ ZP_DEVELOPER_PASSWORD = password
 ---
 
 
-### <a name="P01-BOOT02"></a> [P01-BOOT02] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI en utilisant mon compte ZetaPush avec une arborescence custom
+### <a name="P01-BOOT02"></a> [P01-BOOT02] ETQ dev front je prépare mon application existante pour utiliser ZetaPush sans utiliser la CLI en utilisant mon compte ZetaPush
 
-![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+![celtia-alpha-3](https://img.shields.io/badge/milestone-celtia--alpha--3-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -126,65 +127,9 @@ ZP_DEVELOPER_PASSWORD = password
 
 ---
 
-### <a name="P01-BOOT07"></a> [P01-BOOT07] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI en utilisant mon compte ZetaPush 
-
-*GIVEN*
-- J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
-- J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
-- Mon code est sous l'arborescence suivante (en respectant la convention) :
-```
-  myApp
-    └── front
-        ├── index.html
-        └── index.js
-```
-- Je remplis `.zetarc` avec mes identifiants de connexion à mon compte ZetaPush
-
-```bash
-ZP_DEVELOPER_LOGIN = user@gmail.com
-ZP_DEVELOPER_PASSWORD = password
-```
-
-- Je remplis `.gitignore` pour éviter d'envoyer mes identifiants de connexion sur GitHub
-
-```bash
-.zetarc
-```
-
-- Je remplis `package.json` avec le nom de mon application
-
-```json
-{
-  "name": "myApp",
-  "version": "0.0.1",
-  "dependencies": {
-    "@zetapush/core": "1.0.0"
-  }
-}
-```
-
-*WHEN*
-- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
-
-*THEN*
-- L'arborescence suivante est créée :
-  ```
-  myApp
-  ├── .zetarc
-  ├── .gitignore
-  ├── front
-  |   ├── index.html
-  |   └── index.js
-  └── package.json
-  ```
-- Mon application est prête et je suis prêt à utiliser les _Cloud Services_
-
----
-
-
 ### <a name="P01-BOOT03"></a> [P01-BOOT03] ETQ dev front je créé une application avec la CLI en utilisant mon compte ZetaPush
 
-![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -268,7 +213,7 @@ To deploy your application you can use the command "zeta push". You have already
 
 ### <a name="P01-BOOT04"></a> [P01-BOOT04] ETQ dev front je créé une application avec la CLI sans compte existant
 
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 - Je n'ai pas de compte ZetaPush existant
@@ -343,286 +288,6 @@ To deploy your application you can use the command "zeta push". You have already
 
 ---
 
-
-### <a name="P01-BOOT05"></a> [P01-BOOT05] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante avec la CLI en utilisant mon compte ZetaPush
-
-![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
-
-*GIVEN*
-- J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
-- J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
-- Mon code est sous l'arborescence suivante (respecte la convention ZetaPush) :
-```
-  myApp
-  └── front
-      └── index.html
-      └── index.js
-```
-
-*WHEN*
-- Lorsque je lance la commande `npm init @zetapush --login user@gmail.com --front` au sein de mon dossier `myApp`
-
-*THEN*
-- La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
-
-```console
-$ Do you want to create/update this files in this place ? (Y/n)
-  .zetarc
-  .gitignore
-  README.md
-  package.json
-$ 
-```
-
-- Un prompt est lancé pour que je puisse saisir mon mot de passe de mon compte ZetaPush
-
-```console
-$ Please type your developer password of your ZetaPush account :
-$ *****
-```
-
-- J'ai l'arborescence suivante qui est créée :
-  ```
-  myApp
-  ├── .zetarc
-  ├── .gitignore
-  ├── front
-  │   ├── index.html
-  │   └── index.js
-  ├── README.md
-  └── package.json
-  ```
-
-- Mon fichier `.zetarc` est sous la forme :
-
-```bash
-ZP_DEVELOPER_LOGIN = user@gmail.com
-ZP_DEVELOPER_PASSWORD = password
-```
-
-- Mon fichier `.gitignore` est sous la forme :
-
-```bash
-.zetarc
-```
-
-- Mon fichier `README.md` comporte le contenu spécifié [ici](./fichiers/README.md)
-
-- Mon fichier `package.json` est sous la forme : 
-
-```json
-{
-  "name": "myApp",
-  "version": "0.0.1",
-  "dependencies": {
-    "@zetapush/core": "1.0.0"
-  },
-  "zetapush": {
-    "front": "./front"
-  }
-}
-```
-
-- La dépendance à _@zetapush/core_ est installée
-- Mon application est prête et je suis prêt à utiliser les _Cloud Services_
-- La sortie de la console est la suivante :
-
-```
-Welcome to ZetaPush !
-
-A new application named myApp was added to your account.
-Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
-
-To deploy your application you can use the command "zeta push".
-```
-
----
-
-### <a name="P01-BOOT06"></a> [P01-BOOT06] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante et une arborescence custom avec la CLI en utilisant mon compte ZetaPush 
-
-![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
-
-
-*GIVEN*
-- J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
-- J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
-- Mon code est sous l'arborescence suivante (non respect de la convention ZetaPush) :
-```
-  myApp
-  ├── index.html
-  └── index.js
-```
-
-*WHEN*
-- Lorsque je lance la commande `npm init @zetapush --login user@gmail.com --front=./` au sein de mon dossier `myApp`
-
-*THEN*
-- La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
-
-```console
-$ Do you want to create/update this files in this place ? (Y/n)
-  .zetarc
-  .gitignore
-  README.md
-  package.json
-$ 
-```
-
-- Un prompt est lancé pour que je puisse saisir mon mot de passe de mon compte ZetaPush
-
-```console
-$ Please type your developer password of your ZetaPush account :
-$ *****
-```
-
-- J'ai l'arborescence suivante qui est créée :
-  ```
-  myApp
-  ├── .zetarc
-  ├── .gitignore
-  ├── index.html
-  ├── index.js
-  ├── README.md
-  └── package.json
-  ```
-
-- Mon fichier `.zetarc` est sous la forme :
-
-```bash
-ZP_DEVELOPER_LOGIN = user@gmail.com
-ZP_DEVELOPER_PASSWORD = password
-```
-
-- Mon fichier `.gitignore` est sous la forme :
-
-```bash
-.zetarc
-```
-
-- Mon fichier `README.md` comporte le contenu spécifié [ici](./fichiers/README.md)
-
-- Mon fichier `package.json` est sous la forme : 
-
-```json
-{
-  "name": "myApp",
-  "version": "0.0.1",
-  "dependencies": {
-    "@zetapush/core": "1.0.0"
-  },
-  "zetapush": {
-    "front": "./"
-  }
-}
-```
-
-- La dépendance à _@zetapush/core_ est installée
-- Mon application est prête et je suis prêt à utiliser les _Cloud Services_
-- La sortie de la console est la suivante :
-
-```
-Welcome to ZetaPush !
-
-A new application named myApp was added to your account.
-Now you can use Cloud Services in your application. You can see the documentation here : https://console.zetapush.com/documentation
-
-To deploy your application you can use the command "zeta push".
-```
-
-### <a name="P01-BOOT08"></a> [P01-BOOT08] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante sans CLI sans compte ZetaPush
-
-*GIVEN*
-- Je n'ai pas de compte ZetaPush
-- J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
-- Mon code est sous l'arborescence suivante (en respectant la convention) :
-```
-  myApp
-    └── front
-        ├── index.html
-        └── index.js
-```
-
-- Je remplis `package.json` avec le nom de mon application
-
-```json
-{
-  "name": "myApp",
-  "version": "0.0.1",
-  "dependencies": {
-  }
-}
-```
-
-*WHEN*
-- J'installe la dépendance _@zetapush/core_ avec : `npm install --save @zetapush/core`
-
-*THEN*
-- J'ai l'arborescence suivante qui est créée :
-  ```
-  myApp
-  ├── .zetarc
-  ├── .gitignore
-  ├── front
-  |   ├── index.html
-  |   └── index.js
-  └── package.json
-  ```
-- Mon application est prête et je suis prêt à utiliser les _Cloud Services_
-
----
-
-### <a name="P01-BOOT09"></a> [P01-BOOT09] ETQ dev front j'utilise les _Cloud Services_ dans mon application existante avec la CLI mais je me trompe de dossier cible
-
-
-*GIVEN*
-- J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
-- J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
-- Mon code est sous l'arborescence suivante (respect de la convention ZetaPush) :
-```
-  myApp
-  └── front
-      ├── index.html
-      └── index.js
-```
-
-- Je lance la commande `npm init @zetapush --login user@gmail.com --front` au sein du dossier parent de `myApp`
-
-- La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
-
-```console
-$ Do you want to create/update this files in this place ? (Y/n)
-  .zetarc
-  .gitignore
-  README.md
-  package.json
-$ 
-```
-
-*WHEN*
-- Lorsque je me rends compte que je ne suis pas dans le bon dossier, je refuse de créer ces fichiers et je répond "n" à la demande de création
-
-*THEN*
-- La console m'explique comment procéder avec la commande `npm init @zetapush`
-
-```console
-$ Do you want to create/update this files in this place ? (Y/n)
-  .zetarc
-  .gitignore
-  README.md
-  package.json
-$ n
-$ ---------------------
-$ The command "npm init @zetapush" allow you to create a new application from scratch or update an existing application to configure it with ZetaPush.
-$
-$ If you want to create a new application named "myApp" you use "npm init @zetapush myApp". Otherwise, if you want to update an existing application, you need to place you in the folder of your application and launch "npm init @zetapush" (without application name)
-$ Happy coding !
-$ --------------------
-```
-
----
-
-
-
 # <a name="parcours-2"></a> ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) Je développe une application front avec ZetaPush avec service custom
 
 ## User stories
@@ -684,7 +349,7 @@ ZP_DEVELOPER_PASSWORD = password
 ---
 
 
-### <a name="P02-BOOT02"></a> [P02-BOOT02] ETQ dev full-stack j'ajoute  des _Cloud Services_ et je créé  des _Custom Cloud Services_ au sein d'une application existante sans CLI
+### <a name="P02-BOOT02"></a> [P02-BOOT02] ETQ dev full-stack je prépare mon application existante à utiliser ZetaPush sans utiliser la CLI
 
 ![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
@@ -840,7 +505,7 @@ To deploy your application you can use the command "zeta push". You have already
 
 ### <a name="P02-BOOT04"></a> [P02-BOOT04] ETQ dev full-stack je créé une application avec la CLI sans compte existant
 
-![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
 - Je n'ai pas de compte ZetaPush existant
@@ -922,6 +587,8 @@ To deploy your application you can use the command "zeta push". You have already
 ---
 
 ### <a name="P02-BOOT05"></a> [P02-BOOT05] ETQ dev full-stack je créé une application avec la CLI avec une arborescence spécifiée en utilisant mon compte ZetaPush
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -1010,7 +677,7 @@ To deploy your application you can use the command "zeta push". You have already
 ---
 
 
-### <a name="P02-BOOT06"></a> [P02-BOOT06] ETQ dev full-stack j'ajoute des _Custom Cloud Services_ au sein d'une application existante avec la CLI
+### <a name="P02-BOOT06"></a> [P02-BOOT06] ETQ dev full-stack je prépare monapplication existante pour utiliser ZetaPush en utilisant la CLI
 
 ![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
@@ -1107,11 +774,10 @@ Now you can use Cloud Services in your application. You can see the documentatio
 To deploy your application you can use the command "zeta push".
 ```
 
-### <a name="P02-BOOT07"></a> [P02-BOOT07] ETQ dev full-stack j'ajoute des _Custom Cloud Services_ au sein d'une application existante avec la CLI avec une arborescence custom
+### <a name="P02-BOOT07"></a> [P02-BOOT07] ETQ dev full-stack je prépare mon application existante pour utiliser ZetaPush en utilisation la CLI avec mon compte ZetaPush avec une arborescence custom
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
-
-![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
 - J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants et créer des _Custom Cloud Services_
@@ -1207,6 +873,8 @@ To deploy your application you can use the command "zeta push".
 
 ### <a name="P02-BOOT08"></a> [P02-BOOT08] ETQ dev full-stack je créé une application sans CLI et sans compte ZetaPush
 
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+
 *GIVEN*
 - Je n'ai pas de compte ZetaPush existant
 - Je souhaite créer une application nommée **myApp** , utiliser les _Cloud Services_ existants et pouvoir créer mes _Custom Cloud Services_
@@ -1247,6 +915,8 @@ To deploy your application you can use the command "zeta push".
 ---
 
 ### <a name="P02-BOOT09"></a> [P02-BOOT09] ETQ dev full-stack je créé une application sans CLI avec une arborescence custom
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
 - J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
@@ -1300,7 +970,7 @@ ZP_DEVELOPER_PASSWORD = password
 
 ---
 
-### <a name="P02-BOOT10"></a> [P02-BOOT10] ETQ dev full-stack j'ajoute des _Custom Cloud Services_ au sein d'une application existante avec la CLI sans compte ZetaPush
+### <a name="P02-BOOT10"></a> [P02-BOOT10] ETQ dev full-stack je prépare mon application existante pour utiliser ZetaPush en utilisant la CLI sans compte ZetaPush
 
 
 *GIVEN*
@@ -1388,63 +1058,3 @@ Now you can use Cloud Services in your application. You can see the documentatio
 
 To deploy your application you can use the command "zeta push".
 ```
-
-### <a name="P02-BOOT11"></a> [P02-BOOT11] ETQ dev full-stack j'ajoute des _Custom Cloud Services_ dans mon application existante avec la CLI mais je me trompe de dossier cible
-
-
-*GIVEN*
-- J'ai un compte ZetaPush existant (user : user@gmail.com / password : password)
-- J'ai une application existante nommée **myApp** et je souhaite seulement utiliser les _Cloud Services_ existants
-- Mon code est sous l'arborescence suivante (respect de la convention ZetaPush) :
-```
-  myApp
-  └── front
-      ├── index.html
-      └── index.js
-```
-
-- Je lance la commande `npm init @zetapush --login user@gmail.com` au sein du dossier parent de `myApp`
-
-- La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
-
-```console
-$ Do you want to create/update this files in this place ? (Y/n)
-  .zetarc
-  .gitignore
-  README.md
-  package.json
-  worker/index.js
-$ 
-```
-
-*WHEN*
-- Lorsque je me rends compte que je ne suis pas dans le bon dossier, je refuse de créer ces fichiers et je répond "n" à la demande de création
-
-```console
-$ Do you want to create/update this files in this place ? (Y/n)
-  .zetarc
-  .gitignore
-  README.md
-  package.json
-$ n
-```
-
-*THEN*
-- La console m'explique comment procéder avec la commande `npm init @zetapush`
-
-```console
-$ Do you want to create/update this files in this place ? (Y/n)
-  .zetarc
-  .gitignore
-  README.md
-  package.json
-$ n
-$ ---------------------
-$ The command "npm init @zetapush" allow you to create a new application from scratch or update an existing application to configure it with ZetaPush.
-$
-$ If you want to create a new application named "myApp" you use "npm init @zetapush myApp". Otherwise, if you want to update an existing application, you need to place you in the folder of your application and launch "npm init @zetapush" (without application name)
-$ Happy coding !
-$ --------------------
-```
-
----
