@@ -392,7 +392,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
   - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --login jeni@yopmail.com --pasword zp-password --front ./front --worker ./worker```
+  - J'exécute la commande : ```zeta push --developer-login jeni@yopmail.com --developer-password zp-password --front ./front --worker ./worker```
 
 *THEN*
   - La configuration prise en compte est celle spécifiée dans la ligne de commande en priorité (la configuration est surchargée)
