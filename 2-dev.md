@@ -22,7 +22,8 @@ Les profils ainsi que le vocabulaire utilisés sont définis dans [le readme](./
 
 ## Schéma
 
-![Développement avec seulement les _cloud services_ ZetaPush](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/archi-dev-front-zp-service-only.html)
+![Développement avec services ZetaPush + Service custom](https://exp.draw.io/ImageExport4/export?url=https://raw.githubusercontent.com/zetapush/zetapush-next-open-specification/master/schemas/archi-dev-front-with-custom-service.html)
+
 
 ## User Stories
 
