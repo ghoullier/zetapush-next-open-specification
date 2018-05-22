@@ -245,12 +245,12 @@ Par défaut et par convention le code se trouvera dans 2 dossiers à la racine d
 
 > - [ ] [**[P01-DEPLOY01] ETQ dev front je déploie mon application en production**](./6-deploy.md#P01-DEPLOY01)
 >   - [X] Rédiger les specs
->   - [ ] Implémenter la commande `zeta push --front` (2h)
+>   - [ ] Implémenter la commande `zeta push --front`
 >   - [X] Implémenter l'hébergement du front
->   - [ ] Gérer les certificats HTTPs (24h)
->   - [ ] Afficher l'URL de déploiement (2h)
->   - [ ] Afficher la progression du déploiement du front (1h)
->   - [ ] Documenter l'option `--front` (doc + CLI) (3h)
+>   - [ ] Gérer les certificats HTTPs
+>   - [ ] Afficher l'URL de déploiement
+>   - [ ] Afficher la progression du déploiement du front
+>   - [ ] Documenter l'option `--front` (doc + CLI)
 
 
 ###       ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) ![progress](http://progressed.io/bar/10)
@@ -261,19 +261,19 @@ Par défaut et par convention le code se trouvera dans 2 dossiers à la racine d
 
 > - [ ] [**[P02-BOOT01] ETQ dev full-stack je créé une application sans CLI en utilisant mon compte ZetaPush**](./1-bootstrap.md#P02-BOOT01)
 >   - [X] Rédiger les specs
->   - [ ] Fournir un repository git avec les fichiers de base (README + hello-world) (4h)
->   - [ ] Documenter la mise en place manuelle dans le README.md (6h)
->   - [ ] Documenter la mise en place manuelle (4h)
+>   - [ ] Fournir un repository git avec les fichiers de base (README + hello-world)
+>   - [ ] Documenter la mise en place manuelle dans le README.md
+>   - [ ] Documenter la mise en place manuelle
 > - [ ] [**[P02-BOOT03] ETQ dev full-stack je créé une application avec la CLI**](./1-bootstrap.md#P02-BOOT03)
->   - [ ] Rédiger les specs (renommer les paramètres) (1h)
->   - [ ] Implémenter la commande `npm init @zetapush` (12h)
->   - [ ] Implémenter l'option `--developer-login` (3h)
->   - [ ] Implémenter l'option `--developer-password` (0)
->   - [ ] Implémenter l'option `--platform-url` (0)
->   - [ ] Documenter le démarrage (doc + registry npm) (4h)
->   - [ ] Documenter l'option `--developer-login` (1h : déjà expliqué ailleurs)
->   - [ ] Documenter l'option `--developer-password` (0)
->   - [ ] Documenter l'option `--platform-url` (0)
+>   - [ ] Rédiger les specs (renommer les paramètres)
+>   - [ ] Implémenter la commande `npm init @zetapush`
+>   - [ ] Implémenter l'option `--developer-login`
+>   - [ ] Implémenter l'option `--developer-password`
+>   - [ ] Implémenter l'option `--platform-url`
+>   - [ ] Documenter le démarrage (doc + registry npm)
+>   - [ ] Documenter l'option `--developer-login`
+>   - [ ] Documenter l'option `--developer-password`
+>   - [ ] Documenter l'option `--platform-url`
 > - [ ] [**[P02-BOOT04] ETQ dev full-stack je créé une application avec la CLI sans compte existant**](./1-bootstrap.md#P02-BOOT04)
 >   - [X] Rédiger les specs
 >   - [ ] Créer le fichier `.zetarc` avec les variables à remplir (1h)
@@ -286,25 +286,25 @@ Par défaut et par convention le code se trouvera dans 2 dossiers à la racine d
 ####             Développement ![progress](http://progressed.io/bar/10)
 
 > - [ ] [**[P02-DEV01] ETQ dev full-stack je développe et exécute mon code métier**](./2-dev.md#P02-DEV01)
->   - [ ] Rédiger les specs (1h)
->   - [ ] Renommer la commande `zeta run` -> `zeta run --worker` (1h)
+>   - [ ] Rédiger les specs
+>   - [ ] Renommer la commande `zeta run` -> `zeta run --worker`
 >   - [X] Implémenter la commande `zeta run --worker`
->   - [ ] Démarrer et configurer les _cloud services_ demandés (6h)
->   - [ ] Décrire `zeta run --worker` dans l'aide (3h)
->   - [ ] Documenter la commande `zeta run --worker` (3h)
->   - [ ] Documenter le développement d'un _custom cloud service_ (16h)
->   - [ ] Documenter l'appel d'un _cloud service_ existant depuis un _custom cloud service_ (4h)
->   - [ ] Documenter l'appel d'un _custom cloud service_ depuis mon front (4h)
->   - [ ] Implémenter les _custom cloud services_ multiple au sein d'un worker (+spécifier ce qu'on veut : 20h)
+>   - [ ] Démarrer et configurer les _cloud services_ demandés
+>   - [ ] Décrire `zeta run --worker` dans l'aide
+>   - [ ] Documenter la commande `zeta run --worker`
+>   - [ ] Documenter le développement d'un _custom cloud service_
+>   - [ ] Documenter l'appel d'un _cloud service_ existant depuis un _custom cloud service_
+>   - [ ] Documenter l'appel d'un _custom cloud service_ depuis mon front
+>   - [ ] Implémenter les _custom cloud services_ multiple au sein d'un worker
 > - [ ] [**[P02-DEV07] ETQ dev full-stack je développe et exécute mon code métier sans compte ZetaPush**](./2-dev.md#P02-DEV07)
 >   - [X] Rédiger les specs
->   - [ ] `zeta run --worker` appelle automatiquement `zeta register` si besoin (2h)
->   - [ ] Rédiger la section "démarrage" du tutoriel (4h)
-> - [ ] [**[P02-DEV09] ETQ dev full-stack je m'enregistre sur ZetaPush**](./2-dev.md#P02-DEV07)
->   - [ ] Rédiger les specs (-captcha : 2h)
->   - [ ] Implémenter la commande `zeta register` (sauvegarde dans .zetarc + cli + platform : 6h + 4h)
->   - [ ] Décrire `zeta register` dans l'aide (4h)
->   - [ ] Documenter la commande `zeta register` (4h)
+>   - [ ] `zeta run --worker` appelle automatiquement `zeta register` si besoin
+>   - [ ] Rédiger la section "démarrage" du tutoriel
+> - [ ] [**[P02-DEV09] ETQ dev full-stack je m'enregistre sur ZetaPush**](./2-dev.md#P02-DEV09)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter la commande `zeta register`
+>   - [ ] Décrire `zeta register` dans l'aide
+>   - [ ] Documenter la commande `zeta register`
 
 
 ####             Debug ![progress](http://progressed.io/bar/100)
@@ -323,59 +323,59 @@ Par défaut et par convention le code se trouvera dans 2 dossiers à la racine d
 
 > - [ ] [**[P02-DEPLOY01] ETQ dev full-stack je déploie mes services custom en production**](./6-deploy.md#P02-DEPLOY01)
 >   - [X] Rédiger les specs
->   - [ ] Implémenter `zeta push --worker` (4h)
+>   - [ ] Implémenter `zeta push --worker`
 >   - [X] Implémenter l'hébergement du worker
 >   - [X] Afficher la progression du déploiement
->   - [ ] Documenter l'option `--worker` (1h)
->   - [ ] Documenter l'utilisation des _custom cloud services_ nouvellement déployés (6h)
+>   - [ ] Documenter l'option `--worker`
+>   - [ ] Documenter l'utilisation des _custom cloud services_ nouvellement déployés
 > - [ ] [**[P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et service custom) en production**](./6-deploy.md#P02-DEPLOY02)
->   - [ ] Rédiger les specs (1h)
+>   - [ ] Rédiger les specs
 >   - [X] Implémenter `zeta push`
 >   - [X] Afficher la progression du déploiement
->   - [ ] Documenter la commande `zeta push` (1h)
->   - [ ] Rédiger la section "push" du tutoriel (1h)
+>   - [ ] Documenter la commande `zeta push`
+>   - [ ] Rédiger la section "push" du tutoriel
 > - [ ] [**[P02-DEPLOY03] ETQ dev je suis aidé lorsque mon application (front et service custom) n'a pas pu être déployé en production**](./6-deploy.md#P02-DEPLOY03)
->   - [ ] Rédiger les specs (pb réseau, pb permission, erreur de parsing, plantage avant la progression, informations manquantes : 4h)
->   - [ ] Implémenter la remontée des informations d'erreur (4h)
->   - [ ] Implémenter la remontée des informations du contexte (logs et autres) (12h)
->   - [ ] Afficher les messages à l'utilisateur (2h)
->   - [ ] Afficher un message d'aide à la résolution (12h)
->   - [ ] Faire un Appendix des erreurs communes (4h)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter la remontée des informations d'erreur
+>   - [ ] Implémenter la remontée des informations du contexte (logs et autres)
+>   - [ ] Afficher les messages à l'utilisateur
+>   - [ ] Afficher un message d'aide à la résolution
+>   - [ ] Faire un Appendix des erreurs communes
 > - [ ] [**[P02-DEPLOY11] ETQ dev full-stack je suis aidé lorsque mon worker n'a pas démarré**](./6-deploy.md#P02-DEPLOY11)
->   - [ ] Rédiger les specs (connexion zp ko, plante au démarrage, le worker n'a pas le réseau, le zbo ko, npm install a planté, erreur au runtime sur l'init du worker, auto-provisionning ko : 4h)
->   - [ ] Catcher les erreurs de démarrage (4h)
->   - [ ] Afficher un message d'aide à la résolution (0)
->   - [ ] Faire un Appendix des erreurs communes (0)
+>   - [ ] Rédiger les specs
+>   - [ ] Catcher les erreurs de démarrage
+>   - [ ] Afficher un message d'aide à la résolution
+>   - [ ] Faire un Appendix des erreurs communes
 > - [ ] [**[P02-DEPLOY07] ETQ dev full-stack je déploie mon application (front et service custom) en production sans credentials à disposition**](./6-deploy.md#P02-DEPLOY07)
->   - [ ] Rédiger les specs (1h)
->   - [ ] `zeta push` appelle automatiquement `zeta register` si besoin (8h : tester tous les cas tordus)
+>   - [ ] Rédiger les specs
+>   - [ ] `zeta push` appelle automatiquement `zeta register` si besoin
 > - [ ] [**[P02-DEPLOY09] ETQ dev full-stack je déploie mon application (front et service custom) en production avec la configuration en ligne de commande**](./6-deploy.md#P02-DEPLOY09)
->   - [ ] Rédiger les specs (2h)
->   - [ ] Implémenter l'option `--developer-login` (renommer : 1h)
->   - [ ] Implémenter l'option `--developer-password` (renommer : 0)
->   - [ ] Implémenter l'option `--platform-url` (renommer : 0)
->   - [ ] Implémenter l'option `--app-name` (renommer : 0)
->   - [ ] Implémenter l'option `--env-name` (renommer : 0)
->   - [ ] Documenter l'option `--developer-login` (4h)
->   - [ ] Documenter l'option `--developer-password` (0)
->   - [ ] Documenter l'option `--platform-url` (0)
->   - [ ] Documenter l'option `--app-name` (0)
->   - [ ] Documenter l'option `--env-name` (0)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter l'option `--developer-login`
+>   - [ ] Implémenter l'option `--developer-password`
+>   - [ ] Implémenter l'option `--platform-url`
+>   - [ ] Implémenter l'option `--app-name`
+>   - [ ] Implémenter l'option `--env-name`
+>   - [ ] Documenter l'option `--developer-login`
+>   - [ ] Documenter l'option `--developer-password`
+>   - [ ] Documenter l'option `--platform-url`
+>   - [ ] Documenter l'option `--app-name`
+>   - [ ] Documenter l'option `--env-name`
 > - [ ] [**[P02-DEPLOY10] ETQ dev full-stack je déploie mon application (front et service custom) en production avec une arborescence custom**](./6-deploy.md#P02-DEPLOY10)
->   - [ ] Rédiger les specs (1h)
->   - [ ] Implémenter l'option `--front=` (4h)
->   - [ ] Implémenter l'option `--worker=` (0)
->   - [ ] Documenter l'option `--front=` (3h)
->   - [ ] Documenter l'option `--worker=` (0)
+>   - [ ] Rédiger les specs
+>   - [ ] Implémenter l'option `--front=`
+>   - [ ] Implémenter l'option `--worker=`
+>   - [ ] Documenter l'option `--front=`
+>   - [ ] Documenter l'option `--worker=`
 > - [ ] **[TUTO] ETQ dev full-stack je suis le tutoriel de déploiement d'une application avec ZetaPush**
->   - [ ] Rédiger le tutoriel (16h)
->   - [ ] Préparer l'application (fichiers statiques) (8h)
->   - [ ] Tester sous Windows/Mac/Linux (32h : windows 10 + windows 7, ubuntu + debian + arch linux + centos, sierra + high-sierra)
->   - [ ] Mettre le tutoriel en Intégration Continue (12h)
+>   - [ ] Rédiger le tutoriel
+>   - [ ] Préparer l'application (fichiers statiques)
+>   - [ ] Tester sous Windows/Mac/Linux
+>   - [ ] Mettre le tutoriel en Intégration Continue
 > - [ ] **[PLATEFORME] Ajouter un cluster ZetaPush pour la phase alpha**
 >   - [X] Installer les machines
->   - [ ] Tester le tutoriel sur le cluster (8h)
->   - [ ] Mettre la plateforme celtia en Déploiement Continu (16h)
+>   - [ ] Tester le tutoriel sur le cluster
+>   - [ ] Mettre la plateforme celtia en Déploiement Continu
 
 
 
