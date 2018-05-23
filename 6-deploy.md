@@ -6,7 +6,7 @@
 
 # Pré-requis
 
-# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans service custom
+# <a name="parcours-1"></a> ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) : Je développe une application front avec ZetaPush sans service custom
 
 ## Vue d'ensemble
 
@@ -14,19 +14,33 @@
 
 ## User stories
 
-### <a name="P01-DEPLOY01"></a> [P01-DEPLOY01] ETQ dev front je déploie mon application en production
+### <a name="P01-DEPLOY01"></a> [P01-DEPLOY01] ETQ dev front je déploie mon application en production 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
   - J'ai le nom de l'application dans le fichier `package.json`
+  - Le nom de mon application est _avengers chat web_
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
   - Je suis au sein d'un dossier contenant un fichier `.zetarc` contenant les informations de mon compte ZetaPush
-  - Le nom de mon application est _avengers chat web_
+  - J'utilise l'arborescence par défaut :
+
+    ```
+    .
+    ├── .zetarc
+    ├── .gitignore
+    ├── front
+    │   ├── index.html
+    │   └── index.js
+    ├── README.md
+    └── package.json
+    ```
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --front-only```
+  - J'exécute la commande : ```zeta push --front```
 
 *THEN*
-  - Le code présent dans les chemins spécifiés dans le `package.json` est envoyé sur ZetaPush (front seulement)
+  - Le contenu du dossier `front` est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global :
     ```
     $ zeta push
@@ -46,7 +60,7 @@
   - Mon front est disponible sur le site https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
 
 
-# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des services custom
+# <a name="parcours-2"></a> ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) Je développe une application avec ZetaPush et des services custom
 
 ## Vue d'ensemble
 
@@ -62,7 +76,9 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ## User stories
 
-### <a name="P02-DEPLOY01"></a> [P02-DEPLOY01] ETQ dev full-stack je déploie mes services custom en production
+### <a name="P02-DEPLOY01"></a> [P02-DEPLOY01] ETQ dev full-stack je déploie mes services custom en production 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -75,12 +91,26 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
+  - J'utilise l'arborescence par défaut :
+
+    ```
+    .
+    ├── .zetarc
+    ├── .gitignore
+    ├── front
+    │   ├── index.html
+    │   └── index.js
+    ├── worker
+    │   └── index.js
+    ├── README.md
+    └── package.json
+    ```
 
 *WHEN*
-- J'exécute la commande : ```zeta push --worker-only```
+- J'exécute la commande : ```zeta push --worker```
 
 *THEN*
-  - Mon code custom (indiqué par le fichier `package.json`) est envoyé sur ZetaPush
+  - Mes _custom cloud services_ présents dans le dossier `worker` sont envoyés sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
     ```
     $ zeta push
@@ -101,7 +131,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
     Your custom services are ready and accessible through ZetaPush
     ```
-  - Je peux utiliser mon frontend pour interagir avec mon service custom déployé en production
+  - Je peux utiliser mon frontend local pour interagir avec mon service custom déployé en production
   - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
     - ```player1 = {"name": "Georgesdelajungle"}```
     - ```player2 = {"name": "Aladdin"}```
@@ -109,11 +139,12 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
   - Je peux consulter la santé de mon worker (voir autres US)
 
-TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
 ---
 
-### <a name="P02-DEPLOY02"></a> [P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et service custom) en production
+### <a name="P02-DEPLOY02"></a> [P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et _custom cloud services_) en production 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
@@ -126,13 +157,26 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+  - J'utilise l'arborescence par défaut :
+
+    ```
+    .
+    ├── .zetarc
+    ├── .gitignore
+    ├── front
+    │   ├── index.html
+    │   └── index.js
+    ├── worker
+    │   └── index.js
+    ├── README.md
+    └── package.json
+    ```
 
 *WHEN*
   - J'exécute la commande : ```zeta push```
 
 *THEN*
-  - Mon code custom est envoyé sur ZetaPush
+  - Mes _custom cloud services_ (définis dans le dossier `worker`) sont envoyés sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
     ```
     $ zeta push
@@ -157,7 +201,7 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
     - Your custom services are ready and accessible through ZetaPush
     ```
-  - Mon frontend est envoyé sur ZetaPush
+  - Mon frontend (dossier `front`) est envoyé sur ZetaPush
   - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
   - Mon frontend de production déployé utilise les services custom déployés
   - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
@@ -169,6 +213,7 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
 ### <a name="P02-DEPLOY03"></a> [P02-DEPLOY03] ETQ dev je suis aidé lorsque mon application (front et service custom) n'a pas pu être déployé en production
 
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
   - J'ai exécuté la commande : ```zeta push```
@@ -206,12 +251,14 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
   > | Deux custom cloud services ont le même ID | SERV-02 | Some custom cloud services have the same name |
 ---
 
-### <a name="P02-DEPLOY04"></a> [P02-DEPLOY04] ETQ dev je déploie mon service custom en production avec une configuration dédiée à cet environnement avec les credentials externalisés
+### <a name="P02-DEPLOY04"></a> [P02-DEPLOY04] ETQ dev je déploie mon custom cloud service en production avec une configuration dédiée à cet environnement avec les credentials externalisés
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
   - J'ai le nom de l'application dans le fichier `package.json`
+  - J'utilise l'arborescence par défaut de ZetaPush
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
   - J'ai deux environnements fournis par ZetaPush : 
     - `dev` pour le développement et les tests
@@ -224,13 +271,13 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     - ```endGame()```
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
   - J'ai plusieurs fichiers de configuration pour mes différents environnements :
-    - ```src/worker/environment.yml``` (valeurs par défaut pour le développement) avec le contenu suivant :
+    - ```worker/environment.yml``` (valeurs par défaut pour le développement) avec le contenu suivant :
       ```yml
       stripe:
           url: 'https://api.stripe.com'
           token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
       ```
-    - ```src/worker/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
+    - ```worker/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
       ```yml
       stripe:
           token: 'sk_prod_dNuiVQyTlDMH5RdFYSD4nIV0'
@@ -238,21 +285,16 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
   - Je ne précise aucune configuration concernant l'emplacement de mes fichiers (utilisation de la convention ZetaPush)
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --worker-only --prod```
+  - J'exécute la commande : ```zeta push --worker --prod```
 
 *THEN*
-  - Le code présent dans dist/worker est envoyé sur ZetaPush
+  - Le code présent dans `worker` est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
   - Je sais lorsque mon application est prête à être utilisée
-  - Mon application est correctement configurée pour utiliser l'environnement de prod :
+  - Mes deux configurations sont "mergées" et la configuration finale équivant à :
     ```yml
     stripe:
         url: 'https://api.stripe.com'
-        token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
-    ```
-  - ```src/worker/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
-    ```yml
-    stripe:
         token: 'sk_prod_dNuiVQyTlDMH5RdFYSD4nIV0'
     ```
   - Je peux utiliser mon frontend pour interagir avec mon service custom déployé en production
@@ -266,17 +308,261 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
 
 ---
 
-### <a name="P02-DEPLOY06"></a> [P02-DEPLOY06] ETQ dev je mets à jour mon application en production
+### <a name="P02-DEPLOY06"></a> [P02-DEPLOY06] ETQ dev je mets à jour mon application en production 
+
+> TODO: A spécifier, avec le rollback
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 TODO: snapshot automatique faite par ZP avant l'upgrade pour backup des données en cas de code foireux ?
 
 TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 
+---
+
+### <a name="P02-DEPLOY07"></a> [P02-DEPLOY07] ETQ dev full-stack je déploie mon application (front et service custom) en production sans credentials à disposition
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+
+*GIVEN*
+  - Je suis au sein d'un dossier ne contenant pas de fichier `.zetarc`
+  - J'ai le nom de l'application dans le fichier `package.json`
+  - J'utilise l'arborescence par défaut de ZetaPush
+  - Je n'ai pas de compte ZetaPush
+  - J'ai développé un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
+  - J'utilise l'arborescence par défaut :
+
+    ```
+    .
+    ├── .zetarc
+    ├── .gitignore
+    ├── front
+    │   ├── index.html
+    │   └── index.js
+    ├── worker
+    │   └── index.js
+    ├── README.md
+    └── package.json
+    ```
+
+*WHEN*
+  - J'exécute la commande : ```zeta push```
+
+*THEN*
+  - Un compte temporaire sur la plateforme ZetaPush a été créé
+  - Mes _custom cloud services_ (dossier `worker`) sont envoyés sur ZetaPush
+  - Je vois l'état d'avancement du déploiement global
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      | Publishing web application                        ██████░░░░░░
+      / Publishing custom services on worker instance 1   ██████░░░░░░
+      - Publishing custom services on worker instance 2   ████████░░░░
+      \ Publishing custom services on worker instance 3   ██░░░░░░░░░░
+    ```
+  - Je sais lorsque mon application est prête à être utilisée
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      ✓ Web application published
+      ✓ Custom services published on worker instance 1
+      ✓ Custom services published on worker instance 2
+      ✓ Custom services published on worker instance 3
+
+    Your application is ready:
+    - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
+    - Your custom services are ready and accessible through ZetaPush
+
+    As no account is specified, a temporary account has been created for you: 
+    - login: vsgygfzq12ffq4fq
+    - password: zhfuqzbvgfhreq4f56q4fqf6
+    This account is only available for X days.
+    You can convert this temporary account into a permanent account with your own login/password here : 
+    https://console.zetapush.com/account/register/vsgygfzq12ffq4fq/zhfuqzbvgfhreq4f56q4fqf6
+    NOTE: By registering, your current work and data will be kept
+    ```
+  - Mon frontend (dossier `front`) est envoyé sur ZetaPush
+  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
+  - Mon frontend de production déployé utilise les services custom déployés
+  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
+  - Je peux consulter la santé de mon worker (voir autres US)
+
+---
+
+### <a name="P02-DEPLOY09"></a> [P02-DEPLOY09] ETQ dev full-stack je déploie mon application (front et service custom) en production avec la configuration en ligne de commande
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+
+*GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc` ayant le contenu suivant :
+  ```
+  ZP_DEVELOPER_LOGIN = fdhjsqfhruqih
+  ZP_DEVELOPER_PASSWORD = gfjqh4564
+  ```
+  - J'ai le nom de l'application dans le fichier `package.json` (`avengers-chat`)
+  - J'utilise l'arborescence par défaut de ZetaPush
+  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - J'ai développé un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
+  - J'utilise l'arborescence par défaut :
+
+    ```
+    .
+    ├── .zetarc
+    ├── .gitignore
+    ├── front
+    │   ├── index.html
+    │   └── index.js
+    ├── worker
+    │   └── index.js
+    ├── README.md
+    └── package.json
+    ```
+
+*WHEN*
+  - J'exécute la commande : ```zeta push --developer-login jeni@yopmail.com --developer-password zp-password```
+
+*THEN*
+  - Le dossier `front` est envoyé sur ZetaPush pour le compte `jeni@yopmail.com` et l'application `avengers-chat`
+  - L'ensemble de mes _custom cloud services_ définis dans le dossier `worker` est envoyé sur ZetaPush pour le compte `jeni@yopmail.com` et l'application `avengers-chat`
+  - Je vois l'état d'avancement du déploiement global
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      | Publishing web application                        ██████░░░░░░
+      / Publishing custom services on worker instance 1   ██████░░░░░░
+      - Publishing custom services on worker instance 2   ████████░░░░
+      \ Publishing custom services on worker instance 3   ██░░░░░░░░░░
+    ```
+  - Je sais lorsque mon application est prête à être utilisée
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      ✓ Web application published
+      ✓ Custom services published on worker instance 1
+      ✓ Custom services published on worker instance 2
+      ✓ Custom services published on worker instance 3
+
+    Your application is ready:
+    - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
+    - Your custom services are ready and accessible through ZetaPush
+    ```
+  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
+  - Mon frontend de production déployé utilise les services custom déployés
+  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
+  - Je peux consulter la santé de mon worker (voir autres US)
+
+---
+
+### <a name="P02-DEPLOY10"></a> [P02-DEPLOY10] ETQ dev full-stack je déploie mon application (front et service custom) avec une aborescence custom
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+
+*GIVEN*
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
+  ```
+  ZP_DEVELOPER_LOGIN = fdhjsqfhruqih
+  ZP_DEVELOPER_PASSWORD = gfjqh4564
+  ```
+  - Le nom de l'application est spécifié dans le fichier `package.json` (`avengers-chat`)
+  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
+  - J'ai développé un service custom avec les fonctions suivantes :
+    - ```createGame(player1, player2)```
+    - ```gameAction(player, name, args)```
+    - ```isFinished()```
+    - ```getWinner()```
+    - ```endGame()```
+  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
+  - L'arborescence de mon projet est :
+  ```
+  avengers-chat
+  ├── .zetarc
+  ├── .gitignore
+  ├── dashboard
+  │   ├── src
+  │   │   └── app
+  │   │       └── main.ts
+  │   └── dist
+  │       ├── assets
+  │       │   └── toto.png
+  │       ├── main.js
+  │       └── index.html
+  ├── business
+  │   ├── src
+  │   │   ├── user-service.ts
+  │   │   ├── chat-service.ts
+  │   │   └── index.ts
+  │   └── dist
+  │       └── index.js
+  └── package.json
+  ```
+  - Je n'ai pas configuré mon `package.json` pour indiquer mon arborescence custom
+
+*WHEN*
+  - J'exécute la commande : ```zeta push --front=dashboard/dist --worker=business/dist```
+
+*THEN*
+  - Mon application front packagée est envoyée sur ZetaPush
+  - Mes _custom cloud services_ sont envoyés sur ZetaPush
+  - Je vois l'état d'avancement du déploiement global
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      | Publishing web application                        ██████░░░░░░
+      / Publishing custom services on worker instance 1   ██████░░░░░░
+      - Publishing custom services on worker instance 2   ████████░░░░
+      \ Publishing custom services on worker instance 3   ██░░░░░░░░░░
+    ```
+  - Je sais lorsque mon application est prête à être utilisée
+    ```
+    $ zeta push
+    Deploying your application on production environment:
+      ✓ Code uploaded
+      ✓ Web application published
+      ✓ Custom services published on worker instance 1
+      ✓ Custom services published on worker instance 2
+      ✓ Custom services published on worker instance 3
+
+    Your application is ready:
+    - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
+    - Your custom services are ready and accessible through ZetaPush
+    ```
+  - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
+  - Mon frontend de production déployé utilise les services custom déployés
+  - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
+  - Je peux visualiser les logs applicatifs de mon service custom (voir autres US)
+  - Je peux consulter la santé de mon worker (voir autres US)
+
+---
+
+### <a name="P02-DEPLOY11"></a> [P02-DEPLOY11] ETQ dev full-stack je sais lorsque mon worker n'a pas démarré 
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+
+TODO
 
 
 
-# <a name="parcours-3"></a> Parcours 3 : Mon équipe développe une application front avec ZetaPush sans services custom
+# <a name="parcours-3"></a> ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) Mon équipe développe une application front avec ZetaPush sans services custom
 
 
 ## Vue d'ensemble
@@ -287,6 +573,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 ### <a name="P03-DEPLOY01"></a> [P03-DEPLOY01] ETQ exploitant je mets à disposition l'application web pour la qualification avec mes outils habituels
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
@@ -322,11 +609,13 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 ### <a name="P03-DEPLOY02"></a> [P03-DEPLOY02] ETQ exploitant je mets à disposition l'application web pour la qualification avec les outils ZetaPush
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 ---
 
 ### <a name="P03-DEPLOY03"></a> [P03-DEPLOY03] ETQ exploitant je mets à disposition l'application web en production avec mes outils habituels
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
@@ -364,8 +653,9 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 ### <a name="P03-DEPLOY04"></a> [P03-DEPLOY04] ETQ exploitant je mets à disposition l'application web en production avec les outils ZetaPush
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
-# <a name="parcours-4"></a> Parcours 4 : Mon équipe développe une application avec ZetaPush et des services custom
+# <a name="parcours-4"></a> ![Parcours 4](https://img.shields.io/badge/parcours-équipe%20full--stack-00d0ff.svg) Mon équipe développe une application avec ZetaPush et des services custom
 
 
 ## Vue d'ensemble
@@ -395,6 +685,7 @@ TODO: tests auto
 
 ### <a name="P04-DEPLOY01"></a> [P04-DEPLOY01] ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec mes outils habituels
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
@@ -454,17 +745,19 @@ TODO: tests auto
 
 ### <a name="P04-DEPLOY02"></a> [P04-DEPLOY02] ETQ exploitant je mets à disposition l'application web avec les services custom en production avec les outils ZetaPush
 
-
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 ---
 
 ### <a name="P04-DEPLOY03"></a> [P04-DEPLOY03] ETQ exploitant je mets à disposition l'application web avec les services custom pour la qualification avec les outils ZetaPush
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 ---
 
 ### <a name="P04-DEPLOY04"></a> [P04-DEPLOY04] ETQ exploitant je mets à disposition l'application web avec les services custom en production avec mes outils habituels
 
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Mon entreprise a un compte chez ZetaPush (login=dragons@yopmail.com, password=zp-password)
