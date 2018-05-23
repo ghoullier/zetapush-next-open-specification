@@ -16,15 +16,21 @@ First, you need to create a ZetaPush Celtia application. For this you can use :
 
 `npm init @zetapush myApp`
 
-or
-
-`git clone <repo>`
-
 > More informations in the [documentation](https://zetapush.github.io/documentation/#_init)
+
+or launch this command to get the _Hello World_ example :
+
+```console
+$ wget https://github.com/zetapush/zetapush-examples/archive/master.zip; 
+  unzip master.zip -d ./all;
+  rm master.zip; 
+  mv all/zetapush-examples-master/hello-world-custom-cloud-service .; 
+  rm -r all
+```
 
 ### 2. Deploy your code
 
-_To deploy your worker you need to have the CLI. For this install it with : `npm install -g @zetapush/cli`_
+_To deploy your worker you need to have the CLI. Install it with : `npm install -g @zetapush/cli`_
 
 Once your application is ready, you can deploy it :
 
@@ -37,7 +43,7 @@ Your application will be deployed and an URL will be returned to use your applic
 
 **3. Run worker in local**
 
-_To run your worker you need to have the CLI. For this install it with : `npm install -g @zetapush/cli`_
+_To run your worker you need to have the CLI. Install it with : `npm install -g @zetapush/cli`_
 
 You can run your worker in local to test your application and make changes :
 
@@ -67,8 +73,8 @@ You can run your worker in local to test your application and make changes :
 
 ```json
 {
-  "developer-login" : "user@gmail.com",
-  "developer-password" : "password"
+  "developerLogin" : "user@gmail.com",
+  "developerPassword" : "password"
 }
 ```
 
