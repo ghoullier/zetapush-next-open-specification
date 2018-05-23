@@ -19,12 +19,14 @@
 * Le cas d'usage de nos Users Stories sera un chat temps réel entre des personnages Avengers.
 
 
-# <a name="parcours-1"></a> Parcours 1 : Je développe une application front avec ZetaPush sans _custom cloud service_
+# <a name="parcours-1"></a> ![Parcours 1](https://img.shields.io/badge/parcours-dev%20front-00d0ff.svg) : Je développe une application front avec ZetaPush sans _custom cloud service_
 
 ## User Stories
 
 
 ### <a name="P01-TEST01"></a> [P01-TEST01] ETQ dev je mock un appel à un _cloud service_
+
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
 
 _GIVEN_
 
@@ -113,6 +115,8 @@ _THEN_
 ---
 
 ### <a name="P01-TEST02"></a> [P01-TEST02] ETQ dev je souhaite pouvoir appliquer à mon test un état de mon application précédemment sauvegardé
+
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
 
 _GIVEN_
 
@@ -216,6 +220,8 @@ _THEN_
 
 ### <a name="P01-TEST03"></a> [P01-TEST03] ETQ dev je teste mon application dans un environnement vierge
 
+![celtia-beta-1](https://img.shields.io/badge/milestone-celtia--beta--1-blue.svg)
+
 _GIVEN_
 
 * Je suis en cours de développement de mon _Avengers Chat_
@@ -315,13 +321,15 @@ _THEN_
   * `this.utilsService.setToScratch();`
 
 
-# <a name="parcours-2"></a> Parcours 2 : Je développe une application avec ZetaPush et des _custom cloud services_
+# <a name="parcours-2"></a> ![Parcours 2](https://img.shields.io/badge/parcours-dev%20full--stack-00d0ff.svg) Je développe une application avec ZetaPush et des _custom cloud services_
 
 ## User Stories
 
 
 
 ### <a name="P02-TEST01"></a> [P02-TEST01] ETQ dev full-stack je teste un _custom cloud service_
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 _GIVEN_
 
