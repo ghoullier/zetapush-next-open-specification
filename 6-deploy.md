@@ -216,45 +216,40 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 ![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
-  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
-  - J'ai le nom de l'application dans le fichier `package.json`
-  - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
-  - J'ai développé un service custom avec les fonctions suivantes :
-    - ```createGame(player1, player2)```
-    - ```gameAction(player, name, args)```
-    - ```isFinished()```
-    - ```getWinner()```
-    - ```endGame()```
-  - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
   - J'ai exécuté la commande : ```zeta push```
-  - Mon code a bien été envoyé sur ZetaPush
-
+  
 *WHEN*
-  - Le déploiement échoue
+  - Je vois dans ma console que le déploiement a échoué
 
 *THEN*
   - Je sais que mon application n'a pas pu être déployée
-  - J'ai suffisamment d'information pour savoir ce qui n'a pas fonctionné :
+  - J'ai suffisamment d'information pour savoir ce qui n'a pas fonctionné
+  - La précédente version déployée n'est pas écrasée ou corrompue (que ce soit front ou back)
+  - J'ai un retour dans mon terminal du type :
+  
     ```
     $ zeta push
-    Deploying your application on production environment:
-      ✓ Code uploaded
-      ✓ Web application published
-      x Custom services published on worker instance 1
-      ✓ Custom services published on worker instance 2
-      x Custom services published on worker instance 3
+    
+    Your application couldn't be deployed. The previous version is still running.
+    The returned error is the following :
 
-    Your application couldn't be deployed. A rollback has been done to previous version.
-    Here are the deployment logs:
-      ...
-      ...
-      ...
+    code : NET-01
+    message : No network connection available
     ```
-  - Un rollback a été effectué pour me garantir une cohérence de déploiement
-  - Mon front (ancienne version) est toujours disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
-  - Mon frontend de production déployé utilise les services custom déployés pour la version précédente
-
-
+  
+  > Ensemble des messages erreurs potentielles
+  >
+  > | Cause | Code | Message |
+  > |:---:|:---:|:---:|
+  > | Le poste du développeur n'a pas accès à internet | NET-01 | No network connection available |
+  > | Le poste du développeur n'arrive pas à accèder à la plateforme ZetaPush | NET-02 | Failed to access to the ZetaPush platform (Network issue) |
+  > | Aucun login développeur n'a été trouvé (variable d'environnement / package.json / paramètre de la commande) | ACCOUNT-01 | No developer login found |
+  > | Aucun mot de passe développeur n'a été trouvé (variable d'environnement / package.json / paramètre de la commande) | ACCOUNT-02 | No developer password found |
+  > | Le compte développeur spécifié n'existe pas (Le login ou le mot de passe est mauvais) | ACCOUNT-03 | This account doesn't exists on this platform |
+  > | Le manager de votre organisation ZetaPush ne vous autorise pas à déployer sur cette application | RIGHT-01 | You can't deploy your code on this application : Access denied |
+  > | Mauvaise utilisation des cloud services (Mauvaise syntaxe) | SERVICE-01 | Failed to create the services |
+  > | Deux custom cloud services ont le même ID | SERVICE-02 | Some custom cloud services have the same name |
+  > | Mauvaise utilisation des custom cloud services (Mauvaise syntaxe) | SERVICE-03 | Failed to create the custom cloud services |
 ---
 
 ### <a name="P02-DEPLOY04"></a> [P02-DEPLOY04] ETQ dev je déploie mon custom cloud service en production avec une configuration dédiée à cet environnement avec les credentials externalisés
