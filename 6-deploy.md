@@ -245,11 +245,11 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   > | Le poste du développeur n'arrive pas à accèder à la plateforme ZetaPush | NET-02 | Failed to access to the ZetaPush platform (Network issue) |
   > | Aucun login développeur n'a été trouvé (variable d'environnement / package.json / paramètre de la commande) | ACCOUNT-01 | No developer login found |
   > | Aucun mot de passe développeur n'a été trouvé (variable d'environnement / package.json / paramètre de la commande) | ACCOUNT-02 | No developer password found |
-  > | Le compte développeur spécifié n'existe pas | ACCOUNT-03 | This account doesn't exists on this platform |
-  > | Le mot de passe développeur spécifié ne correspond pas au login développeur spécifié | ACCOUNT-04 | The developer password is wrong for this account |
+  > | Le compte développeur spécifié n'existe pas (Le login ou le mot de passe est mauvais) | ACCOUNT-03 | This account doesn't exists on this platform |
   > | Le manager de votre organisation ZetaPush ne vous autorise pas à déployer sur cette application | RIGHT-01 | You can't deploy your code on this application : Access denied |
-  > | Une erreur est survenue lors de la création des services ZetaPush (Mauvaise syntaxe) | SERVICE-01 | Failed to create the services |
+  > | Mauvaise utilisation des cloud services (Mauvaise syntaxe) | SERVICE-01 | Failed to create the services |
   > | Deux custom cloud services ont le même ID | SERVICE-02 | Some custom cloud services have the same name |
+  > | Mauvaise utilisation des custom cloud services (Mauvaise syntaxe) | SERVICE-03 | Failed to create the custom cloud services |
 ---
 
 ### <a name="P02-DEPLOY04"></a> [P02-DEPLOY04] ETQ dev je déploie mon custom cloud service en production avec une configuration dédiée à cet environnement avec les credentials externalisés
