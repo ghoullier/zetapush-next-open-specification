@@ -547,6 +547,8 @@ Afin d'écouter les évènements d'une _cloud function_ précise, il faut écout
 
 Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
 
+---
+
 
 ### <a name="P02-DEV09"></a> [P02-DEV09] ETQ dev full-stack je m'enregistre sur ZetaPush
 
@@ -591,3 +593,234 @@ ZP_DEVELOPER_PASSWORD = azertyuiop
 * Je peux relancer mes _custom cloud services_ en local
 * Je peux héberger mon front sur ZetaPush avec mon nouveau compte
 * Je peux déployer mes _custom cloud services_ sur ZetaPush avec mon nouveau compte
+
+
+#### Précisions
+
+Afin d'écouter les évènements d'une _cloud function_ précise, il faut écouter l'évènement suivant la syntaxe suivante :
+
+* "on" + _nameCloudFunction_ en camelCase
+
+Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
+
+
+
+---
+
+### <a name="P02-DEV10"></a> [P02-DEV10] ETQ dev full-stack je développe et exécute mon code métier organisé par domaine
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+
+*GIVEN*
+
+* Je suis en cours de développement de mon application _Avengers Chat_
+* Je souhaite réaliser mon code métier et le déployer côté back
+* Je souhaite créer un _custom cloud service_ nommé `AvengersUserService` qui va me permettre de réaliser le code métier de gestion des avengers:
+  ```javascript
+  export class AvengersUserService {
+    constructor(zpStorageService, zpUserService, avengersSkillService) {
+      this.zpAvengersStorage = zpStorageService.forCollection('avengers')
+      this.zpUserService = zpUserService
+      this.avengersSkillService = avengersSkillService
+    }
+    async addAvenger(name, firstname, lastname, skills) {
+      let id = ...
+      let savedSkills = await this.avengersSkillService.setSkills(id, skills)
+      await this.zpAvengersStorage.save({id, name, realIdentity: {firstname, lastname}, skills: savedSkills})
+      return await this.zpUserService.addUser({id, name})
+    }
+    async getAvengerUser(id) {
+      return await this.zpUserService.byId(id)
+    }
+    async getAvengerInfo(id) {
+      return await this.zpAvengersStorage.byId(id)
+    }
+  }
+  ```
+* Je souhaite créer un _custom cloud service_ nommé `AvengersSkillService` qui va me permettre de réaliser le code métier de gestion des compétences des avengers
+  ```javascript
+  export class AvengersSkillService {
+    constructor(zpStorageService) {
+      this.zpSkillsStorage = zpStorageService.forCollection('skills')
+    }
+    async setSkills(skills) {
+      let savedSkills = []
+      for(let skill of skills) {
+        let id = ...
+        savedSkills.push(await this.zpSkillsStorage.save({id, name}))
+      }
+      return savedSkills
+    }
+  }
+  ```
+* Je souhaite créer un _custom cloud service_ nommé `AvengersChatService` qui va me permettre de réaliser le code métier de gestion du chat
+  ```javascript
+  export class AvengersChatService {
+    constructor(zpChatService, avengersUserService, avengersSkillService) {
+      this.zpChatService = zpChatService
+      this.avengersUserService = avengersUserService
+      this.avengersSkillService = avengersSkillService
+    }
+    async newChat(avengerIds) {
+      let room = await zpChatService.createRoom()
+      for(let id of avengerIds) {
+        let avenger = await this.avengersUserService.getAvengerUser(id)
+        room.add(avenger)
+      }
+      return room
+    }
+    async talkToEveryone(sender, message, roomId) {
+      let room = await zpChatService.getRoomById(roomId)
+      return await room.addMessage({from: sender, message})
+    }
+    async tease(teaser, teased, message, roomId) {
+      let room = await zpChatService.getRoomById(roomId)
+      return await room.addMessage({from: teaser, message: "@${teased} ${message}"})
+    }
+    async attack(attacker, attacked, skill, roomId) {
+      let room = await zpChatService.getRoomById(roomId)
+      return await room.addMessage({from: attacker, message: "@${attacked.name} I attack you using ${skill.name}")
+    }
+  }
+  ```
+* Je souhaite que mon _custom cloud service_ `AvengersSkillService` ne soit pas exposé au client
+* Je déclare mes _custom cloud service_ pour que ZetaPush puisse les créer et les injecter (dans `index.js`) :
+  ```javascript
+  import { AvengersUserService, AvengersSkillService, AvengersChatService } from ...
+
+  export default {
+    exposed: {
+      avengersUserService: AvengersUserService,
+      avengersChatService: AvengersChatService
+    },
+    internal: {
+      avengersSkillService: AvengersSkillService
+    }
+  }
+  ```
+
+*WHEN*
+- J'exécute mon _custom cloud service_ en local avec la commande : `zeta run worker`
+
+*THEN*
+- Je peux utiliser mes _custom cloud services_ `AvengersUserService` et `AvengersChatService` dans mon code front en appelant les _cloud functions_ sous la forme suivante :
+  ```javascript
+  let superman = await this.avengersUserService.addAvenger("Superman", "Clark", "Kent", [
+    {name: "Flight"}, 
+    {name: "Superhuman Strength"}, 
+    {name: "Superhuman Speed"}, 
+    {name: "Superhuman Breath"}, 
+    {name: "X-Ray Vision"}, 
+    {name: "Superhuman hearing"}, 
+    {name: "Superhuman Vision"}])
+  let batman = await this.avengersUserService.addAvenger("Batman", "Bruce", "Wayne", [])
+  let room = await this.avengersChatService.newChat([spiderman.id, batman.id]);
+  this.avengersChatService.tease(superman, batman, "You have no chance", room.id)
+  this.avengersChatService.tease(batman, superman, "I have no power but I'm not afraid", room.id)
+  ```
+- Je ne peux pas utiliser mon _custom cloud service_ `AvengersSkillService` depuis mon front
+
+
+---
+
+### <a name="P02-DEV11"></a> [P02-DEV10] ETQ dev full-stack je développe et exécute mon code métier organisé par domaine en TypeScript
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+
+*GIVEN*
+
+* Je suis en cours de développement de mon application _Avengers Chat_
+* Je souhaite réaliser mon code métier et le déployer côté back
+* Je souhaite créer un _custom cloud service_ nommé `AvengersUserService` qui va me permettre de réaliser le code métier de gestion des avengers:
+  ```javascript
+  @Exposed({id: 'avengersUserService'})
+  export class AvengersUserService {
+    constructor(zpStorageService, zpUserService, avengersSkillService) {
+      this.zpAvengersStorage = zpStorageService.forCollection('avengers')
+      this.zpUserService = zpUserService
+      this.avengersSkillService = avengersSkillService
+    }
+    async addAvenger(name, firstname, lastname, skills) {
+      let id = ...
+      let savedSkills = await this.avengersSkillService.setSkills(id, skills)
+      await this.zpAvengersStorage.save({id, name, realIdentity: {firstname, lastname}, skills: savedSkills})
+      return await this.zpUserService.addUser({id, name})
+    }
+    async getAvengerUser(id) {
+      return await this.zpUserService.byId(id)
+    }
+    async getAvengerInfo(id) {
+      return await this.zpAvengersStorage.byId(id)
+    }
+  }
+  ```
+* Je souhaite créer un _custom cloud service_ nommé `AvengersSkillService` qui va me permettre de réaliser le code métier de gestion des compétences des avengers
+* Je souhaite que mon _custom cloud service_ `AvengersSkillService` ne soit pas exposé au client
+  ```javascript
+  @Internal({id: 'avengersSkillService'})
+  export class AvengersSkillService {
+    constructor(zpStorageService) {
+      this.zpSkillsStorage = zpStorageService.forCollection('skills')
+    }
+    async setSkills(skills) {
+      let savedSkills = []
+      for(let skill of skills) {
+        let id = ...
+        savedSkills.push(await this.zpSkillsStorage.save({id, name}))
+      }
+      return savedSkills
+    }
+  }
+  ```
+* Je souhaite créer un _custom cloud service_ nommé `AvengersChatService` qui va me permettre de réaliser le code métier de gestion du chat
+  ```javascript
+  @Exposed({id: 'avengersChatService'})
+  export class AvengersChatService {
+    constructor(zpChatService, avengersUserService, avengersSkillService) {
+      this.zpChatService = zpChatService
+      this.avengersUserService = avengersUserService
+      this.avengersSkillService = avengersSkillService
+    }
+    async newChat(avengerIds) {
+      let room = await zpChatService.createRoom()
+      for(let id of avengerIds) {
+        let avenger = await this.avengersUserService.getAvengerUser(id)
+        room.add(avenger)
+      }
+      return room
+    }
+    async talkToEveryone(sender, message, roomId) {
+      let room = await zpChatService.getRoomById(roomId)
+      return await room.addMessage({from: sender, message})
+    }
+    async tease(teaser, teased, message, roomId) {
+      let room = await zpChatService.getRoomById(roomId)
+      return await room.addMessage({from: teaser, message: "@${teased} ${message}"})
+    }
+    async attack(attacker, attacked, skill, roomId) {
+      let room = await zpChatService.getRoomById(roomId)
+      return await room.addMessage({from: attacker, message: "@${attacked.name} I attack you using ${skill.name}")
+    }
+  }
+  ```
+
+*WHEN*
+- J'exécute mon _custom cloud service_ en local avec la commande : `zeta run worker`
+
+*THEN*
+- Je peux utiliser mes _custom cloud services_ `AvengersUserService` et `AvengersChatService` dans mon code front en appelant les _cloud functions_ sous la forme suivante :
+  ```javascript
+  let superman = await this.avengersUserService.addAvenger("Superman", "Clark", "Kent", [
+    {name: "Flight"}, 
+    {name: "Superhuman Strength"}, 
+    {name: "Superhuman Speed"}, 
+    {name: "Superhuman Breath"}, 
+    {name: "X-Ray Vision"}, 
+    {name: "Superhuman hearing"}, 
+    {name: "Superhuman Vision"}])
+  let batman = await this.avengersUserService.addAvenger("Batman", "Bruce", "Wayne", [])
+  let room = await this.avengersChatService.newChat([spiderman.id, batman.id]);
+  this.avengersChatService.tease(superman, batman, "You have no chance", room.id)
+  this.avengersChatService.tease(batman, superman, "I have no power but I'm not afraid", room.id)
+  ```
+- Je ne peux pas utiliser mon _custom cloud service_ `AvengersSkillService` depuis mon front
