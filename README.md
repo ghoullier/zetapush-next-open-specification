@@ -305,6 +305,11 @@ Par défaut et par convention le code se trouvera dans 2 dossiers à la racine d
 >   - [ ] Implémenter la commande `zeta register`
 >   - [ ] Décrire `zeta register` dans l'aide
 >   - [ ] Documenter la commande `zeta register`
+> - [ ] [**[P02-DEV10] ETQ dev full-stack je développe et exécute mon code métier organisé par domaine**](./2-dev.md#P02-DEV10)
+>   - [X] Rédiger les specs
+>   - [ ] Implémenter les _custom cloud services_ multiples au sein d'un worker
+>   - [ ] Documenter le développement de _custom cloud services_ multiples
+>   - [ ] Documenter l'utilisation de _custom cloud services_ multiples
 
 
 ####             Debug ![progress](http://progressed.io/bar/100)
