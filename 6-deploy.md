@@ -174,7 +174,7 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
   - J'ai exécuté la commande : ```zeta push```
   
 *WHEN*
-  - Le déploiement échoue
+  - Je vois dans ma console que le déploiement a échoué
 
 *THEN*
   - Je sais que mon application n'a pas pu être déployée
@@ -191,6 +191,19 @@ TODO: préciser comment on accède aux services custom au travers de ZetaPush ?
     code : NET-01
     message : No network connection available
     ```
+  
+  > Ensemble des messages erreurs potentielles
+  > | Cause | Code | Message |
+  > |:---:|:---:|:---:|
+  > | Le poste du développeur n'a pas accès à internet | NET-01 | No network connection available |
+  > | Le poste du développeur n'arrive pas à accèder à la plateforme ZetaPush | NET-02 | Failed to access to the ZetaPush platform (Network issue) |
+  > | Aucun login développeur n'a été trouvé (variable d'environnement / package.json / paramètre de la commande) | INFO-01 | No developer login found |
+  > | Aucun mot de passe développeur n'a été trouvé (variable d'environnement / package.json / paramètre de la commande) | INFO-02 | No developer password found |
+  > | Le compte développeur spécifié n'existe pas | INFO-03 | This account doesn't exists on this platform |
+  > | Le mot de passe développeur spécifié ne correspond pas au login développeur spécifié | INFO-04 | The developer password is wrong for this account |
+  > | Le manager de votre organisation ZetaPush ne vous autorise pas à déployer sur cette application | RIGHT-01 | You can't deploy your code on this application : Access denied |
+  > | Une erreur est survenue lors de la création des services ZetaPush (Mauvaise syntaxe) | SERV-01 | Failed to create the services |
+  > | Deux custom cloud services ont le même ID | SERV-02 | Some custom cloud services have the same name |
 ---
 
 ### <a name="P02-DEPLOY04"></a> [P02-DEPLOY04] ETQ dev je déploie mon service custom en production avec une configuration dédiée à cet environnement avec les credentials externalisés
