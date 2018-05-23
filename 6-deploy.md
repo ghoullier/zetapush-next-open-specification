@@ -250,6 +250,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   > | Mauvaise utilisation des cloud services (Mauvaise syntaxe) | SERVICE-01 | Failed to create the services |
   > | Deux custom cloud services ont le même ID | SERVICE-02 | Some custom cloud services have the same name |
   > | Mauvaise utilisation des custom cloud services (Mauvaise syntaxe) | SERVICE-03 | Failed to create the custom cloud services |
+  > | Utilisation d'une dépendance NPM inexistante | DEPENDENCY-01 | An used npm dependency doesn't exists
 ---
 
 ### <a name="P02-DEPLOY04"></a> [P02-DEPLOY04] ETQ dev je déploie mon custom cloud service en production avec une configuration dédiée à cet environnement avec les credentials externalisés
