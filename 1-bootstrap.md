@@ -136,7 +136,7 @@ ZP_DEVELOPER_PASSWORD = password
 - Je souhaite créer une application nommée **myApp** et seulement utiliser les _Cloud Services_ existants
 
 *WHEN*
-- Lorsque je lance la commande : `npm init @zetapush myApp --login user@gmail.com --front`
+- Lorsque je lance la commande : `npm init @zetapush myApp --developer-login user@gmail.com --front`
 
 *THEN*
 - Un prompt est lancé pour que je puisse saisir mon mot de passe
@@ -421,10 +421,10 @@ ZP_DEVELOPER_PASSWORD = password
 - Je souhaite créer une application nommée **myApp** et je souhaite utiliser les _Cloud Services_ existants et créer mes propres _custom cloud services_.
 
 *WHEN*
-- Lorsque je lance la commande : `npm init @zetapush myApp --login user@gmail.com`
+- Lorsque je lance la commande : `npm init @zetapush myApp --developer-login user@gmail.com`
 
 *THEN*
-- Un prompt est lancé pour que je puisse saisir mon mot de passe (comme j'utilise un compte que je spécifie en paramètre avec `--login`)
+- Un prompt est lancé pour que je puisse saisir mon mot de passe
 
 ```console
 $ Please type your developer password of your ZetaPush account :
@@ -595,10 +595,10 @@ To deploy your application you can use the command "zeta push". You have already
 - Je souhaite créer une application nommée **myApp** et je souhaite utiliser les _Cloud Services_ existants et créer mes propres _custom cloud services_.
 
 *WHEN*
-- Lorsque je lance la commande : `npm init @zetapush myApp --login user@gmail.com --front=. --worker=./worker`
+- Lorsque je lance la commande : `npm init @zetapush myApp --developer-login user@gmail.com --front=. --worker=./worker`
 
 *THEN*
-- Un prompt est lancé pour que je puisse saisir mon mot de passe (comme j'utilise un compte que je spécifie en paramètre avec `--login`)
+- Un prompt est lancé pour que je puisse saisir mon mot de passe (comme j'utilise un compte que je spécifie en paramètre avec `--developer-login`)
 
 ```console
 $ Please type your developer password of your ZetaPush account :
@@ -693,7 +693,7 @@ To deploy your application you can use the command "zeta push". You have already
 ```
 
 *WHEN*
-- Lorsque je lance la commande `npm init @zetapush --login user@gmail.com` au sein de mon dossier `myApp`
+- Lorsque je lance la commande `npm init @zetapush --developer-login user@gmail.com` au sein de mon dossier `myApp`
 
 *THEN*
 - La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :
@@ -789,7 +789,7 @@ To deploy your application you can use the command "zeta push".
 ```
 
 *WHEN*
-- Lorsque je lance la commande `npm init @zetapush --login user@gmail.com --front=. --worker=./worker` au sein de mon dossier `myApp`
+- Lorsque je lance la commande `npm init @zetapush --developer-login user@gmail.com --front=. --worker=./worker` au sein de mon dossier `myApp`
 
 *THEN*
 - La CLI détecte que le dossier n'est pas vide, et me demande si je veux continuer pour créer les fichiers suivants :

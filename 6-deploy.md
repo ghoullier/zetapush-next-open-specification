@@ -20,15 +20,27 @@
 
 *GIVEN*
   - J'ai le nom de l'application dans le fichier `package.json`
+  - Le nom de mon application est _avengers chat web_
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
   - Je suis au sein d'un dossier contenant un fichier `.zetarc` contenant les informations de mon compte ZetaPush
-  - Le nom de mon application est _avengers chat web_
+  - J'utilise l'arborescence par défaut :
+
+    ```
+    .
+    ├── .zetarc
+    ├── .gitignore
+    ├── front
+    │   ├── index.html
+    │   └── index.js
+    ├── README.md
+    └── package.json
+    ```
 
 *WHEN*
   - J'exécute la commande : ```zeta push --front```
 
 *THEN*
-  - Le code présent dans les chemins spécifiés dans le `package.json` est envoyé sur ZetaPush (front seulement)
+  - Le contenu du dossier `front` est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global :
     ```
     $ zeta push
@@ -79,12 +91,26 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
+  - J'utilise l'arborescence par défaut :
+
+    ```
+    .
+    ├── .zetarc
+    ├── .gitignore
+    ├── front
+    │   ├── index.html
+    │   └── index.js
+    ├── worker
+    │   └── index.js
+    ├── README.md
+    └── package.json
+    ```
 
 *WHEN*
 - J'exécute la commande : ```zeta push --worker```
 
 *THEN*
-  - Mon code custom (indiqué par le fichier `package.json`) est envoyé sur ZetaPush
+  - Mes _custom cloud services_ présents dans le dossier `worker` sont envoyés sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
     ```
     $ zeta push
@@ -105,7 +131,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
     Your custom services are ready and accessible through ZetaPush
     ```
-  - Je peux utiliser mon frontend pour interagir avec mon service custom déployé en production
+  - Je peux utiliser mon frontend local pour interagir avec mon service custom déployé en production
   - Je peux appeler la fonction `createGame` de mon service custom directement depuis mon frontend via le SDK JS ZetaPush avec les paramètres suivants :
     - ```player1 = {"name": "Georgesdelajungle"}```
     - ```player2 = {"name": "Aladdin"}```
@@ -116,7 +142,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ---
 
-### <a name="P02-DEPLOY02"></a> [P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et service custom) en production 
+### <a name="P02-DEPLOY02"></a> [P02-DEPLOY02] ETQ dev full-stack je déploie mon application (front et _custom cloud services_) en production 
 
 ![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
@@ -131,13 +157,26 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+  - J'utilise l'arborescence par défaut :
+
+    ```
+    .
+    ├── .zetarc
+    ├── .gitignore
+    ├── front
+    │   ├── index.html
+    │   └── index.js
+    ├── worker
+    │   └── index.js
+    ├── README.md
+    └── package.json
+    ```
 
 *WHEN*
   - J'exécute la commande : ```zeta push```
 
 *THEN*
-  - Mon code custom est envoyé sur ZetaPush
+  - Mes _custom cloud services_ (définis dans le dossier `worker`) sont envoyés sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
     ```
     $ zeta push
@@ -162,7 +201,7 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
     - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
     - Your custom services are ready and accessible through ZetaPush
     ```
-  - Mon frontend est envoyé sur ZetaPush
+  - Mon frontend (dossier `front`) est envoyé sur ZetaPush
   - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
   - Mon frontend de production déployé utilise les services custom déployés
   - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
@@ -187,7 +226,6 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire `dist`
   - J'ai exécuté la commande : ```zeta push```
   - Mon code a bien été envoyé sur ZetaPush
 
@@ -219,13 +257,14 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
 
 ---
 
-### <a name="P02-DEPLOY04"></a> [P02-DEPLOY04] ETQ dev je déploie mon service custom en production avec une configuration dédiée à cet environnement avec les credentials externalisés
+### <a name="P02-DEPLOY04"></a> [P02-DEPLOY04] ETQ dev je déploie mon custom cloud service en production avec une configuration dédiée à cet environnement avec les credentials externalisés
 
 ![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
   - J'ai le nom de l'application dans le fichier `package.json`
+  - J'utilise l'arborescence par défaut de ZetaPush
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
   - J'ai deux environnements fournis par ZetaPush : 
     - `dev` pour le développement et les tests
@@ -238,13 +277,13 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
     - ```endGame()```
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
   - J'ai plusieurs fichiers de configuration pour mes différents environnements :
-    - ```src/worker/environment.yml``` (valeurs par défaut pour le développement) avec le contenu suivant :
+    - ```worker/environment.yml``` (valeurs par défaut pour le développement) avec le contenu suivant :
       ```yml
       stripe:
           url: 'https://api.stripe.com'
           token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
       ```
-    - ```src/worker/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
+    - ```worker/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
       ```yml
       stripe:
           token: 'sk_prod_dNuiVQyTlDMH5RdFYSD4nIV0'
@@ -252,21 +291,16 @@ Mon application est prête à partir en production. Je la déploie depuis mon po
   - Je ne précise aucune configuration concernant l'emplacement de mes fichiers (utilisation de la convention ZetaPush)
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --worker-only --prod```
+  - J'exécute la commande : ```zeta push --worker --prod```
 
 *THEN*
-  - Le code présent dans dist/worker est envoyé sur ZetaPush
+  - Le code présent dans `worker` est envoyé sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
   - Je sais lorsque mon application est prête à être utilisée
-  - Mon application est correctement configurée pour utiliser l'environnement de prod :
+  - Mes deux configurations sont "mergées" et la configuration finale équivant à :
     ```yml
     stripe:
         url: 'https://api.stripe.com'
-        token: 'sk_test_BQokikJOvBiI2HlWgH4olfQ2'
-    ```
-  - ```src/worker/environment-prod.yml``` (surcharge pour l'environnement de production) avec le contenu suivant :
-    ```yml
-    stripe:
         token: 'sk_prod_dNuiVQyTlDMH5RdFYSD4nIV0'
     ```
   - Je peux utiliser mon frontend pour interagir avec mon service custom déployé en production
@@ -300,6 +334,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 *GIVEN*
   - Je suis au sein d'un dossier ne contenant pas de fichier `.zetarc`
   - J'ai le nom de l'application dans le fichier `package.json`
+  - J'utilise l'arborescence par défaut de ZetaPush
   - Je n'ai pas de compte ZetaPush
   - J'ai développé un service custom avec les fonctions suivantes :
     - ```createGame(player1, player2)```
@@ -308,31 +343,27 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+  - J'utilise l'arborescence par défaut :
+
+    ```
+    .
+    ├── .zetarc
+    ├── .gitignore
+    ├── front
+    │   ├── index.html
+    │   └── index.js
+    ├── worker
+    │   └── index.js
+    ├── README.md
+    └── package.json
+    ```
 
 *WHEN*
   - J'exécute la commande : ```zeta push```
 
 *THEN*
-  - La création d'un compte temporaire se lance
-  - Un _captcha_ est affiché pour vérifier que je ne suis pas un robot
-  - J'ai un prompt qui me demande de résoudre ce captcha pour créer un compte
-
-  ```console
-    #                #####               #####  
-    ##        #      #     #             #     # 
-  # #        #            #    #####          # 
-    #      #####     #####                 ###  
-    #        #      #          #####       #    
-    #        #      #                           
-  #####             #######                #    
-
-  Veuillez résoudre cette opération pour créer votre compte sur la plateforme ZetaPush : 
-
-  $ Réponse : 
-  ```
   - Un compte temporaire sur la plateforme ZetaPush a été créé
-  - Mon code custom est envoyé sur ZetaPush
+  - Mes _custom cloud services_ (dossier `worker`) sont envoyés sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
     ```
     $ zeta push
@@ -357,7 +388,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
     - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
     - Your custom services are ready and accessible through ZetaPush
 
-    As no account is specified, a temporary account has been created for you : 
+    As no account is specified, a temporary account has been created for you: 
     - login: vsgygfzq12ffq4fq
     - password: zhfuqzbvgfhreq4f56q4fqf6
     This account is only available for X days.
@@ -365,7 +396,7 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
     https://console.zetapush.com/account/register/vsgygfzq12ffq4fq/zhfuqzbvgfhreq4f56q4fqf6
     NOTE: By registering, your current work and data will be kept
     ```
-  - Mon frontend est envoyé sur ZetaPush
+  - Mon frontend (dossier `front`) est envoyé sur ZetaPush
   - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
   - Mon frontend de production déployé utilise les services custom déployés
   - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
@@ -379,8 +410,13 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 ![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
-  - Je suis au sein d'un dossier contenant un fichier `.zetarc`
-  - J'ai le nom de l'application dans le fichier `package.json`
+  - Je suis au sein d'un dossier contenant un fichier `.zetarc` ayant le contenu suivant :
+  ```
+  ZP_DEVELOPER_LOGIN = fdhjsqfhruqih
+  ZP_DEVELOPER_PASSWORD = gfjqh4564
+  ```
+  - J'ai le nom de l'application dans le fichier `package.json` (`avengers-chat`)
+  - J'utilise l'arborescence par défaut de ZetaPush
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
   - J'ai développé un service custom avec les fonctions suivantes :
     - ```createGame(player1, player2)```
@@ -389,14 +425,27 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
+  - J'utilise l'arborescence par défaut :
+
+    ```
+    .
+    ├── .zetarc
+    ├── .gitignore
+    ├── front
+    │   ├── index.html
+    │   └── index.js
+    ├── worker
+    │   └── index.js
+    ├── README.md
+    └── package.json
+    ```
 
 *WHEN*
-  - J'exécute la commande : ```zeta push --login jeni@yopmail.com --pasword zp-password --front ./front --worker ./worker```
+  - J'exécute la commande : ```zeta push --developer-login jeni@yopmail.com --developer-password zp-password```
 
 *THEN*
-  - La configuration prise en compte est celle spécifiée dans la ligne de commande en priorité (la configuration est surchargée)
-  - Mon code custom est envoyé sur ZetaPush
+  - Le dossier `front` est envoyé sur ZetaPush pour le compte `jeni@yopmail.com` et l'application `avengers-chat`
+  - L'ensemble de mes _custom cloud services_ définis dans le dossier `worker` est envoyé sur ZetaPush pour le compte `jeni@yopmail.com` et l'application `avengers-chat`
   - Je vois l'état d'avancement du déploiement global
     ```
     $ zeta push
@@ -421,7 +470,6 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
     - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
     - Your custom services are ready and accessible through ZetaPush
     ```
-  - Mon frontend est envoyé sur ZetaPush
   - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
   - Mon frontend de production déployé utilise les services custom déployés
   - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)
@@ -436,7 +484,11 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 *GIVEN*
   - Je suis au sein d'un dossier contenant un fichier `.zetarc`
-  - J'ai le nom de l'application dans le fichier `package.json`
+  ```
+  ZP_DEVELOPER_LOGIN = fdhjsqfhruqih
+  ZP_DEVELOPER_PASSWORD = gfjqh4564
+  ```
+  - Le nom de l'application est spécifié dans le fichier `package.json` (`avengers-chat`)
   - J'ai un compte sur ZetaPush (login=jeni@yopmail.com, password=zp-password)
   - J'ai développé un service custom avec les fonctions suivantes :
     - ```createGame(player1, player2)```
@@ -445,15 +497,37 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
     - ```getWinner()```
     - ```endGame()```
   - ZetaPush me permet de répliquer 3 fois mon worker en production et je n'ai rien configuré
-  - J'ai un front que j'ai buildé à l'aide de mes outils habituels et le résultat est dans le répertoire /dist/front
-  - Je n'ai pas de chemin de mon code front et de mon code back dans mon `package.json`
+  - L'arborescence de mon projet est :
+  ```
+  avengers-chat
+  ├── .zetarc
+  ├── .gitignore
+  ├── dashboard
+  │   ├── src
+  │   │   └── app
+  │   │       └── main.ts
+  │   └── dist
+  │       ├── assets
+  │       │   └── toto.png
+  │       ├── main.js
+  │       └── index.html
+  ├── business
+  │   ├── src
+  │   │   ├── user-service.ts
+  │   │   ├── chat-service.ts
+  │   │   └── index.ts
+  │   └── dist
+  │       └── index.js
+  └── package.json
+  ```
+  - Je n'ai pas configuré mon `package.json` pour indiquer mon arborescence custom
 
 *WHEN*
-  - J'exécute la commande : ```zeta push```
+  - J'exécute la commande : ```zeta push --front=dashboard/dist --worker=business/dist```
 
 *THEN*
-  - Les chemins du code front et du code back sont ceux par convention en l'absence de configuration : (`./front` et `./worker`) 
-  - Mon code custom est envoyé sur ZetaPush
+  - Mon application front packagée est envoyée sur ZetaPush
+  - Mes _custom cloud services_ sont envoyés sur ZetaPush
   - Je vois l'état d'avancement du déploiement global
     ```
     $ zeta push
@@ -478,7 +552,6 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
     - Your web application is ready and available at https://avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com
     - Your custom services are ready and accessible through ZetaPush
     ```
-  - Mon frontend est envoyé sur ZetaPush
   - Mon front est disponible sur le site `avengers-chat-web.prod.my-first-app.jeni.zetapush-apps.com`
   - Mon frontend de production déployé utilise les services custom déployés
   - ZetaPush gère le load-balancing entre les 3 instances de mon worker (voir autres US)

@@ -546,3 +546,48 @@ Afin d'écouter les évènements d'une _cloud function_ précise, il faut écout
 * "on" + _nameCloudFunction_ en camelCase
 
 Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
+
+
+### <a name="P02-DEV09"></a> [P02-DEV09] ETQ dev full-stack je m'enregistre sur ZetaPush
+
+![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
+
+*GIVEN*
+
+* Je n'ai pas de compte sur ZetaPush
+* J'ai une application prête à fonctionner avec ZetaPush avec l'arborescence suivante:
+  ```
+  myApp
+  ├── .zetarc
+  ├── .gitignore
+  ├── front
+  │   ├── index.html
+  │   └── index.js
+  ├── worker
+  │   └── index.js
+  └── package.json
+  ```
+* Mon application est nommée `avengers-chat` dans le package.json
+* Je développe mon front en local
+* Je développe mes _custom cloud services_ en local
+* Je souhaite utiliser mon adresse `user@gmail.com` en tant que login et `azertyuiop` en tant que mot de passe
+
+*WHEN*
+
+* J'exécute la commande `zeta register --developer-login user@gmail.com`
+
+*THEN*
+
+* Un prompt me demande de choisir mon mot de passe
+* Un prompt me demande de confirmer mon mot de passe
+* Mon compte est créé sur ZetaPush
+* Mon application `avengers-chat` est enregistrée auprès de ZetaPush
+* Je peux retrouver mon application dans la console de ZetaPush (https://console.zetapush.com/apps)
+* Le fichier `.zetarc` est mis à jour avec le contenu suivant :
+```bash
+ZP_DEVELOPER_LOGIN = user@gmail.com
+ZP_DEVELOPER_PASSWORD = azertyuiop
+```
+* Je peux relancer mes _custom cloud services_ en local
+* Je peux héberger mon front sur ZetaPush avec mon nouveau compte
+* Je peux déployer mes _custom cloud services_ sur ZetaPush avec mon nouveau compte
