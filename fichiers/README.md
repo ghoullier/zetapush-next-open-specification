@@ -134,4 +134,3 @@ You can create a ZetaPush account using the CLI :
 `zeta register --developer-login user@gmail.com`
 
 - **--developer-login** : Email for your account
-
