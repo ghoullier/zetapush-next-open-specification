@@ -559,8 +559,41 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
 
 ![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
-TODO
+*GIVEN*
+  - J'ai exécuté la commande : ```zeta push```
+  
+*WHEN*
+  - Je vois dans ma console que le déploiement a fonctionné mais que le lancement de mon worker n'a pas fonctionné
 
+*THEN*
+  - Je sais que mon worker n'est pas en fonctionnement
+  - J'ai suffisamment d'information pour savoir ce qui n'a pas fonctionné
+  - La précédente version déployée et fonctionnelle n'est pas écrasée ou corrompue (que ce soit front ou back)
+  - J'ai un retour dans mon terminal du type :
+  
+    ```
+    $ zeta push
+    
+    Your application is deployed but the worker failed to start. The previous version is still running.
+    The returned error is the following :
+
+    code : NET-01
+    message : The ZetaPush platform has no network access
+    ```
+  
+  > Ensemble des messages erreurs potentielles
+  >
+  > | Cause | Code | Message |
+  > |:---:|:---:|:---:|
+  > | La plateforme ZetaPush n'a pas accès à la internet | NET-03 | The ZetaPush platform has no network access
+  > | La plateforme ZetaPush est down | PLATFORM-01 | The ZetaPush platform is down |
+  > | La commande `npm install` n'a pas fonctionné lors de la création du worker | DEP-01 | The worker failed to install npm dependencies |
+  > | Le worker a planté au démarrage (au runtime) | RUN-01 | The worker failed during runtime with the following error : {error} |
+  > | L'instanciation des services n'a pas fonctionné | SERVICE-04 | The worker failed to create the services on the application |
+  > | La création de l'image Docker n'a pas fonctionné | PLATFORM-02 | The docker image to deploy your worker failed to be created |
+  > | Le déploiement des workers (point de vue Kubernetes) a complètement échoué | DEPLOY-01 | The platform failed to deploy the workers |
+
+---
 
 
 # <a name="parcours-3"></a> ![Parcours 3](https://img.shields.io/badge/parcours-équipe%20front-00d0ff.svg) Mon équipe développe une application front avec ZetaPush sans services custom
