@@ -2,7 +2,7 @@
 
 ## What is it ?
 
-ZetaPush Celtia helps you to create your applications more quickly and spend less.
+ZetaPush Celtia helps you to create your applications more quickly and more cost-effective.
 You can use the _cloud services_ (users management, messaging, ...) provided by ZetaPush and create your own _custom cloud services_ for your business logic.
 
 The documentation is available [here](https://zetapush.github.io/documentation) and you can see and contribute on our open specifications on [GitHub](https://github.com/zetapush/zetapush-next-open-specification).
@@ -28,9 +28,19 @@ $ wget https://github.com/zetapush/zetapush-examples/archive/master.zip;
   rm -r all
 ```
 
-### 2. Deploy your code
+### 2. Run worker in local
 
-_To deploy your worker you need to have the CLI. Install it with : `npm install -g @zetapush/cli`_
+_**Worker :** Your back code, with your custom cloud services (Business logic)_
+
+You can run your worker in local to test your application and make changes :
+
+`zeta run worker`
+
+> A temporary account will be created.
+> More informations in the [documentation](https://zetapush.github.io/documentation/#_run)
+
+
+### 3. Deploy your code
 
 Once your application is ready, you can deploy it :
 
@@ -40,18 +50,6 @@ Your application will be deployed and an URL will be returned to use your applic
 
 > A temporary account will be created.
 > More informations in the [documentation](https://zetapush.github.io/documentation/#_deploy)
-
-**3. Run worker in local**
-
-_To run your worker you need to have the CLI. Install it with : `npm install -g @zetapush/cli`_
-
-You can run your worker in local to test your application and make changes :
-
-`zeta run worker`
-
-> A temporary account will be created.
-> More informations in the [documentation](https://zetapush.github.io/documentation/#_run)
-
 
 ## Create an application from scratch
 
@@ -88,11 +86,11 @@ You can run your worker in local to test your application and make changes :
 
 **front :**
 
-Your front code is in this folder.
+Your front code is in this folder. ([Documentation](https://zetapush.github.io/documentation/#_custom_cloud_service_2))
 
 **worker :**
 
-Your back code is in this folder.
+Your back code is in this folder. ([Documentation](https://zetapush.github.io/documentation/#_services))
 
 **package.json :**
 
@@ -122,6 +120,12 @@ You need to install this following dependencies :
 
 ```bash
 $ npm install --save @zetapush/core @zetapush/platform
+```
+
+Finally, you can install the _CLI_ because you will need it to deploy or run your code in local :
+
+```bash
+$ npm install -g @zetapush/cli
 ```
 
 After having create necessary files and install dependencies your application is ready and you can use the CLI to run your worker in local or push your code on the ZetaPush platform. 
