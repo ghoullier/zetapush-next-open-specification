@@ -586,10 +586,9 @@ TODO: pouvoir skipper snapshot avec --no-snapshot-needed-im-the-best ?
   >
   > | Cause | Code | Message |
   > |:---:|:---:|:---:|
-  > | La plateforme ZetaPush n'a pas accès à la internet | NET-03 | The ZetaPush platform has no network access
+  > | La plateforme ZetaPush n'a pas accès à internet | NET-03 | The ZetaPush platform has no network access
   > | La plateforme ZetaPush est down | PLATFORM-01 | The ZetaPush platform is down |
-  > | La commande `npm install` n'a pas fonctionné lors de la création du worker | DEP-01 | The worker failed to install npm dependencies |
-  > | Le worker a planté au démarrage (au runtime) | RUN-01 | The worker failed during runtime with the following error : {error} |
+  > | La commande `npm install` n'a pas fonctionné lors de la création du worker | DEPENDENCY-02 | The worker failed to install npm dependencies |
   > | L'instanciation des services n'a pas fonctionné | SERVICE-04 | The worker failed to create the services on the application |
   > | La création de l'image Docker n'a pas fonctionné | PLATFORM-02 | The docker image to deploy your worker failed to be created |
   > | Le déploiement des workers (point de vue Kubernetes) a complètement échoué | DEPLOY-01 | The platform failed to deploy the workers |
