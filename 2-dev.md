@@ -550,61 +550,32 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 ---
 
 
-### <a name="P02-DEV09"></a> [P02-DEV09] ETQ dev full-stack je m'enregistre sur ZetaPush
+### <a name="P02-DEV09"></a> [P02-DEV09] ETQ dev full-stack je m'enregistre sur ZetaPush avec un compte anonyme
 
 ![celtia-alpha-1](https://img.shields.io/badge/milestone-celtia--alpha--1-blue.svg)
 
 *GIVEN*
 
 * Je n'ai pas de compte sur ZetaPush
-* J'ai une application prête à fonctionner avec ZetaPush avec l'arborescence suivante:
-  ```
-  myApp
-  ├── .zetarc
-  ├── .gitignore
-  ├── front
-  │   ├── index.html
-  │   └── index.js
-  ├── worker
-  │   └── index.js
-  └── package.json
-  ```
-* Mon application est nommée `avengers-chat` dans le package.json
-* Je développe mon front en local
-* Je développe mes _custom cloud services_ en local
-* Je souhaite utiliser mon adresse `user@gmail.com` en tant que login et `azertyuiop` en tant que mot de passe
+* Je souhaite me créer un compte anonyme pour tester ZetaPush
 
 *WHEN*
 
-* J'exécute la commande `zeta register --developer-login user@gmail.com`
+* J'exécute la commande `zeta register`
 
 *THEN*
 
-* Un prompt me demande de choisir mon mot de passe
-* Un prompt me demande de confirmer mon mot de passe
-* Mon compte est créé sur ZetaPush
-* Mon application `avengers-chat` est enregistrée auprès de ZetaPush
-* Je peux retrouver mon application dans la console de ZetaPush (https://console.zetapush.com/apps)
+* Un compte anonyme est créé sur ZetaPush (valable 7 jours, activable voir US P02-DEV13)
+* Je peux déployer/lancer mon code en utilisant ce compte
 * Le fichier `.zetarc` est mis à jour avec le contenu suivant :
-```bash
-ZP_DEVELOPER_LOGIN = user@gmail.com
-ZP_DEVELOPER_PASSWORD = azertyuiop
+```JSON
+{
+  "developerLogin": "xsXnmWhi9WUx8F3J5kDyhRem2I6sUYpFsZjdW3SOjuA",
+  "developerPassword": "va4RPi_rwKHcov9rQYtheXDvoU4RIPyJkUXz4_DzaL0",
+  "appName": "XWPbrVVV",
+  "envName": ""
+}
 ```
-* Je peux relancer mes _custom cloud services_ en local
-* Je peux héberger mon front sur ZetaPush avec mon nouveau compte
-* Je peux déployer mes _custom cloud services_ sur ZetaPush avec mon nouveau compte
-
-
-#### Précisions
-
-Afin d'écouter les évènements d'une _cloud function_ précise, il faut écouter l'évènement suivant la syntaxe suivante :
-
-* "on" + _nameCloudFunction_ en camelCase
-
-Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud function_.
-
-
-
 ---
 
 ### <a name="P02-DEV10"></a> [P02-DEV10] ETQ dev full-stack je développe et exécute mon code métier organisé par domaine
@@ -723,7 +694,7 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
 
 ---
 
-### <a name="P02-DEV11"></a> [P02-DEV10] ETQ dev full-stack je développe et exécute mon code métier organisé par domaine en TypeScript
+### <a name="P02-DEV11"></a> [P02-DEV11] ETQ dev full-stack je développe et exécute mon code métier organisé par domaine en TypeScript
 
 ![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
 
@@ -824,3 +795,72 @@ Les évènements sont envoyés seulement à l'utilisateur qui appelle la _cloud 
   this.avengersChatService.tease(batman, superman, "I have no power but I'm not afraid", room.id)
   ```
 - Je ne peux pas utiliser mon _custom cloud service_ `AvengersSkillService` depuis mon front
+
+### <a name="P02-DEV12"></a> [P02-DEV12] ETQ dev full-stack je m'enregistre sur ZetaPush avec un compte activable
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+
+*GIVEN*
+
+* Je n'ai pas de compte sur ZetaPush
+* Je souhaite me créer un compte activable
+* J'utilise l'email *user@gmail.com* pour mon compte
+
+*WHEN*
+
+* J'exécute la commande `zeta register --email user@gmail.com`
+
+*THEN*
+
+* Un prompt me demande de créer un mot de passe pour ce compte
+* Un prompt me demande de confirmer mon mot de passe
+* Un compte est créé sur ZetaPush
+* Un email est envoyé pour activer le compte (sous 7 jours)
+* Je peux déployer/lancer mon code en utilisant ce compte
+* Le fichier `.zetarc` est mis à jour avec le contenu suivant :
+```JSON
+{
+  "developerLogin": "user@gmail.com",
+  "developerPassword": "password",
+  "appName": "XWPbrVVV",
+  "envName": ""
+}
+```
+---
+
+### <a name="P02-DEV13"></a> [P02-DEV13] ETQ dev full-stack je m'enregistre sur ZetaPush avec un compte activable et j'ai des informations de connexion dans mon .zetarc
+
+![celtia-alpha-2](https://img.shields.io/badge/milestone-celtia--alpha--2-blue.svg)
+
+*GIVEN*
+
+* Je suis au sein d'un dossier avec un fichier `.zetarc`
+* J'ai un compte anonyme
+* Je souhaite me créer un compte activable
+* J'utilise l'email *user@gmail.com* pour mon compte
+* Je souhaite conserver les données de mon application déployée sur mon compte anonyme
+
+*WHEN*
+
+* J'exécute la commande `zeta register --email user@gmail.com`
+
+*THEN*
+
+* Un prompt me demande de créer un mot de passe pour ce compte
+* Un prompt me demande de confirmer mon mot de passe
+* Un compte est créé sur ZetaPush
+* Un email est envoyé pour activer le compte (sous X jours avec X le nombre de jours restants de validité d'un compte anonyme)
+* Un prompt de demande si je veux converser les données de mon application
+* Je peux déployer/lancer mon code en utilisant ce nouveau compte
+* Le fichier `.zetarc` est mis à jour avec le contenu suivant :
+```JSON
+{
+  "developerLogin": "user@gmail.com",
+  "developerPassword": "password",
+  "appName": "XWPbrVVV",
+  "envName": ""
+}
+```
+---
+
+
