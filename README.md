@@ -300,8 +300,8 @@ Par défaut et par convention le code se trouvera dans 2 dossiers à la racine d
 >   - [X] Rédiger les specs
 >   - [ ] `zeta run --worker` appelle automatiquement `zeta register` si besoin
 >   - [ ] Rédiger la section "démarrage" du tutoriel
-> - [ ] [**[P02-DEV09] ETQ dev full-stack je m'enregistre sur ZetaPush**](./2-dev.md#P02-DEV09)
->   - [ ] Rédiger les specs
+> - [ ] [**[P02-DEV09] ETQ dev full-stack je m'enregistre sur ZetaPush avec un compte anonyme**](./2-dev.md#P02-DEV09)
+>   - [X] Rédiger les specs
 >   - [ ] Implémenter la commande `zeta register`
 >   - [ ] Décrire `zeta register` dans l'aide
 >   - [ ] Documenter la commande `zeta register`
